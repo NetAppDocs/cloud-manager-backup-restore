@@ -92,7 +92,7 @@ By default, backups are created using the same account as the one used for your 
 
 Required information for using customer-managed keys for data encryption::
 
-You can choose your own customer-managed keys for data encryption in the activation wizard instead of using the default Amazon S3 encryption keys. In this case you'll need to have the encryption managed keys already set up. link:task-setting-up-kms.html[See how to use your own keys].
+You can choose your own customer-managed keys for data encryption in the activation wizard instead of using the default Amazon S3 encryption keys. In this case you'll need to have the encryption managed keys already set up. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-setting-up-kms.html[See how to use your own keys^].
 
 AWS Backup permissions required::
 The IAM role that provides Cloud Manager with permissions must include S3 permissions from the latest https://mysupport.netapp.com/site/info/cloud-manager-policies[Cloud Manager policy^].
@@ -159,7 +159,7 @@ The Cloud Restore instance requires outbound internet access. If your virtual or
 
 Cloud Backup is enabled by default in the working environment wizard. Be sure to keep the option enabled.
 
-See link:task-deploying-otc-aws.html[Launching Cloud Volumes ONTAP in AWS] for requirements and details for creating your Cloud Volumes ONTAP system.
+See https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-aws.html[Launching Cloud Volumes ONTAP in AWS^] for requirements and details for creating your Cloud Volumes ONTAP system.
 
 .Steps
 
