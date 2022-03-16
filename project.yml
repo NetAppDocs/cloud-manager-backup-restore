@@ -77,25 +77,79 @@ homepage:
   tiles:
     - title: Get started
       links:
-        - title: title
-          url: page.html
-        - title: title
-          url: page.html
-        - title: title
-          url: page.html
-    - title: tile name
+        - title: Learn about Cloud Backup
+          url: concept-backup-to-cloud.html
+        - title: What’s New
+          url: whats-new.html
+        - title: Set up licensing
+          url: task-licensing-cloud-backup.html
+    - title: Back up ONTAP data to the cloud
+      links:
+        - title: Cloud Volumes ONTAP to Amazon S3
+          url: task-backup-to-s3.html
+        - title: Cloud Volumes ONTAP to Azure Blob
+          url: task-backup-to-azure.html
+        - title: Cloud Volumes ONTAP to Google Cloud
+          url: task-backup-to-gcp.html
+        - title: On-premises ONTAP to Amazon S3
+          url: task-backup-onprem-to-aws.html
+        - title: On-premises ONTAP to Azure Blob
+          url: task-backup-onprem-to-azure.html
+        - title: On-premises ONTAP to Google Cloud
+          url: task-backup-onprem-to-gcp.html
+        - title: On-premises ONTAP to StorageGRID
+          url: task-backup-onprem-private-cloud.html
+    - title: Back up Kubernetes data to the cloud
+      links:
+        - title: Kubernetes cluster to Amazon S3
+          url: task-backup-kubernetes-to-s3.html
+        - title: Kubernetes cluster to Azure Blob
+          url: task-backup-kubernetes-to-azure.html
+        - title: Kubernetes cluster to Google Cloud
+          url: task-backup-kubernetes-to-gcp.html
+    - title: Back up applications to the cloud
       links:
         - title: title
-          url: page.html
+          url: task-.html
         - title: title
-          url: page.html
+          url: task-.html
         - title: title
-          url: page.html
+          url: task-.html
+    - title: Restore data from backup files
+      links:
+        - title: Restore ONTAP volumes
+          url: task-restore-backups-ontap.html
+        - title: Restore ONTAP files
+          url: task-restore-backups-ontap.html
+        - title: Restore Kubernetes volumes
+          url: task-restore-backups-kubernetes.html#restoring-volumes-from-a-kubernetes-backup-file
+        - title: Restore applications?
+          url: task-.html
+    - title: Manage backup files
+      links:
+        - title: Enable and disable volume backups
+          url: task-managing-backups-ontap.html#enabling-and-disabling-backups-of-volumes
+        - title: Edit an existing backup policy
+          url: task-managing-backups-ontap.html#editing-an-existing-backup-policy
+        - title: Add a new backup policy
+          url: task-managing-backups-ontap.html#adding-a-new-backup-policy
+        - title: Change the policy assigned to existing volumes
+          url: task-managing-backups-ontap.html#changing-the-policy-assigned-to-existing-volumes
+        - title: Create a manual volume backup
+          url: task-managing-backups-ontap.html#creating-a-manual-volume-backup-at-any-time
+        - title: View the list of backups for each volume
+          url: task-managing-backups-ontap.html#viewing-the-list-of-backups-for-each-volume
+        - title: Delete backups
+          url: task-managing-backups-ontap.html#deleting-backups
+        - title: Monitor the status of backup and restore jobs
+          url: task-monitor-backup-jobs.html
     - title: Blogs & community
       links:
         - title: NetApp Community
           url: https://community.netapp.com/t5/Cloud-Data-Services/ct-p/CDS
         - title: Cloud Central blog
           url: https://cloud.netapp.com/blog
+        - title: Cloud Central use cases
+          url: https://cloud.netapp.com/cloud-backup
         - title: Cloud webinars
           url: https://cloud.netapp.com/events
