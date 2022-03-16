@@ -17,7 +17,7 @@ Complete a few steps to get started backing up data from your on-premises ONTAP 
 
 TIP: In most cases you'll use Cloud Manager for all backup and restore operations. However, starting with ONTAP 9.9.1 you can initiate volume backup operations of your on-premises ONTAP clusters using ONTAP System Manager. https://docs.netapp.com/us-en/ontap/task_cloud_backup_data_using_cbs.html[See how to use System Manager to back up your volumes to the cloud using Cloud Backup.^]
 
-A Beta feature released in January 2021 allows you to run compliance scans on the backed up volumes from your on-premises systems. Typically, compliance scans are free up to 1 TB of data, and then a cost for the service is applied for data over 1 TB. When combining Backup and Data Sense for your on-premises volumes, the cost for scans on those on-prem volumes is free. Learn more about how link:concept-cloud-compliance.html[Cloud Data Sense^] can get your business applications and cloud environments privacy ready.
+A Beta feature released in January 2021 allows you to run compliance scans on the backed up volumes from your on-premises systems. Typically, compliance scans are free up to 1 TB of data, and then a cost for the service is applied for data over 1 TB. When combining Backup and Data Sense for your on-premises volumes, the cost for scans on those on-prem volumes is free. Learn more about how https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html[Cloud Data Sense^] can get your business applications and cloud environments privacy ready.
 
 == Quick start
 
@@ -26,7 +26,7 @@ Get started quickly by following these steps, or scroll down to the remaining se
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] Verify support for your configuration
 
 [role="quick-margin-list"]
-* You have discovered the on-premises cluster and added it to a working environment in Cloud Manager. See link:task-discovering-ontap.html[Discovering ONTAP clusters^] for details.
+* You have discovered the on-premises cluster and added it to a working environment in Cloud Manager. See https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html[Discovering ONTAP clusters^] for details.
 ** The cluster is running ONTAP 9.7P5 or later.
 ** The cluster has a SnapMirror license -- it is included as part of the Premium Bundle or Data Protection Bundle.
 ** The cluster must have the required network connections to Blob storage and to the Connector.
@@ -87,7 +87,7 @@ Note that when the Cloud Restore instance is deployed in the cloud, it is locate
 
 You need to discover your on-premises ONTAP clusters in Cloud Manager before you can start backing up volume data.
 
-link:task-discovering-ontap.html[Learn how to discover a cluster].
+https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html[Learn how to discover a cluster^].
 
 ONTAP requirements::
 * ONTAP 9.7P5 and later.
@@ -119,9 +119,9 @@ When you set up Cloud Backup, you are prompted for the IPspace to use. You shoul
 
 A Connector is required to back up data to the cloud, and the Connector must be in an Azure VNet when backing up data to Azure Blob storage. You can't use a Connector that's deployed on-premises. You'll either need to create a new Connector or make sure that the currently selected Connector resides in the correct provider.
 
-* link:concept-connectors.html[Learn about Connectors]
-* link:task-creating-connectors-azure.html[Creating a Connector in Azure]
-* link:task-managing-connectors.html[Switching between Connectors]
+* https://docs.netapp.com/us-en/cloud-manager-connector/concept-connectors.html[Learn about Connectors^]
+* https://docs.netapp.com/us-en/cloud-manager-connector/task-creating-connectors-azure.html[Creating a Connector in Azure^]
+* https://docs.netapp.com/us-en/cloud-manager-connector/task-managing-connectors.html[Switching between Connectors^]
 
 === Preparing networking for the Connector
 
@@ -235,6 +235,6 @@ Cloud Backup starts taking the initial backups of each selected volume and the V
 You can link:task-managing-backups.html[start and stop backups for volumes or change the backup schedule^].
 You can also link:task-restore-backups.html[restore entire volumes or individual files from a backup file^] to a Cloud Volumes ONTAP system in Azure, or to an on-premises ONTAP system.
 
-You can link:task-controlling-private-data.html[view the results of the compliance scans^] and review other features of Cloud Data Sense that can help you understand data context and identify sensitive data in your organization.
+You can https://docs.netapp.com/us-en/cloud-manager-data-sense/task-controlling-private-data.html[view the results of the compliance scans^] and review other features of Cloud Data Sense that can help you understand data context and identify sensitive data in your organization.
 
 NOTE: The scan results are not available immediately because Cloud Backup has to finish creating the backups before Cloud Data Sense can start compliance scans.

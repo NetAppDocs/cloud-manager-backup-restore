@@ -72,14 +72,14 @@ Supported GCP regions::
 Cloud Backup is supported in all GCP regions https://cloud.netapp.com/cloud-volumes-global-regions[where Cloud Volumes ONTAP is supported^].
 
 License requirements::
-For Cloud Backup PAYGO licensing, a subscription through the https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved[GCP Marketplace] is required before you enable Cloud Backup. Billing for Cloud Backup is done through this subscription. link:task-deploying-gcp.html[You can subscribe from the Details & Credentials page of the working environment wizard^].
+For Cloud Backup PAYGO licensing, a subscription through the https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved[GCP Marketplace] is required before you enable Cloud Backup. Billing for Cloud Backup is done through this subscription. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-gcp.html[You can subscribe from the Details & Credentials page of the working environment wizard^].
 +
 For Cloud Backup BYOL licensing, you need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-cloud-backup-byol-licenses[Learn how to manage your BYOL licenses].
 +
 And you need to have a Google subscription for the storage space where your backups will be located.
 
 GCP Service Account::
-You need to have a service account in your Google Cloud Project that has the predefined Storage Admin role. link:task-creating-gcp-service-account.html[Learn how to create a service account].
+You need to have a service account in your Google Cloud Project that has the predefined Storage Admin role. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-creating-gcp-service-account.html[Learn how to create a service account^].
 
 == Enabling Cloud Backup on a new system
 
@@ -87,7 +87,7 @@ Cloud Backup can be enabled when you complete the working environment wizard to 
 
 You must have a Service Account already configured. If you don’t select a service account when you create the Cloud Volumes ONTAP system, then you’ll need to turn off the system and add the service account to Cloud Volumes ONTAP from the GCP console.
 
-See link:task-deploying-gcp.html[Launching Cloud Volumes ONTAP in GCP] for requirements and details for creating your Cloud Volumes ONTAP system.
+See https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-gcp.html[Launching Cloud Volumes ONTAP in GCP^] for requirements and details for creating your Cloud Volumes ONTAP system.
 
 .Steps
 
@@ -111,7 +111,7 @@ image:screenshot_backup_to_gcp_new_env.png[Screenshot that shows how to enable a
 +
 image:screenshot_backup_to_gcp.png[Shows the Cloud Backup option in the working environment wizard.]
 
-. Complete the pages in the wizard to deploy the system as described in link:task-deploying-gcp.html[Launching Cloud Volumes ONTAP in GCP].
+. Complete the pages in the wizard to deploy the system as described in https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-gcp.html[Launching Cloud Volumes ONTAP in GCP^].
 
 .Result
 

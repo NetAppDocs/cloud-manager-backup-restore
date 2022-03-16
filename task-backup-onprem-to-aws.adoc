@@ -24,7 +24,7 @@ Get started quickly by following these steps, or scroll down to the remaining se
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] Verify support for your configuration
 
 [role="quick-margin-list"]
-* You have discovered the on-premises cluster and added it to a working environment in Cloud Manager. See link:task-discovering-ontap.html[Discovering ONTAP clusters^] for details.
+* You have discovered the on-premises cluster and added it to a working environment in Cloud Manager. See https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html[Discovering ONTAP clusters^] for details.
 ** The cluster is running ONTAP 9.7P5 or later.
 ** The cluster has a SnapMirror license -- it is included as part of the Premium Bundle or Data Protection Bundle.
 ** The cluster must have the required network connections to S3 storage and to the Connector.
@@ -86,7 +86,7 @@ Note that when the Cloud Restore instance is deployed in the cloud, it is locate
 
 You need to discover your on-premises ONTAP clusters in Cloud Manager before you can start backing up volume data.
 
-link:task-discovering-ontap.html[Learn how to discover a cluster].
+https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html[Learn how to discover a cluster^].
 
 ONTAP requirements::
 * ONTAP 9.7P5 and later.
@@ -118,9 +118,9 @@ When you set up Cloud Backup, you are prompted for the IPspace to use. You shoul
 
 A Connector is required to back up data to the cloud, and the Connector must be in an AWS VPC when backing up data to AWS S3 storage. You can't use a Connector that's deployed on-premises. You'll either need to create a new Connector or make sure that the currently selected Connector resides in the correct provider.
 
-* link:concept-connectors.html[Learn about Connectors]
-* link:task-creating-connectors-aws.html[Creating a Connector in AWS]
-* link:task-managing-connectors.html[Switching between Connectors]
+* https://docs.netapp.com/us-en/cloud-manager-connector/concept-connectors.html[Learn about Connectors^]
+* https://docs.netapp.com/us-en/cloud-manager-connector/task-creating-connectors-aws.html[Creating a Connector in AWS^]
+* https://docs.netapp.com/us-en/cloud-manager-connector/task-managing-connectors.html[Switching between Connectors^]
 
 === Preparing networking for the Connector
 
@@ -225,7 +225,7 @@ See the https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-use
 
 |===
 
-. You can choose your own custom-managed keys for data encryption in the activation wizard instead of using the default Amazon S3 encryption keys. In this case you'll need to have the encryption managed keys already set up. link:task-setting-up-kms.html[See how to use your own keys].
+. You can choose your own custom-managed keys for data encryption in the activation wizard instead of using the default Amazon S3 encryption keys. In this case you'll need to have the encryption managed keys already set up. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-setting-up-kms.html[See how to use your own keys^].
 
 . If you want to have a more secure connection over the public internet from your on-prem data center to the VPC, there is an option to select an AWS PrivateLink connection in the activation wizard. It is required if you are connecting your on-premises system via VPN/DirectConnect. In this case you'll need to have created an Interface endpoint configuration using the Amazon VPC console or the command line. https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html[See details about using AWS PrivateLink for Amazon S3^].
 +

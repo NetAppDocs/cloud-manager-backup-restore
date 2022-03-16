@@ -22,7 +22,7 @@ Get started quickly by following these steps, or scroll down to the remaining se
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] Verify support for your configuration
 
 [role="quick-margin-list"]
-* You have discovered the on-premises cluster and added it to a working environment in Cloud Manager. See link:task-discovering-ontap.html[Discovering ONTAP clusters^] for details.
+* You have discovered the on-premises cluster and added it to a working environment in Cloud Manager. See https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html[Discovering ONTAP clusters^] for details.
 ** The cluster is running ONTAP 9.7P5 or later.
 ** The cluster has a SnapMirror license -- it is included as part of the Premium Bundle or Data Protection Bundle.
 ** The cluster must have the required network connections to StorageGRID and to the Connector.
@@ -80,7 +80,7 @@ Note that the Cloud Restore instance is not shown in this diagram because single
 
 You need to discover your on-premises ONTAP clusters in Cloud Manager before you can start backing up volume data.
 
-link:task-discovering-ontap.html[Learn how to discover a cluster].
+https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html[Learn how to discover a cluster^].
 
 ONTAP requirements::
 * ONTAP 9.7P5 and later.
@@ -137,10 +137,10 @@ You must not enable StorageGRID object versioning on the object store bucket.
 When backing up data to StorageGRID, a Connector must be available on your premises. You'll either need to install a new Connector or make sure that the currently selected Connector resides on-prem.
 // The Connector can be installed in a site with or without internet access.
 
-* link:concept-connectors.html[Learn about Connectors]
-* link:task-installing-linux.html[Installing the Connector on a Linux host with internet access]
+* https://docs.netapp.com/us-en/cloud-manager-connector/concept-connectors.html[Learn about Connectors^]
+* https://docs.netapp.com/us-en/cloud-manager-connector/task-installing-linux.html[Installing the Connector on a Linux host with internet access^]
 // * link:task-install-connector-onprem-no-internet.html[Installing the Connector on a Linux host without internet access]
-* link:task-managing-connectors.html[Switching between Connectors]
+* https://docs.netapp.com/us-en/cloud-manager-connector/task-managing-connectors.html[Switching between Connectors^]
 
 // NOTE: Cloud Backup functionality is built into the Cloud Manager Connector. When installed in a site with no internet connectivity, you'll need to update the Connector software periodically to get access to new features. Check the link:reference_new_occm.html[Cloud Manager What's New] to see the new features in each Cloud Backup release, and then you can follow the steps to link:task_managing_connectors.html#upgrading-the-connector-on-prem-without-internet-access[upgrade the Connector software] when you want to use new features.
 

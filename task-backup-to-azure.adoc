@@ -73,7 +73,7 @@ Supported ONTAP versions::
 Cloud Volumes ONTAP 9.7P5 and later.
 
 License requirements::
-For Cloud Backup PAYGO licensing, a subscription through the Azure Marketplace is required before you enable Cloud Backup. Billing for Cloud Backup is done through this subscription. link:task-deploying-otc-azure.html[You can subscribe from the Details & Credentials page of the working environment wizard^].
+For Cloud Backup PAYGO licensing, a subscription through the Azure Marketplace is required before you enable Cloud Backup. Billing for Cloud Backup is done through this subscription. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-azure.html[You can subscribe from the Details & Credentials page of the working environment wizard^].
 +
 For Cloud Backup BYOL licensing, you need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-cloud-backup-byol-licenses[Learn how to manage your BYOL licenses].
 +
@@ -114,9 +114,9 @@ The Cloud Restore virtual machine requires outbound internet access. If your vir
 
 Cloud Backup is enabled by default in the working environment wizard. Be sure to keep the option enabled.
 
-See link:task-deploying-otc-azure.html[Launching Cloud Volumes ONTAP in Azure] for requirements and details for creating your Cloud Volumes ONTAP system.
+See https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-azure.html[Launching Cloud Volumes ONTAP in Azure^] for requirements and details for creating your Cloud Volumes ONTAP system.
 
-NOTE: If you want to pick the name of the resource group, *disable* Cloud Backup when deploying Cloud Volumes ONTAP. Follow the steps for <<enabling-cloud-backup-on-an-existing-system,enabling Cloud Backup on an existing system>> to enable Cloud Backup and choose the resource group.
+NOTE: If you want to pick the name of the resource group, *disable* Cloud Backup when deploying Cloud Volumes ONTAP. Follow the steps for <<enabling-cloud-backup-on-an-existing-system, enabling Cloud Backup on an existing system>> to enable Cloud Backup and choose the resource group.
 
 .Steps
 
