@@ -16,55 +16,69 @@ sidebar:
       entries:
         - title: Learn about Cloud Backup
           url: /concept-backup-to-cloud.html
-        - title: Back up Cloud Volumes ONTAP data
-          entries:
-            - title: Back up to Amazon S3
-              url: /task-backup-to-s3.html
-            - title: Back up to Azure Blob
-              url: /task-backup-to-azure.html
-            - title: Back up to Google Cloud
-              url: /task-backup-to-gcp.html
-        - title: Back up on-premises ONTAP data
-          entries:
-            - title: Back up to Amazon S3
-              url: /task-backup-onprem-to-aws.html
-            - title: Back up to Azure Blob
-              url: /task-backup-onprem-to-azure.html
-            - title: Back up to Google Cloud
-              url: /task-backup-onprem-to-gcp.html
-            - title: Back up to StorageGRID
-              url: /task-backup-onprem-private-cloud.html
-        - title: Back up Kubernetes cluster data
-          entries:
-            - title: Back up to Amazon S3
-              url: /task-backup-kubernetes-to-s3.html
-            - title: Back up to Azure Blob
-              url: /task-backup-kubernetes-to-azure.html
-            - title: Back up to Google Cloud
-              url: /task-backup-kubernetes-to-gcp.html
-    - title: Use Cloud Backup
-      entries:
         - title: Set up licensing
           url: /task-licensing-cloud-backup.html
-        - title: Manage backups
-          url: /task-managing-backups.html
-        - title: Restore from backups
-          url: /task-restore-backups.html
         - title: Monitor the status of backup and restore jobs
           url: task-monitor-backup-jobs.html
-        - title: Reference
+    - title: Back up and restore ONTAP data
+      entries:
+        - title: Protect your ONTAP data
+          url: /concept-ontap-backup-to-cloud.html
+        - title: Back up Cloud Volumes ONTAP to Amazon S3
+          url: /task-backup-to-s3.html
+        - title: Back up Cloud Volumes ONTAP to Azure Blob
+          url: /task-backup-to-azure.html
+        - title: Back up Cloud Volumes ONTAP to Google Cloud
+          url: /task-backup-to-gcp.html
+        - title: Back up on-premises ONTAP to Amazon S3
+          url: /task-backup-onprem-to-aws.html
+        - title: Back up on-premises ONTAP to Azure Blob
+          url: /task-backup-onprem-to-azure.html
+        - title: Back up on-premises ONTAP to Google Cloud
+          url: /task-backup-onprem-to-gcp.html
+        - title: Back up on-premises ONTAP to StorageGRID
+          url: /task-backup-onprem-private-cloud.html
+        - title: Manage ONTAP backups
+          url: /task-manage-backups-ontap.html
+        - title: Restore from ONTAP backups
+          url: /task-restore-backups-ontap.html
+    - title: Back up and restore Kubernetes data
+      entries:
+        - title: Protect your Kubernetes data
+          url: /concept-kubernetes-backup-to-cloud.html
+        - title: Back up to Amazon S3
+          url: /task-backup-kubernetes-to-s3.html
+        - title: Back up to Azure Blob
+          url: /task-backup-kubernetes-to-azure.html
+        - title: Back up to Google Cloud
+          url: /task-backup-kubernetes-to-gcp.html
+        - title: Manage Kubernetes backups
+          url: /task-manage-backups-kubernetes.html
+        - title: Restore from Kubernetes backups
+          url: /task-restore-backups-kubernetes.html
+    - title: Back up and restore applications
+      entries:
+        - title: Protect your application data
+          url: /task.html
+        - title: Back up applications to the cloud
+          url: /task.html
+        - title: Manage application backups
+          url: /task.html
+        - title: Restore applications from backups
+          url: /task.html
+    - title: Reference
+      entries:
+        - title: Supported AWS archive storage tiers
+          url: /reference-aws-backup-tiers.html
+        - title: Supported Azure archive access tiers
+          url: /reference-azure-backup-tiers.html
+        - title: Cross-account and cross-region configurations
+          url: /reference-cross-account.html
           entries:
-            - title: Supported AWS archive storage tiers
-              url: /reference-aws-backup-tiers.html
-            - title: Supported Azure archive access tiers
-              url: /reference-azure-backup-tiers.html
-            - title: Cross-account and cross-region configurations
-              url: /reference-cross-account.html
-              entries:
-                - title: Configure Backup for multi-account access in AWS
-                  url: /reference-backup-multi-account-aws.html
-                - title: Configure Backup for multi-account access in Azure
-                  url: /reference-backup-multi-account-azure.html
+            - title: Configure Backup for multi-account access in AWS
+              url: /reference-backup-multi-account-aws.html
+            - title: Configure Backup for multi-account access in Azure
+              url: /reference-backup-multi-account-azure.html
     - title: Knowledge and support
       entries:
         - title: Register for support
@@ -123,7 +137,7 @@ homepage:
           url: task-restore-backups-ontap.html
         - title: Restore Kubernetes volumes
           url: task-restore-backups-kubernetes.html#restoring-volumes-from-a-kubernetes-backup-file
-        - title: Restore applications?
+        - title: Restore applications
           url: task-.html
     - title: Manage backup files
       links:
