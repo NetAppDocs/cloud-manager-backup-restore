@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: concept-ontap-backup-to-cloud.html
-keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, billing, cost, on-premises ontap, onprem, kubernetes, fetb
-summary: Cloud Backup is a service for Cloud Manager working environments that provides backup and restore capabilities for protection and long-term archive of your data. Backups are automatically generated and stored in an object store in your public or private cloud account, independent of volume Snapshot copies used for near-term recovery or cloning.
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, billing, cost, on-premises ontap, onprem
+summary: Cloud Backup provides backup and restore capabilities for protection and long-term archive of your ONTAP cluster data. Backups are automatically generated and stored in an object store in your public or private cloud account, independent of volume Snapshot copies used for near-term recovery or cloning.
 ---
 
-= Learn about Cloud Backup for ONTAP systems
+= Protect your ONTAP cluster data using Cloud Backup
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,11 +13,9 @@ summary: Cloud Backup is a service for Cloud Manager working environments that p
 :imagesdir: ./media/
 
 [.lead]
-Cloud Backup is a service for Cloud Manager working environments that provides backup and restore capabilities for protection and long-term archive of your data. Backups are automatically generated and stored in an object store in your public or private cloud account, independent of volume Snapshot copies used for near-term recovery or cloning.
+Cloud Backup provides backup and restore capabilities for protection and long-term archive of your ONTAP cluster data. Backups are automatically generated and stored in an object store in your public or private cloud account, independent of volume Snapshot copies used for near-term recovery or cloning.
 
 When necessary, you can restore an entire _volume_, or one or more _files_, from a backup to the same or different working environment.
-
-link:https://cloud.netapp.com/cloud-backup-service[Learn more about Cloud Backup^].
 
 == Features
 
@@ -40,9 +38,9 @@ Restore features:
 * Restores data on a block level, placing the data directly in the location you specify, all while preserving the original ACLs.
 * Browsable file catalog for selecting individual files for single file restore.
 
-== Supported working environments and object storage providers
+== Supported ONTAP working environments and object storage providers
 
-Cloud Backup enables you to back up volumes from the following working environments to object storage in the following public and private cloud providers:
+Cloud Backup enables you to back up ONTAP volumes from the following working environments to object storage in the following public and private cloud providers:
 
 [cols=2*,options="header",cols="40,40",width="85%"]
 |===
@@ -61,47 +59,37 @@ Cloud Backup enables you to back up volumes from the following working environme
 Azure Blob
 Google Cloud Storage
 NetApp StorageGRID
-| Kubernetes cluster in AWS
-| Amazon S3
-| Kubernetes cluster in Azure
-| Azure Blob
-| Kubernetes cluster in Google
-| Google Cloud Storage
 
 |===
 
-You can restore a volume, or individual files, from a backup file to the following working environments:
+You can restore a volume, or individual files, from an ONTAP backup file to the following working environments:
 
-[cols=4*,options="header",cols="20,20,30,30",width="100%"]
+[cols=3*,options="header",cols="20,35,35",width="95%"]
 |===
 
-2+^| Backup File
+| Backup File
 2+^| Destination Working Environment
-| *Location* | *Type*
-| *Volume Restore* | *File Restore*
-| Amazon S3 | ONTAP | Cloud Volumes ONTAP in AWS
+| *Location* | *Volume Restore* | *File Restore*
+| Amazon S3 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
-| Amazon S3 | Kubernetes | Kubernetes cluster in AWS |
-| Azure Blob | ONTAP | Cloud Volumes ONTAP in Azure
+| Azure Blob | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system
-| Azure Blob | Kubernetes | Kubernetes cluster in Azure |
-| Google Cloud Storage | ONTAP | Cloud Volumes ONTAP in Google
+| Google Cloud Storage | Cloud Volumes ONTAP in Google
 On-premises ONTAP system |
-| Google Cloud Storage | Kubernetes | Kubernetes cluster in Google |
-| NetApp StorageGRID | ONTAP | On-premises ONTAP system |
+| NetApp StorageGRID | On-premises ONTAP system |
 
 |===
 
-// === Support for sites with no internet connectivity
-//
-// Cloud Backup can be used in a site with no internet connectivity (also known as an "offline" or "dark" site) to back up volume data from local on-premises ONTAP systems to local NetApp StorageGRID systems. In this case, you'll need to deploy the Cloud Manager Connector (minimum version 3.9.16) in the dark site. See link:task-backup-onprem-private-cloud.html[Backing up on-premises ONTAP data to StorageGRID] for details.
+=== Support for sites with no internet connectivity
+
+Cloud Backup can be used in a site with no internet connectivity (also known as an "offline" or "dark" site) to back up volume data from local on-premises ONTAP systems to local NetApp StorageGRID systems. In this case, you'll need to deploy the Cloud Manager Connector (minimum version 3.9.17) in the dark site. See link:task-backup-onprem-private-cloud.html[Backing up on-premises ONTAP data to StorageGRID] for details.
 
 == Cost
 
-There are two types of costs associated with using Cloud Backup: resource charges and service charges.
+There are two types of costs associated with using Cloud Backup with ONTAP systems: resource charges and service charges.
 
 *Resource charges*
 
@@ -111,7 +99,7 @@ Resource charges are paid to the cloud provider for object storage capacity and 
 +
 Since Cloud Backup preserves the storage efficiencies of the source volume, you pay the cloud provider object storage costs for the data _after_ ONTAP efficiencies (for the smaller amount of data after deduplication and compression have been applied).
 
-* For File Restore, you pay your cloud provider for compute costs only when the Restore instance is running.
+* For File Restore using Browse & Restore, you pay your cloud provider for compute costs only when the Restore instance is running.
 +
 The instance resides in the same subnet as the Connector, and it runs only when browsing a backup file to locate the individual files you want to restore. The instance is turned off when not in use to save costs.
 +
@@ -122,7 +110,9 @@ In regions where m5n.xlarge instance isn’t available, Restore runs on an m5.xl
 +
 The instance is named _Cloud-Restore-Instance_ with your Account ID concatenated to it. For example: _Cloud-Restore-Instance-MyAccount_.
 
-* For Volume Restore there is no cost because no separate instance or virtual machine is required.
+* For Volume Restore using Browse & Restore, there is no cost because no separate instance or virtual machine is required.
+
+* For Volume or File Restore using Search & Restore, the and Amazon Athena and AWS Glue resources required. A cost is associated with the Amazon Athena and AWS Glue resources when restoring volumes and files. Search & Restore is supported using AWS only at this time.
 
 * If you need to restore volume data from a backup file that has been moved to archival storage (supported with AWS and Azure when using ONTAP 9.10.1+), then there is an additional per-GB retrieval fee and per-request fee from the cloud provider.
 
@@ -342,4 +332,4 @@ FlexGroup volumes and SnapLock volumes aren't currently supported.
 
 * File level restore is not supported when using the same account with different Cloud Managers in different subnets.
 
-// * File level restore is not supported when the Connector is installed on a site without internet access (dark site).
+* File level restore is not supported when the Connector is installed on a site without internet access (dark site).
