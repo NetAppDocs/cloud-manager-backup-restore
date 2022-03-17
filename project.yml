@@ -136,25 +136,25 @@ homepage:
         - title: Restore ONTAP files
           url: task-restore-backups-ontap.html
         - title: Restore Kubernetes volumes
-          url: task-restore-backups-kubernetes.html#restoring-volumes-from-a-kubernetes-backup-file
+          url: task-restore-backups-kubernetes.html
         - title: Restore applications
           url: task-.html
-    - title: Manage backup files
+    - title: Manage ONTAP backup files
       links:
         - title: Enable and disable volume backups
-          url: task-managing-backups-ontap.html#enabling-and-disabling-backups-of-volumes
+          url: task-manage-backups-ontap.html#enabling-and-disabling-backups-of-volumes
         - title: Edit an existing backup policy
-          url: task-managing-backups-ontap.html#editing-an-existing-backup-policy
+          url: task-manage-backups-ontap.html#editing-an-existing-backup-policy
         - title: Add a new backup policy
-          url: task-managing-backups-ontap.html#adding-a-new-backup-policy
+          url: task-manage-backups-ontap.html#adding-a-new-backup-policy
         - title: Change the policy assigned to existing volumes
-          url: task-managing-backups-ontap.html#changing-the-policy-assigned-to-existing-volumes
+          url: task-manage-backups-ontap.html#changing-the-policy-assigned-to-existing-volumes
         - title: Create a manual volume backup
-          url: task-managing-backups-ontap.html#creating-a-manual-volume-backup-at-any-time
+          url: task-manage-backups-ontap.html#creating-a-manual-volume-backup-at-any-time
         - title: View the list of backups for each volume
-          url: task-managing-backups-ontap.html#viewing-the-list-of-backups-for-each-volume
+          url: task-manage-backups-ontap.html#viewing-the-list-of-backups-for-each-volume
         - title: Delete backups
-          url: task-managing-backups-ontap.html#deleting-backups
+          url: task-manage-backups-ontap.html#deleting-backups
         - title: Monitor the status of backup and restore jobs
           url: task-monitor-backup-jobs.html
     - title: Blogs & community

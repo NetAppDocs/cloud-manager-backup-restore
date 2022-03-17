@@ -16,6 +16,20 @@ summary: Learn what's new in Cloud Backup.
 Learn what's new in Cloud Backup.
 
 // tag::whats-new[]
+== 03 Apr 2022
+
+=== Support has been added so you can back up on-premises ONTAP cluster data in sites that have no internet access.
+
+If your on-prem ONTAP cluster resides in a site with no internet access, also known as a dark site or offline site, now you can use Cloud Backup to back up volume data to NetApp StorageGRID systems that reside in the same site. This functionality requires that the Cloud Manager Connector (version 3.9.17 or greater) is deployed in the offline site. link:task-backup-onprem-private-cloud.html[See how to back up data in an offline site].
+
+=== Search & Restore for ONTAP volumes from AWS storage
+
+New fangled feature for all to use.....
+
+=== other new stuff
+
+sdfgdsdsfg.
+
 == 03 Mar 2022
 
 === Ability to back up persistent volumes from your GKE Kubernetes clusters to Google Cloud storage.
@@ -39,6 +53,7 @@ This option is available when enabling backup in a new working environment, or f
 === New Job Monitor is available to see the in-process status of all backup and restore jobs.
 
 The Job Monitor can be very helpful when you have initiated an operation against multiple volumes, like changing the backup policy, or deleting backups, so you can see when the operation has completed on all volumes. link:task-monitor-backup-jobs.html[See how to use the Job Monitor].
+// end::whats-new[]
 
 == 2 Jan 2022
 
@@ -49,7 +64,6 @@ If your AKS cluster has NetApp Astra Trident installed, and it's using Cloud Vol
 === Cloud Backup service charges have been changed in this release to align more closely with industry standards.
 
 Instead of paying NetApp for capacity based on the size of your backup files, now you pay only for the data that you protect, calculated by the logical used capacity (before ONTAP efficiencies) of the source ONTAP volumes which are being backed up. This capacity is also known as Front-End Terabytes (FETB).
-// end::whats-new[]
 
 == 28 Nov 2021
 

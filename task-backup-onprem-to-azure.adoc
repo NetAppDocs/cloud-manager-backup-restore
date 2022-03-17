@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: task-backup-onprem-to-azure.html
-keywords: backing up, back up, backup, backup on-prem ontap, on-premises, back up volumes, cloud backup
+keywords: backing up, back up, backup, backup on-prem ontap, on-premises, back up volumes, cloud backup, azure, azure blob
 summary: Complete a few steps to get started backing up data from your on-premises ONTAP systems to Azure Blob storage.
 ---
 
@@ -16,8 +16,6 @@ summary: Complete a few steps to get started backing up data from your on-premis
 Complete a few steps to get started backing up data from your on-premises ONTAP systems to Azure Blob storage.
 
 TIP: In most cases you'll use Cloud Manager for all backup and restore operations. However, starting with ONTAP 9.9.1 you can initiate volume backup operations of your on-premises ONTAP clusters using ONTAP System Manager. https://docs.netapp.com/us-en/ontap/task_cloud_backup_data_using_cbs.html[See how to use System Manager to back up your volumes to the cloud using Cloud Backup.^]
-
-A Beta feature released in January 2021 allows you to run compliance scans on the backed up volumes from your on-premises systems. Typically, compliance scans are free up to 1 TB of data, and then a cost for the service is applied for data over 1 TB. When combining Backup and Data Sense for your on-premises volumes, the cost for scans on those on-prem volumes is free. Learn more about how https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html[Cloud Data Sense^] can get your business applications and cloud environments privacy ready.
 
 == Quick start
 
@@ -133,7 +131,7 @@ Ensure that the Connector has the required networking connections.
 
 * An outbound internet connection to the Cloud Backup service over port 443 (HTTPS)
 * An HTTPS connection over port 443 to your Blob object storage
-* An HTTPS connection over port 443 to your ONTAP clusters
+* An HTTPS connection over port 443 to your ONTAP cluster management LIF
 
 . Enable a VNet Private Endpoint to Azure storage. This is needed if you have an ExpressRoute or VPN connection from your ONTAP cluster to the VNet and you want communication between the Connector and Blob storage to stay in your virtual private network.
 
@@ -175,9 +173,9 @@ A SnapMirror license is required on the cluster. Note that the "Hybrid Cloud Bun
 
 |===
 
-. You use choose your own custom-managed keys for data encryption in the activation wizard instead of using the default Microsoft-managed encryption keys. In this case you will need to have the Azure Subscription, Key Vault name, and the Key. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview[See how to use your own keys].
+. You use choose your own custom-managed keys for data encryption in the activation wizard instead of using the default Microsoft-managed encryption keys. In this case you will need to have the Azure Subscription, Key Vault name, and the Key. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview[See how to use your own keys^].
 
-. If you want to have a more secure connection over the public internet from your on-prem data center to the VNet, there is an option to configure an Azure Private Endpoint in the activation wizard. In this case you will need to know the VNet and Subnet for this connection. https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview[See details about using a Private Endpoint].
+. If you want to have a more secure connection over the public internet from your on-prem data center to the VNet, there is an option to configure an Azure Private Endpoint in the activation wizard. In this case you will need to know the VNet and Subnet for this connection. https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview[See details about using a Private Endpoint^].
 
 == Enabling Cloud Backup
 
@@ -208,7 +206,7 @@ image:screenshot_backup_onprem_azure_networking.png[A screenshot that shows the 
 
 . Enter the default backup policy details and click *Next*.
 
-.. Define the backup schedule and choose the number of backups to retain. link:concept-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings-per-cluster[See the list of existing policies you can choose^].
+.. Define the backup schedule and choose the number of backups to retain. link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings-per-cluster[See the list of existing policies you can choose^].
 .. When using ONTAP 9.10.1 and greater, you can choose to tier backups to Azure Archive storage after a certain number of days for further cost optimization. link:reference-azure-backup-tiers.html[Learn more about using archival tiers].
 +
 image:screenshot_backup_policy_azure.png[A screenshot that shows the Cloud Backup settings where you can choose your schedule and backup retention.]
@@ -232,9 +230,5 @@ Cloud Backup starts taking the initial backups of each selected volume and the V
 
 .What's next?
 
-You can link:task-managing-backups.html[start and stop backups for volumes or change the backup schedule^].
-You can also link:task-restore-backups.html[restore entire volumes or individual files from a backup file^] to a Cloud Volumes ONTAP system in Azure, or to an on-premises ONTAP system.
-
-You can https://docs.netapp.com/us-en/cloud-manager-data-sense/task-controlling-private-data.html[view the results of the compliance scans^] and review other features of Cloud Data Sense that can help you understand data context and identify sensitive data in your organization.
-
-NOTE: The scan results are not available immediately because Cloud Backup has to finish creating the backups before Cloud Data Sense can start compliance scans.
+You can link:task-manage-backups-ontap.html[start and stop backups for volumes or change the backup schedule^].
+You can also link:task-restore-backups-ontap.html[restore entire volumes or individual files from a backup file^] to a Cloud Volumes ONTAP system in Azure, or to an on-premises ONTAP system.

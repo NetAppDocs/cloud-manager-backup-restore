@@ -82,7 +82,7 @@ link:reference-aws-backup-tiers.html[Learn more about restoring from AWS archiva
 
 You can restore a volume, or individual files, from an ONTAP backup file to the following working environments:
 
-[cols=3*,options="header",cols="25,40,40",width="95%"]
+[cols=3*,options="header",cols="30,35,35",width="95%"]
 |===
 
 | Backup File Location
@@ -102,7 +102,7 @@ On-premises ONTAP system |
 
 |===
 
-Note:: If the backup file resides in archival storage, only volume restore is supported. File restore is not currently supported from archival storage when using Browse & Restore.
+NOTE: If the backup file resides in archival storage, only volume restore is supported. File restore is not currently supported from archival storage when using Browse & Restore.
 
 === Restoring volumes using Browse & Restore
 
@@ -153,7 +153,7 @@ link:reference-aws-backup-tiers.html#restoring-data-from-archival-storage[Learn 
 
 .Result
 
-Cloud Manager creates a new volume based on the backup you selected. You can link:task-managing-backups-ontap.html[manage the backup settings for this new volume^] as required.
+Cloud Manager creates a new volume based on the backup you selected. You can link:task-manage-backups-ontap.html[manage the backup settings for this new volume] as required.
 
 Note that restoring a volume from a backup file that resides in archival storage can take many minutes or hours depending on the archive tier and the restore priority. You can click the *Job Monitor* tab to see the restore progress.
 
@@ -310,7 +310,7 @@ On-premises ONTAP system
 
 The process goes like this:
 
-. Before you can use Search & Restore, you need to enable "Indexing" on each source working environment from which you'll want to restore volumes or files. This enables the Indexed Catalog to track the backup files for every volume. It also enables SnapDiff v3 on the SVM, and provisions the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service] and the https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service].
+. Before you can use Search & Restore, you need to enable "Indexing" on each source working environment from which you'll want to restore volumes or files. This enables the Indexed Catalog to track the backup files for every volume. It also enables SnapDiff v3 on the SVM, and provisions the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service^] and the https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service^].
 
 . When you want to restore a volume or files from a volume backup, under _Search & Restore_, click *Search & Restore*. The Search & Restore page is displayed.
 
@@ -328,7 +328,7 @@ The Search Results page displays all the backup files that have a file or volume
 
 Before you can use Search & Restore, you need to enable "Indexing" on each source working environment from which you're planning to restore volumes or files. This enables the Indexed Catalog to track every volume and every backup file - making your searches very quick and efficient.
 
-When you enable this functionality, Cloud Backup enables SnapDiff v3 on the SVM for your volumes, and it creates a new bucket in which it provisions the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service] and https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service].
+When you enable this functionality, Cloud Backup enables SnapDiff v3 on the SVM for your volumes, and it creates a new bucket in which it provisions the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service^] and https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service^].
 
 If Indexing has been enabled already for your working environment, go to the next section to restore your data.
 
@@ -375,3 +375,5 @@ image:screenshot_new.png[A screenshot showing the search criteria and search res
 .Results
 
 The volume or file(s) are restored and you are returned to the Restore Dashboard so you can review the progress of the restore operation. You can also click the *Job Monitor* tab to see the restore progress.
+
+For restored volumes, you can link:task-manage-backups-ontap.html[manage the backup settings for this new volume] as required.
