@@ -36,7 +36,7 @@ sdfgdsdsfg.
 
 If your GKE cluster has NetApp Astra Trident installed, and it's using Cloud Volumes ONTAP for GCP as backend storage for the cluster, then you can back up and restore your persistent volumes to and from Google Cloud storage. link:task-backup-kubernetes-to-gcp.html[Go here for details].
 
-=== The Beta capability to use Cloud Data Sense to scan your Cloud Backup files has been discontinued starting with this release.
+=== The Beta capability to use Cloud Data Sense to scan your Cloud Backup files has been discontinued in this release.
 
 == 14 Feb 2022
 
