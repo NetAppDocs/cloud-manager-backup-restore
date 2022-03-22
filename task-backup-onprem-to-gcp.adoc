@@ -104,9 +104,9 @@ When you set up Cloud Backup, you are prompted for the IPspace to use. You shoul
 
 A Connector is required to back up data to the cloud, and the Connector must be in a Google Cloud Platform VPC when backing up data to Google Cloud storage. You can't use a Connector that's deployed on-premises. You'll either need to create a new Connector or make sure that the currently selected Connector resides in the correct provider.
 
-* https://docs.netapp.com/us-en/cloud-manager-connector/concept-connectors.html[Learn about Connectors^]
-* https://docs.netapp.com/us-en/cloud-manager-connector/task-creating-connectors-gcp.html[Creating a Connector in GCP^]
-* https://docs.netapp.com/us-en/cloud-manager-connector/task-managing-connectors.html[Switching between Connectors^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html[Learn about Connectors^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-gcp.html[Creating a Connector in GCP^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html[Switching between Connectors^]
 
 === Preparing networking for the Connector
 

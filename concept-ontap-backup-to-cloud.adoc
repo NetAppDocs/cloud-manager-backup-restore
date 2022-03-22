@@ -276,7 +276,7 @@ The start time is based on the time zone set on each source ONTAP system. You ca
 
 === Backup copies are associated with your NetApp account
 
-Backup copies are associated with the https://docs.netapp.com/us-en/cloud-manager-get-started/concept-cloud-central-accounts.html[NetApp account^] in which the Connector resides.
+Backup copies are associated with the https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-cloud-central-accounts.html[NetApp account^] in which the Connector resides.
 
 If you have multiple Connectors in the same NetApp account, each Connector will display the same list of backups. That includes the backups associated with Cloud Volumes ONTAP and on-premises ONTAP instances from other Connectors.
 

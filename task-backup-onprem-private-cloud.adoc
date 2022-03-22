@@ -135,12 +135,12 @@ You must not enable StorageGRID object versioning on the object store bucket.
 
 When backing up data to StorageGRID, a Connector must be available on your premises. You'll either need to install a new Connector or make sure that the currently selected Connector resides on-prem. The Connector can be installed in a site with or without internet access.
 
-* https://docs.netapp.com/us-en/cloud-manager-connector/concept-connectors.html[Learn about Connectors^]
-* https://docs.netapp.com/us-en/cloud-manager-connector/task-installing-linux.html[Installing the Connector on a Linux host with internet access^]
-* https://docs.netapp.com/us-en/cloud-manager-connector/task-install-connector-onprem-no-internet.html[Installing the Connector on a Linux host without internet access^]
-* https://docs.netapp.com/us-en/cloud-manager-connector/task-managing-connectors.html[Switching between Connectors^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html[Learn about Connectors^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-installing-linux.html[Installing the Connector on a Linux host with internet access^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-install-connector-onprem-no-internet.html[Installing the Connector on a Linux host without internet access^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html[Switching between Connectors^]
 
-NOTE: Cloud Backup functionality is built into the Cloud Manager Connector. When installed in a site with no internet connectivity, you'll need to update the Connector software periodically to get access to new features. Check the link:whats-new.html[Cloud Backup What's New] to see the new features in each Cloud Backup release, and then you can follow the steps to https://docs.netapp.com/us-en/cloud-manager-connector/task-managing-connectors.html#upgrading-the-connector-on-prem-without-internet-access[upgrade the Connector software^] when you want to use new features.
+NOTE: Cloud Backup functionality is built into the Cloud Manager Connector. When installed in a site with no internet connectivity, you'll need to update the Connector software periodically to get access to new features. Check the link:whats-new.html[Cloud Backup What's New] to see the new features in each Cloud Backup release, and then you can follow the steps to https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html#upgrading-the-connector-on-prem-without-internet-access[upgrade the Connector software^] when you want to use new features.
 
 === Preparing networking for the Connector
 
