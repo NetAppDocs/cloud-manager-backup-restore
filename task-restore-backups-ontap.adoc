@@ -45,7 +45,6 @@ This table provides a comparison of the 2 methods.
 | Volume restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud Storage, and NetApp StorageGRID. File restore works with backup files stored in Amazon S3 and Azure Blob | Volume and file restore works with backup files stored in Amazon S3 (at this time)
 | Does not handle files that have been renamed or deleted | Handles newly created/deleted/renamed directories and newly created/deleted/renamed files
 | Browse for results across public or private clouds | Browse for results across public clouds, and in the future, across private clouds and local Snapshots copies
-| Storage system is running ONTAP >= 9.7P5 | Storage system is running ONTAP >= 9.8
 | Separate Cloud Restore instance is required for file restore | No Cloud Restore instance required
 | No extra Amazon resources required | New bucket and Amazon Athena and AWS Glue resources required
 | Cost associated with Cloud Restore instance when restoring files | Cost associated with Amazon Athena and AWS Glue resources when restoring volumes and files
@@ -54,7 +53,7 @@ This table provides a comparison of the 2 methods.
 
 |===
 
-Before you can use either restore method, make sure you have configured your environment for the unique AWS resource requirements. Those requirements are described in the sections below.
+Before you can use either restore method, make sure you have configured your environment for the unique resource requirements. Those requirements are described in the sections below.
 
 See the requirements and restore steps for the type of restore operation you want to use:
 
@@ -75,6 +74,7 @@ See the requirements and restore steps for the type of restore operation you wan
 Before you start restoring a volume or files, you should know the name of the volume or file you want to restore, and the approximate date of the backup file where the volume resides.
 
 *Note:* If the backup file for the volume that you want to restore resides in archival storage (available for AWS and Azure starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur a cost. Additionally, the destination cluster must also be running ONTAP 9.10.1 or greater.
+
 link:reference-azure-backup-tiers.html[Learn more about restoring from Azure archival storage].
 link:reference-aws-backup-tiers.html[Learn more about restoring from AWS archival storage].
 
@@ -101,6 +101,8 @@ On-premises ONTAP system |
 | NetApp StorageGRID | On-premises ONTAP system |
 
 |===
+
+Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
 
 NOTE: If the backup file resides in archival storage, only volume restore is supported. File restore is not currently supported from archival storage when using Browse & Restore.
 
@@ -146,6 +148,7 @@ image:screenshot_restore_new_vol_name.png[A screenshot of entering the name of t
 You can select the Aggregate that the volume will use for its' capacity only when restoring a volume to an on-premises ONTAP system.
 +
 And if you are restoring the volume from a backup file that resides in an archival storage tier (available starting with ONTAP 9.10.1), then you can select the Restore Priority.
++
 link:reference-azure-backup-tiers.html#restoring-data-from-archival-storage[Learn more about restoring from Azure archival storage].
 link:reference-aws-backup-tiers.html#restoring-data-from-archival-storage[Learn more about restoring from AWS archival storage].
 
@@ -163,7 +166,7 @@ If you only need to restore a few files from a volume, you can choose to restore
 
 If you select multiple files, all the files are restored to the same destination volume that you choose. If you want to restore files to different volumes, you'll need to run the restore process multiple time.
 
-TIP: You can't restore individual files if the backup file resides in archival storage (available starting with ONTAP 9.10.1). In this case, you can either restore files from a newer backup file that has not been archived, or you can restore the entire volume from the archived backup, and then access the files you need.
+TIP: You can't restore individual files if the backup file resides in archival storage. In this case, you can restore files from a newer backup file that has not been archived, you can restore files using Search & Restore, or you can restore the entire volume from the archived backup and then access the files you need.
 
 ==== Prerequisites
 
@@ -264,6 +267,7 @@ When you restore a volume from a backup file, Cloud Manager creates a _new_ volu
 You can restore files to a existing volume in the same working environment, or to a different working environment that's using the same cloud account. You can also restore files to a volume on an on-premises ONTAP system.
 
 If the backup file for the volume that you want to restore resides in archival storage (available for AWS starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur a cost. Additionally, the destination cluster must also be running ONTAP 9.10.1 or greater.
+
 // link:reference-azure-backup-tiers.html[Learn more about restoring from Azure archival storage].
 link:reference-aws-backup-tiers.html[Learn more about restoring from AWS archival storage].
 
@@ -291,6 +295,10 @@ On-premises ONTAP system
 
 |===
 
+More cloud providers will be supported in future releases.
+
+Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
+
 === Prerequisites
 
 * Cluster requirements:
@@ -312,7 +320,7 @@ The process goes like this:
 
 . Before you can use Search & Restore, you need to enable "Indexing" on each source working environment from which you'll want to restore volumes or files. This enables the Indexed Catalog to track the backup files for every volume. It also enables SnapDiff v3 on the SVM, and provisions the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service^] and the https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service^].
 
-. When you want to restore a volume or files from a volume backup, under _Search & Restore_, click *Search & Restore*. The Search & Restore page is displayed.
+. When you want to restore a volume or files from a volume backup, under _Search & Restore_, click *Search & Restore*.
 
 . Enter the search criteria for a volume or file by partial or full volume name, partial or full file name, size range, creation date range, other search filters, and click *Search*.
 +
@@ -339,11 +347,11 @@ To enable Indexing for a working environment:
 
 After all the services are provisioned and the Indexed Catalog has been activated, the working environment is shown as "Active".
 
-image:screenshot_new.png[A screenshot showing the working environments that have activated the Indexed Catalog.]
+image:screenshot_restore_enable_indexing.png[A screenshot showing the working environments that have activated the Indexed Catalog.]
 
 === Restoring volumes and files using Search & Restore
 
-After you have <<Enabling the Indexed Catalog for each working environment,enabled Indexing for your working environment>>, you can restore volumes or files using Search & Restore. This allows you to use a broad range of filters to find the exact file or volume that you want to restore from all backups.
+After you have <<Enabling the Indexed Catalog for each working environment,enabled Indexing for your working environment>>, you can restore volumes or files using Search & Restore. This allows you to use a broad range of filters to find the exact file or volume that you want to restore from all backup files.
 
 .Steps
 
@@ -353,7 +361,7 @@ After you have <<Enabling the Indexed Catalog for each working environment,enabl
 
 . From the _Search & Restore_ section, click *Search & Restore*.
 +
-image:screenshot_new.png[A screenshot of selecting the Search & Restore button from the Restore Dashboard.]
+image:screenshot_restore_start_search_restore.png["A screenshot of selecting the Search & Restore button from the Restore Dashboard."]
 
 . From the Search & Restore page:
 .. In the Search bar, enter a full or partial volume name or file name.
@@ -361,7 +369,7 @@ image:screenshot_new.png[A screenshot of selecting the Search & Restore button f
 
 . Click *Search* and the Search Results area displays all the locations that have a file or volume that matches your search.
 +
-image:screenshot_new.png[A screenshot showing the search criteria and search results on the Search & Restore page.]
+image:screenshot_new.png["A screenshot showing the search criteria and search results on the Search & Restore page."]
 
 . Click *View All Backups* for the location that has the data you want to restore to display all the backup files that contain the volume or file.
 
