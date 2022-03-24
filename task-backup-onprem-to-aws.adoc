@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: task-backup-onprem-to-aws.html
-keywords: backing up, back up, backup, backup on-prem ontap, on-premises, back up volumes, cloud backup
+keywords: backing up, back up, backup, backup on-prem ontap, on-premises, back up volumes, cloud backup, aws, aws s3, amazon s3
 summary: Complete a few steps to get started backing up data from your on-premises ONTAP systems to Amazon S3.
 ---
 
@@ -14,6 +14,8 @@ summary: Complete a few steps to get started backing up data from your on-premis
 
 [.lead]
 Complete a few steps to get started backing up data from your on-premises ONTAP systems to Amazon S3 storage.
+
+Note that "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
 
 TIP: In most cases you'll use Cloud Manager for all backup and restore operations. However, starting with ONTAP 9.9.1 you can initiate volume backup operations of your on-premises ONTAP clusters using ONTAP System Manager. https://docs.netapp.com/us-en/ontap/task_cloud_backup_data_using_cbs.html[See how to use System Manager to back up your volumes to the cloud using Cloud Backup.^]
 
@@ -118,9 +120,9 @@ When you set up Cloud Backup, you are prompted for the IPspace to use. You shoul
 
 A Connector is required to back up data to the cloud, and the Connector must be in an AWS VPC when backing up data to AWS S3 storage. You can't use a Connector that's deployed on-premises. You'll either need to create a new Connector or make sure that the currently selected Connector resides in the correct provider.
 
-* https://docs.netapp.com/us-en/cloud-manager-connector/concept-connectors.html[Learn about Connectors^]
-* https://docs.netapp.com/us-en/cloud-manager-connector/task-creating-connectors-aws.html[Creating a Connector in AWS^]
-* https://docs.netapp.com/us-en/cloud-manager-connector/task-managing-connectors.html[Switching between Connectors^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html[Learn about Connectors^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-aws.html[Creating a Connector in AWS^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html[Switching between Connectors^]
 
 === Preparing networking for the Connector
 
@@ -132,7 +134,7 @@ Ensure that the Connector has the required networking connections.
 
 * An outbound internet connection to the Cloud Backup service over port 443 (HTTPS)
 * An HTTPS connection over port 443 to your S3 object storage
-* An HTTPS connection over port 443 to your ONTAP clusters
+* An HTTPS connection over port 443 to your ONTAP cluster management LIF
 
 . Enable a VPC Endpoint to S3. This is needed if you have a Direct Connect or VPN connection from your ONTAP cluster to the VPC and you want communication between the Connector and S3 to stay in your AWS internal network.
 
@@ -142,10 +144,10 @@ You can create backups from on-premises systems to Amazon S3 in all regions http
 
 === License requirements
 
-Before your 30-day free trial of Cloud Backup expires, you need to subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from AWS, or purchase and activate a Cloud Backup BYOL license from NetApp. These licenses are for the account and can be used across multiple systems.
+Before your 30-day free trial of Cloud Backup expires, you need to subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from AWS, or purchase and activate a Cloud Backup BYOL license from NetApp. These licenses are for your account and can be used across multiple systems.
 
-* For Cloud Backup PAYGO licensing, you'll need a subscription to the https://aws.amazon.com/marketplace/pp/B07QX2QLXX[AWS^] Cloud Manager Marketplace offering to continue using Cloud Backup. Billing for Cloud Backup is done through this subscription.
-* For Cloud Backup BYOL licensing, you don't need a subscription. You need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-cloud-backup-byol-licenses[Learn how to manage your BYOL licenses].
+* For Cloud Backup PAYGO licensing, you'll need a subscription to the https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa[AWS^] Cloud Manager Marketplace offering to continue using Cloud Backup. Billing for Cloud Backup is done through this subscription.
+* For Cloud Backup BYOL licensing, you'll need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-cloud-backup-byol-licenses[Learn how to manage your BYOL licenses].
 
 You need to have an AWS subscription for the object storage space where your backups will be located.
 
@@ -157,7 +159,7 @@ When you are using Amazon S3, you must configure permissions for the Connector t
 
 .Steps
 
-. Confirm that the following S3 permissions (from the latest https://mysupport.netapp.com/site/info/cloud-manager-policies[Cloud Manager policy^]) are part of the IAM role that provides the Connector with permissions:
+. Confirm that the following S3 permissions (from the latest https://mysupport.netapp.com/site/info/cloud-manager-policies[Cloud Manager policy^]) are part of the IAM role that provides the Connector with permissions.
 +
 [source,json]
 {
@@ -170,6 +172,8 @@ When you are using Amazon S3, you must configure permissions for the Connector t
               "s3:PutBucketTagging",
               "s3:ListBucketVersions",
               "s3:GetObject",
+              "s3:DeleteObject",
+              "s3:PutObject",
               "s3:ListBucket",
               "s3:ListAllMyBuckets",
               "s3:GetBucketTagging",
@@ -178,12 +182,25 @@ When you are using Amazon S3, you must configure permissions for the Connector t
               "s3:GetBucketPublicAccessBlock",
               "s3:GetBucketAcl",
               "s3:GetBucketPolicy",
-              "s3:PutBucketPublicAccessBlock"
+              "s3:PutBucketPublicAccessBlock",
+              "s3:PutEncryptionConfiguration",
+              "athena:StartQueryExecution",
+              "athena:GetQueryResults",
+              "athena:GetQueryExecution",
+              "glue:GetDatabase",
+              "glue:GetTable",
+              "glue:CreateTable",
+              "glue:CreateDatabase",
+              "glue:GetPartitions",
+              "glue:BatchCreatePartition",
+              "glue:BatchDeletePartition"
           ],
           "Resource": [
               "arn:aws:s3:::netapp-backup-*"
           ]
       },
+
+ If you deployed the Connector using version 3.9.15 or greater, these permissions should be part of the IAM role already. Otherwise you'll need to add the missing permissions.
 
 . Add the following EC2 permissions to the IAM role that provides the Connector with permissions so that it can start, stop, and terminate the Cloud Restore instance:
 +
@@ -195,22 +212,22 @@ When you are using Amazon S3, you must configure permissions for the Connector t
               "ec2:TerminateInstances"
           ],
 
-. During the Backup wizard you will be prompted to enter an access key and secret key. For that, you will need to create an IAM user with the following permissions. Cloud Backup passes these credentials on to the ONTAP cluster so that ONTAP can backup and restore data to the S3 bucket.
+. When activating the service, the Backup wizard will prompt you to enter an access key and secret key. For that, you'll need to create an IAM user with the following permissions. Cloud Backup passes these credentials on to the ONTAP cluster so that ONTAP can backup and restore data to the S3 bucket.
 +
 [source,json]
-"s3:ListAllMyBuckets",
-"s3:ListBucket",
-"s3:GetBucketLocation",
-"s3:GetObject",
-"s3:PutObject",
-"s3:PutBucketencryption",
-"s3:DeleteObject"
+  "s3:ListAllMyBuckets",
+  "s3:ListBucket",
+  "s3:GetBucketLocation",
+  "s3:GetObject",
+  "s3:PutObject",
+  "s3:PutBucketencryption",
+  "s3:DeleteObject"
 +
 See the https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[AWS Documentation: Creating a Role to Delegate Permissions to an IAM User^] for details.
 
 . If your virtual or physical network uses a proxy server for internet access, ensure that the Cloud Restore instance has outbound internet access to contact the following endpoints.
 +
-[cols="43,57",options="header"]
+[cols="50,50",options="header"]
 |===
 | Endpoints
 | Purpose
@@ -251,7 +268,7 @@ image:screenshot_backup_cvo_enable.png[A screenshot that shows the Backup & Rest
 +
 The access key and secret key are for the user you created to give the ONTAP cluster access to the S3 bucket.
 .. The AWS region where the backups will be stored.
-.. Whether you'll use the default Amazon S3 encryption keys or choose your own customer-managed keys from your AWS account to manage encryption of your data. (link:task-setting-up-kms.html[See how to use your own keys]).
+.. Whether you'll use the default Amazon S3 encryption keys or choose your own customer-managed keys from your AWS account to manage encryption of your data. (https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-setting-up-kms.html[See how to use your own keys]).
 +
 image:screenshot_backup_provider_settings_aws.png[A screenshot that shows the cloud provider details when backing up volumes from an ONTAP system to AWS S3.]
 
@@ -264,7 +281,7 @@ image:screenshot_backup_onprem_aws_networking.png[A screenshot that shows the ne
 
 . Enter the default backup policy details and click *Next*.
 
-.. Define the backup schedule and choose the number of backups to retain. link:concept-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings-per-cluster[See the list of existing policies you can choose^].
+.. Define the backup schedule and choose the number of backups to retain. link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings-per-cluster[See the list of existing policies you can choose^].
 .. When using ONTAP 9.10.1 and greater, you can choose to tier backups to either S3 Glacier or S3 Glacier Deep Archive storage after a certain number of days for further cost optimization. link:reference-aws-backup-tiers.html[Learn more about using archival tiers].
 +
 image:screenshot_backup_policy_aws.png[A screenshot that shows the Cloud Backup settings where you can choose your schedule and backup retention.]
@@ -288,5 +305,5 @@ Cloud Backup starts taking the initial backups of each selected volume and the V
 
 .What's next?
 
-You can link:task-managing-backups.html[start and stop backups for volumes or change the backup schedule^].
-You can also link:task-restore-backups.html[restore entire volumes or individual files from a backup file^] to a Cloud Volumes ONTAP system in AWS, or to an on-premises ONTAP system.
+You can link:task-manage-backups-ontap.html[start and stop backups for volumes or change the backup schedule^].
+You can also link:task-restore-backups-ontap.html[restore entire volumes or individual files from a backup file^] to a Cloud Volumes ONTAP system in AWS, or to an on-premises ONTAP system.

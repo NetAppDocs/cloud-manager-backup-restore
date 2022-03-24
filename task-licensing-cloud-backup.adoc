@@ -27,7 +27,7 @@ link:concept-backup-to-cloud.html#licensing[Learn more about the licensing and c
 
 For pay-as-you-go you'll pay your cloud provider for object storage costs and for NetApp backup licensing costs. Use these links to subscribe to Cloud Backup from your cloud provider marketplace:
 
-* AWS: https://aws.amazon.com/marketplace/pp/B07QX2QLXX[Go to the Cloud Manager Marketplace offering for pricing details^].
+* AWS: https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa[Go to the Cloud Manager Marketplace offering for pricing details^].
 
 * Azure: https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview[Go to the Cloud Manager Marketplace offering for pricing details^].
 
@@ -41,7 +41,7 @@ There are two annual contracts available from the AWS Marketplace:
 +
 Go to the https://aws.amazon.com/marketplace/pp/B086PDWSS8[AWS Marketplace page^] to view pricing details.
 +
-If you want to use this option, set up your subscription from the Marketplace page and then https://docs.netapp.com/us-en/cloud-manager-get-started/task-adding-aws-accounts.html[associate the subscription with your AWS credentials^]. Note that you’ll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your AWS credentials in Cloud Manager.
+If you want to use this option, set up your subscription from the Marketplace page and then https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-adding-aws-accounts.html[associate the subscription with your AWS credentials^]. Note that you’ll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your AWS credentials in Cloud Manager.
 
 * A Professional Package that enables you to bundle Cloud Volumes ONTAP and Cloud Backup by using an annual contract for 1, 2, or 3 years. Payment is per TiB. This option doesn’t enable you to back up on-premises ONTAP data.
 +
@@ -97,7 +97,7 @@ After you purchase a Cloud Backup license for your NetApp account, you need to a
 +
 * If you have the backup license serial number and know your NSS account, select the *Enter Serial Number* option and enter that information.
 +
-If your NetApp Support Site account isn't available from the drop-down list, https://docs.netapp.com/us-en/cloud-manager-get-started/task-adding-nss-accounts.html[add the NSS account to Cloud Manager^].
+If your NetApp Support Site account isn't available from the drop-down list, https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-adding-nss-accounts.html[add the NSS account to Cloud Manager^].
 // * If you have the backup license file (required when installed in a dark site), select the *Upload License File* option and follow the prompts to attach the file.
 * If you have the backup license file, select the *Upload License File* option and follow the prompts to attach the file.
 +
