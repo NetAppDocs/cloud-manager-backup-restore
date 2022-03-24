@@ -41,15 +41,14 @@ This table provides a comparison of the 2 methods.
 | Browse & Restore
 | Search & Restore
 
-| Browse through a folder-style structure to find the volume or file you are looking for | Search for a volume or file by partial or full volume name, partial or full file name, size range, creation date range, and additional search filters
-| Volume restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud Storage, and NetApp StorageGRID. File restore works with backup files stored in Amazon S3 and Azure Blob | Volume and file restore works with backup files stored in Amazon S3 (at this time)
+| Browse through a folder-style structure to find the volume or file (you must know where the data resides) | Search for a volume or file across *all backup files* by partial or full volume name, partial or full file name, size range, and additional search filters
+| Volume restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud Storage, and NetApp StorageGRID. File restore works with backup files stored in Amazon S3 and Azure Blob | Volume and file restore works with backup files stored in Amazon S3
 | Does not handle files that have been renamed or deleted | Handles newly created/deleted/renamed directories and newly created/deleted/renamed files
 | Browse for results across public or private clouds | Browse for results across public clouds, and in the future, across private clouds and local Snapshots copies
 | Separate Cloud Restore instance is required for file restore | No Cloud Restore instance required
-| No extra Amazon resources required | New bucket and Amazon Athena and AWS Glue resources required
+| No extra Amazon resources required | New bucket and Amazon Athena and AWS Glue resources required per account
 | Cost associated with Cloud Restore instance when restoring files | Cost associated with Amazon Athena and AWS Glue resources when restoring volumes and files
 | Volume restore from standard and archival tiers. File restore only from standard tiers | Volume and file restore from standard and archival tiers
-| Fast performance | Faster performance
 
 |===
 
