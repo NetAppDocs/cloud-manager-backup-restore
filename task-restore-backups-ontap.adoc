@@ -259,13 +259,13 @@ The Restore instance is shut down after a certain period of inactivity to save y
 
 == Restoring ONTAP data using Search & Restore
 
-You can restore a volume or individual files from a backup file using Search & Restore. Search & Restore enables you to search for a specific file from all backups stored on cloud storage for a particular provider, and then perform a restore.
+You can restore a volume or individual files from a backup file using Search & Restore. Search & Restore enables you to search for a specific volume or file from all backups stored on cloud storage for a particular provider, and then perform a restore. You don't need to know the exact working environment name or volume name - the search looks through all volume backup files.
 
-When you restore a volume from a backup file, Cloud Manager creates a _new_ volume using the data from the backup. You can restore the data as a volume in the same working environment or to a different working environment that's located in the same cloud account as the source working environment. You can also restore volumes to an on-premises ONTAP system.
+When you restore a volume from a backup file, Cloud Manager creates a _new_ volume using the data from the backup. You can restore the data as a volume in the same working environment, or to a different working environment that's located in the same cloud account as the source working environment. You can also restore volumes to an on-premises ONTAP system.
 
-You can restore files to a existing volume in the same working environment, or to a different working environment that's using the same cloud account. You can also restore files to a volume on an on-premises ONTAP system.
+You can restore files to the original volume location, to a different volume in the same working environment, or to a different working environment that's using the same cloud account. You can also restore files to a volume on an on-premises ONTAP system.
 
-If the backup file for the volume that you want to restore resides in archival storage (available for AWS starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur a cost. Additionally, the destination cluster must also be running ONTAP 9.10.1 or greater.
+If the backup file for the volume that you want to restore resides in archival storage (available for AWS starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur additional cost. Note that the destination cluster must also be running ONTAP 9.10.1 or greater.
 
 // link:reference-azure-backup-tiers.html[Learn more about restoring from Azure archival storage].
 link:reference-aws-backup-tiers.html[Learn more about restoring from AWS archival storage].
@@ -311,13 +311,11 @@ Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP
 
 ** Specific Amazon Athena, AWS Glue, and AWS S3 permissions must be added to the user role that provides Cloud Manager with permissions. link:task-backup-onprem-to-aws.html#preparing-amazon-s3-for-backups[Make sure all the permissions are configured correctly].
 
-*--- Add the permissions to the CVO->AWS topic and On-prem->AWS topic ---*
-
 === Search & Restore process
 
 The process goes like this:
 
-. Before you can use Search & Restore, you need to enable "Indexing" on each source working environment from which you'll want to restore volumes or files. This enables the Indexed Catalog to track the backup files for every volume. It also enables SnapDiff v3 on the SVM, and provisions the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service^] and the https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service^].
+. Before you can use Search & Restore, you need to enable "Indexing" on each source working environment from which you'll want to restore volumes or files. This allows the Indexed Catalog to track the backup files for every volume. It enables SnapDiff v3 on data-serving SVMs, and provisions a new S3 bucket and the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service^] and https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service^].
 
 . When you want to restore a volume or files from a volume backup, under _Search & Restore_, click *Search & Restore*.
 
@@ -333,9 +331,9 @@ The Search Results page displays all the backup files that have a file or volume
 
 === Enabling the Indexed Catalog for each working environment
 
-Before you can use Search & Restore, you need to enable "Indexing" on each source working environment from which you're planning to restore volumes or files. This enables the Indexed Catalog to track every volume and every backup file - making your searches very quick and efficient.
+Before you can use Search & Restore, you need to enable "Indexing" on each source working environment from which you're planning to restore volumes or files. This allows the Indexed Catalog to track every volume and every backup file - making your searches very quick and efficient.
 
-When you enable this functionality, Cloud Backup enables SnapDiff v3 on the SVM for your volumes, and it creates a new bucket in which it provisions the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service^] and https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service^].
+When you enable this functionality, Cloud Backup enables SnapDiff v3 on the SVM for your volumes, and it creates a new bucket in which it provisions the Amazon Athena interactive query service and AWS Glue serverless data integration service.
 
 If Indexing has been enabled already for your working environment, go to the next section to restore your data.
 
@@ -347,6 +345,8 @@ To enable Indexing for a working environment:
 After all the services are provisioned and the Indexed Catalog has been activated, the working environment is shown as "Active".
 
 image:screenshot_restore_enable_indexing.png[A screenshot showing the working environments that have activated the Indexed Catalog.]
+
+Depending on the size of the volumes in the working environment, and the number of backup files in the cloud, the initial indexing process could take up to an hour. After that it is updated hourly with incremental changes to stay current.
 
 === Restoring volumes and files using Search & Restore
 
@@ -364,20 +364,22 @@ image:screenshot_restore_start_search_restore.png["A screenshot of selecting the
 
 . From the Search & Restore page:
 .. In the Search bar, enter a full or partial volume name or file name.
-.. In the Filter area, select the filter criteria. For example, you can select the working environment where the data resides and the file type, for example a PDF file.
+.. In the Filter area, select the filter criteria. For example, you can select the working environment where the data resides and the file type, for example a .doc file.
 
 . Click *Search* and the Search Results area displays all the locations that have a file or volume that matches your search.
 +
-image:screenshot_new.png["A screenshot showing the search criteria and search results on the Search & Restore page."]
+image:screenshot_restore_step1_search_restore.png["A screenshot showing the search criteria and search results on the Search & Restore page."]
 
 . Click *View All Backups* for the location that has the data you want to restore to display all the backup files that contain the volume or file.
++
+image:screenshot_restore_step2_search_restore.png["A screenshot showing how to view all the backups that match your search criteria."]
 
 . Click *Restore* for the backup file you want to use to restore the volume or file.
 
 . Select the location where you want the volume or file(s) to be restored and click *Restore*.
 +
 * For files, you can restore to the original location or you can select an alternate location
-* For volumes you can
+* For volumes you can select the location.
 
 .Results
 

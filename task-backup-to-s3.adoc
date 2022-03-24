@@ -111,6 +111,7 @@ Here are the specific permissions from the policy:
                 "s3:ListBucketVersions",
                 "s3:GetObject",
                 "s3:DeleteObject",
+                "s3:PutObject",
                 "s3:ListBucket",
                 "s3:ListAllMyBuckets",
                 "s3:GetBucketTagging",
@@ -119,12 +120,25 @@ Here are the specific permissions from the policy:
                 "s3:GetBucketPublicAccessBlock",
                 "s3:GetBucketAcl",
                 "s3:GetBucketPolicy",
-                "s3:PutBucketPublicAccessBlock"
+                "s3:PutBucketPublicAccessBlock",
+                "s3:PutEncryptionConfiguration",
+                "athena:StartQueryExecution",
+                "athena:GetQueryResults",
+                "athena:GetQueryExecution",
+                "glue:GetDatabase",
+                "glue:GetTable",
+                "glue:CreateTable",
+                "glue:CreateDatabase",
+                "glue:GetPartitions",
+                "glue:BatchCreatePartition",
+                "glue:BatchDeletePartition"
             ],
             "Resource": [
                 "arn:aws:s3:::netapp-backup-*"
             ]
         },
+
+If you deployed the Connector using version 3.9.15 or greater, these permissions should be part of the IAM role already. Otherwise you'll need to add the missing permissions.
 
 AWS Restore permissions required::
 The following EC2 permissions are needed for the IAM role that provides Cloud Manager with permissions so that it can start, stop, and terminate the Cloud Restore instance:
