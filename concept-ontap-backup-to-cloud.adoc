@@ -114,7 +114,7 @@ The instance is named _Cloud-Restore-Instance_ with your Account ID concatenated
 
 * For Volume Restore using Browse & Restore, there is no cost because no separate instance or virtual machine is required.
 
-* For Volume or File Restore using Search & Restore, the Amazon Athena and AWS Glue resources required. A cost is associated with the Amazon Athena and AWS Glue resources when restoring volumes and files. Search & Restore is supported using AWS only at this time.
+* For Volume or File Restore using Search & Restore, the Amazon Athena and AWS Glue resources are required. A cost is associated with these resources when restoring volumes and files. Search & Restore is supported using AWS A3 only at this time.
 
 * If you need to restore volume data from a backup file that has been moved to archival storage (supported with AWS and Azure when using ONTAP 9.10.1+), then there is an additional per-GB retrieval fee and per-request fee from the cloud provider.
 
@@ -174,24 +174,6 @@ You'll receive a serial number that you enter in the Cloud Manager Digital Walle
 
 link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[Learn how to manage your BYOL licenses].
 
-==== BYOL license considerations
-
-When using a Cloud Backup BYOL license, Cloud Manager displays a warning in the user interface when the size of all volumes you are backing up is nearing the capacity limit or nearing the license expiration date. You receive these warnings:
-
-* When backups have reached 80% of licensed capacity, and again when you have reached the limit
-* 30 days before a license is due to expire, and again when the license expires
-
-Use the chat icon in the lower right of the Cloud Manager interface to renew your license when you see these warnings.
-
-Two things can happen when your license expires:
-
-* If the account you are using for your ONTAP systems has a marketplace account, the backup service continues to run, but you are shifted over to a PAYGO licensing model. You are charged for the capacity that your backups are using.
-* If the account you are using for your ONTAP systems does not have a marketplace account, the backup service continues to run, but you will continue to see the warnings.
-
-Once you renew your BYOL subscription, Cloud Manager automatically updates the license. If Cloud Manager can't access the license file over the secure internet connection (for example, when installed in a dark site), you can obtain the file yourself and manually upload it to Cloud Manager. For instructions, see link:task-licensing-cloud-backup.html#update-a-cloud-backup-byol-license[how to update a Cloud Backup license].
-
-Systems that were shifted over to a PAYGO license are returned to the BYOL license automatically. And systems that were running without a license will stop seeing the warnings and will be charged for backup activity that occurred while the license was expired.
-
 == How Cloud Backup works
 
 When you enable Cloud Backup on a Cloud Volumes ONTAP or on-premises ONTAP system, the service performs a full backup of your data. Volume snapshots are not included in the backup image. After the initial backup, all additional backups are incremental, which means that only changed blocks and new blocks are backed up. This keeps network traffic to a minimum.
@@ -216,7 +198,7 @@ Backup copies are stored in an object store that Cloud Manager creates in your c
 
 * In StorageGRID, Cloud Manager uses an existing storage account for the object store bucket.
 
-If you want to change the destination object store for a cluster in the future, you'll need to link:task-managing-backups.html#unregistering-cloud-backup-for-a-working-environment[unregister Cloud Backup for the working environment^], and then enable Cloud Backup using the new cloud provider information.
+If you want to change the destination object store for a cluster in the future, you'll need to link:task-manage-backups-ontap.html#unregistering-cloud-backup-for-a-working-environment[unregister Cloud Backup for the working environment^], and then enable Cloud Backup using the new cloud provider information.
 
 === Supported storage classes or access tiers
 
@@ -260,27 +242,9 @@ Backup protection policies that you have created on the cluster using ONTAP Syst
 
 Once you have reached the maximum number of backups for a category, or interval, older backups are removed so you always have the most current backups.
 
-Note that you can link:task-managing-backups.html#creating-a-manual-volume-backup-at-any-time[create an on-demand backup of a volume] from the Backup Dashboard at any time, in addition to those backup files created from the scheduled backups.
+Note that you can link:task-manage-backups-ontap.html#creating-a-manual-volume-backup-at-any-time[create an on-demand backup of a volume] from the Backup Dashboard at any time, in addition to those backup files created from the scheduled backups.
 
 TIP: The retention period for backups of data protection volumes is the same as defined in the source SnapMirror relationship. You can change this if you want by using the API.
-
-=== Backups are taken at midnight
-
-* Hourly backups start 5 minutes past the hour, every hour.
-
-* Daily backups start just after midnight each day.
-
-* Weekly backups start just after midnight on Sunday mornings.
-
-* Monthly backups start just after midnight on the first day of each month.
-
-The start time is based on the time zone set on each source ONTAP system. You can’t schedule backup operations at a user-specified time from the UI. For more information, contact your System Engineer.
-
-=== Backup copies are associated with your NetApp account
-
-Backup copies are associated with the https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-cloud-central-accounts.html[NetApp account^] in which the Connector resides.
-
-If you have multiple Connectors in the same NetApp account, each Connector will display the same list of backups. That includes the backups associated with Cloud Volumes ONTAP and on-premises ONTAP instances from other Connectors.
 
 == FabricPool tiering policy considerations
 
