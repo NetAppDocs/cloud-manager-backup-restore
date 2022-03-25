@@ -118,24 +118,6 @@ You'll receive a serial number that you enter in the Cloud Manager Digital Walle
 
 link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[Learn how to manage your BYOL licenses].
 
-==== BYOL license considerations
-
-When using a Cloud Backup BYOL license, Cloud Manager displays a warning in the user interface when the size of all volumes you are backing up is nearing the capacity limit or nearing the license expiration date. You receive these warnings:
-
-* When backups have reached 80% of licensed capacity, and again when you have reached the limit
-* 30 days before a license is due to expire, and again when the license expires
-
-Use the chat icon in the lower right of the Cloud Manager interface to renew your license when you see these warnings.
-
-Two things can happen when your license expires:
-
-* If the account you are using for your ONTAP systems has a marketplace account, the backup service continues to run, but you are shifted over to a PAYGO licensing model. You are charged for the capacity that your backups are using.
-* If the account you are using for your ONTAP systems does not have a marketplace account, the backup service continues to run, but you will continue to see the warnings.
-
-Once you renew your BYOL subscription, Cloud Manager automatically updates the license. If Cloud Manager can't access the license file over the secure internet connection (for example, when installed in a dark site), you can obtain the file yourself and manually upload it to Cloud Manager. For instructions, see link:task-licensing-cloud-backup.html#update-a-cloud-backup-byol-license[how to update a Cloud Backup license].
-
-Systems that were shifted over to a PAYGO license are returned to the BYOL license automatically. And systems that were running without a license will stop seeing the warnings and will be charged for backup activity that occurred while the license was expired.
-
 == How Cloud Backup works
 
 When you enable Cloud Backup on a Kubernetes system, the service performs a full backup of your data. After the initial backup, all additional backups are incremental, which means that only changed blocks and new blocks are backed up. This keeps network traffic to a minimum.
@@ -145,18 +127,6 @@ CAUTION: Any actions taken directly from your cloud provider environment to mana
 The following image shows the relationship between each component:
 
 image:diagram_cloud_backup_general.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination object storage where the backup files are located.]
-
-=== Where backups reside
-
-Backup copies are stored in an object store that Cloud Manager creates in your cloud account. There’s one object store per cluster/working environment, and Cloud Manager names the object store as follows: "netapp-backup-clusteruuid". Be sure not to delete this object store.
-
-* In AWS, Cloud Manager enables the https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html[Amazon S3 Block Public Access feature^] on the S3 bucket.
-
-* In Azure, Cloud Manager uses a new or existing resource group with a storage account for the Blob container. Cloud Manager https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent[blocks public access to your blob data] by default.
-
-* In GCP, Cloud Manager uses a new or existing project with a storage account for the Google Cloud Storage bucket.
-
-If you want to change the destination object store for a cluster in the future, you'll need to link:task-managing-backups.html#unregistering-cloud-backup-for-a-working-environment[unregister Cloud Backup for the working environment^], and then enable Cloud Backup using the new cloud provider information.
 
 === Supported storage classes or access tiers
 
@@ -170,27 +140,9 @@ If you want to change the destination object store for a cluster in the future, 
 
 When you enable Cloud Backup for a working environment, all the volumes you initially select are backed up using the default backup policy that you define. If you want to assign different backup policies to certain volumes that have different recovery point objectives (RPO), you can create additional policies for that cluster and assign those policies to other volumes.
 
-You can choose a combination of hourly, daily, weekly, and monthly backups of all volumes. 
+You can choose a combination of hourly, daily, weekly, and monthly backups of all volumes.
 
 Once you have reached the maximum number of backups for a category, or interval, older backups are removed so you always have the most current backups.
-
-=== Backups are taken at midnight
-
-* Hourly backups start 5 minutes past the hour, every hour.
-
-* Daily backups start just after midnight each day.
-
-* Weekly backups start just after midnight on Sunday mornings.
-
-* Monthly backups start just after midnight on the first day of each month.
-
-The start time is based on the time zone set on each source Kubernetes system. You can’t schedule backup operations at a user-specified time from the UI. For more information, contact your System Engineer.
-
-=== Backup copies are associated with your NetApp account
-
-Backup copies are associated with the https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-cloud-central-accounts.html[NetApp account^] in which the Connector resides.
-
-If you have multiple Connectors in the same NetApp account, each Connector will display the same list of backups. That includes the backups associated with Cloud Volumes ONTAP and on-premises ONTAP instances from other Connectors.
 
 == Supported volumes
 
