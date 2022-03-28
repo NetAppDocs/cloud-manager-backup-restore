@@ -31,7 +31,7 @@ As you can see, the Restore Dashboard provides 2 different ways to restore data 
 
 == Comparing Browse & Restore and Search & Restore
 
-In broad terms, _Browse & Restore_ is typically better when you need a specific volume or file from the last week, month, or year -- and you know the name of the file and the date when it was last in good shape. _Search & Restore_ is typically better when you need a volume or file, but you don’t remember the exact name or date when it was last in good shape.
+In broad terms, _Browse & Restore_ is typically better when you need a specific volume or file from the last week, month, or year -- and you know the name and location of the file, and the date when it was last in good shape. _Search & Restore_ is typically better when you need a volume or file, but you don’t remember the exact name, or the volume in which it resides, or the date when it was last in good shape.
 
 This table provides a comparison of the 2 methods.
 
@@ -41,7 +41,7 @@ This table provides a comparison of the 2 methods.
 | Browse & Restore
 | Search & Restore
 
-| Browse through a folder-style structure to find the volume or file (you must know where the data resides) | Search for a volume or file across *all backup files* by partial or full volume name, partial or full file name, size range, and additional search filters
+| Browse through a folder-style structure to find the volume or file within a single backup file | Search for a volume or file across *all backup files* by partial or full volume name, partial or full file name, size range, and additional search filters
 | Volume restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud Storage, and NetApp StorageGRID. File restore works with backup files stored in Amazon S3 and Azure Blob | Volume and file restore works with backup files stored in Amazon S3
 | Does not handle files that have been renamed or deleted | Handles newly created/deleted/renamed directories and newly created/deleted/renamed files
 | Browse for results across public or private clouds | Browse for results across public clouds, and in the future, across private clouds and local Snapshots copies
@@ -108,6 +108,10 @@ NOTE: If the backup file resides in archival storage, only volume restore is sup
 === Restoring volumes using Browse & Restore
 
 When you restore a volume from a backup file, Cloud Manager creates a _new_ volume using the data from the backup. You can restore the data to a volume in the same working environment or to a different working environment that's located in the same cloud account as the source working environment. You can also restore volumes to an on-premises ONTAP system.
+
+image:diagram_browse_restore_volume.png["A diagram that shows the flow to perform a volume restore operation using Browse & Restore."]
+
+As you can see, you need to know the working environment name, volume name, and backup file date to perform a volume restore.
 
 The following video shows a quick walkthrough of restoring a volume:
 
@@ -192,6 +196,10 @@ The process goes like this:
 . Select the location where you want the file(s) to be restored (the working environment, volume, and folder), and click *Restore*.
 
 . The file(s) are restored, and then the Restore instance is shut down to save costs after a period of inactivity.
+
+image:diagram_browse_restore_file.png["A diagram that shows the flow to perform a file restore operation using Browse & Restore."]
+
+As you can see, you need to know the working environment name, volume name, backup file date, and file name to perform a file restore.
 
 ==== Restoring files using Browse & Restore
 
@@ -328,6 +336,10 @@ The Search Results page displays all the backup files that have a file or volume
 . Select the location where you want the volume or file(s) to be restored and click *Restore*.
 
 . The volume or file(s) are restored.
+
+image:diagram_search_restore_vol_file.png["A diagram that shows the flow to perform a volume or file restore operation using Search & Restore."]
+
+As you can see, you really only need to know a partial volume or file name and Cloud backup searches through all backup files that match your search.
 
 === Enabling the Indexed Catalog for each working environment
 

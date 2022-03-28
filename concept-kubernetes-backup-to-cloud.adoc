@@ -70,15 +70,11 @@ There are two types of costs associated with using Cloud Backup: resource charge
 
 *Resource charges*
 
-Resource charges are paid to the cloud provider for object storage capacity and for running a virtual machine/instance in the cloud.
-
-* For Backup, you pay your cloud provider for object storage costs.
-+
-Since Cloud Backup preserves the storage efficiencies of the source volume, you pay the cloud provider object storage costs for the data _after_ ONTAP efficiencies (for the smaller amount of data after deduplication and compression have been applied).
+Resource charges are paid to the cloud provider for object storage capacity in the cloud. Since Cloud Backup preserves the storage efficiencies of the source volume, you pay the cloud provider object storage costs for the data _after_ ONTAP efficiencies (for the smaller amount of data after deduplication and compression have been applied).
 
 *Service charges*
 
-Service charges are paid to NetApp and cover both the cost to _create_ backups and to _restore_ volumes, from those backups. You pay only for the data that you protect, calculated by the source logical used capacity (_before_ ONTAP efficiencies) of ONTAP volumes which are backed up to object storage. This capacity is also known as Front-End Terabytes (FETB).
+Service charges are paid to NetApp and cover both the cost to _create_ backups and to _restore_ volumes, from those backups. You pay only for the data that you protect, calculated by the source logical used capacity (_before_ ONTAP efficiencies) of volumes which are backed up to object storage. This capacity is also known as Front-End Terabytes (FETB).
 
 There are two ways to pay for the Backup service. The first option is to subscribe from your cloud provider, which enables you to pay per month. The second option is to purchase licenses directly from NetApp. Read the <<Licensing,Licensing>> section for details.
 
@@ -114,7 +110,7 @@ link:task-licensing-cloud-backup.html#use-a-cloud-backup-paygo-subscription[Lear
 
 BYOL is term-based (12, 24, or 36 months) _and_ capacity-based in 1 TB increments. You pay NetApp to use the service for a period of time, say 1 year, and for a maximum amount capacity, say 10 TB.
 
-You'll receive a serial number that you enter in the Cloud Manager Digital Wallet page to enable the service. When either limit is reached, you'll need to renew the license. The Backup BYOL license applies to all source systems associated with your link:concept-cloud-central-accounts.html[Cloud Manager account^].
+You'll receive a serial number that you enter in the Cloud Manager Digital Wallet page to enable the service. When either limit is reached, you'll need to renew the license. The Backup BYOL license applies to all source systems associated with your https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-netapp-accounts.html[Cloud Manager account^].
 
 link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[Learn how to manage your BYOL licenses].
 

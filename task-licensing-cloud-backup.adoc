@@ -109,7 +109,7 @@ Cloud Manager adds the license so that Cloud Backup is active.
 
 === Update a Cloud Backup BYOL license
 
-If your licensed term is nearing the expiration date, or if your licensed capacity is reaching the limit, you'll be notified in the Backup UI. This status also appears in the Digital Wallet page and in link:task-monitor-cm-operations.html#monitoring-operations-status-using-the-notification-center[Notifications].
+If your licensed term is nearing the expiration date, or if your licensed capacity is reaching the limit, you'll be notified in the Backup UI. This status also appears in the Digital Wallet page and in https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-monitor-cm-operations.html#monitoring-operations-status-using-the-notification-center[Notifications].
 
 image:screenshot_services_license_expire.png[A screenshot that shows an expiring license in the Digital Wallet page.]
 
