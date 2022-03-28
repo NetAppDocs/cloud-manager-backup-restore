@@ -16,21 +16,17 @@ summary: Learn what's new in Cloud Backup.
 Learn what's new in Cloud Backup.
 
 // tag::whats-new[]
-== 03 Apr 2022
+== 03 April 2022
 
-=== Support has been added so you can back up on-premises ONTAP cluster data in sites that have no internet access.
+=== Support has been added to back up on-premises ONTAP cluster data in sites without internet access.
 
-If your on-prem ONTAP cluster resides in a site with no internet access, also known as a dark site or offline site, now you can use Cloud Backup to back up volume data to NetApp StorageGRID systems that reside in the same site. This functionality requires that the Cloud Manager Connector (version 3.9.17 or greater) is deployed in the offline site. link:task-backup-onprem-private-cloud.html[See how to back up data in an offline site].
+If your on-prem ONTAP cluster resides in a site with no internet access, also known as a dark site or offline site, now you can use Cloud Backup to back up volume data to NetApp StorageGRID systems that resides in the same site. This functionality requires that the Cloud Manager Connector (version 3.9.17 or greater) is deployed in the offline site. link:task-backup-onprem-private-cloud.html[See how to back up data in an offline site].
 
-=== Search & Restore for ONTAP volumes from AWS storage
+=== New Search & Restore feature to search for volumes or files across all ONTAP backup files.
 
-New fangled feature for all to use.....
+Now you can search for a volume or file across *all backup files* by partial or full volume name, partial or full file name, size range, and additional search filters. This is a great new way to find the data you want to restore if you are not sure which cluster or volume was the source for the data. link:task-restore-backups-ontap.html#restoring-ontap-data-using-search-restore[Learn how to use Search & Restore].
 
-=== other new stuff
-
-sdfgdsdsfg.
-
-== 03 Mar 2022
+== 03 March 2022
 
 === Ability to back up persistent volumes from your GKE Kubernetes clusters to Google Cloud storage.
 
@@ -38,7 +34,7 @@ If your GKE cluster has NetApp Astra Trident installed, and it's using Cloud Vol
 
 === The Beta capability to use Cloud Data Sense to scan your Cloud Backup files has been discontinued in this release.
 
-== 14 Feb 2022
+== 14 February 2022
 
 === Now you can assign backup policies to individual volumes in a single cluster.
 
@@ -55,7 +51,7 @@ This option is available when enabling backup in a new working environment, or f
 The Job Monitor can be very helpful when you have initiated an operation against multiple volumes, like changing the backup policy, or deleting backups, so you can see when the operation has completed on all volumes. link:task-monitor-backup-jobs.html[See how to use the Job Monitor].
 // end::whats-new[]
 
-== 2 Jan 2022
+== 2 January 2022
 
 === Ability to back up persistent volumes from your AKS Kubernetes clusters to Azure Blob storage.
 
