@@ -1,0 +1,66 @@
+---
+sidebar: sidebar
+permalink: concept-backup-to-cloud.html
+keywords: backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, billing, cost, on-premises ontap, onprem, kubernetes, applications
+summary: Cloud Backup is a service for Cloud Manager working environments that provides backup and restore capabilities for protection and long-term archive of your data. Backups are automatically generated and stored in an object store in your public or private cloud account.
+---
+
+= Learn about Cloud Backup
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Backup is a service for Cloud Manager working environments that provides backup and restore capabilities for protection and long-term archive of your data. Backups are automatically generated and stored in an object store in your public or private cloud account.
+
+When necessary, you can restore an entire _volume_ from a backup to the same or different working environment. When backing up ONTAP data, you can also choose to restore or one or more _files_ from a backup to the same or different working environment.
+
+link:https://cloud.netapp.com/cloud-backup-service[Learn more about Cloud Backup^].
+
+Backup & Restore can be used to:
+
+* Back up and Restore ONTAP volumes from Cloud Volumes ONTAP and on-premises ONTAP systems. link:concept-ontap-backup-to-cloud.html[See detailed features here].
+* Back up and Restore Kubernetes persistent volumes.link:concept-kubernetes-backup-to-cloud.html[See detailed features here].
+* Back up application data.....link:.html[See detailed features here].
+
+== How Cloud Backup works
+
+When you enable Cloud Backup on a Cloud Volumes ONTAP or on-premises ONTAP system, the service performs a full backup of your data. Volume snapshots are not included in the backup image. After the initial backup, all additional backups are incremental, which means that only changed blocks and new blocks are backed up. This keeps network traffic to a minimum.
+
+In most cases you'll use the Cloud Manager UI for all backup operations. However, starting with ONTAP 9.9.1 you can initiate volume backup operations of your on-premises ONTAP clusters using ONTAP System Manager. https://docs.netapp.com/us-en/ontap/task_cloud_backup_data_using_cbs.html[See how to use System Manager to back up your volumes to the cloud using Cloud Backup.^]
+
+The following image shows the relationship between each component:
+
+image:diagram_cloud_backup_general.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination object storage where the backup files are located.]
+
+=== Where backups reside
+
+Backup copies are stored in an object store that Cloud Manager creates in your cloud account. There’s one object store per cluster/working environment, and Cloud Manager names the object store as follows: "netapp-backup-clusteruuid". Be sure not to delete this object store.
+
+* In AWS, Cloud Manager enables the https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html[Amazon S3 Block Public Access feature^] on the S3 bucket.
+
+* In Azure, Cloud Manager uses a new or existing resource group with a storage account for the Blob container. Cloud Manager https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent[blocks public access to your blob data] by default.
+
+* In GCP, Cloud Manager uses a new or existing project with a storage account for the Google Cloud Storage bucket.
+
+* In StorageGRID, Cloud Manager uses an existing storage account for the object store bucket.
+
+=== Backups are taken at midnight
+
+* Hourly backups start 5 minutes past the hour, every hour.
+
+* Daily backups start just after midnight each day.
+
+* Weekly backups start just after midnight on Sunday mornings.
+
+* Monthly backups start just after midnight on the first day of each month.
+
+The start time is based on the time zone set on each source ONTAP system. You can’t schedule backup operations at a user-specified time from the UI. For more information, contact your System Engineer.
+
+=== Backup copies are associated with your NetApp account
+
+Backup copies are associated with the https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-netapp-accounts.html[NetApp account^] in which the Connector resides.
+
+If you have multiple Connectors in the same NetApp account, each Connector will display the same list of backups. That includes the backups associated with Cloud Volumes ONTAP and on-premises ONTAP instances from other Connectors.

@@ -1,0 +1,151 @@
+---
+sidebar: sidebar
+permalink: concept-kubernetes-backup-to-cloud.html
+keywords: backing up, restoring, back up, backup, restore, aws, azure, s3, blob, google cloud, back up volumes, cloud backup, restore volumes, billing, cost, kubernetes
+summary: Cloud Backup provides backup and restore capabilities for protection and long-term archive of your Kubernetes cluster data. Backups are automatically generated and stored in an object store in your public or private cloud account.
+---
+
+= Protect your Kubernetes cluster data using Cloud Backup
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Backup provides backup and restore capabilities for protection and long-term archive of your Kubernetes cluster data. Backups are automatically generated and stored in an object store in your public or private cloud account.
+
+When necessary, you can restore an entire _volume_ from a backup to the same or different working environment.
+
+== Features
+
+Backup features:
+
+* Back up independent copies of your persistent volumes to low-cost object storage.
+* Apply a single backup policy to all volumes in a cluster, or assign different backup policies to volumes that have unique recovery point objectives.
+* Backup data is secured with AES-256 bit encryption at-rest and TLS 1.2 HTTPS connections in-flight.
+* Support for up to 4,000 backups of a single volume.
+
+Restore features:
+
+* Restore data from a specific point in time.
+* Restore a volume to the source system or to a different system.
+* Restores data on a block level, placing the data directly in the location you specify, all while preserving the original ACLs.
+
+== Supported Kubernetes working environments and object storage providers
+
+Cloud Backup enables you to back up Kubernetes volumes from the following working environments to object storage in the following public and private cloud providers:
+
+[cols=2*,options="header",cols="40,40",width="85%"]
+|===
+
+| Source Working Environment
+| Backup File Destination
+
+| Kubernetes cluster in AWS
+| Amazon S3
+| Kubernetes cluster in Azure
+| Azure Blob
+| Kubernetes cluster in Google
+| Google Cloud Storage
+
+|===
+
+You can restore a volume from a Kubernetes backup file to the following working environments:
+
+[cols=2*,options="header",cols="40,40",width="85%"]
+|===
+
+| Backup File Location
+| Destination Working Environment
+| Amazon S3 | Kubernetes cluster in AWS
+| Azure Blob | Kubernetes cluster in Azure
+| Google Cloud Storage | Kubernetes cluster in Google
+
+|===
+
+== Cost
+
+There are two types of costs associated with using Cloud Backup: resource charges and service charges.
+
+*Resource charges*
+
+Resource charges are paid to the cloud provider for object storage capacity in the cloud. Since Cloud Backup preserves the storage efficiencies of the source volume, you pay the cloud provider object storage costs for the data _after_ ONTAP efficiencies (for the smaller amount of data after deduplication and compression have been applied).
+
+*Service charges*
+
+Service charges are paid to NetApp and cover both the cost to _create_ backups and to _restore_ volumes, from those backups. You pay only for the data that you protect, calculated by the source logical used capacity (_before_ ONTAP efficiencies) of volumes which are backed up to object storage. This capacity is also known as Front-End Terabytes (FETB).
+
+There are two ways to pay for the Backup service. The first option is to subscribe from your cloud provider, which enables you to pay per month. The second option is to purchase licenses directly from NetApp. Read the <<Licensing,Licensing>> section for details.
+
+== Licensing
+
+Cloud Backup is available in two licensing options: Pay As You Go (PAYGO), and Bring Your Own License (BYOL). A 30-day free trial is available if you don’t have a license.
+
+=== Free trial
+
+When using the 30-day free trial, you are notified about the number of free trial days that remain. At the end of your free trial, backups stop being created. You must subscribe to the service or purchase a license to continue using the service.
+
+Backup files are not deleted when the service is disabled. You'll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you delete the backups.
+
+=== Pay-as-you-go subscription
+
+Cloud Backup offers consumption-based licensing in a pay-as-you-go model. After subscribing through your cloud provider’s marketplace, you pay per GB for data that’s backed up—​there’s no up-front payment. You are billed by your cloud provider through your monthly bill.
+
+You should subscribe even if you have a free trial or if you bring your own license (BYOL):
+
+* Subscribing ensures that there’s no disruption of service after your free trial ends.
++
+When the trial ends, you’ll be charged hourly according to the amount of data that you back up.
+
+* If you back up more data than allowed by your BYOL license, then data backup continues through your pay-as-you-go subscription.
++
+For example, if you have a 10 TB BYOL license, all capacity beyond the 10 TB is charged through the PAYGO subscription.
+
+You won’t be charged from your pay-as-you-go subscription during your free trial or if you haven’t exceeded your BYOL license.
+
+link:task-licensing-cloud-backup.html#use-a-cloud-backup-paygo-subscription[Learn how to set up a pay-as-you-go subscription].
+
+=== Bring your own license
+
+BYOL is term-based (12, 24, or 36 months) _and_ capacity-based in 1 TB increments. You pay NetApp to use the service for a period of time, say 1 year, and for a maximum amount capacity, say 10 TB.
+
+You'll receive a serial number that you enter in the Cloud Manager Digital Wallet page to enable the service. When either limit is reached, you'll need to renew the license. The Backup BYOL license applies to all source systems associated with your https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-netapp-accounts.html[Cloud Manager account^].
+
+link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[Learn how to manage your BYOL licenses].
+
+== How Cloud Backup works
+
+When you enable Cloud Backup on a Kubernetes system, the service performs a full backup of your data. After the initial backup, all additional backups are incremental, which means that only changed blocks and new blocks are backed up. This keeps network traffic to a minimum.
+
+CAUTION: Any actions taken directly from your cloud provider environment to manage or change backup files may corrupt the files and will result in an unsupported configuration.
+
+The following image shows the relationship between each component:
+
+image:diagram_cloud_backup_general.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination object storage where the backup files are located.]
+
+=== Supported storage classes or access tiers
+
+* In AWS, backups start in the _Standard_ storage class and transition to the _Standard-Infrequent Access_ storage class after 30 days.
+
+* In Azure, backups are associated with the _Cool_ access tier.
+
+* In GCP, backups are associated with the _Standard_ storage class by default.
+
+=== Customizable backup schedule and retention settings per cluster
+
+When you enable Cloud Backup for a working environment, all the volumes you initially select are backed up using the default backup policy that you define. If you want to assign different backup policies to certain volumes that have different recovery point objectives (RPO), you can create additional policies for that cluster and assign those policies to other volumes.
+
+You can choose a combination of hourly, daily, weekly, and monthly backups of all volumes.
+
+Once you have reached the maximum number of backups for a category, or interval, older backups are removed so you always have the most current backups.
+
+== Supported volumes
+
+Cloud Backup supports Persistent volumes (PVs).
+
+== Limitations
+
+* When creating or editing a backup policy when no volumes are assigned to the policy, the number of retained backups can be a maximum of 1018. As a workaround you can reduce the number of backups to create the policy. Then you can edit the policy to create up to 4000 backups after you assign volumes to the policy.
+
+* Ad-hoc volume backups using the *Backup Now* button aren't supported on Kubernetes volumes.

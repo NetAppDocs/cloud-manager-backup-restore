@@ -1,0 +1,288 @@
+---
+sidebar: sidebar
+permalink: task-manage-backups-ontap.html
+keywords: cloud backup, cloud backup service, backup schedule, change schedule, change backup schedule, modify schedule, modify backup schedule, retention, backup retention, delete, delete backups, deleting, deleting backups, disable, disable backups, turn off backups, disable cloud backup, turn off cloud backup
+summary: You can manage backups for your Cloud Volumes ONTAP and on-premises ONTAP systems by changing the backup schedule, enabling/disabling volume backups, deleting backups, and more.
+---
+
+= Managing backups for your ONTAP systems
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can manage backups for your Cloud Volumes ONTAP and on-premises ONTAP systems by changing the backup schedule, enabling/disabling volume backups, deleting backups, and more.
+
+CAUTION: Do not manage or change backup files directly from your cloud provider environment. This may corrupt the files and will result in an unsupported configuration.
+
+== Viewing the volumes that are being backed up
+
+You can view a list of all the volumes that are currently being backed up in the Backup Dashboard.
+
+.Steps
+
+. Click the *Backup & Restore* tab.
+
+. Click the *Volumes* tab to view the list of volumes for Cloud Volumes ONTAP and on-premises ONTAP systems.
++
+image:screenshot_backup_dashboard.png[A screenshot showing all the working environments and volumes that have backup files.]
+
+If you are looking for specific volumes in certain working environments, you can refine the list by working environment and volume, or you can use the search filter.
+
+== Editing an existing backup policy
+
+You can change the attributes for a backup policy that is currently applied to volumes in a working environment. Changing the backup policy affects all existing volumes that are using the policy.
+
+.Steps
+
+. From the *Volumes* tab, select *Backup Settings*.
++
+image:screenshot_backup_settings_button.png[A screenshot that shows the Backup Settings button from the Volumes tab.]
+
+. From the _Backup Settings_ page, click image:screenshot_horizontal_more_button.gif[More icon] for the working environment where you want to change the settings, and select *Manage Policies*.
++
+image:screenshot_backup_modify_policy.png[A screenshot that shows the Manage Policies option from the Backup Settings page.]
+
+. From the _Manage Policies_ page, click *Edit Policy* for the backup policy you want to change in that working environment.
++
+image:screenshot_backup_manage_policy_page_edit.png[A screenshot that shows the Edit Policy button from the Manage Policies page.]
+
+. From the _Edit Policy_ page, change the schedule and backup retention and click *Save*.
++
+image:screenshot_backup_edit_policy.png[A screenshot that shows the backup policy settings where you can modify the backup schedule and backup retention setting.]
++
+If your cluster is running ONTAP 9.10.1 or greater, and you are using AWS or Azure for your cloud storage, you also have the option to enable or disable tiering of backups to archival storage after a certain number of days.
+link:reference-azure-backup-tiers.html[Learn more about using Azure archival storage].
+link:reference-aws-backup-tiers.html[Learn more about using AWS archival storage].
++
+image:screenshot_backup_modify_policy_page2.png[A screenshot that shows the tiering to archival storage settings for Cloud Backup.]
++
+Note that any backup files that have been tiered to archival storage are left in that tier if you stop tiering backups to archive - they are not automatically moved back to the standard tier.
+
+== Enabling and disabling backups of volumes
+
+You can stop backing up a volume if you do not need backup copies of that volume and you do not want to pay for the cost to store the backups. You can also add a new volume to the backup list if it is not currently being backed up.
+
+.Steps
+
+. From the *Volumes* tab, select *Backup Settings*.
++
+image:screenshot_backup_settings_button.png[A screenshot that shows the Backup Settings button which is available after you select a working environment.]
+
+. From the _Backup Settings page_, click image:screenshot_horizontal_more_button.gif[More icon] for the working environment and select *Manage Volumes*.
++
+image:screenshot_backup_manage_volumes.png[A screenshot that shows the Manage Volumes button from the Backup Settings page.]
+
+. Select the checkbox for a volume, or volumes, that you want to change, and then click *Activate* or *Deactivate* depending on whether you want to start or stop backups for the volume.
++
+image:screenshot_backup_manage_volumes_page.png[The Manage Volumes page where you can select or deselect volumes.]
+
++
+You can choose to have all volumes added in the future to have backup enabled, or not, by using the checkbox for "Automatically back up future volumes...". If you disable this setting, you'll need to manually enable backups for volumes added in the future.
+
+. Click *Save* to commit your changes.
+
+*Note:* When stopping a volume from being backed up you’ll continue to be charged by your cloud provider for object storage costs for the capacity that the backups use unless you <<Deleting backups,delete the backups>>.
+
+== Adding a new backup policy
+
+When you enable Cloud Backup for a working environment, all the volumes you initially select are backed up using the default backup policy that you defined. If you want to assign different backup policies to certain volumes that have different recovery point objectives (RPO), you can create additional policies for that cluster and assign those policies to other volumes.
+
+If you want to apply a new backup policy to certain volumes in a working environment, you first need to add the backup policy to the working environment. Then you can <<Changing the policy assigned to existing volumes,apply the policy to volumes in that working environment>>.
+
+.Steps
+
+. From the *Volumes* tab, select *Backup Settings*.
++
+image:screenshot_backup_settings_button.png[A screenshot that shows the Backup Settings button from the Volumes tab.]
+
+. From the _Backup Settings_ page, click image:screenshot_horizontal_more_button.gif[More icon] for the working environment where you want to add the new policy, and select *Manage Policies*.
++
+image:screenshot_backup_modify_policy.png[A screenshot that shows the Manage Policies option from the Backup Settings page.]
+
+. From the _Manage Policies_ page, click *Add New Policy*.
++
+image:screenshot_backup_manage_policy_page_add.png[A screenshot that shows the Add New Policy button from the Manage Policies page.]
+
+. From the _Add New Policy_ page, define the schedule and backup retention and click *Save*.
++
+image:screenshot_backup_add_new_policy.png[A screenshot that shows the backup policy settings where you can add the backup schedule and backup retention setting.]
++
+If your cluster is running ONTAP 9.10.1 or greater, and you are using AWS or Azure for your cloud storage, you also have the option to enable or disable tiering of backups to archival storage after a certain number of days.
+link:reference-azure-backup-tiers.html[Learn more about using Azure archival storage].
+link:reference-aws-backup-tiers.html[Learn more about using AWS archival storage].
++
+image:screenshot_backup_modify_policy_page2.png[A screenshot that shows the tiering to archival storage settings for Cloud Backup.]
+
+== Changing the policy assigned to existing volumes
+
+You can change the backup policy assigned to your existing volumes if you want to change the frequency of taking backups, or if you want to change the retention value.
+
+Note that the policy that you want to apply to the volumes must already exist. <<Adding a new backup policy,See how to add a new backup policy for a working environment>>.
+
+.Steps
+
+. From the *Volumes* tab, select *Backup Settings*.
++
+image:screenshot_backup_settings_button.png[A screenshot that shows the Backup Settings button which is available after you select a working environment.]
+
+. From the _Backup Settings page_, click image:screenshot_horizontal_more_button.gif[More icon] for the working environment where the volumes exist, and select *Manage Volumes*.
++
+image:screenshot_backup_manage_volumes.png[A screenshot that shows the Manage Volumes button from the Backup Settings page.]
+
+. Select the checkbox for a volume, or volumes, that you want to change the policy for, and then click *Change Policy*.
++
+image:screenshot_backup_manage_volumes_page_change.png[The Manage Volumes page where you can select or deselect volumes.]
+
+. In the _Change Policy_ page, select the policy that you want to apply to the volumes, and click *Change Policy*.
++
+image:screenshot_backup_change_policy.png[A screenshot showing how to select a new policy to apply to selected volumes.]
+
+. Click *Save* to commit your changes.
+
+== Creating a manual volume backup at any time
+
+You can create an on-demand backup at any time to capture the current state of the volume. This can be useful if very important changes have been made to a volume and you don't want to wait for the next scheduled backup to protect that data, or if the volume is not currently being backed up and you want to capture its current state.
+
+The backup name includes the timestamp so you can identify your on-demand backup from other scheduled backups.
+
+NOTE: On-demand volume backup isn't supported on data protection volumes.
+
+.Steps
+
+. From the *Volumes* tab, click image:screenshot_horizontal_more_button.gif[More icon] for the volume and select *Backup Now*.
++
+image:screenshot_backup_now_button.png[A screenshot that shows the Backup Now button which is available after you select a volume.]
+
+The Backup Status column for that volume displays "In Progress" until the backup is created.
+
+== Viewing the list of backups for each volume
+
+You can view the list of all backup files that exist for each volume. This page displays details about the source volume, destination location, and backup details such as last backup taken, the current backup policy, backup file size, and more.
+
+This page also enables you perform the following tasks:
+
+* Delete all backup files for the volume
+* Delete individual backup files for the volume
+* Download a backup report for the volume
+
+.Steps
+
+. From the *Volumes* tab, click image:screenshot_horizontal_more_button.gif[More icon] for the source volume and select *Details & Backup List*.
++
+image:screenshot_backup_view_backups_button.png[A screenshot that shows the Details & Backup List button which is available for a single volume.]
++
+The list of all backup files is displayed along with details about the source volume, destination location, and backup details.
++
+image:screenshot_backup_view_backups.png[A screenshot that shows the List of all backup files for a single volume.]
+
+== Deleting backups
+
+Cloud Backup enables you to delete a single backup file, delete all backups for a volume, or delete all backups of all volumes in a working environment or Kubernetes cluster. You might want to delete all backups if you no longer need the backups or if you deleted the source volume and want to remove all backups.
+
+CAUTION: If you plan to delete a working environment or cluster that has backups, you must delete the backups *before* deleting the system. Cloud Backup doesn’t automatically delete backups when you delete a system, and there is no current support in the UI to delete the backups after the system has been deleted. You'll continue to be charged for object storage costs for any remaining backups.
+
+=== Deleting all backup files for a working environment
+
+Deleting all backups for a working environment does not disable future backups of volumes in this working environment. If you want to stop creating backups of all volumes in a working environment, you can deactivate backups <<Disabling Cloud Backup for a working environment,as described here>>.
+
+.Steps
+
+. From the *Volumes* tab, select *Backup Settings*.
++
+image:screenshot_backup_settings_button.png[A screenshot that shows the Backup Settings button which is available after you select a working environment.]
+
+. Click image:screenshot_horizontal_more_button.gif[More icon] for the working environment, or the Kubernetes cluster, where you want to delete all backups and select *Delete All Backups*.
++
+image:screenshot_delete_all_backups.png[A screenshot of selecting the Delete All Backups button to delete all backups for a working environment.]
+
+. In the confirmation dialog box, enter the name of the working environment and click *Delete*.
+
+=== Deleting all backup files for a volume
+
+Deleting all backups for a volume also disables future backups for that volume.
+
+You can <<Starting and stopping backups of volumes,restart making backups for the volume>> at any time from the Manage Backups page.
+
+.Steps
+
+. From the *Volumes* tab, click image:screenshot_horizontal_more_button.gif[More icon] for the source volume and select *Details & Backup List*.
++
+image:screenshot_backup_view_backups_button.png[A screenshot that shows the Details & Backup List button which is available for a single volume.]
++
+The list of all backup files is displayed.
++
+image:screenshot_backup_view_backups.png[A screenshot that shows the List of all backup files for a single volume.]
+
+. Click *Actions* > *Delete all Backups*.
++
+image:screenshot_delete_we_backups.png[A screenshot showing how to delete all backup files for a volume.]
+
+. In the confirmation dialog box, enter the volume name and click *Delete*.
+
+=== Deleting a single backup file for a volume
+
+You can delete a single backup file. This feature is available only if the volume backup was created from a system with ONTAP 9.8 or greater.
+
+.Steps
+
+. From the *Volumes* tab, click image:screenshot_horizontal_more_button.gif[More icon] for the source volume and select *Details & Backup List*.
++
+image:screenshot_backup_view_backups_button.png[A screenshot that shows the Details & Backup List button which is available for a single volume.]
++
+The list of all backup files is displayed.
++
+image:screenshot_backup_view_backups.png[A screenshot that shows the List of all backup files for a single volume.]
+
+. Click image:screenshot_horizontal_more_button.gif[More icon] for the volume backup file you want to delete and click *Delete*.
++
+image:screenshot_delete_one_backup.png[A screenshot showing how to delete a single backup file.]
+
+. In the confirmation dialog box, click *Delete*.
+
+== Disabling Cloud Backup for a working environment
+
+Disabling Cloud Backup for a working environment disables backups of each volume on the system, and it also disables the ability to restore a volume. Any existing backups will not be deleted. This does not unregister the backup service from this working environment - it basically allows you to pause all backup and restore activity for a period of time.
+
+Note that you'll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you <<Deleting all backup files for a working environment,delete the backups>>.
+
+.Steps
+
+. From the *Volumes* tab, select *Backup Settings*.
++
+image:screenshot_backup_settings_button.png[A screenshot that shows the Backup Settings button which is available after you select a working environment.]
+
+. From the _Backup Settings page_, click image:screenshot_horizontal_more_button.gif[More icon] for the working environment, or the Kubernetes cluster, where you want to disable backups and select *Deactivate Backup*.
++
+image:screenshot_disable_backups.png[A screenshot of the Deactivate Backup button for a working environment.]
+
+. In the confirmation dialog box, click *Deactivate*.
+
+NOTE: An *Activate Backup* button appears for that working environment while backup is disabled. You can click this button when you want to re-enable backup functionality for that working environment.
+
+== Unregistering Cloud Backup for a working environment
+
+You can unregister Cloud Backup for a working environment if you no longer want to use backup functionality and you want to stop being charged for backups in that working environment. Typically this feature is used when you're planning to delete a working environment, and you want to cancel the backup service.
+
+You can also use this feature if you want to change the destination object store where your cluster backups are being stored. After you unregister Cloud Backup for the working environment, then you can enable Cloud Backup for that cluster using the new cloud provider information.
+
+Before you can unregister Cloud Backup, you must perform the following steps, in this order:
+
+* Deactivate Cloud Backup for the working environment
+* Delete all backups for that working environment
+
+The unregister option is not available until these two actions are complete.
+
+.Steps
+
+. From the *Volumes* tab, select *Backup Settings*.
++
+image:screenshot_backup_settings_button.png[A screenshot that shows the Backup Settings button which is available after you select a working environment.]
+
+. From the _Backup Settings page_, click image:screenshot_horizontal_more_button.gif[More icon] for the working environment where you want to unregister the backup service and select *Unregister*.
++
+image:screenshot_backup_unregister.png[A screenshot of the Unregister backup button for a working environment.]
+
+. In the confirmation dialog box, click *Unregister*.
