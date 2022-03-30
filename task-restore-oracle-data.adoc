@@ -1,0 +1,65 @@
+---
+sidebar: sidebar
+permalink: task-restore-oracle-data.html
+keywords: restore, Azure, Amazon Web services, Oracle database
+summary: You can restore Oracle database from the cloud to the on-premises SnapCenter Server.
+---
+
+= Restore Oracle database
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can only restore the Oracle database to the same SnapCenter Server host, same SVM, or to the same database host. For a RAC database, the data will be restored to the on-premises node where the backup was created.
+
+Only full database with control file restore is supported. If the archive logs are not present in the AFS, you should specify the location that contains the archive logs required for recovery.
+
+*Steps*
+
+. In Cloud Manager UI, click *Backup & Restore* > *Applications*.
+. In the *Filter By* field, select the filter *Type* and from the drop-down select *Oracle*.
+. Click *View Details* corresponding to the database that you want to restore and click *Restore*.
+. On the Restore Type page, perform the following actions:
+.. Select *Control files* if you want to restore control file along with full database.
+.. Select *Change database state if needed for restore and recovery* to change the state of the database to the state required to perform restore and recovery operations.
++
+The various states of a database from higher to lower are open, mounted, started, and shutdown. You must select this check box if the database is in a higher state but the state must be changed to a lower state to perform a restore operation. If the database is in a lower state but the state must be changed to a higher state to perform the restore operation, the database state is changed automatically even if you do not select the check box.
++
+If a database is in the open state, and for restore the database needs to be in the mounted state, then the database state is changed only if you select this check box.
+
+. On the Recovery Scope page, perform the following actions:
+.. Specify the recovery scope.
++
+|===
+| If you... | Do this...
+
+a|
+Want to recover to the last transaction
+a|
+Select *All Logs*.
+a|
+Want to recover to a specific System Change Number (SCN)
+a|
+Select *Until SCN (System Change Number)*.
+a|
+Want to recover to a specific data and time
+a|
+Select *Date and Time*.
+
+You must specify the date and time of the database host's time zone.
+a|
+Do not want to recover
+a|
+Select *No recovery*.
+a|
+Want to specify any external archive log locations
+a|
+If the archive logs are not present in the AFS, you should specify the location that contains the archive logs required for recovery.
+|===
+.. Select the check box if you want to open the database after recovery.
++
+In a RAC setup, only the RAC instance that is used for recovery is opened after recovery.
+. Review the details and click *Restore*.

@@ -1,0 +1,107 @@
+---
+sidebar: sidebar
+permalink: task-backup-app-data-to-cloud.html
+keywords: backing up, back up, backup, backup application data, Azure, Amazon Web services, Cloud Backup, cloud backup service, Oracle database, Microsoft SQL Server database, SnapCenter Server, register
+summary: Complete a few steps to back up applications data from ONTAP to cloud services.
+---
+
+= Back up on-premises applications data to cloud
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+You can back up the applications data from ONTAP to cloud by integrating Cloud Backup for Applications with Cloud Manager and on-premises SnapCenter.
+
+== Register SnapCenter Server
+
+Only a user with SnapCenterAdmin role can register the host on which SnapCenter Server 4.6 is running. You can register multiple SnapCenter Server hosts but once registered, you cannot remove the SnapCenter Server host.
+
+*Steps*
+
+. In Cloud Manager UI, click *Backup & Restore* > *Applications*.
+. From the *Settings* drop-down, click *SnapCenter Servers*.
+. Click *Register SnapCenter Server*.
+. Specify the following details:
+.. In the SnapCenter Server field, specify the FQDN or IP address of the SnapCenter Server host.
+.. In the Port field, specify the port number on which the SnapCenter Server is running.
++
+You should ensure that the port is open for the communication to happen between SnapCenter Server and the Cloud Backup for Applications.
+.. In the Tags field, specify a site name, city name, or any custom name with which you want to tag the SnapCenter Server.
++
+The tags are comma separated.
+.. In the Username and Password field, specify the credentials of the user with SnapCenterAdmin role.
+. Click *Register*.
+
+*After you finish*
+
+Click *Backup & Restore* > *Applications* to view all the applications that are protected using the registered SnapCenter Server host.
+
+NOTE: For SQL Server databases, the Application Name column displays the name in _application_name (host name)_ format. When you search by providing the name in _application_name (host name)_ format, the SQL Server database details are not displayed.
+
+The supported applications and their configurations are:
+
+*	Oracle database: Full backups (data + log) created with at least one daily, weekly, or monthly schedules.
+* Microsoft SQL Server database:
+** Standalone, failover cluster instances, and availability groups
+** Full backups created with at least one daily, weekly, or monthly schedules
+
+The following Oracle and SQL Server databases will not be displayed:
+
+* Databases that have no backups
+* Databases that have only on-demand or hourly policy
+* Databases residing on RDM or VMDK
+
+== Back up applications data
+
+You can protect one or more applications simultaneously to the cloud using a single policy. Only the default pre-canned policies can be assigned to protect the application.
+
+IMPORTANT: You can protect only one application at a time if you are using the Cloud Manager GUI. However, if you are using REST APIs, you can protect multiple applications simultaneously.
+
+If you are protecting an SQL Server instance, then cloud protection will be configured for all the volumes of the eligible databases in that instance.
+If you are protecting an SQL Server availability group, then cloud protection will be configured for all the volumes of the databases in that availability group. However, based on the backup preference, the Snapshot will be copied form the respective volumes.
+
+*Steps*
+
+. In Cloud Manager UI, click *Backup & Restore* > *Applications*.
+. Click image:icon-action.png[icon to select the action] corresponding to the application and click *Activate Backup*.
+. Add the working environment.
++
+Configure the ONTAP cluster that hosts the SVM on which the application is running. After adding the working environment for one of the applications, it can be reused for all the other applications residing on the same ONTAP cluster.
++
+.. Select the SVM and click Add Working Environment.
+.. In the Add Working Environment wizard:
+... Specify the IP address of the ONTAP cluster.
+... Specify the admin credentials.
++
+Cloud Backup for Applications supports only cluster admin.
+.. Click *Add Working Environment*.
+. Select and configure the cloud provider.
++
+[role="tabbed-block"]
+====
+
+.Configure Amazon Web Services
+--
+.. Specify the AWS account.
+.. In the AWS Access Key field, specify the key.
+.. In the AWS Secret Key field, specify the password.
+.. Select the region where you want to create the backups.
+.. Specify the IP addresses of the ONTAP clusters that were added as the working environments.
+--
+
+.Configure Microsoft Azure
+--
+.. Specify the Azure subscription ID.
+.. Select the region where you want to create the backups.
+.. Either create a new resource group or use an existing resource group.
+.. Specify the IP addresses of the ONTAP clusters that were added as the working environments.
+--
+====
+
+[start=5]
+. In the Assign Policy page, select the policy and click *Next*.
+. Review the details and click *Activate Backup*.
