@@ -57,16 +57,20 @@ sidebar:
           url: /task-manage-backups-kubernetes.html
         - title: Restore from Kubernetes backups
           url: /task-restore-backups-kubernetes.html
-    - title: Back up and restore applications
+    - title: Back up and restore on-premises applications data
       entries:
-        - title: Protect your application data
-          url: /task.html
-        - title: Back up applications to the cloud
-          url: /task.html
-        - title: Manage application backups
-          url: /task.html
-        - title: Restore applications from backups
-          url: /task.html
+        - title: Protect your on-premises applications data
+          url: /concept-protect-app-data-to-cloud.html
+        - title: Back up on-premises applications data to cloud
+          url: /task-backup-app-data-to-cloud.html
+        - title: Manage protection of applications
+          url: /task-manage-app-backups.html
+        - title: Restore applications data
+          entries:
+            - title: Restore Oracle database
+              url: /task-restore-oracle-data.html
+            - title: Restore SQL Server database
+              url: /task-restore-sql-data.html
     - title: Reference
       entries:
         - title: Supported AWS archive storage tiers
@@ -125,14 +129,14 @@ homepage:
           url: task-backup-kubernetes-to-azure.html
         - title: Kubernetes cluster to Google Cloud
           url: task-backup-kubernetes-to-gcp.html
-    - title: Back up applications to the cloud
+    - title: Back up and restore on-premises applications data
       links:
-        - title: title
-          url: task-.html
-        - title: title
-          url: task-.html
-        - title: title
-          url: task-.html
+        - title: Back up on-premises applications data to cloud
+          url: /task-backup-app-data-to-cloud.html
+        - title: Restore Oracle database
+          url: /task-restore-oracle-data.html
+        - title: Restore SQL Server database
+          url: /task-restore-sql-data.html
     - title: Restore data from backup files
       links:
         - title: Restore ONTAP volumes
@@ -141,8 +145,6 @@ homepage:
           url: task-restore-backups-ontap.html
         - title: Restore Kubernetes volumes
           url: task-restore-backups-kubernetes.html
-        - title: Restore applications
-          url: task-.html
     - title: Manage ONTAP backup files
       links:
         - title: Enable and disable volume backups
