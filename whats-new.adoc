@@ -18,6 +18,15 @@ Learn what's new in Cloud Backup.
 // tag::whats-new[]
 == 03 April 2022
 
+=== Support for Cloud Backup for Applications 1.1.0
+
+You can integrate Cloud Backup for Applications with Cloud Manager and on-premises SnapCenter to back up the application consistent Snapshots from on-premises ONTAP to
+cloud. When required you can restore from cloud to on-premises SnapCenter Server.
++
+You can back up Oracle and Microsoft SQL applications data from on-premises ONTAP to either Amazon Web Services or Microsoft Azure.
++
+link:concept-protect-app-data-to-cloud.html[Learn more about protecting on-premises applications data to cloud].
+
 === Support has been added to back up on-premises ONTAP cluster data in sites without internet access.
 
 If your on-prem ONTAP cluster resides in a site with no internet access, also known as a dark site or offline site, now you can use Cloud Backup to back up volume data to NetApp StorageGRID systems that resides in the same site. This functionality requires that the Cloud Manager Connector (version 3.9.17 or greater) is deployed in the offline site. link:task-backup-onprem-private-cloud.html[See how to back up data in an offline site].
