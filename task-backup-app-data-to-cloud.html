@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head class="at-element-marker">
-  <title>Learn about Cloud Backup | NetApp Documentation</title>
+  <title>Back up on-premises applications data to cloud | NetApp Documentation</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="language" content="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="Learn about Cloud Backup | NetApp Documentation" />
+  <meta property="og:title" content="Back up on-premises applications data to cloud | NetApp Documentation" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html" />
-	<meta property="og:description" content="Cloud Backup is a service for Cloud Manager working environments that provides backup and restore capabilities for protection and long-term archive of your d..." />
+	<meta property="og:url" content="https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-app-data-to-cloud.html" />
+	<meta property="og:description" content="Complete a few steps to back up applications data from ONTAP to cloud services." />
   <meta property="og:image" content="https://docs.netapp.com/us-en/cloud-manager-backup-restore/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Cloud Backup is a service for Cloud Manager working environments that provides backup and restore capabilities for protection and long-term archive of your d...">
-  <meta name="keywords" content=" backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, billing, cost, on-premises ontap, onprem, kubernetes, applications"><!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Complete a few steps to back up applications data from ONTAP to cloud services.">
+  <meta name="keywords" content=" backing up, back up, backup, backup application data, Azure, Amazon Web services, Cloud Backup, cloud backup service, Oracle database, Microsoft SQL Server database, SnapCenter Server, register"><!-- Icons -->
   <link rel="icon" href="/us-en/cloud-manager-backup-restore/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><link rel="alternate" type="application/rss+xml" title="NetApp Documentation" href="/us-en/cloud-manager-backup-restore/feed.xml"><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -149,8 +149,8 @@
   <div class="page-nav-toolbar">
     <div id="version-dropdown"></div>
     <div class="page-nav-contribute"  >
-      <a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/issues/new?body=Page%3A%20[Learn about Cloud Backup](https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html)" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/discuss-sm.svg" class="github-icon" />Request doc changes</a>
-      <a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/blob/main/concept-backup-to-cloud.adoc" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/edit-sm.svg" class="github-icon" />Edit this page</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/issues/new?body=Page%3A%20[Back up on-premises applications data to cloud](https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-app-data-to-cloud.html)" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/discuss-sm.svg" class="github-icon" />Request doc changes</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/blob/main/task-backup-app-data-to-cloud.adoc" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/edit-sm.svg" class="github-icon" />Edit this page</a>
       <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/us-en/cloud-manager-backup-restore/images/article-sm.svg" class="github-icon" />Learn how to contribute</a>
     </div>
     <div class="page-nav-container">
@@ -328,15 +328,6 @@
             Get started
           </a>
           
-    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
-  <a target="_blank" href="/us-en/cloud-manager-backup-restore/pdfs/pages/concept-backup-to-cloud.pdf" >
-    <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
-    PDF of this page
-  </a>
-</li>
-
-</ul>
-  
 
 
 
@@ -443,6 +434,15 @@
           
 
 
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/us-en/cloud-manager-backup-restore/pdfs/pages/task-backup-app-data-to-cloud.pdf" >
+    <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
 
 
 
@@ -608,7 +608,7 @@
       </a></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> Get started</div>
       </a>
-      <ul><li class="  active "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html">
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html">
         Learn about Cloud Backup
       </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-licensing-cloud-backup.html">
         Set up licensing
@@ -657,7 +657,7 @@
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/concept-protect-app-data-to-cloud.html">
         Protect your on-premises applications data
-      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-backup-app-data-to-cloud.html">
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-backup-app-data-to-cloud.html">
         Back up on-premises applications data to cloud
       </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-manage-app-backups.html">
         Manage protection of applications
@@ -738,31 +738,23 @@
 </div>
 
       <div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">Learn about Cloud Backup</h1>
+  <h1 class="n-doc__component-detail-heading">Back up on-premises applications data to cloud</h1>
 </div>
 
 
 <p class="page-details">
   
     
-    <time datetime="2022-03-28 18:59:29 +0000">03/28/2022</time>
+    <time datetime="2022-03-30 11:11:54 +0000">03/30/2022</time>
     
   
 
 <span>Contributors
-  <a target="_blank" href="https://github.com/netapp-tonacki">
+  <a target="_blank" href="https://github.com/netapp-soumikd">
     <img  class="avatar avatar-small"
-          alt="netapp-tonacki"
+          alt="netapp-soumikd"
           width="20" height="20"
-          src="https://avatars.githubusercontent.com/u/38222299?v=4"
-          style="border-radius: 50%;"/>
-  </a>
-  
-  <a target="_blank" href="https://github.com/pradiptd0">
-    <img  class="avatar avatar-small"
-          alt="pradiptd0"
-          width="20" height="20"
-          src="https://avatars.githubusercontent.com/u/96762594?v=4"
+          src="https://avatars.githubusercontent.com/u/64966556?v=4"
           style="border-radius: 50%;"/>
   </a>
   
@@ -774,99 +766,247 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph lead">
-<p>Cloud Backup is a service for Cloud Manager working environments that provides backup and restore capabilities for protection and long-term archive of your data. Backups are automatically generated and stored in an object store in your public or private cloud account.</p>
+<p>You can back up the applications data from ONTAP to cloud by integrating Cloud Backup for Applications with Cloud Manager and on-premises SnapCenter.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="register-snapcenter-server">Register SnapCenter Server</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Only a user with SnapCenterAdmin role can register the host on which SnapCenter Server 4.6 is running. You can register multiple SnapCenter Server hosts but once registered, you cannot remove the SnapCenter Server host.</p>
 </div>
 <div class="paragraph">
-<p>When necessary, you can restore an entire <em>volume</em> from a backup to the same or different working environment. When backing up ONTAP data, you can also choose to restore or one or more <em>files</em> from a backup to the same or different working environment.</p>
+<p><strong>Steps</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In Cloud Manager UI, click <strong>Backup &amp; Restore</strong> &gt; <strong>Applications</strong>.</p>
+</li>
+<li>
+<p>From the <strong>Settings</strong> drop-down, click <strong>SnapCenter Servers</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Register SnapCenter Server</strong>.</p>
+</li>
+<li>
+<p>Specify the following details:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>In the SnapCenter Server field, specify the FQDN or IP address of the SnapCenter Server host.</p>
+</li>
+<li>
+<p>In the Port field, specify the port number on which the SnapCenter Server is running.</p>
+<div class="paragraph">
+<p>You should ensure that the port is open for the communication to happen between SnapCenter Server and the Cloud Backup for Applications.</p>
+</div>
+</li>
+<li>
+<p>In the Tags field, specify a site name, city name, or any custom name with which you want to tag the SnapCenter Server.</p>
+<div class="paragraph">
+<p>The tags are comma separated.</p>
+</div>
+</li>
+<li>
+<p>In the Username and Password field, specify the credentials of the user with SnapCenterAdmin role.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Click <strong>Register</strong>.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p><a href="https://cloud.netapp.com/cloud-backup-service" target="_blank" rel="noopener">Learn more about Cloud Backup</a>.</p>
+<p><strong>After you finish</strong></p>
 </div>
 <div class="paragraph">
-<p>Backup &amp; Restore can be used to:</p>
+<p>Click <strong>Backup &amp; Restore</strong> &gt; <strong>Applications</strong> to view all the applications that are protected using the registered SnapCenter Server host.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-backup-restore/images/note.svg" alt="Note">
+</td>
+<td class="content">
+For SQL Server databases, the Application Name column displays the name in <em>application_name (host name)</em> format. When you search by providing the name in <em>application_name (host name)</em> format, the SQL Server database details are not displayed.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The supported applications and their configurations are:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Back up and Restore ONTAP volumes from Cloud Volumes ONTAP and on-premises ONTAP systems. <a href="concept-ontap-backup-to-cloud.html">See detailed features here</a>.</p>
+<p>Oracle database: Full backups (data + log) created with at least one daily, weekly, or monthly schedules.</p>
 </li>
 <li>
-<p>Back up and Restore Kubernetes persistent volumes.<a href="concept-kubernetes-backup-to-cloud.html">See detailed features here</a>.</p>
+<p>Microsoft SQL Server database:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Standalone, failover cluster instances, and availability groups</p>
 </li>
 <li>
-<p>Back up application data&#8230;&#8203;..<a href=".html">See detailed features here</a>.</p>
+<p>Full backups created with at least one daily, weekly, or monthly schedules</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following Oracle and SQL Server databases will not be displayed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Databases that have no backups</p>
+</li>
+<li>
+<p>Databases that have only on-demand or hourly policy</p>
+</li>
+<li>
+<p>Databases residing on RDM or VMDK</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="how-cloud-backup-works">How Cloud Backup works</h2>
+<h2 id="back-up-applications-data">Back up applications data</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When you enable Cloud Backup on a Cloud Volumes ONTAP or on-premises ONTAP system, the service performs a full backup of your data. Volume snapshots are not included in the backup image. After the initial backup, all additional backups are incremental, which means that only changed blocks and new blocks are backed up. This keeps network traffic to a minimum.</p>
+<p>You can protect one or more applications simultaneously to the cloud using a single policy. Only the default pre-canned policies can be assigned to protect the application.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-backup-restore/images/important.svg" alt="Important">
+</td>
+<td class="content">
+You can protect only one application at a time if you are using the Cloud Manager GUI. However, if you are using REST APIs, you can protect multiple applications simultaneously.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>In most cases you&#8217;ll use the Cloud Manager UI for all backup operations. However, starting with ONTAP 9.9.1 you can initiate volume backup operations of your on-premises ONTAP clusters using ONTAP System Manager. <a href="https://docs.netapp.com/us-en/ontap/task_cloud_backup_data_using_cbs.html" target="_blank" rel="noopener">See how to use System Manager to back up your volumes to the cloud using Cloud Backup.</a></p>
+<p>If you are protecting an SQL Server instance, then cloud protection will be configured for all the volumes of the eligible databases in that instance.<br>
+If you are protecting an SQL Server availability group, then cloud protection will be configured for all the volumes of the databases in that availability group. However, based on the backup preference, the Snapshot will be copied form the respective volumes.</p>
 </div>
 <div class="paragraph">
-<p>The following image shows the relationship between each component:</p>
+<p><strong>Steps</strong></p>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In Cloud Manager UI, click <strong>Backup &amp; Restore</strong> &gt; <strong>Applications</strong>.</p>
+</li>
+<li>
+<p>Click <span class="image"><img src="./media/icon-action.png" alt="icon to select the action"></span> corresponding to the application and click <strong>Activate Backup</strong>.</p>
+</li>
+<li>
+<p>Add the working environment.</p>
 <div class="paragraph">
-<p><span class="image"><img src="./media/diagram_cloud_backup_general.png" alt="A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination object storage where the backup files are located."></span></p>
+<p>Configure the ONTAP cluster that hosts the SVM on which the application is running. After adding the working environment for one of the applications, it can be reused for all the other applications residing on the same ONTAP cluster.</p>
 </div>
-<div class="sect2">
-<h3 id="where-backups-reside">Where backups reside</h3>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Select the SVM and click Add Working Environment.</p>
+</li>
+<li>
+<p>In the Add Working Environment wizard:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Specify the IP address of the ONTAP cluster.</p>
+</li>
+<li>
+<p>Specify the admin credentials.</p>
 <div class="paragraph">
-<p>Backup copies are stored in an object store that Cloud Manager creates in your cloud account. There’s one object store per cluster/working environment, and Cloud Manager names the object store as follows: "netapp-backup-clusteruuid". Be sure not to delete this object store.</p>
+<p>Cloud Backup for Applications supports only cluster admin.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>In AWS, Cloud Manager enables the <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html" target="_blank" rel="noopener">Amazon S3 Block Public Access feature</a> on the S3 bucket.</p>
+</li>
+</ol>
+</div>
 </li>
 <li>
-<p>In Azure, Cloud Manager uses a new or existing resource group with a storage account for the Blob container. Cloud Manager <a href="https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent">blocks public access to your blob data</a> by default.</p>
+<p>Click <strong>Add Working Environment</strong>.</p>
+</li>
+</ol>
+</div>
 </li>
 <li>
-<p>In GCP, Cloud Manager uses a new or existing project with a storage account for the Google Cloud Storage bucket.</p>
+<p>Select and configure the cloud provider.</p>
+<div class="exampleblock tabbed-block">
+<div class="content">
+<div class="openblock">
+<div class="title">Configure Amazon Web Services</div>
+<div class="content">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Specify the AWS account.</p>
 </li>
 <li>
-<p>In StorageGRID, Cloud Manager uses an existing storage account for the object store bucket.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="backups-are-taken-at-midnight">Backups are taken at midnight</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Hourly backups start 5 minutes past the hour, every hour.</p>
+<p>In the AWS Access Key field, specify the key.</p>
 </li>
 <li>
-<p>Daily backups start just after midnight each day.</p>
+<p>In the AWS Secret Key field, specify the password.</p>
 </li>
 <li>
-<p>Weekly backups start just after midnight on Sunday mornings.</p>
+<p>Select the region where you want to create the backups.</p>
 </li>
 <li>
-<p>Monthly backups start just after midnight on the first day of each month.</p>
+<p>Specify the IP addresses of the ONTAP clusters that were added as the working environments.</p>
 </li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The start time is based on the time zone set on each source ONTAP system. You can’t schedule backup operations at a user-specified time from the UI. For more information, contact your System Engineer.</p>
+</ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="backup-copies-are-associated-with-your-netapp-account">Backup copies are associated with your NetApp account</h3>
-<div class="paragraph">
-<p>Backup copies are associated with the <a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-netapp-accounts.html" target="_blank" rel="noopener">NetApp account</a> in which the Connector resides.</p>
 </div>
-<div class="paragraph">
-<p>If you have multiple Connectors in the same NetApp account, each Connector will display the same list of backups. That includes the backups associated with Cloud Volumes ONTAP and on-premises ONTAP instances from other Connectors.</p>
+<div class="openblock">
+<div class="title">Configure Microsoft Azure</div>
+<div class="content">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Specify the Azure subscription ID.</p>
+</li>
+<li>
+<p>Select the region where you want to create the backups.</p>
+</li>
+<li>
+<p>Either create a new resource group or use an existing resource group.</p>
+</li>
+<li>
+<p>Specify the IP addresses of the ONTAP clusters that were added as the working environments.</p>
+</li>
+</ol>
 </div>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="5">
+<li>
+<p>In the Assign Policy page, select the policy and click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Review the details and click <strong>Activate Backup</strong>.</p>
+</li>
+</ol>
 </div>
 </div>
 </div>

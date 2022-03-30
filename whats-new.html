@@ -434,11 +434,11 @@
         <li class="pdf-ux-container">
           <a target="_blank" 
             
-              href="/us-en/cloud-manager-backup-restore/pdfs/sidebar/Back_up_and_restore_applications.pdf" 
+              href="/us-en/cloud-manager-backup-restore/pdfs/sidebar/Back_up_and_restore_on_premises_applications_data.pdf" 
             
           >
             <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
-            Back up and restore applications
+            Back up and restore on-premises applications data
           </a>
           
 
@@ -447,6 +447,30 @@
 
 
 
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/us-en/cloud-manager-backup-restore/pdfs/sidebar/Restore_applications_data.pdf" 
+            
+          >
+            <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
+            Restore applications data
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
 
 
 
@@ -629,17 +653,22 @@
       </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-restore-backups-kubernetes.html">
         Restore from Kubernetes backups
       </a></li></ul></li><li class="subfolders "><a href="#">
-        <div class="na-navbar-padding"> Back up and restore applications</div>
+        <div class="na-navbar-padding"> Back up and restore on-premises applications data</div>
       </a>
-      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task.html">
-        Protect your application data
-      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task.html">
-        Back up applications to the cloud
-      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task.html">
-        Manage application backups
-      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task.html">
-        Restore applications from backups
-      </a></li></ul></li><li class="subfolders "><a href="#">
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/concept-protect-app-data-to-cloud.html">
+        Protect your on-premises applications data
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-backup-app-data-to-cloud.html">
+        Back up on-premises applications data to cloud
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-manage-app-backups.html">
+        Manage protection of applications
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Restore applications data</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-restore-oracle-data.html">
+        Restore Oracle database
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-restore-sql-data.html">
+        Restore SQL Server database
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> Reference</div>
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/reference-aws-backup-tiers.html">
@@ -716,7 +745,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-03-28 18:59:29 +0000">03/28/2022</time>
+    <time datetime="2022-03-30 11:42:06 +0000">03/30/2022</time>
     
   
 
@@ -726,6 +755,14 @@
           alt="netapp-tonacki"
           width="20" height="20"
           src="https://avatars.githubusercontent.com/u/38222299?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+  <a target="_blank" href="https://github.com/netapp-soumikd">
+    <img  class="avatar avatar-small"
+          alt="netapp-soumikd"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/64966556?v=4"
           style="border-radius: 50%;"/>
   </a>
   
@@ -752,6 +789,18 @@
 <div class="sect1">
 <h2 id="03-april-2022">03 April 2022</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="support-for-cloud-backup-for-applications-1-1-0">Support for Cloud Backup for Applications 1.1.0</h3>
+<div class="paragraph">
+<p>You can integrate Cloud Backup for Applications with Cloud Manager and on-premises SnapCenter to back up the application consistent Snapshots from on-premises ONTAP to cloud. When required you can restore from cloud to on-premises SnapCenter Server.</p>
+</div>
+<div class="paragraph">
+<p>You can back up Oracle and Microsoft SQL applications data from on-premises ONTAP to either Amazon Web Services or Microsoft Azure.</p>
+</div>
+<div class="paragraph">
+<p><a href="concept-protect-app-data-to-cloud.html">Learn more about protecting on-premises applications data to cloud</a>.</p>
+</div>
+</div>
 <div class="sect2">
 <h3 id="support-has-been-added-to-back-up-on-premises-ontap-cluster-data-in-sites-without-internet-access">Support has been added to back up on-premises ONTAP cluster data in sites without internet access.</h3>
 <div class="paragraph">

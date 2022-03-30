@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head class="at-element-marker">
-  <title>Learn about Cloud Backup | NetApp Documentation</title>
+  <title>Restore SQL Server database | NetApp Documentation</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="language" content="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="Learn about Cloud Backup | NetApp Documentation" />
+  <meta property="og:title" content="Restore SQL Server database | NetApp Documentation" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html" />
-	<meta property="og:description" content="Cloud Backup is a service for Cloud Manager working environments that provides backup and restore capabilities for protection and long-term archive of your d..." />
+	<meta property="og:url" content="https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-sql-data.html" />
+	<meta property="og:description" content="You can restore SQL Server database from the cloud to the on-premises SnapCenter Server." />
   <meta property="og:image" content="https://docs.netapp.com/us-en/cloud-manager-backup-restore/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Cloud Backup is a service for Cloud Manager working environments that provides backup and restore capabilities for protection and long-term archive of your d...">
-  <meta name="keywords" content=" backing up, restoring, back up, backup, restore, cloud volumes ontap, aws, azure, s3, blob, google cloud, storagegrid, back up volumes, cloud backup, restore volumes, billing, cost, on-premises ontap, onprem, kubernetes, applications"><!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="You can restore SQL Server database from the cloud to the on-premises SnapCenter Server.">
+  <meta name="keywords" content=" restore, Azure, Amazon Web services, Microsoft SQL Server database"><!-- Icons -->
   <link rel="icon" href="/us-en/cloud-manager-backup-restore/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><link rel="alternate" type="application/rss+xml" title="NetApp Documentation" href="/us-en/cloud-manager-backup-restore/feed.xml"><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -149,8 +149,8 @@
   <div class="page-nav-toolbar">
     <div id="version-dropdown"></div>
     <div class="page-nav-contribute"  >
-      <a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/issues/new?body=Page%3A%20[Learn about Cloud Backup](https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html)" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/discuss-sm.svg" class="github-icon" />Request doc changes</a>
-      <a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/blob/main/concept-backup-to-cloud.adoc" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/edit-sm.svg" class="github-icon" />Edit this page</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/issues/new?body=Page%3A%20[Restore SQL Server database](https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-sql-data.html)" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/discuss-sm.svg" class="github-icon" />Request doc changes</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/blob/main/task-restore-sql-data.adoc" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/edit-sm.svg" class="github-icon" />Edit this page</a>
       <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/us-en/cloud-manager-backup-restore/images/article-sm.svg" class="github-icon" />Learn how to contribute</a>
     </div>
     <div class="page-nav-container">
@@ -328,15 +328,6 @@
             Get started
           </a>
           
-    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
-  <a target="_blank" href="/us-en/cloud-manager-backup-restore/pdfs/pages/concept-backup-to-cloud.pdf" >
-    <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
-    PDF of this page
-  </a>
-</li>
-
-</ul>
-  
 
 
 
@@ -462,6 +453,15 @@
           
 
 
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/us-en/cloud-manager-backup-restore/pdfs/pages/task-restore-sql-data.pdf" >
+    <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
 
 
 
@@ -608,7 +608,7 @@
       </a></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> Get started</div>
       </a>
-      <ul><li class="  active "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html">
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html">
         Learn about Cloud Backup
       </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-licensing-cloud-backup.html">
         Set up licensing
@@ -666,7 +666,7 @@
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-restore-oracle-data.html">
         Restore Oracle database
-      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-restore-sql-data.html">
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-restore-sql-data.html">
         Restore SQL Server database
       </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> Reference</div>
@@ -738,31 +738,23 @@
 </div>
 
       <div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">Learn about Cloud Backup</h1>
+  <h1 class="n-doc__component-detail-heading">Restore SQL Server database</h1>
 </div>
 
 
 <p class="page-details">
   
     
-    <time datetime="2022-03-28 18:59:29 +0000">03/28/2022</time>
+    <time datetime="2022-03-30 11:11:54 +0000">03/30/2022</time>
     
   
 
 <span>Contributors
-  <a target="_blank" href="https://github.com/netapp-tonacki">
+  <a target="_blank" href="https://github.com/netapp-soumikd">
     <img  class="avatar avatar-small"
-          alt="netapp-tonacki"
+          alt="netapp-soumikd"
           width="20" height="20"
-          src="https://avatars.githubusercontent.com/u/38222299?v=4"
-          style="border-radius: 50%;"/>
-  </a>
-  
-  <a target="_blank" href="https://github.com/pradiptd0">
-    <img  class="avatar avatar-small"
-          alt="pradiptd0"
-          width="20" height="20"
-          src="https://avatars.githubusercontent.com/u/96762594?v=4"
+          src="https://avatars.githubusercontent.com/u/64966556?v=4"
           style="border-radius: 50%;"/>
   </a>
   
@@ -771,104 +763,122 @@
 
 </p>
 
-<div id="preamble">
-<div class="sectionbody">
 <div class="paragraph lead">
-<p>Cloud Backup is a service for Cloud Manager working environments that provides backup and restore capabilities for protection and long-term archive of your data. Backups are automatically generated and stored in an object store in your public or private cloud account.</p>
+<p>You can restore SQL Server database either to the same host or to the alternate host. Recovery of log backups and reseed of availability groups are not supported.</p>
 </div>
 <div class="paragraph">
-<p>When necessary, you can restore an entire <em>volume</em> from a backup to the same or different working environment. When backing up ONTAP data, you can also choose to restore or one or more <em>files</em> from a backup to the same or different working environment.</p>
+<p><strong>Steps</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In Cloud Manager UI, click <strong>Backup &amp; Restore</strong> &gt; <strong>Applications</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Filter By</strong> field, select the filter <strong>Type</strong> and from the drop-down select <strong>SQL</strong>.</p>
+</li>
+<li>
+<p>Click <strong>View Details</strong> to view all the available backups.</p>
+</li>
+<li>
+<p>Select the backup and click <strong>Restore</strong>.</p>
+</li>
+<li>
+<p>Select the location where you want to restore the database files.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Option</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Restore the database to the same host where the backup was created</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Select this option if you want to restore the database to the same SQL server where the backups are taken.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Restore the database to an alternate host</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Select this option if you want the database to be restored to a different SQL server in the same or different host where backups are taken.</p>
 </div>
 <div class="paragraph">
-<p><a href="https://cloud.netapp.com/cloud-backup-service" target="_blank" rel="noopener">Learn more about Cloud Backup</a>.</p>
+<p>Select a host name, provide a database name (optional), select an instance, and specify the restore paths.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-backup-restore/images/note.svg" alt="Note">
+</td>
+<td class="content">
+The file extension provided in the alternate path must be same as the file extension of the original database file.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Backup &amp; Restore can be used to:</p>
-</div>
+<p>If the <strong>Restore the database to an alternate host</strong> option is not displayed in the Restore Scope page, clear the browser cache.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>On the <strong>Pre Restore Options</strong> page, select one of the following options:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Back up and Restore ONTAP volumes from Cloud Volumes ONTAP and on-premises ONTAP systems. <a href="concept-ontap-backup-to-cloud.html">See detailed features here</a>.</p>
+<p>Select <strong>Overwrite the database with same name during restore</strong> to restore the database with the same name.</p>
 </li>
 <li>
-<p>Back up and Restore Kubernetes persistent volumes.<a href="concept-kubernetes-backup-to-cloud.html">See detailed features here</a>.</p>
-</li>
-<li>
-<p>Back up application data&#8230;&#8203;..<a href=".html">See detailed features here</a>.</p>
+<p>Select <strong>Retain SQL database replication settings</strong> to restore the database and retain the existing replication settings.</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="how-cloud-backup-works">How Cloud Backup works</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>When you enable Cloud Backup on a Cloud Volumes ONTAP or on-premises ONTAP system, the service performs a full backup of your data. Volume snapshots are not included in the backup image. After the initial backup, all additional backups are incremental, which means that only changed blocks and new blocks are backed up. This keeps network traffic to a minimum.</p>
-</div>
-<div class="paragraph">
-<p>In most cases you&#8217;ll use the Cloud Manager UI for all backup operations. However, starting with ONTAP 9.9.1 you can initiate volume backup operations of your on-premises ONTAP clusters using ONTAP System Manager. <a href="https://docs.netapp.com/us-en/ontap/task_cloud_backup_data_using_cbs.html" target="_blank" rel="noopener">See how to use System Manager to back up your volumes to the cloud using Cloud Backup.</a></p>
-</div>
-<div class="paragraph">
-<p>The following image shows the relationship between each component:</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="./media/diagram_cloud_backup_general.png" alt="A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination object storage where the backup files are located."></span></p>
-</div>
-<div class="sect2">
-<h3 id="where-backups-reside">Where backups reside</h3>
-<div class="paragraph">
-<p>Backup copies are stored in an object store that Cloud Manager creates in your cloud account. There’s one object store per cluster/working environment, and Cloud Manager names the object store as follows: "netapp-backup-clusteruuid". Be sure not to delete this object store.</p>
-</div>
+</li>
+<li>
+<p>On the <strong>Post Restore Options</strong> page, to specify the database state for restoring additional transactional logs, select one of the following options:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>In AWS, Cloud Manager enables the <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html" target="_blank" rel="noopener">Amazon S3 Block Public Access feature</a> on the S3 bucket.</p>
+<p>Select <strong>Operational, but unavailable</strong> if you are restoring all of the necessary backups now.</p>
+<div class="paragraph">
+<p>This is the default behavior, which leaves the database ready for use by rolling back the uncommitted transactions. You cannot restore additional transaction logs until you create a backup.</p>
+</div>
 </li>
 <li>
-<p>In Azure, Cloud Manager uses a new or existing resource group with a storage account for the Blob container. Cloud Manager <a href="https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent">blocks public access to your blob data</a> by default.</p>
+<p>Select <strong>Non-operational, but available</strong> to leave the database non-operational without rolling back the uncommitted transactions.</p>
+<div class="paragraph">
+<p>Additional transaction logs can be restored. You cannot use the database until it is recovered.</p>
+</div>
 </li>
 <li>
-<p>In GCP, Cloud Manager uses a new or existing project with a storage account for the Google Cloud Storage bucket.</p>
-</li>
-<li>
-<p>In StorageGRID, Cloud Manager uses an existing storage account for the object store bucket.</p>
+<p>Select <strong>Read-only mode, and available</strong> to leave the database in read-only mode.</p>
+<div class="paragraph">
+<p>This option undoes uncommitted transactions, but saves the undone actions in a standby file so that recovery effects can be reverted.</p>
+</div>
+<div class="paragraph">
+<p>If the Undo directory option is enabled, more transaction logs are restored. If the restore operation for the transaction log is unsuccessful, the changes can be rolled back. The SQL Server documentation contains more information.</p>
+</div>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="backups-are-taken-at-midnight">Backups are taken at midnight</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Hourly backups start 5 minutes past the hour, every hour.</p>
 </li>
 <li>
-<p>Daily backups start just after midnight each day.</p>
+<p>Review the details and click <strong>Restore</strong>.</p>
 </li>
-<li>
-<p>Weekly backups start just after midnight on Sunday mornings.</p>
-</li>
-<li>
-<p>Monthly backups start just after midnight on the first day of each month.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The start time is based on the time zone set on each source ONTAP system. You can’t schedule backup operations at a user-specified time from the UI. For more information, contact your System Engineer.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="backup-copies-are-associated-with-your-netapp-account">Backup copies are associated with your NetApp account</h3>
-<div class="paragraph">
-<p>Backup copies are associated with the <a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-netapp-accounts.html" target="_blank" rel="noopener">NetApp account</a> in which the Connector resides.</p>
-</div>
-<div class="paragraph">
-<p>If you have multiple Connectors in the same NetApp account, each Connector will display the same list of backups. That includes the backups associated with Cloud Volumes ONTAP and on-premises ONTAP instances from other Connectors.</p>
-</div>
-</div>
-</div>
+</ol>
 </div>
 
     </article>
