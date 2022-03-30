@@ -1,0 +1,73 @@
+---
+sidebar: sidebar
+permalink: concept-protect-app-data-to-cloud.html
+keywords: backing up, back up, backup, backup application data, Azure, Amazon Web services, Cloud Backup, Oracle database, Microsoft SQL Server database, policy, requirements
+summary:  Integrate Cloud Backup for Applications with Cloud Manager and on-premises SnapCenter to back up the application consistent Snapshots from on-premises ONTAP to cloud.
+---
+
+= Protect your on-premises applications data
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+You can integrate Cloud Backup for Applications with Cloud Manager and on-premises SnapCenter to back up the application consistent Snapshots from on-premises ONTAP to cloud. When required you can restore from cloud to on-premises SnapCenter Server.
+
+You can back up Oracle and Microsoft SQL applications data from on-premises ONTAP to either Amazon Web Services or Microsoft Azure.
+
+NOTE: You should be using SnapCenter Software 4.6.
+
+== Requirements
+
+Read the following requirements to make sure that you have a supported configuration before you start backing up application data to cloud services.
+
+* ONTAP 9.8 or later
+* Cloud Manager 3.9
+* SnapCenter Server 4.6
+* At least one backup per application should be available in SnapCenter Server
+* At least one daily, weekly, or monthly policy in SnapCenter with no label or same label as that of the Cloud Backup for Applications policy in Cloud Manager.
+
+The following image shows each component and the connections that you need to prepare between them:
+
+image:diagram_cloud_backup_app.png[A diagram showing how Cloud Backup communicates with the on-premises applications and the destination storage where the backup files are located.]
+
+== Protection Policies
+
+You should use the one of the policies defined in Cloud Backup for Applications to back up the application data to cloud.
+
+NOTE: Custom policies are not supported.
+
+|===
+| Policy Name | Label | Retention Value
+
+a|
+1 Year Daily LTR
+a|
+Daily
+a|
+366
+a|
+5 Years Daily LTR
+a|
+Daily
+a|
+1830
+a|
+7 Year Weekly LTR
+a|
+Weekly
+a|
+370
+a|
+10 Year Monthly LTR
+a|
+Monthly
+a|
+120
+|===
+The labels and retention value of these policies can be modified using the REST API until the policy is associated with an application. Only one policy can be associated with an application and once associated, you cannot dissociate.
+
+In addition to the Cloud Backup for Applications policies, you would also need at least one SnapCenter policy to back up the application data to cloud.

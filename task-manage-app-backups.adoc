@@ -1,0 +1,108 @@
+---
+sidebar: sidebar
+permalink: task-manage-app-backups.html
+keywords: manage, Azure, Amazon Web services, Oracle database, Microsoft SQL Server database, backups, policy, monitor, jobs, monitor jobs
+summary: You can view the policies and backups. Depending upon the change in database, policies, or resource groups, you can refresh the updates from the Cloud Manager UI.
+---
+
+= Manage protection of applications
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+You can view the policies and backups. Depending upon the change in database, policies, or resource groups, you can refresh the updates from the Cloud Manager UI.
+
+== View policies
+
+You can view all the default pre-canned policies. For each of these policies, when you view the details all the associated Cloud Backup for Applications policies and all the associated applications are listed.
+
+. Click *Backup & Restore* > *Applications*.
+. From the *Settings* drop-down, click *Policies*.
+. Click *View Details* corresponding to policy whose details you want to view.
++
+The associated Cloud Backup for Applications policies and all the applications are listed.
++
+NOTE: You should not delete the Cloud Backup for Applications policies.
+
+You can also view cloud extended SnapCenter policies, by running the `Get-SmResources` SnapCenter cmdlet.
+The information regarding the parameters that can be used with the cmdlet and their descriptions can be obtained by running Get-Help command_name. Alternatively, you can also refer the https://library.netapp.com/ecm/ecm_download_file/ECMLP2880726[SnapCenter Software Cmdlet Reference Guide].
+
+== View backups on cloud
+
+You can view the backups on cloud in the Cloud Manager UI.
+
+. Click *Backup & Restore* > *Applications*.
+. Click image:icon-action.png[icon to select the action] corresponding to the application and click *View Details*.
+
+IMPORTANT: The time taken for the backups to be listed depends on ONTAP's default replication schedule (maximum of 1 hour) and Cloud Manager (maximum of 6 hours).
+
+* For Oracle databases, both data and log backups, SCN number for each backup, end date for each backup are listed. You can select only the data backup and restore the database to on-premises SnapCenter Server.
+* For Microsoft SQL Server databases, only the full backups and the end date for each backup are listed. You can select the backup and restore the database to on-premises SnapCenter Server.
+* For Microsoft SQL Server instance, backups are not listed instead only the databases under that instance is listed.
+
+NOTE: The backups created before enabling cloud protection are not listed for restore.
+//Documented this for JIRA: AMS-8562
+
+You can also view these backups by running the `Get-SmBackup` SnapCenter cmdlet.
+The information regarding the parameters that can be used with the cmdlet and their descriptions can be obtained by running Get-Help command_name. Alternatively, you can also refer the https://library.netapp.com/ecm/ecm_download_file/ECMLP2880726[SnapCenter Software Cmdlet Reference Guide].
+
+== Database layout change
+
+When volumes are added to the database, SnapCenter Server will label the snapshots on the new volumes automatically as per the policy and the schedule. These new volumes will not have the object store endpoint and you should refresh by executing the following steps:
+
+. Click *Backup & Restore* > *Applications*.
+. From the *Settings* drop-down, click *SnapCenter Servers*.
+. Click image:icon-action.png[icon to select the action] corresponding to the SnapCenter Server hosting the application and click *Refresh*.
++
+The new volumes are discovered.
+. Click image:icon-action.png[icon to select the action] corresponding to the application and click *Refresh Protection* to enable cloud protection for the new volume.
+
+If a storage volume is removed from the application after configuring the cloud service, for new backups SnapCenter Server will only label the snapshots on which the application is residing. If the removed volume is not used by any other applications, then you should manually delete the object store relationship.
+If you update the application inventory, it will contain the current storage layout of the application.
+
+== Policy or resource group change
+
+If there is a change to the SnapCenter policy or resource group, you should refresh the protection.
+
+. Click *Backup & Restore* > *Applications*.
+. Click image:icon-action.png[icon to select the action] corresponding to the application and click *Refresh Protection*.
+
+== Monitor Jobs
+
+Jobs are created for all the Cloud Backup operations. You can monitor all the jobs and all the sub tasks that are performed as part of each task.
+
+. Click *Backup & Restore* > *Job Monitoring*.
++
+When you initiate an operation, a window appears stating that the job is initiated. You can click the link to monitor the job.
+. Click the primary task to view the sub tasks and status of each of these sub tasks.
+
+== Configure CA Certificates
+
+If you have CA certificates, you should manually copy the root CA certificates to the connector machine.
+
+However, if you do not have CA certificates, you can proceed without configuring CA certificates.
+
+*Steps*
+
+. Copy the certificate to the volume that can be accessed from the docker agent.
++
+** `cd /var/lib/docker/volumes/cloudmanager_snapcenter_volume/_data/mkdir sc_certs`
+** `chmod 777 sc_certs`
+. Copy the RootCA certificate files to the above folder on the connector machine.
++
+`cp <path on connector>/<filename> /var/lib/docker/volumes/cloudmanager_snapcenter_volume/_data/sc_certs`
+. Copy the CRL file to the volume which can be accessed from the docker agent.
++
+** `cd /var/lib/docker/volumes/cloudmanager_snapcenter_volume/_data/mkdir sc_crl`
+** `chmod 777 sc_crl`
+. Copy the CRL files to the above folder on the connector machine.
++
+`cp <path on connector>/<filename> /var/lib/docker/volumes/cloudmanager_snapcenter_volume/_data/sc_crl`
+. After copying the certificates and CRL files, restart the Cloud Backup for Apps service.
++
+** `sudo docker exec cloudmanager_snapcenter sed -i 's/skipSCCertValidation: true/skipSCCertValidation: false/g' /opt/netapp/cloudmanager-snapcenter-agent/config/config.yml`
+** `sudo docker restart cloudmanager_snapcenter`

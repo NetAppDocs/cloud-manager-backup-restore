@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: task-restore-sql-data.html
+keywords: restore, Azure, Amazon Web services, Microsoft SQL Server database
+summary: You can restore SQL Server database from the cloud to the on-premises SnapCenter Server.
+---
+
+= Restore SQL Server database
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can restore SQL Server database either to the same host or to the alternate host. Recovery of log backups and reseed of availability groups are not supported.
+
+*Steps*
+
+. In Cloud Manager UI, click *Backup & Restore* > *Applications*.
+. In the *Filter By* field, select the filter *Type* and from the drop-down select *SQL*.
+. Click *View Details* to view all the available backups.
+. Select the backup and click *Restore*.
+. Select the location where you want to restore the database files.
++
+|===
+| Option | Description
+
+a|
+Restore the database to the same host where the backup was created
+a|
+Select this option if you want to restore the database to the same SQL server where the backups are taken.
+a|
+Restore the database to an alternate host
+a|
+Select this option if you want the database to be restored to a different SQL server in the same or different host where backups are taken.
+
+Select a host name, provide a database name (optional), select an instance, and specify the restore paths.
+
+NOTE: The file extension provided in the alternate path must be same as the file extension of the original database file.
+
+If the *Restore the database to an alternate host* option is not displayed in the Restore Scope page, clear the browser cache.
+|===
+
+. On the *Pre Restore Options* page, select one of the following options:
+** Select *Overwrite the database with same name during restore* to restore the database with the same name.
+** Select *Retain SQL database replication settings* to restore the database and retain the existing replication settings.
+
+. On the *Post Restore Options* page, to specify the database state for restoring additional transactional logs, select one of the following options:
+** Select *Operational, but unavailable* if you are restoring all of the necessary backups now.
++
+This is the default behavior, which leaves the database ready for use by rolling back the uncommitted transactions. You cannot restore additional transaction logs until you create a backup.
+
+** Select *Non-operational, but available* to leave the database non-operational without rolling back the uncommitted transactions.
++
+Additional transaction logs can be restored. You cannot use the database until it is recovered.
+
+** Select *Read-only mode, and available* to leave the database in read-only mode.
++
+This option undoes uncommitted transactions, but saves the undone actions in a standby file so that recovery effects can be reverted.
++
+If the Undo directory option is enabled, more transaction logs are restored. If the restore operation for the transaction log is unsuccessful, the changes can be rolled back. The SQL Server documentation contains more information.
+
+. Review the details and click *Restore*.
