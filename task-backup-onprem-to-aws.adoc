@@ -37,10 +37,10 @@ Get started quickly by following these steps, or scroll down to the remaining se
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Enable Cloud Backup on the system
 
 [role="quick-margin-para"]
-Select the working environment and click *Enable* next to the Backup & Restore service in the right-panel, and then follow the setup wizard.
+Select the working environment and click *Enable > Backup Volumes* next to the Backup & Restore service in the right-panel, and then follow the setup wizard.
 
 [role="quick-margin-para"]
-image:screenshot_backup_cvo_enable.png[A screenshot that shows the Backup & Restore Enable button which is available after you select a working environment.]
+image:screenshot_backup_onprem_enable.png[A screenshot that shows the Backup & Restore Enable button which is available after you select a working environment.]
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Select the cloud provider and enter the provider details
 
@@ -256,9 +256,9 @@ Enable Cloud Backup at any time directly from the on-premises working environmen
 
 .Steps
 
-. From the Canvas, select the working environment and click *Enable* next to the Backup & Restore service in the right-panel.
+. From the Canvas, select the working environment and click *Enable > Backup Volumes* next to the Backup & Restore service in the right-panel.
 +
-image:screenshot_backup_cvo_enable.png[A screenshot that shows the Backup & Restore Enable button which is available after you select a working environment.]
+image:screenshot_backup_onprem_enable.png[A screenshot that shows the Backup & Restore Enable button which is available after you select a working environment.]
 
 . Select Amazon Web Services as your provider and click *Next*.
 
