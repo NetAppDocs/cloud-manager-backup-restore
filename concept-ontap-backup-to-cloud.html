@@ -772,7 +772,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-03-28 18:59:29 +0000">03/28/2022</time>
+    <time datetime="2022-03-31 16:33:22 +0000">03/31/2022</time>
     
   
 
@@ -948,12 +948,6 @@ On-premises ONTAP system</p></td>
 <div class="paragraph">
 <p>Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.</p>
 </div>
-<div class="sect2">
-<h3 id="support-for-sites-with-no-internet-connectivity">Support for sites with no internet connectivity</h3>
-<div class="paragraph">
-<p>Cloud Backup can be used in a site with no internet connectivity (also known as an "offline" or "dark" site) to back up volume data from local on-premises ONTAP systems to local NetApp StorageGRID systems. In this case, you&#8217;ll need to deploy the Cloud Manager Connector (minimum version 3.9.17) in the dark site. See <a href="task-backup-onprem-private-cloud.html">Backing up on-premises ONTAP data to StorageGRID</a> for details.</p>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -984,13 +978,13 @@ On-premises ONTAP system</p></td>
 <div class="ulist">
 <ul>
 <li>
-<p>In AWS, the Restore instance runs on an <a href="https://aws.amazon.com/ec2/instance-types/m5/" target="_blank" rel="noopener">m5n.xlarge instance</a> with 4 CPUs, 16 GiB memory, and EBS Only instance storage. The operating system image is Amazon Linux 2.</p>
+<p>In AWS, the Restore instance runs on an <a href="https://aws.amazon.com/ec2/instance-types/m5/" target="_blank" rel="noopener">m5n.xlarge instance</a> with 4 CPUs, 16 GB memory, and EBS Only instance storage. The operating system image is Amazon Linux 2.</p>
 <div class="paragraph">
 <p>In regions where m5n.xlarge instance isn’t available, Restore runs on an m5.xlarge instance instead.</p>
 </div>
 </li>
 <li>
-<p>In Azure, the Restore virtual machine runs on a <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/dv3-dsv3-series#dsv3-series" target="_blank" rel="noopener">Standard_D4s_v3 VM</a> with 4 CPUs, 16 GiB memory, and a 32 GiB disk. The operating system image is CentOS 7.5).</p>
+<p>In Azure, the Restore virtual machine runs on a <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/dv3-dsv3-series#dsv3-series" target="_blank" rel="noopener">Standard_D4s_v3 VM</a> with 4 CPUs, 16 GB memory, and a 32 GiB disk. The operating system image is CentOS 7.5).</p>
 <div class="paragraph">
 <p>The instance is named <em>Cloud-Restore-Instance</em> with your Account ID concatenated to it. For example: <em>Cloud-Restore-Instance-MyAccount</em>.</p>
 </div>
@@ -1005,7 +999,7 @@ On-premises ONTAP system</p></td>
 <p>For Volume or File Restore using Search &amp; Restore, the Amazon Athena and AWS Glue resources are required. A cost is associated with these resources when restoring volumes and files. Search &amp; Restore is supported using AWS A3 only at this time.</p>
 </li>
 <li>
-<p>If you need to restore volume data from a backup file that has been moved to archival storage (supported with AWS and Azure when using ONTAP 9.10.1+), then there is an additional per-GB retrieval fee and per-request fee from the cloud provider.</p>
+<p>If you need to restore volume data from a backup file that has been moved to archival storage (supported with AWS and Azure when using ONTAP 9.10.1+), then there is an additional per-GiB retrieval fee and per-request fee from the cloud provider.</p>
 </li>
 </ul>
 </div>
@@ -1038,7 +1032,7 @@ On-premises ONTAP system</p></td>
 <div class="sect2">
 <h3 id="pay-as-you-go-subscription">Pay-as-you-go subscription</h3>
 <div class="paragraph">
-<p>Cloud Backup offers consumption-based licensing in a pay-as-you-go model. After subscribing through your cloud provider’s marketplace, you pay per GB for data that’s backed up—​there’s no up-front payment. You are billed by your cloud provider through your monthly bill.</p>
+<p>Cloud Backup offers consumption-based licensing in a pay-as-you-go model. After subscribing through your cloud provider’s marketplace, you pay per GiB for data that’s backed up—​there’s no up-front payment. You are billed by your cloud provider through your monthly bill.</p>
 </div>
 <div class="paragraph">
 <p>You should subscribe even if you have a free trial or if you bring your own license (BYOL):</p>
@@ -1054,7 +1048,7 @@ On-premises ONTAP system</p></td>
 <li>
 <p>If you back up more data than allowed by your BYOL license, then data backup continues through your pay-as-you-go subscription.</p>
 <div class="paragraph">
-<p>For example, if you have a 10 TB BYOL license, all capacity beyond the 10 TB is charged through the PAYGO subscription.</p>
+<p>For example, if you have a 10 TiB BYOL license, all capacity beyond the 10 TiB is charged through the PAYGO subscription.</p>
 </div>
 </li>
 </ul>
@@ -1094,7 +1088,7 @@ On-premises ONTAP system</p></td>
 <div class="sect2">
 <h3 id="bring-your-own-license">Bring your own license</h3>
 <div class="paragraph">
-<p>BYOL is term-based (12, 24, or 36 months) <em>and</em> capacity-based in 1 TB increments. You pay NetApp to use the service for a period of time, say 1 year, and for a maximum amount capacity, say 10 TB.</p>
+<p>BYOL is term-based (12, 24, or 36 months) <em>and</em> capacity-based in 1 TiB increments. You pay NetApp to use the service for a period of time, say 1 year, and for a maximum amount capacity, say 10 TiB.</p>
 </div>
 <div class="paragraph">
 <p>You&#8217;ll receive a serial number that you enter in the Cloud Manager Digital Wallet page to enable the service. When either limit is reached, you&#8217;ll need to renew the license. The Backup BYOL license applies to all source systems associated with your <a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-netapp-accounts.html" target="_blank" rel="noopener">Cloud Manager account</a>.</p>
@@ -1371,9 +1365,6 @@ The retention period for backups of data protection volumes is the same as defin
 </li>
 <li>
 <p>File level restore is not supported when using the same account with different Cloud Managers in different subnets.</p>
-</li>
-<li>
-<p>File level restore is not supported when the Connector is installed on a site without internet access (dark site).</p>
 </li>
 </ul>
 </div>
