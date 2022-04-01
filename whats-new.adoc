@@ -26,13 +26,9 @@ You can back up Oracle and Microsoft SQL applications data from on-premises ONTA
 
 link:concept-protect-app-data-to-cloud.html[Learn more about protecting on-premises applications data to cloud].
 
-=== Support has been added to back up on-premises ONTAP cluster data in sites without internet access.
-
-If your on-prem ONTAP cluster resides in a site with no internet access, also known as a dark site or offline site, now you can use Cloud Backup to back up volume data to NetApp StorageGRID systems that resides in the same site. This functionality requires that the Cloud Manager Connector (version 3.9.17 or greater) is deployed in the offline site. link:task-backup-onprem-private-cloud.html[See how to back up data in an offline site].
-
 === New Search & Restore feature to search for volumes or files across all ONTAP backup files.
 
-Now you can search for a volume or file across *all backup files* by partial or full volume name, partial or full file name, size range, and additional search filters. This is a great new way to find the data you want to restore if you are not sure which cluster or volume was the source for the data. link:task-restore-backups-ontap.html#restoring-ontap-data-using-search-restore[Learn how to use Search & Restore].
+Now you can search for a volume or file across *all ONTAP backup files* by partial or full volume name, partial or full file name, size range, and additional search filters. This is a great new way to find the data you want to restore if you are not sure which cluster or volume was the source for the data. link:task-restore-backups-ontap.html#restoring-ontap-data-using-search-restore[Learn how to use Search & Restore].
 
 == 03 March 2022
 
