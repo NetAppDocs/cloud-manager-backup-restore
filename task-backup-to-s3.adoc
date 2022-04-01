@@ -138,10 +138,10 @@ Here are the specific permissions from the policy:
             ]
         },
 
-If you deployed the Connector using version 3.9.15 or greater, these permissions should be part of the IAM role already. Otherwise you'll need to add the missing permissions.
+If you deployed the Connector using version 3.9.15 or greater, these permissions should be part of the IAM role already. Otherwise you'll need to add the missing permissions. Specifically the "athena" and "glue" permissions, as they are required for Search & Restore.
 
 AWS Restore permissions required::
-The following EC2 permissions are needed for the IAM role that provides Cloud Manager with permissions so that it can start, stop, and terminate the Cloud Restore instance:
+The following EC2 permissions are needed for the IAM role that provides Cloud Manager with permissions so that it can start, stop, and terminate the Cloud Restore instance for Browse & Restore operations:
 +
 [source,json]
           "Action": [
