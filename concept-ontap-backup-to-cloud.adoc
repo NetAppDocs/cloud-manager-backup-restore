@@ -114,7 +114,7 @@ The instance is named _Cloud-Restore-Instance_ with your Account ID concatenated
 
 * For Volume Restore using Browse & Restore, there is no cost because no separate instance or virtual machine is required.
 
-* For Volume or File Restore using Search & Restore, the Amazon Athena and AWS Glue resources are required. A cost is associated with these resources when restoring volumes and files. Search & Restore is supported using AWS A3 only at this time.
+* For Volume or File Restore using Search & Restore, the Amazon Athena and AWS Glue resources are required. A cost is associated with these resources when restoring volumes and files. Search & Restore is supported only when restoring data from a backup file in Amazon S3 at this time.
 
 * If you need to restore volume data from a backup file that has been moved to archival storage (supported with AWS and Azure when using ONTAP 9.10.1+), then there is an additional per-GiB retrieval fee and per-request fee from the cloud provider.
 
