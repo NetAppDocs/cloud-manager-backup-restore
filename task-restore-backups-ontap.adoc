@@ -44,10 +44,10 @@ This table provides a comparison of the 2 methods.
 | Browse through a folder-style structure to find the volume or file within a single backup file | Search for a volume or file across *all backup files* by partial or full volume name, partial or full file name, size range, and additional search filters
 | Volume restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. File restore works with backup files stored in Amazon S3 and Azure Blob | Volume and file restore works with backup files stored in Amazon S3
 | Does not handle files that have been renamed or deleted | Handles newly created/deleted/renamed directories and newly created/deleted/renamed files
-| Browse for results across public or private clouds | Browse for results across public clouds, and in the future, across private clouds and local Snapshots copies
+| Browse for results across public or private clouds | Browse for results across public clouds and local Snapshots copies, and in the future, across private clouds
 | Separate Cloud Restore instance is required for file restore | No Cloud Restore instance required
 | No additional Amazon resources required | New bucket and Amazon Athena and AWS Glue resources required per account
-| Cost associated with Cloud Restore instance when restoring files | Cost associated with Amazon Athena and AWS Glue resources when restoring volumes and files
+| Cost associated with Cloud Restore instance when restoring files | Cost associated with Amazon Athena and AWS Glue resources when scanning your backup files and volumes for search results
 | Volume restore from standard and archival tiers. File restore only from standard tiers | Volume and file restore from standard and archival tiers
 
 |===
@@ -271,6 +271,8 @@ The Restore instance is shut down after a certain period of inactivity to save y
 
 You can restore a volume or individual files from an ONTAP backup file using Search & Restore. Search & Restore enables you to search for a specific volume or file from all backups stored on cloud storage for a particular provider, and then perform a restore. You don't need to know the exact working environment name or volume name - the search looks through all volume backup files.
 
+The search operation also looks across all local Snapshot copies that exist for your ONTAP volumes too. Since restoring data from a local Snapshot copy can be faster and less costly than restoring from a backup file, you may want to restore data from the Snapshot. You can restore the Snapshot as a new volume from the Volume Details page on the Canvas.
+
 When you restore a volume from a backup file, Cloud Backup creates a _new_ volume using the data from the backup. You can restore the data as a volume in the original working environment, or to a different working environment that's located in the same cloud account as the source working environment. You can also restore volumes to an on-premises ONTAP system.
 
 You can restore files to the original volume location, to a different volume in the same working environment, or to a different working environment that's using the same cloud account. You can also restore files to a volume on an on-premises ONTAP system.
@@ -321,7 +323,7 @@ Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP
 
 ** Specific Amazon Athena, AWS Glue, and AWS S3 permissions must be added to the user role that provides Cloud Manager with permissions. link:task-backup-onprem-to-aws.html#preparing-amazon-s3-for-backups[Make sure all the permissions are configured correctly].
 +
-Note that if you were already using Cloud Backup using a Connector you configured in the past, you'll need to add the Athena and Glue permissions to the Cloud Manager user role now. These are new, and they are required for Search & Restore.
+Note that if you were already using Cloud Backup with a Connector you configured in the past, you'll need to add the Athena and Glue permissions to the Cloud Manager user role now. These are new, and they are required for Search & Restore.
 
 === Search & Restore process
 
@@ -390,7 +392,9 @@ image:screenshot_restore_step1_search_restore.png["A screenshot showing the sear
 +
 image:screenshot_restore_step2_search_restore.png["A screenshot showing how to view all the backups that match your search criteria."]
 
-. Click *Restore* for the backup file you want to use to restore the volume or file.
+. Click *Restore* for the backup file you want to use to restore the volume or file from the cloud.
++
+Note that the results also identify local volume Snapshot copies that contain the file in your search. The *Restore* button is not functional for Snapshots at this time, but if you want to restore the data from the Snapshot copy instead of from the Backup file, write down the name and location of the volume, open the Volume Details page on the Canvas, and use the *Restore from Snapshot copy* option.
 
 . Select the location where you want the volume or file(s) to be restored and click *Restore*.
 +
