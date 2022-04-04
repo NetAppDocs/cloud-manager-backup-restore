@@ -16,7 +16,7 @@ summary: Learn what's new in Cloud Backup.
 Learn what's new in Cloud Backup.
 
 // tag::whats-new[]
-== 03 April 2022
+== 3 April 2022
 
 === Support for Cloud Backup for Applications 1.1.0
 
@@ -24,17 +24,17 @@ You can integrate Cloud Backup for Applications with Cloud Manager and on-premis
 
 You can back up Oracle and Microsoft SQL applications data from on-premises ONTAP to either Amazon Web Services or Microsoft Azure.
 
-link:concept-protect-app-data-to-cloud.html[Learn more about protecting on-premises applications data to cloud].
+https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-protect-app-data-to-cloud.html[Learn more about protecting on-premises applications data to cloud].
 
 === New Search & Restore feature to search for volumes or files across all ONTAP backup files.
 
-Now you can search for a volume or file across *all ONTAP backup files* by partial or full volume name, partial or full file name, size range, and additional search filters. This is a great new way to find the data you want to restore if you are not sure which cluster or volume was the source for the data. link:task-restore-backups-ontap.html#restoring-ontap-data-using-search-restore[Learn how to use Search & Restore].
+Now you can search for a volume or file across *all ONTAP backup files* by partial or full volume name, partial or full file name, size range, and additional search filters. This is a great new way to find the data you want to restore if you are not sure which cluster or volume was the source for the data. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html#restoring-ontap-data-using-search-restore[Learn how to use Search & Restore].
 
-== 03 March 2022
+== 3 March 2022
 
 === Ability to back up persistent volumes from your GKE Kubernetes clusters to Google Cloud storage.
 
-If your GKE cluster has NetApp Astra Trident installed, and it's using Cloud Volumes ONTAP for GCP as backend storage for the cluster, then you can back up and restore your persistent volumes to and from Google Cloud storage. link:task-backup-kubernetes-to-gcp.html[Go here for details].
+If your GKE cluster has NetApp Astra Trident installed, and it's using Cloud Volumes ONTAP for GCP as backend storage for the cluster, then you can back up and restore your persistent volumes to and from Google Cloud storage. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-kubernetes-to-gcp.html[Go here for details].
 
 === The Beta capability to use Cloud Data Sense to scan your Cloud Backup files has been discontinued in this release.
 
@@ -42,7 +42,7 @@ If your GKE cluster has NetApp Astra Trident installed, and it's using Cloud Vol
 
 === Now you can assign backup policies to individual volumes in a single cluster.
 
-In the past you could assign only a single backup policy to all volumes in a cluster. Now you can create multiple backup policies for a single cluster and apply different policies to different volumes. link:task-managing-backups-ontap#changing-the-policy-assigned-to-existing-volumes[See how to create new backup policies for a cluster and assign them to selected volumes].
+In the past you could assign only a single backup policy to all volumes in a cluster. Now you can create multiple backup policies for a single cluster and apply different policies to different volumes. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-managing-backups-ontap#changing-the-policy-assigned-to-existing-volumes[See how to create new backup policies for a cluster and assign them to selected volumes].
 
 === A new option enables you to automatically apply a default backup policy to newly created volumes.
 
@@ -52,7 +52,7 @@ This option is available when enabling backup in a new working environment, or f
 
 === New Job Monitor is available to see the in-process status of all backup and restore jobs.
 
-The Job Monitor can be very helpful when you have initiated an operation against multiple volumes, like changing the backup policy, or deleting backups, so you can see when the operation has completed on all volumes. link:task-monitor-backup-jobs.html[See how to use the Job Monitor].
+The Job Monitor can be very helpful when you have initiated an operation against multiple volumes, like changing the backup policy, or deleting backups, so you can see when the operation has completed on all volumes. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-monitor-backup-jobs.html[See how to use the Job Monitor].
 // end::whats-new[]
 
 == 2 January 2022
@@ -65,7 +65,7 @@ If your AKS cluster has NetApp Astra Trident installed, and it's using Cloud Vol
 
 Instead of paying NetApp for capacity based on the size of your backup files, now you pay only for the data that you protect, calculated by the logical used capacity (before ONTAP efficiencies) of the source ONTAP volumes which are being backed up. This capacity is also known as Front-End Terabytes (FETB).
 
-== 28 Nov 2021
+== 28 November 2021
 
 === Ability to back up persistent volumes from your EKS Kubernetes clusters to Amazon S3.
 
@@ -75,7 +75,7 @@ If your EKS cluster has NetApp Astra Trident installed, and it's using Cloud Vol
 
 Cloud Backup now supports creating backups of DP volumes that exist on the target ONTAP system in an SVM-DR relationship. There are a few restrictions, so see link:concept-ontap-backup-to-cloud.html#limitations[the limitations] for details.
 
-== 5 Nov 2021
+== 5 November 2021
 
 === Ability to select a private endpoint when restoring a volume to an on-premises ONTAP system.
 
@@ -89,7 +89,7 @@ If your cluster is running ONTAP 9.10.1 or greater, and you're using AWS or Azur
 
 BYOL licensing for Cloud Backup has moved from the Cloud Backup Licenses tab to the Data Services Licenses tab in the Cloud Manager Digital Wallet.
 
-== 4 Oct 2021
+== 4 October 2021
 
 === Backup file size is now available in the Backup page when performing a volume or file restore.
 
