@@ -772,7 +772,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-03-31 17:24:49 +0000">03/31/2022</time>
+    <time datetime="2022-04-01 17:13:30 +0000">04/01/2022</time>
     
   
 
@@ -1104,12 +1104,12 @@ In most cases you&#8217;ll use Cloud Manager for all backup and restore operatio
 </ol>
 </div>
 <div class="paragraph">
-<p>If you deployed the Connector using version 3.9.15 or greater, these permissions should be part of the IAM role already. Otherwise you&#8217;ll need to add the missing permissions.</p>
+<p>If you deployed the Connector using version 3.9.15 or greater, these permissions should be part of the IAM role already. Otherwise you&#8217;ll need to add the missing permissions. Specifically the "athena" and "glue" permissions, as they are required for Search &amp; Restore.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add the following EC2 permissions to the IAM role that provides the Connector with permissions so that it can start, stop, and terminate the Cloud Restore instance:</p>
+<p>Add the following EC2 permissions to the IAM role that provides the Connector with permissions so that it can start, stop, and terminate the Cloud Restore instance for Browse &amp; Restore operations:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">          "Action": [

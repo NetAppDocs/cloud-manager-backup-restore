@@ -9,15 +9,15 @@
   <meta property="og:title" content="Restoring ONTAP data from backup files | NetApp Documentation" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html" />
-	<meta property="og:description" content="Backups are stored in an object store in your cloud account so that you can restore data from a specific point in time. You can restore an entire volume from..." />
+	<meta property="og:description" content="Backups are stored in an object store in your cloud account so that you can restore data from a specific point in time. You can restore an entire ONTAP volum..." />
   <meta property="og:image" content="https://docs.netapp.com/us-en/cloud-manager-backup-restore/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Backups are stored in an object store in your cloud account so that you can restore data from a specific point in time. You can restore an entire volume from...">
-  <meta name="keywords" content=" restoring, restore, restore volumes, restore files, cloud backup, file restore, single file restore, volume restore, browse and restore, search and restore"><!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Backups are stored in an object store in your cloud account so that you can restore data from a specific point in time. You can restore an entire ONTAP volum...">
+  <meta name="keywords" content=" restoring, restore, restore volumes, restore files, cloud backup, file restore, single file restore, volume restore, browse and restore, search and restore, ONTAP"><!-- Icons -->
   <link rel="icon" href="/us-en/cloud-manager-backup-restore/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><link rel="alternate" type="application/rss+xml" title="NetApp Documentation" href="/us-en/cloud-manager-backup-restore/feed.xml"><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -772,7 +772,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-03-28 18:59:29 +0000">03/28/2022</time>
+    <time datetime="2022-04-04 20:04:40 +0000">04/04/2022</time>
     
   
 
@@ -793,13 +793,13 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph lead">
-<p>Backups are stored in an object store in your cloud account so that you can restore data from a specific point in time. You can restore an entire volume from a backup file, or if you only need to restore a few files, you can restore individual files from a backup file.</p>
+<p>Backups are stored in an object store in your cloud account so that you can restore data from a specific point in time. You can restore an entire ONTAP volume from a backup file, or if you only need to restore a few files, you can restore individual files from a backup file.</p>
 </div>
 <div class="paragraph">
-<p>You can restore a <strong>volume</strong> (as a new volume) to the same working environment, to a different working environment that&#8217;s using the same cloud account, or to an on-premises ONTAP system.</p>
+<p>You can restore a <strong>volume</strong> (as a new volume) to the original working environment, to a different working environment that&#8217;s using the same cloud account, or to an on-premises ONTAP system.</p>
 </div>
 <div class="paragraph">
-<p>You can restore <strong>files</strong> to a volume in the same working environment, to a volume in a different working environment that&#8217;s using the same cloud account, or to a volume on an on-premises ONTAP system.</p>
+<p>You can restore <strong>files</strong> to a volume in the original working environment, to a volume in a different working environment that&#8217;s using the same cloud account, or to a volume on an on-premises ONTAP system.</p>
 </div>
 </div>
 </div>
@@ -833,7 +833,7 @@ Cloud Backup must already be activated for at least one working environment and 
 <h2 id="comparing-browse-restore-and-search-restore">Comparing Browse &amp; Restore and Search &amp; Restore</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In broad terms, <em>Browse &amp; Restore</em> is typically better when you need a specific volume or file from the last week, month, or year&#8201;&#8212;&#8201;and you know the name and location of the file, and the date when it was last in good shape. <em>Search &amp; Restore</em> is typically better when you need a volume or file, but you don’t remember the exact name, or the volume in which it resides, or the date when it was last in good shape.</p>
+<p>In broad terms, <em>Browse &amp; Restore</em> is typically better when you need to restore a specific volume or file from the last week or month&#8201;&#8212;&#8201;and you know the name and location of the file, and the date when it was last in good shape. <em>Search &amp; Restore</em> is typically better when you need to restore a volume or file, but you don’t remember the exact name, or the volume in which it resides, or the date when it was last in good shape.</p>
 </div>
 <div class="paragraph">
 <p>This table provides a comparison of the 2 methods.</p>
@@ -855,7 +855,7 @@ Cloud Backup must already be activated for at least one working environment and 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Search for a volume or file across <strong>all backup files</strong> by partial or full volume name, partial or full file name, size range, and additional search filters</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Volume restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud Storage, and NetApp StorageGRID. File restore works with backup files stored in Amazon S3 and Azure Blob</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volume restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. File restore works with backup files stored in Amazon S3 and Azure Blob</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Volume and file restore works with backup files stored in Amazon S3</p></td>
 </tr>
 <tr>
@@ -864,19 +864,19 @@ Cloud Backup must already be activated for at least one working environment and 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Browse for results across public or private clouds</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Browse for results across public clouds, and in the future, across private clouds and local Snapshots copies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Browse for results across public clouds and local Snapshots copies, and in the future, across private clouds</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Separate Cloud Restore instance is required for file restore</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No Cloud Restore instance required</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No extra Amazon resources required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No additional Amazon resources required</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">New bucket and Amazon Athena and AWS Glue resources required per account</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cost associated with Cloud Restore instance when restoring files</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cost associated with Amazon Athena and AWS Glue resources when restoring volumes and files</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cost associated with Amazon Athena and AWS Glue resources when scanning your backup files and volumes for search results</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Volume restore from standard and archival tiers. File restore only from standard tiers</p></td>
@@ -909,7 +909,7 @@ Cloud Backup must already be activated for at least one working environment and 
 <h2 id="restoring-ontap-data-using-browse-restore">Restoring ONTAP data using Browse &amp; Restore</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Before you start restoring a volume or files, you should know the name of the volume or file you want to restore, and the approximate date of the backup file where the volume resides.</p>
+<p>Before you start restoring a volume or file, you should know the name of the volume or file you want to restore, the name of the working environment where the volume resides, and the approximate date of the backup file that you want to restore from.</p>
 </div>
 <div class="paragraph">
 <p><strong>Note:</strong> If the backup file for the volume that you want to restore resides in archival storage (available for AWS and Azure starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur a cost. Additionally, the destination cluster must also be running ONTAP 9.10.1 or greater.</p>
@@ -987,7 +987,7 @@ If the backup file resides in archival storage, only volume restore is supported
 <div class="sect2">
 <h3 id="restoring-volumes-using-browse-restore">Restoring volumes using Browse &amp; Restore</h3>
 <div class="paragraph">
-<p>When you restore a volume from a backup file, Cloud Manager creates a <em>new</em> volume using the data from the backup. You can restore the data to a volume in the same working environment or to a different working environment that&#8217;s located in the same cloud account as the source working environment. You can also restore volumes to an on-premises ONTAP system.</p>
+<p>When you restore a volume from a backup file, Cloud Backup creates a <em>new</em> volume using the data from the backup. You can restore the data to a volume in the original working environment or to a different working environment that&#8217;s located in the same cloud account as the source working environment. You can also restore volumes to an on-premises ONTAP system.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./media/diagram_browse_restore_volume.png" alt="A diagram that shows the flow to perform a volume restore operation using Browse &amp; Restore."></span></p>
@@ -1075,7 +1075,7 @@ If the backup file resides in archival storage, only volume restore is supported
 </div>
 <div class="paragraph">
 <div class="title">Result</div>
-<p>Cloud Manager creates a new volume based on the backup you selected. You can <a href="task-manage-backups-ontap.html">manage the backup settings for this new volume</a> as required.</p>
+<p>Cloud Backup creates a new volume based on the backup you selected. You can <a href="task-manage-backups-ontap.html">manage the backup settings for this new volume</a> as required.</p>
 </div>
 <div class="paragraph">
 <p>Note that restoring a volume from a backup file that resides in archival storage can take many minutes or hours depending on the archive tier and the restore priority. You can click the <strong>Job Monitor</strong> tab to see the restore progress.</p>
@@ -1084,10 +1084,10 @@ If the backup file resides in archival storage, only volume restore is supported
 <div class="sect2">
 <h3 id="restoring-ontap-files-using-browse-restore">Restoring ONTAP files using Browse &amp; Restore</h3>
 <div class="paragraph">
-<p>If you only need to restore a few files from a volume, you can choose to restore individual files instead of restoring the entire volume. You can restore files to a existing volume in the same working environment, or to a different working environment that&#8217;s using the same cloud account. You can also restore files to a volume on an on-premises ONTAP system.</p>
+<p>If you only need to restore a few files from an ONTAP volume backup, you can choose to restore individual files instead of restoring the entire volume. You can restore files to an existing volume in the original working environment, or to a different working environment that&#8217;s using the same cloud account. You can also restore files to a volume on an on-premises ONTAP system.</p>
 </div>
 <div class="paragraph">
-<p>If you select multiple files, all the files are restored to the same destination volume that you choose. If you want to restore files to different volumes, you&#8217;ll need to run the restore process multiple time.</p>
+<p>If you select multiple files, all the files are restored to the same destination volume that you choose. So if you want to restore files to different volumes, you&#8217;ll need to run the restore process multiple times.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1096,7 +1096,7 @@ If the backup file resides in archival storage, only volume restore is supported
 <img src="/us-en/cloud-manager-backup-restore/images/tip.svg" alt="Tip">
 </td>
 <td class="content">
-You can&#8217;t restore individual files if the backup file resides in archival storage. In this case, you can restore files from a newer backup file that has not been archived, you can restore files using Search &amp; Restore, or you can restore the entire volume from the archived backup and then access the files you need.
+You can&#8217;t restore individual files if the backup file resides in archival storage. In this case, you can restore files from a newer backup file that has not been archived, or you can restore the entire volume from the archived backup and then access the files you need, or you can restore files using Search &amp; Restore.
 </td>
 </tr>
 </table>
@@ -1109,13 +1109,16 @@ You can&#8217;t restore individual files if the backup file resides in archival 
 <p>The ONTAP version must be 9.6 or greater in your Cloud Volumes ONTAP or on-premises ONTAP systems to perform file restore operations.</p>
 </li>
 <li>
-<p>Restoring individual files from a backup file uses a separate Restore instance/virtual machine. See the <a href="task-backup-to-s3.html#requirements">AWS Requirements</a> or <a href="task-backup-to-azure.html#requirements">Azure Requirements</a> to make sure your environment is ready.</p>
+<p>Restoring individual files from a backup file uses a separate Restore instance/virtual machine. See the <a href="concept-ontap-backup-to-cloud.html#cost">type of instance that will be deployed for File Restore operations</a> and make sure your environment is ready.</p>
 </li>
 <li>
-<p>Restoring files also requires that specific AWS EC2 permissions are added to the user role that provides Cloud Manager with permissions. <a href="task-backup-onprem-to-aws.html#preparing-amazon-s3-for-backups">Make sure all the permissions are configured correctly</a>.</p>
+<p>Restoring files from backups on Amazon S3 requires that specific AWS EC2 permissions have been added to the user role that provides Cloud Manager with permissions. You&#8217;ll also need to allow outbound internet access to contact certain endpoints. <a href="task-backup-onprem-to-aws.html#preparing-amazon-s3-for-backups">Verify that your configuration is ready to restore files</a>.</p>
 </li>
 <li>
 <p>AWS cross-account restore requires manual action in the AWS console. See the AWS topic <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html" target="_blank" rel="noopener">granting cross-account bucket permissions</a> for details.</p>
+</li>
+<li>
+<p>Restoring files from backups on Azure Blob requires that outbound internet access is available to contact certain endpoints. <a href="task-backup-onprem-to-azure.html#preparing-azure-blob-storage-for-backups">Verify that your configuration is ready to restore files</a>.</p>
 </li>
 </ul>
 </div>
@@ -1143,7 +1146,7 @@ You can&#8217;t restore individual files if the backup file resides in archival 
 <p>Select the location where you want the file(s) to be restored (the working environment, volume, and folder), and click <strong>Restore</strong>.</p>
 </li>
 <li>
-<p>The file(s) are restored, and then the Restore instance is shut down to save costs after a period of inactivity.</p>
+<p>The file(s) are restored, and then the Restore instance is shut down after a period of inactivity to save costs.</p>
 </li>
 </ol>
 </div>
@@ -1157,7 +1160,7 @@ You can&#8217;t restore individual files if the backup file resides in archival 
 <div class="sect3">
 <h4 id="restoring-files-using-browse-restore">Restoring files using Browse &amp; Restore</h4>
 <div class="paragraph">
-<p>Follow these steps to restore files to a volume from a volume backup. You should know the name of the volume and the date of the backup file that you want to use to restore the file, or files. This functionality uses Live Browsing so that you can view the list of directories and files within each backup file.</p>
+<p>Follow these steps to restore files to a volume from an ONTAP volume backup. You should know the name of the volume and the date of the backup file that you want to use to restore the file, or files. This functionality uses Live Browsing so that you can view the list of directories and files within each backup file.</p>
 </div>
 <div class="paragraph">
 <p>The following video shows a quick walkthrough of restoring a single file:</p>
@@ -1189,7 +1192,7 @@ You can&#8217;t restore individual files if the backup file resides in archival 
 </div>
 </li>
 <li>
-<p>Click <strong>Continue</strong> and the Restore instance is started. After a few minutes the Restore instance displays the list of folders and files from the volume backup.</p>
+<p>Click <strong>Continue</strong> and the Restore instance is started. After a few minutes, the list of folders and files from the volume backup are displayed.</p>
 <div class="paragraph">
 <p><strong>Note:</strong> The Restore instance is deployed in your cloud providers' environment the first time you restore a file, so this step could take a few minutes longer the first time.</p>
 </div>
@@ -1280,10 +1283,13 @@ You can&#8217;t restore individual files if the backup file resides in archival 
 <h2 id="restoring-ontap-data-using-search-restore">Restoring ONTAP data using Search &amp; Restore</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can restore a volume or individual files from a backup file using Search &amp; Restore. Search &amp; Restore enables you to search for a specific volume or file from all backups stored on cloud storage for a particular provider, and then perform a restore. You don&#8217;t need to know the exact working environment name or volume name - the search looks through all volume backup files.</p>
+<p>You can restore a volume or individual files from an ONTAP backup file using Search &amp; Restore. Search &amp; Restore enables you to search for a specific volume or file from all backups stored on cloud storage for a particular provider, and then perform a restore. You don&#8217;t need to know the exact working environment name or volume name - the search looks through all volume backup files.</p>
 </div>
 <div class="paragraph">
-<p>When you restore a volume from a backup file, Cloud Manager creates a <em>new</em> volume using the data from the backup. You can restore the data as a volume in the same working environment, or to a different working environment that&#8217;s located in the same cloud account as the source working environment. You can also restore volumes to an on-premises ONTAP system.</p>
+<p>The search operation also looks across all local Snapshot copies that exist for your ONTAP volumes too. Since restoring data from a local Snapshot copy can be faster and less costly than restoring from a backup file, you may want to restore data from the Snapshot. You can restore the Snapshot as a new volume from the Volume Details page on the Canvas.</p>
+</div>
+<div class="paragraph">
+<p>When you restore a volume from a backup file, Cloud Backup creates a <em>new</em> volume using the data from the backup. You can restore the data as a volume in the original working environment, or to a different working environment that&#8217;s located in the same cloud account as the source working environment. You can also restore volumes to an on-premises ONTAP system.</p>
 </div>
 <div class="paragraph">
 <p>You can restore files to the original volume location, to a different volume in the same working environment, or to a different working environment that&#8217;s using the same cloud account. You can also restore files to a volume on an on-premises ONTAP system.</p>
@@ -1338,7 +1344,7 @@ On-premises ONTAP system</p></td>
 </tbody>
 </table>
 <div class="paragraph">
-<p>More cloud providers will be supported in future releases.</p>
+<p>Additional cloud providers will be supported in future releases.</p>
 </div>
 <div class="paragraph">
 <p>Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.</p>
@@ -1373,6 +1379,9 @@ On-premises ONTAP system</p></td>
 <ul>
 <li>
 <p>Specific Amazon Athena, AWS Glue, and AWS S3 permissions must be added to the user role that provides Cloud Manager with permissions. <a href="task-backup-onprem-to-aws.html#preparing-amazon-s3-for-backups">Make sure all the permissions are configured correctly</a>.</p>
+<div class="paragraph">
+<p>Note that if you were already using Cloud Backup with a Connector you configured in the past, you&#8217;ll need to add the Athena and Glue permissions to the Cloud Manager user role now. These are new, and they are required for Search &amp; Restore.</p>
+</div>
 </li>
 </ul>
 </div>
@@ -1396,11 +1405,11 @@ On-premises ONTAP system</p></td>
 <li>
 <p>Enter the search criteria for a volume or file by partial or full volume name, partial or full file name, size range, creation date range, other search filters, and click <strong>Search</strong>.</p>
 <div class="paragraph">
-<p>The Search Results page displays all the backup files that have a file or volume that matches your search criteria.</p>
+<p>The Search Results page displays all the locations that have a file or volume that matches your search criteria.</p>
 </div>
 </li>
 <li>
-<p>Click <strong>View All Backups</strong> for the backup file you want to use to restore the volume or file, and then click <strong>Restore</strong> on the actual backup file you want to use.</p>
+<p>Click <strong>View All Backups</strong> for the location you want to use to restore the volume or file, and then click <strong>Restore</strong> on the actual backup file you want to use.</p>
 </li>
 <li>
 <p>Select the location where you want the volume or file(s) to be restored and click <strong>Restore</strong>.</p>
@@ -1414,7 +1423,7 @@ On-premises ONTAP system</p></td>
 <p><span class="image"><img src="./media/diagram_search_restore_vol_file.png" alt="A diagram that shows the flow to perform a volume or file restore operation using Search &amp; Restore."></span></p>
 </div>
 <div class="paragraph">
-<p>As you can see, you really only need to know a partial volume or file name and Cloud backup searches through all backup files that match your search.</p>
+<p>As you can see, you really only need to know a partial volume or file name and Cloud Backup searches through all backup files that match your search.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1426,7 +1435,7 @@ On-premises ONTAP system</p></td>
 <p>When you enable this functionality, Cloud Backup enables SnapDiff v3 on the SVM for your volumes, and it creates a new bucket in which it provisions the Amazon Athena interactive query service and AWS Glue serverless data integration service.</p>
 </div>
 <div class="paragraph">
-<p>If Indexing has been enabled already for your working environment, go to the next section to restore your data.</p>
+<p>If Indexing has already been enabled for your working environment, go to the next section to restore your data.</p>
 </div>
 <div class="paragraph">
 <p>To enable Indexing for a working environment:</p>
@@ -1448,7 +1457,7 @@ On-premises ONTAP system</p></td>
 <p><span class="image"><img src="./media/screenshot_restore_enable_indexing.png" alt="A screenshot showing the working environments that have activated the Indexed Catalog."></span></p>
 </div>
 <div class="paragraph">
-<p>Depending on the size of the volumes in the working environment, and the number of backup files in the cloud, the initial indexing process could take up to an hour. After that it is updated hourly with incremental changes to stay current.</p>
+<p>Depending on the size of the volumes in the working environment, and the number of backup files in the cloud, the initial indexing process could take up to an hour. After that it is transparently updated hourly with incremental changes to stay current.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1497,7 +1506,10 @@ On-premises ONTAP system</p></td>
 </div>
 </li>
 <li>
-<p>Click <strong>Restore</strong> for the backup file you want to use to restore the volume or file.</p>
+<p>Click <strong>Restore</strong> for the backup file you want to use to restore the volume or file from the cloud.</p>
+<div class="paragraph">
+<p>Note that the results also identify local volume Snapshot copies that contain the file in your search. The <strong>Restore</strong> button is not functional for Snapshots at this time, but if you want to restore the data from the Snapshot copy instead of from the Backup file, write down the name and location of the volume, open the Volume Details page on the Canvas, and use the <strong>Restore from Snapshot copy</strong> option.</p>
+</div>
 </li>
 <li>
 <p>Select the location where you want the volume or file(s) to be restored and click <strong>Restore</strong>.</p>

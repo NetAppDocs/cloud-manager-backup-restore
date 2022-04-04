@@ -772,7 +772,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-03-31 16:33:22 +0000">03/31/2022</time>
+    <time datetime="2022-04-04 20:04:40 +0000">04/04/2022</time>
     
   
 
@@ -852,7 +852,7 @@
 <p>Restores data on a block level, placing the data directly in the location you specify, all while preserving the original ACLs.</p>
 </li>
 <li>
-<p>Browsable file catalog for selecting individual files for single file restore.</p>
+<p>Browsable and searchable file catalog for selecting individual files for single file restore.</p>
 </li>
 </ul>
 </div>
@@ -973,7 +973,7 @@ On-premises ONTAP system</p></td>
 <li>
 <p>For File Restore using Browse &amp; Restore, you pay your cloud provider for compute costs only when the Restore instance is running.</p>
 <div class="paragraph">
-<p>The instance resides in the same subnet as the Connector, and it runs only when browsing a backup file to locate the individual files you want to restore. The instance is turned off when not in use to save costs.</p>
+<p>The instance runs only when browsing a backup file to locate the individual files you want to restore. The instance is turned off when not in use to save costs.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -996,10 +996,10 @@ On-premises ONTAP system</p></td>
 <p>For Volume Restore using Browse &amp; Restore, there is no cost because no separate instance or virtual machine is required.</p>
 </li>
 <li>
-<p>For Volume or File Restore using Search &amp; Restore, the Amazon Athena and AWS Glue resources are required. A cost is associated with these resources when restoring volumes and files. Search &amp; Restore is supported using AWS A3 only at this time.</p>
+<p>For Volume or File Restore using Search &amp; Restore, the Amazon Athena and AWS Glue resources are used to search through your volumes and backup files. A per-TiB cost is associated with the amount of data that is scanned by your search requests. Search &amp; Restore is supported only when restoring data from a backup file in Amazon S3 at this time.</p>
 </li>
 <li>
-<p>If you need to restore volume data from a backup file that has been moved to archival storage (supported with AWS and Azure when using ONTAP 9.10.1+), then there is an additional per-GiB retrieval fee and per-request fee from the cloud provider.</p>
+<p>If you need to restore volume data from a backup file that has been moved to archival storage (supported with AWS and Azure when using ONTAP 9.10.1+), then there&#8217;s an additional per-GiB retrieval fee and per-request fee from the cloud provider.</p>
 </li>
 </ul>
 </div>
