@@ -819,7 +819,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-04 20:04:40 +0000">04/04/2022</time>
+    <time datetime="2022-04-05 16:35:01 +0000">04/05/2022</time>
     
   
 
@@ -911,7 +911,7 @@ Cloud Backup must already be activated for at least one working environment and 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Browse for results across public or private clouds</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Browse for results across public clouds and local Snapshots copies, and in the future, across private clouds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Browse for results across public clouds and local Snapshots copies</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Separate Cloud Restore instance is required for file restore</p></td>
@@ -922,12 +922,8 @@ Cloud Backup must already be activated for at least one working environment and 
 <td class="tableblock halign-left valign-top"><p class="tableblock">New bucket and Amazon Athena and AWS Glue resources required per account</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cost associated with Cloud Restore instance when restoring files</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cost associated with Amazon Athena and AWS Glue resources when scanning your backup files and volumes for search results</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Volume restore from standard and archival tiers. File restore only from standard tiers</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Volume and file restore from standard and archival tiers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cost associated with Cloud Restore instance when browsing backups for individual files</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cost associated with Amazon Athena and AWS Glue resources when scanning your backups and volumes for search results</p></td>
 </tr>
 </tbody>
 </table>
@@ -1342,7 +1338,7 @@ You can&#8217;t restore individual files if the backup file resides in archival 
 <p>You can restore files to the original volume location, to a different volume in the same working environment, or to a different working environment that&#8217;s using the same cloud account. You can also restore files to a volume on an on-premises ONTAP system.</p>
 </div>
 <div class="paragraph">
-<p>If the backup file for the volume that you want to restore resides in archival storage (available for AWS starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur additional cost. Note that the destination cluster must also be running ONTAP 9.10.1 or greater.</p>
+<p>If the backup file for the volume that you want to restore resides in archival storage (available for AWS starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur additional cost. Note that the destination cluster must also be running ONTAP 9.10.1 or greater, and that file restore from archival storage is not currently supported.</p>
 </div>
 <div class="paragraph">
 <p><a href="reference-aws-backup-tiers.html">Learn more about restoring from AWS archival storage</a>.</p>
