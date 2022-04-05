@@ -79,6 +79,10 @@ Configure the ONTAP cluster that hosts the SVM on which the application is runni
 +
 Cloud Backup for Applications supports only cluster admin.
 .. Click *Add Working Environment*.
++
+NOTE: You should not proceed until the working environment details are updated. It might take up to 30 minutes for the working environment details to be updated. After 30 minutes, you should close the wizard and retry from step 1 to view the working environment details.
+After retrying if the working environment details are not updated, ensure that you have added the right working environment.
+
 . Select and configure the cloud provider.
 +
 [role="tabbed-block"]
