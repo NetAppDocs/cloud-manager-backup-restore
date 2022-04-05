@@ -24,7 +24,7 @@ Get started quickly by following these steps or scroll down to the remaining sec
 [role="quick-margin-list"]
 * You're running Cloud Volumes ONTAP 9.7P5 or later in Azure.
 * You have a valid cloud provider subscription for the storage space where your backups will be located.
-* You have subscribed to the https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview[Cloud Manager Marketplace Backup offering^], or you have purchased link:task-licensing-cloud-backup.html#use-cloud-backup-byol-licenses[and activated^] a Cloud Backup BYOL license from NetApp.
+* You have subscribed to the https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview[Cloud Manager Marketplace Backup offering^], or you have purchased link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[and activated^] a Cloud Backup BYOL license from NetApp.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Enable Cloud Backup on your new or existing system
 
@@ -75,7 +75,7 @@ Cloud Volumes ONTAP 9.7P5 and later.
 License requirements::
 For Cloud Backup PAYGO licensing, a subscription through the Azure Marketplace is required before you enable Cloud Backup. Billing for Cloud Backup is done through this subscription. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-azure.html[You can subscribe from the Details & Credentials page of the working environment wizard^].
 +
-For Cloud Backup BYOL licensing, you need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-cloud-backup-byol-licenses[Learn how to manage your BYOL licenses].
+For Cloud Backup BYOL licensing, you need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[Learn how to manage your BYOL licenses].
 +
 And you need to have a Microsoft Azure subscription for the storage space where your backups will be located.
 

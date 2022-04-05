@@ -54,6 +54,7 @@ image:screenshot_backup_manage_policy_page_edit.png[A screenshot that shows the 
 image:screenshot_backup_edit_policy.png[A screenshot that shows the backup policy settings where you can modify the backup schedule and backup retention setting.]
 +
 If your cluster is running ONTAP 9.10.1 or greater, and you are using AWS or Azure for your cloud storage, you also have the option to enable or disable tiering of backups to archival storage after a certain number of days.
++
 link:reference-azure-backup-tiers.html[Learn more about using Azure archival storage].
 link:reference-aws-backup-tiers.html[Learn more about using AWS archival storage].
 +
@@ -111,6 +112,7 @@ image:screenshot_backup_manage_policy_page_add.png[A screenshot that shows the A
 image:screenshot_backup_add_new_policy.png[A screenshot that shows the backup policy settings where you can add the backup schedule and backup retention setting.]
 +
 If your cluster is running ONTAP 9.10.1 or greater, and you are using AWS or Azure for your cloud storage, you also have the option to enable or disable tiering of backups to archival storage after a certain number of days.
++
 link:reference-azure-backup-tiers.html[Learn more about using Azure archival storage].
 link:reference-aws-backup-tiers.html[Learn more about using AWS archival storage].
 +
@@ -204,7 +206,7 @@ image:screenshot_delete_all_backups.png[A screenshot of selecting the Delete All
 
 Deleting all backups for a volume also disables future backups for that volume.
 
-You can <<Starting and stopping backups of volumes,restart making backups for the volume>> at any time from the Manage Backups page.
+You can <<Enabling and disabling backups of volumes,restart making backups for the volume>> at any time from the Manage Backups page.
 
 .Steps
 

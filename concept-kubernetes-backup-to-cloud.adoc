@@ -36,7 +36,7 @@ Restore features:
 
 Cloud Backup enables you to back up Kubernetes volumes from the following working environments to object storage in the following public and private cloud providers:
 
-[cols=2*,options="header",cols="40,40",width="85%"]
+[cols=2*,options="header",cols="45,40",width="85%"]
 |===
 
 | Source Working Environment
@@ -53,7 +53,7 @@ Cloud Backup enables you to back up Kubernetes volumes from the following workin
 
 You can restore a volume from a Kubernetes backup file to the following working environments:
 
-[cols=2*,options="header",cols="40,40",width="85%"]
+[cols=2*,options="header",cols="40,45",width="85%"]
 |===
 
 | Backup File Location
@@ -120,9 +120,9 @@ When you enable Cloud Backup on a Kubernetes system, the service performs a full
 
 CAUTION: Any actions taken directly from your cloud provider environment to manage or change backup files may corrupt the files and will result in an unsupported configuration.
 
-The following image shows the relationship between each component:
-
-image:diagram_cloud_backup_general.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination object storage where the backup files are located.]
+// The following image shows the relationship between each component:
+//
+// image:diagram_cloud_backup_general.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination object storage where the backup files are located.]
 
 === Supported storage classes or access tiers
 

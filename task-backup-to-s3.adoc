@@ -24,7 +24,7 @@ Get started quickly by following these steps or scroll down to the remaining sec
 [role="quick-margin-list"]
 * You're running Cloud Volumes ONTAP 9.6 or later in AWS.
 * You have a valid cloud provider subscription for the storage space where your backups will be located.
-* You have subscribed to the https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa[Cloud Manager Marketplace Backup offering], an https://aws.amazon.com/marketplace/pp/B086PDWSS8[AWS annual contract], or you have purchased link:task-licensing-cloud-backup.html#use-cloud-backup-byol-licenses[and activated] a Cloud Backup BYOL license from NetApp.
+* You have subscribed to the https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa[Cloud Manager Marketplace Backup offering], an https://aws.amazon.com/marketplace/pp/B086PDWSS8[AWS annual contract], or you have purchased link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[and activated] a Cloud Backup BYOL license from NetApp.
 * The IAM role that provides the Cloud Manager Connector with permissions includes S3 permissions from the latest https://mysupport.netapp.com/site/info/cloud-manager-policies[Cloud Manager policy^].
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Enable Cloud Backup on your new or existing system
@@ -80,7 +80,7 @@ For an annual contract that enables you to back up both Cloud Volumes ONTAP data
 +
 For an annual contract that enables you to bundle Cloud Volumes ONTAP and Cloud Backup, you must set up the annual contract when you create a Cloud Volumes ONTAP working environment. This option doesn't enable you to back up on-prem data.
 +
-For Cloud Backup BYOL licensing, you need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-cloud-backup-byol-licenses[Learn how to manage your BYOL licenses].
+For Cloud Backup BYOL licensing, you need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[Learn how to manage your BYOL licenses].
 +
 And you need to have an AWS account for the storage space where your backups will be located.
 

@@ -146,7 +146,7 @@ You can create backups from on-premises systems to Azure Blob in all regions htt
 Before your 30-day free trial of Cloud Backup expires, you need to subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from Azure, or purchase and activate a Cloud Backup BYOL license from NetApp. These licenses are for the account and can be used across multiple systems.
 
 * For Cloud Backup PAYGO licensing, you'll need a subscription to the https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview[Azure^] Cloud Manager Marketplace offering to continue using Cloud Backup. Billing for Cloud Backup is done through this subscription.
- * For Cloud Backup BYOL licensing, you don't need a subscription. You need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-cloud-backup-byol-licenses[Learn how to manage your BYOL licenses].
+ * For Cloud Backup BYOL licensing, you don't need a subscription. You need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[Learn how to manage your BYOL licenses].
 
 You need to have an Azure subscription for the object storage space where your backups will be located.
 
@@ -202,7 +202,7 @@ image:screenshot_backup_onprem_to_azure.png[A screenshot that shows the cloud pr
 . Enter the networking details and click *Next*.
 
 .. The IPspace in the ONTAP cluster where the volumes you want to back up reside. The intercluster LIFs for this IPspace must have outbound internet access.
-.. Optionally, choose whether you will configure an Azure Private Endpoint. https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview[See details about using a Private Endpoint].
+.. Optionally, choose whether you will configure an Azure Private Endpoint. https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview[See details about using a Private Endpoint^].
 +
 image:screenshot_backup_onprem_azure_networking.png[A screenshot that shows the networking details when backing up volumes from an ONTAP system to Azure Blob storage.]
 
