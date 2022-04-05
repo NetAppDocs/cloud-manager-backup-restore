@@ -174,7 +174,7 @@ image:screenshot_delete_all_backups.png[A screenshot of selecting the Delete All
 
 Deleting all backups for a volume also disables future backups for that volume.
 
-You can <<Starting and stopping backups of volumes,restart making backups for the volume>> at any time from the Manage Backups page.
+You can <<Enabling and disabling backups of volumes,restart making backups for the volume>> at any time from the Manage Backups page.
 
 .Steps
 

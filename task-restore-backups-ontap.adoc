@@ -44,11 +44,10 @@ This table provides a comparison of the 2 methods.
 | Browse through a folder-style structure to find the volume or file within a single backup file | Search for a volume or file across *all backup files* by partial or full volume name, partial or full file name, size range, and additional search filters
 | Volume restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. File restore works with backup files stored in Amazon S3 and Azure Blob | Volume and file restore works with backup files stored in Amazon S3
 | Does not handle files that have been renamed or deleted | Handles newly created/deleted/renamed directories and newly created/deleted/renamed files
-| Browse for results across public or private clouds | Browse for results across public clouds and local Snapshots copies, and in the future, across private clouds
+| Browse for results across public or private clouds | Browse for results across public clouds and local Snapshots copies
 | Separate Cloud Restore instance is required for file restore | No Cloud Restore instance required
 | No additional Amazon resources required | New bucket and Amazon Athena and AWS Glue resources required per account
-| Cost associated with Cloud Restore instance when restoring files | Cost associated with Amazon Athena and AWS Glue resources when scanning your backup files and volumes for search results
-| Volume restore from standard and archival tiers. File restore only from standard tiers | Volume and file restore from standard and archival tiers
+| Cost associated with Cloud Restore instance when browsing backups for individual files | Cost associated with Amazon Athena and AWS Glue resources when scanning your backups and volumes for search results
 
 |===
 
@@ -277,7 +276,7 @@ When you restore a volume from a backup file, Cloud Backup creates a _new_ volum
 
 You can restore files to the original volume location, to a different volume in the same working environment, or to a different working environment that's using the same cloud account. You can also restore files to a volume on an on-premises ONTAP system.
 
-If the backup file for the volume that you want to restore resides in archival storage (available for AWS starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur additional cost. Note that the destination cluster must also be running ONTAP 9.10.1 or greater.
+If the backup file for the volume that you want to restore resides in archival storage (available for AWS starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur additional cost. Note that the destination cluster must also be running ONTAP 9.10.1 or greater, and that file restore from archival storage is not currently supported.
 
 // link:reference-azure-backup-tiers.html[Learn more about restoring from Azure archival storage].
 link:reference-aws-backup-tiers.html[Learn more about restoring from AWS archival storage].

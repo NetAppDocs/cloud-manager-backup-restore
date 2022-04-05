@@ -113,7 +113,7 @@ When you set up Cloud Backup, you are prompted for the IPspace to use. You shoul
 
 === Preparing StorageGRID
 
-StorageGRID must meet the following requirements. See the https://docs.netapp.com/sgws-115/index.jsp[StorageGRID documentation^] for more information.
+StorageGRID must meet the following requirements. See the https://docs.netapp.com/us-en/storagegrid-116/[StorageGRID documentation^] for more information.
 
 Supported StorageGRID versions::
 StorageGRID 10.3 and later is supported.
