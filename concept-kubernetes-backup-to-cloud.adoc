@@ -120,9 +120,9 @@ When you enable Cloud Backup on a Kubernetes system, the service performs a full
 
 CAUTION: Any actions taken directly from your cloud provider environment to manage or change backup files may corrupt the files and will result in an unsupported configuration.
 
-// The following image shows the relationship between each component:
-//
-// image:diagram_cloud_backup_general.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination object storage where the backup files are located.]
+The following image shows the relationship between each component:
+
+image:diagram_cloud_backup_general_k8s.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination object storage where the backup files are located.]
 
 === Supported storage classes or access tiers
 
