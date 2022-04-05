@@ -16,139 +16,139 @@ summary: Learn what's new in Cloud Backup.
 Learn what's new in Cloud Backup.
 
 // tag::whats-new[]
-== 3 April 2022
+== 4 April 2022
 
-=== Support for Cloud Backup for Applications 1.1.0
+=== Cloud Backup for Applications 1.1.0 (powered by SnapCenter) is now GA
 
-You can integrate Cloud Backup for Applications with Cloud Manager and on-premises SnapCenter to back up the application consistent Snapshots from on-premises ONTAP to cloud. When required you can restore from cloud to on-premises SnapCenter Server.
+The new Cloud Backup for Applications capability enables you to offload existing application consistent Snapshots (backups) for Oracle and Microsoft SQL from on-premises primary storage to cloud object storage in AWS S3 or Azure Blob.
 
-You can back up Oracle and Microsoft SQL applications data from on-premises ONTAP to either Amazon Web Services or Microsoft Azure.
+When required, you can restore this data from cloud to on-premises.
 
 https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-protect-app-data-to-cloud.html[Learn more about protecting on-premises applications data to cloud].
 
-=== New Search & Restore feature to search for volumes or files across all ONTAP backup files.
+=== New Search & Restore feature to search for volumes or files across all ONTAP backup files
 
 Now you can search for a volume or file across *all ONTAP backup files* by partial or full volume name, partial or full file name, size range, and additional search filters. This is a great new way to find the data you want to restore if you are not sure which cluster or volume was the source for the data. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html#restoring-ontap-data-using-search-restore[Learn how to use Search & Restore].
 
 == 3 March 2022
 
-=== Ability to back up persistent volumes from your GKE Kubernetes clusters to Google Cloud storage.
+=== Ability to back up persistent volumes from your GKE Kubernetes clusters to Google Cloud storage
 
 If your GKE cluster has NetApp Astra Trident installed, and it's using Cloud Volumes ONTAP for GCP as backend storage for the cluster, then you can back up and restore your persistent volumes to and from Google Cloud storage. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-kubernetes-to-gcp.html[Go here for details].
 
-=== The Beta capability to use Cloud Data Sense to scan your Cloud Backup files has been discontinued in this release.
+=== The Beta capability to use Cloud Data Sense to scan your Cloud Backup files has been discontinued in this release
 
 == 14 February 2022
 
-=== Now you can assign backup policies to individual volumes in a single cluster.
+=== Now you can assign backup policies to individual volumes in a single cluster
 
-In the past you could assign only a single backup policy to all volumes in a cluster. Now you can create multiple backup policies for a single cluster and apply different policies to different volumes. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-managing-backups-ontap#changing-the-policy-assigned-to-existing-volumes[See how to create new backup policies for a cluster and assign them to selected volumes].
+In the past you could assign only a single backup policy to all volumes in a cluster. Now you can create multiple backup policies for a single cluster and apply different policies to different volumes. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-manage-backups-ontap#changing-the-policy-assigned-to-existing-volumes[See how to create new backup policies for a cluster and assign them to selected volumes].
 
-=== A new option enables you to automatically apply a default backup policy to newly created volumes.
+=== A new option enables you to automatically apply a default backup policy to newly created volumes
 
 In the past, new volumes created in a working environment after Cloud Backup was activated required that you manually apply a backup policy. Now, regardless of if the volume was created in Cloud Manager, System Manager, the CLI, or by using APIs, Cloud Backup will discover the volume and apply the backup policy you have chosen as the default policy.
 
 This option is available when enabling backup in a new working environment, or from the _Manage Volumes_ page for existing working environments.
 
-=== New Job Monitor is available to see the in-process status of all backup and restore jobs.
+=== New Job Monitor is available to see the in-process status of all backup and restore jobs
 
 The Job Monitor can be very helpful when you have initiated an operation against multiple volumes, like changing the backup policy, or deleting backups, so you can see when the operation has completed on all volumes. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-monitor-backup-jobs.html[See how to use the Job Monitor].
 // end::whats-new[]
 
 == 2 January 2022
 
-=== Ability to back up persistent volumes from your AKS Kubernetes clusters to Azure Blob storage.
+=== Ability to back up persistent volumes from your AKS Kubernetes clusters to Azure Blob storage
 
 If your AKS cluster has NetApp Astra Trident installed, and it's using Cloud Volumes ONTAP for Azure as backend storage for the cluster, then you can back up and restore volumes to and from Azure Blob storage. link:task-backup-kubernetes-to-azure.html[Go here for details].
 
-=== Cloud Backup service charges have been changed in this release to align more closely with industry standards.
+=== Cloud Backup service charges have been changed in this release to align more closely with industry standards
 
 Instead of paying NetApp for capacity based on the size of your backup files, now you pay only for the data that you protect, calculated by the logical used capacity (before ONTAP efficiencies) of the source ONTAP volumes which are being backed up. This capacity is also known as Front-End Terabytes (FETB).
 
 == 28 November 2021
 
-=== Ability to back up persistent volumes from your EKS Kubernetes clusters to Amazon S3.
+=== Ability to back up persistent volumes from your EKS Kubernetes clusters to Amazon S3
 
 If your EKS cluster has NetApp Astra Trident installed, and it's using Cloud Volumes ONTAP for AWS as backend storage for the cluster, then you can back up and restore volumes to and from Amazon S3. link:task-backup-kubernetes-to-s3.html[Go here for details].
 
-=== Enhanced functionality to back up DP volumes.
+=== Enhanced functionality to back up DP volumes
 
 Cloud Backup now supports creating backups of DP volumes that exist on the target ONTAP system in an SVM-DR relationship. There are a few restrictions, so see link:concept-ontap-backup-to-cloud.html#limitations[the limitations] for details.
 
 == 5 November 2021
 
-=== Ability to select a private endpoint when restoring a volume to an on-premises ONTAP system.
+=== Ability to select a private endpoint when restoring a volume to an on-premises ONTAP system
 
 When restoring a volume to an on-premises ONTAP system from a backup file that resides on Amazon S3 or Azure Blob, now you can select a private endpoint that connects to your on-prem system privately and securely.
 
-=== Now you can tier older backup files to archival storage after a number of days to save costs.
+=== Now you can tier older backup files to archival storage after a number of days to save costs
 
 If your cluster is running ONTAP 9.10.1 or greater, and you're using AWS or Azure cloud storage, you can enable tiering of backups to archival storage. See more information about link:reference-aws-backup-tiers.html[AWS S3 archival storage classes] and link:reference-azure-backup-tiers.html[Azure Blob archival access tiers].
 
-=== Cloud Backup BYOL licenses have moved to the Data Services Licenses tab in the Digital Wallet.
+=== Cloud Backup BYOL licenses have moved to the Data Services Licenses tab in the Digital Wallet
 
 BYOL licensing for Cloud Backup has moved from the Cloud Backup Licenses tab to the Data Services Licenses tab in the Cloud Manager Digital Wallet.
 
 == 4 October 2021
 
-=== Backup file size is now available in the Backup page when performing a volume or file restore.
+=== Backup file size is now available in the Backup page when performing a volume or file restore
 
 This is useful if you want to delete large backup files that are unnecessary, or so you can compare backup file sizes to identify any abnormal backup files that could be the result of a malicious software attack.
 
-=== TCO calculator is available to compare Cloud Backup costs.
+=== TCO calculator is available to compare Cloud Backup costs
 
 The Total Cost of Ownership calculator helps you understand the total cost of ownership for Cloud Backup, and to compare these costs to traditional backup solutions and estimate potential savings. Check it out
 https://cloud.netapp.com/cloud-backup-service-tco-calculator[here^].
 
-=== Ability to unregister Cloud Backup for a working environment.
+=== Ability to unregister Cloud Backup for a working environment
 
-Now you can easily link:task_managing_backups.html#unregistering-cloud-backup-for-a-working-environment[unregister Cloud Backup for a working environment] if you no longer want to use backup functionality (or be charged) for that working environment.
+Now you can easily link:task_manage_backups.html#unregistering-cloud-backup-for-a-working-environment[unregister Cloud Backup for a working environment] if you no longer want to use backup functionality (or be charged) for that working environment.
 
 == 2 September 2021
 
-=== Ability to create an on-demand backup of a volume.
+=== Ability to create an on-demand backup of a volume
 
 Now you can create an on-demand backup at any time to capture the current state of a volume. This is useful if important changes have been made to a volume and you don’t want to wait for the next scheduled backup to protect that data.
 
-link:task-managing-backups-ontap.html#creating-a-manual-volume-backup-at-any-time[See how to create an on-demand backup].
+link:task-manage-backups-ontap.html#creating-a-manual-volume-backup-at-any-time[See how to create an on-demand backup].
 
-=== Ability to define a Private Interface connection for secure backups to Amazon S3.
+=== Ability to define a Private Interface connection for secure backups to Amazon S3
 
 When configuring backups to Amazon S3 from an on-premises ONTAP system, now you can define a connection to a Private Interface Endpoint in the activation wizard. This allows you to use a network interface that connects your on-prem system privately and securely to a service powered by AWS PrivateLink. link:task-backup-onprem-to-aws.html#preparing-amazon-s3-for-backups[See details about this option].
 
-=== Now you can choose your own customer-managed keys for data encryption when backing up data to Amazon S3.
+=== Now you can choose your own customer-managed keys for data encryption when backing up data to Amazon S3
 
 For additional security and control, you can choose your own customer-managed keys for data encryption in the activation wizard instead of using the default Amazon S3 encryption keys. This is available when configuring backups from an on-premises ONTAP system or from a Cloud Volumes ONTAP system in AWS.
 
-=== Now you can restore files from directories that have more than 30,000 files.
+=== Now you can restore files from directories that have more than 30,000 files
 
-== 1 Aug 2021
+== 1 August 2021
 
-=== Ability to define a Private Endpoint connection for secure backups to Azure Blob.
+=== Ability to define a Private Endpoint connection for secure backups to Azure Blob
 
 When configuring backups to Azure Blob from an on-premises ONTAP system, you can define a connection to an Azure Private Endpoint in the activation wizard. This allows you to use a network interface that connects you privately and securely to a service powered by Azure Private Link.
 
-=== An Hourly backup policy is now supported.
+=== An Hourly backup policy is now supported
 
 This new policy is in addition to the existing Daily, Weekly, and Monthly policies. The Hourly backup policy provides a minimal Recovery Point Objective (RPO).
 
 == 7 July 2021
 
-=== Now you can create backups using different accounts and in different regions.
+=== Now you can create backups using different accounts and in different regions
 
 Cloud Backup now allows you to create backups using a different account/subscription than the one you are using for your Cloud Volumes ONTAP system. You can also create backup files in a different region than the one in which your Cloud Volumes ONTAP system is deployed.
 
 This capability is available when using when using AWS or Azure, and only when enabling backup on an existing working environment - it is not available when creating a new Cloud Volumes ONTAP working environment.
 
-=== Now you can choose your own customer-managed keys for data encryption when backing up data to Azure Blob.
+=== Now you can choose your own customer-managed keys for data encryption when backing up data to Azure Blob
 
 For additional security and control, you can choose your own customer-managed keys for data encryption in the activation wizard instead of using the default Microsoft-managed encryption keys. This is available when configuring backups from an on-premises ONTAP system or from a Cloud Volumes ONTAP system in Azure.
 
-=== Now you can restore up to 100 files at a time when using single-file restore.
+=== Now you can restore up to 100 files at a time when using single-file restore
 
 == 7 June 2021
 
-=== Limitations lifted for DP volumes when using ONTAP 9.8 or greater.
+=== Limitations lifted for DP volumes when using ONTAP 9.8 or greater
 
 Two known limitations for backing up data protection (DP) volumes have been resolved:
 
@@ -157,20 +157,20 @@ Two known limitations for backing up data protection (DP) volumes have been reso
 
 == 5 May 2021
 
-=== Back up on-prem cluster data to Google Cloud Storage or NetApp StorageGRID systems.
+=== Back up on-prem cluster data to Google Cloud Storage or NetApp StorageGRID systems
 
 Now you can create backups from your on-premises ONTAP systems to Google Cloud Storage or to your NetApp StorageGRID systems. See link:task-backup-onprem-to-gcp.html[Backing up to Google Cloud Storage^] and link:task-backup-onprem-private-cloud.html[Backing up to StorageGRID^] for details.
 
-=== Now you can use System Manager to perform Cloud Backup operations.
+=== Now you can use System Manager to perform Cloud Backup operations
 
 A new feature in ONTAP 9.9.1 enables you to use System Manager to send backups of your on-premises ONTAP volumes to object storage you've set up through Cloud Backup. link:https://docs.netapp.com/us-en/ontap/task_cloud_backup_data_using_cbs.html[See how to use System Manager to back up your volumes to the cloud using Cloud Backup.^]
 
-=== Backup policies have been improved with a few enhancements.
+=== Backup policies have been improved with a few enhancements
 
 * Now you create a custom policy that includes a combination of daily, weekly, and monthly backups.
 * When you change a backup policy, the change applies to all new backups *and* to all volumes using the original backup policy. In the past the change only applied to new volume backups.
 
-=== Miscellaneous backup and restore improvements.
+=== Miscellaneous backup and restore improvements
 
 * When configuring the cloud destination for your backup files, now you can select a different region than the region in which the Cloud Volumes ONTAP system resides.
 * The number of backup files you can create for a single volume has been increased from 1,019 to 4,000.

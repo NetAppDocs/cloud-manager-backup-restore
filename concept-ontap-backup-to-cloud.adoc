@@ -42,7 +42,7 @@ Restore features:
 
 Cloud Backup enables you to back up ONTAP volumes from the following working environments to object storage in the following public and private cloud providers:
 
-[cols=2*,options="header",cols="40,40",width="85%"]
+[cols=2*,options="header",cols="45,45",width="95%"]
 |===
 
 | Source Working Environment
@@ -64,7 +64,7 @@ NetApp StorageGRID
 
 You can restore a volume, or individual files, from an ONTAP backup file to the following working environments:
 
-[cols=3*,options="header",cols="20,35,35",width="95%"]
+[cols=3*,options="header",cols="25,33,33",width="95%"]
 |===
 
 | Backup File
@@ -114,7 +114,7 @@ The instance is named _Cloud-Restore-Instance_ with your Account ID concatenated
 
 * For Volume Restore using Browse & Restore, there is no cost because no separate instance or virtual machine is required.
 
-* For Volume or File Restore using Search & Restore, the Amazon Athena and AWS Glue resources are used to search through your volumes and backup files. A per-TiB cost is associated with the amount of data that is scanned by your search requests. Search & Restore is supported only when restoring data from a backup file in Amazon S3 at this time.
+* For Volume or File Restore using Search & Restore, the https://aws.amazon.com/athena/faqs/[Amazon Athena^] and https://aws.amazon.com/glue/faqs/[AWS Glue^] resources are used to search through your volumes and backup files. A per-TiB cost is associated with the amount of data that is scanned by your search requests. Search & Restore is supported only when restoring data from a backup file in Amazon S3 at this time.
 
 * If you need to restore volume data from a backup file that has been moved to archival storage (supported with AWS and Azure when using ONTAP 9.10.1+), then there's an additional per-GiB retrieval fee and per-request fee from the cloud provider.
 
@@ -297,5 +297,7 @@ FlexGroup volumes and SnapLock volumes aren't currently supported.
 * The file being restored must be using the same language as the language on the destination volume. You will receive an error message if the languages are not the same.
 
 * File level restore is not supported when using the same account with different Cloud Managers in different subnets.
+
+* You can’t restore individual files if the backup file resides in archival storage.
 //
 // * File level restore is not supported when the Connector is installed on a site without internet access (dark site).

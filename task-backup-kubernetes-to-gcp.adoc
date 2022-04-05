@@ -29,7 +29,7 @@ Get started quickly by following these steps or scroll down to the remaining sec
 ** The Cloud Volumes ONTAP system must be running ONTAP 9.7P5 or later.
 * You have a valid GCP subscription for the storage space where your backups will be located.
 * You have a service account in your Google Cloud Project that has the predefined Storage Admin role.
-* You have subscribed to the https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved[Cloud Manager Marketplace Backup offering^], or you have purchased link:task-licensing-cloud-backup.html#use-cloud-backup-byol-licenses[and activated^] a Cloud Backup BYOL license from NetApp.
+* You have subscribed to the https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved[Cloud Manager Marketplace Backup offering^], or you have purchased link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[and activated^] a Cloud Backup BYOL license from NetApp.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Enable Cloud Backup on your existing Kubernetes cluster
 
@@ -65,8 +65,8 @@ Note that the Private Endpoint is optional.
 // When the Cloud Restore instance is deployed in the cloud, it is located in the same subnet as the Connector.
 
 Kubernetes cluster requirements::
-* You have discovered the Kubernetes cluster as a Cloud Manager working environment. https://docs.netapp.com/us-en/cloud-manager-kubernetes/task-kubernetes-discover-gke.html[See how to discover the Kubernetes cluster^].
-* Trident must be installed on the cluster, and the Trident version must be a minimum of 21.1. See link:https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/index.html[how to install Trident] or https://netapp-trident.readthedocs.io/en/latest/kubernetes/upgrades/index.html[how to upgrade the Trident version].
+* You have discovered the Kubernetes cluster as a Cloud Manager working environment. https://docs.netapp.com/us-en/cloud-manager-kubernetes/task/task-kubernetes-discover-gke.html[See how to discover the Kubernetes cluster^].
+* Trident must be installed on the cluster, and the Trident version must be a minimum of 21.1. See link:https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/index.html[how to install Trident^] or https://netapp-trident.readthedocs.io/en/latest/kubernetes/upgrades/index.html[how to upgrade the Trident version^].
 * The cluster must be using Cloud Volumes ONTAP on GCP for its' backend storage.
 * The Cloud Volumes ONTAP system must be in the same GCP region as the Kubernetes cluster, and it must be running ONTAP 9.7P5 or later.
 +
@@ -122,9 +122,9 @@ Supported GCP regions::
 Cloud Backup is supported in all GCP regions https://cloud.netapp.com/cloud-volumes-global-regions[where Cloud Volumes ONTAP is supported^].
 
 License requirements::
-For Cloud Backup PAYGO licensing, a subscription through the https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved[GCP Marketplace] is required before you enable Cloud Backup. Billing for Cloud Backup is done through this subscription. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-gcp.html[You can subscribe from the Details & Credentials page of the working environment wizard^].
+For Cloud Backup PAYGO licensing, a subscription through the https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved[GCP Marketplace^] is required before you enable Cloud Backup. Billing for Cloud Backup is done through this subscription. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-gcp.html[You can subscribe from the Details & Credentials page of the working environment wizard^].
 +
-For Cloud Backup BYOL licensing, you need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-cloud-backup-byol-licenses[Learn how to manage your BYOL licenses].
+For Cloud Backup BYOL licensing, you need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[Learn how to manage your BYOL licenses].
 +
 And you need to have a Google subscription for the storage space where your backups will be located.
 
@@ -166,6 +166,6 @@ The Kubernetes Dashboard is displayed so you can monitor the state of the backup
 
 .What's next?
 
-You can link:task-managing-backups.html[start and stop backups for volumes or change the backup schedule^].
-You can also link:task-restore-backups.html#restoring-volumes-from-a-kubernetes-backup-file[restore entire volumes from a backup file^] as a new volume on the same or different Kubernetes cluster in GCP (in the same region).
+You can link:task-managing-backups-kubernetes.html[start and stop backups for volumes or change the backup schedule^].
+You can also link:task-restore-backups-kubernetes.html#restoring-volumes-from-a-kubernetes-backup-file[restore entire volumes from a backup file^] as a new volume on the same or different Kubernetes cluster in GCP (in the same region).
 // or individual files
