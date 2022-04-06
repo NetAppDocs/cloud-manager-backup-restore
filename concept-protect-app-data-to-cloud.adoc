@@ -20,6 +20,11 @@ You can back up Oracle and Microsoft SQL applications data from on-premises ONTA
 
 NOTE: You should be using SnapCenter Software 4.6.
 
+For more information about Cloud Backup for Applications, refer to:
+
+* https://cloud.netapp.com/blog/cbs-cloud-backup-and-snapcenter-integration[Application aware backup with Cloud Backup and SnapCenter^]
+* https://soundcloud.com/techontap_podcast/episode-322-cloud-backup-for-applications[Cloud backup for applications^]
+
 == Requirements
 
 Read the following requirements to make sure that you have a supported configuration before you start backing up application data to cloud services.
