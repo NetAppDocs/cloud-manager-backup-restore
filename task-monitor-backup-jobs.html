@@ -9,14 +9,14 @@
   <meta property="og:title" content="Monitoring the status of backup and restore jobs | NetApp Documentation" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-monitor-backup-jobs.html" />
-	<meta property="og:description" content="You can monitor the status of backup and restore jobs that have been initiated in your working environments. This allows you to see the jobs that have comple..." />
+	<meta property="og:description" content="You can monitor the status of backup and restore jobs that you have initiated in your working environments. This allows you to see the jobs that have complet..." />
   <meta property="og:image" content="https://docs.netapp.com/us-en/cloud-manager-backup-restore/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="You can monitor the status of backup and restore jobs that have been initiated in your working environments. This allows you to see the jobs that have comple...">
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="You can monitor the status of backup and restore jobs that you have initiated in your working environments. This allows you to see the jobs that have complet...">
   <meta name="keywords" content=" cloud backup, cloud backup service, backup, restore, status, monitor"><!-- Icons -->
   <link rel="icon" href="/us-en/cloud-manager-backup-restore/images/favicon.ico" type="image/x-icon">
 
@@ -810,11 +810,19 @@
 <p class="page-details">
   
     
-    <time datetime="2022-03-10 05:48:06 +0000">03/10/2022</time>
+    <time datetime="2022-04-12 14:02:45 +0000">04/12/2022</time>
     
   
 
 <span>Contributors
+  <a target="_blank" class="ext-link-indicator" href="https://github.com/netapp-tonacki">
+    <img  class="avatar avatar-small"
+          alt="netapp-tonacki"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/38222299?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
 </span>
 
 
@@ -823,7 +831,10 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph lead">
-<p>You can monitor the status of backup and restore jobs that have been initiated in your working environments. This allows you to see the jobs that have completed successfully, those currently in progress, and those that have failed so you can diagnose and fix any problems.</p>
+<p>You can monitor the status of backup and restore jobs that you have initiated in your working environments. This allows you to see the jobs that have completed successfully, those currently in progress, and those that have failed so you can diagnose and fix any problems.</p>
+</div>
+<div class="paragraph">
+<p>Note that system-initiated jobs, such ongoing backup operations, are not reflected in the <strong>Job Monitoring</strong> tab&#8201;&#8212;&#8201;only user-initiated jobs are displayed.</p>
 </div>
 </div>
 </div>
@@ -831,7 +842,7 @@
 <h2 id="viewing-the-status-of-your-backup-and-restore-jobs">Viewing the status of your backup and restore jobs</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can view a list of all the backup and restore operations and their current status. This includes operations from your Cloud Volumes ONTAP, on-premises ONTAP, and Kubernetes systems. Each operation, or job, has a unique ID and a status. The status can be:</p>
+<p>You can view a list of all the backup and restore operations and their current status. This includes operations from your Cloud Volumes ONTAP, on-premises ONTAP, Applications, and Kubernetes systems. Each operation, or job, has a unique ID and a status. The status can be:</p>
 </div>
 <div class="ulist">
 <ul>
