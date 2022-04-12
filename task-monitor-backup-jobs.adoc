@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task-monitor-backup-jobs.html
 keywords: cloud backup, cloud backup service, backup, restore, status, monitor
-summary: You can monitor the status of backup and restore jobs that have been initiated in your working environments. This allows you to see the jobs that have completed successfully, those currently in progress, and those that have failed so you can diagnose and fix any problems.
+summary: You can monitor the status of backup and restore jobs that you have initiated in your working environments. This allows you to see the jobs that have completed successfully, those currently in progress, and those that have failed so you can diagnose and fix any problems.
 ---
 
 = Monitoring the status of backup and restore jobs
@@ -13,11 +13,13 @@ summary: You can monitor the status of backup and restore jobs that have been in
 :imagesdir: ./media/
 
 [.lead]
-You can monitor the status of backup and restore jobs that have been initiated in your working environments. This allows you to see the jobs that have completed successfully, those currently in progress, and those that have failed so you can diagnose and fix any problems.
+You can monitor the status of backup and restore jobs that you have initiated in your working environments. This allows you to see the jobs that have completed successfully, those currently in progress, and those that have failed so you can diagnose and fix any problems.
+
+Note that system-initiated jobs, such ongoing backup operations, are not reflected in the *Job Monitoring* tab -- only user-initiated jobs are displayed.
 
 == Viewing the status of your backup and restore jobs
 
-You can view a list of all the backup and restore operations and their current status. This includes operations from your Cloud Volumes ONTAP, on-premises ONTAP, and Kubernetes systems. Each operation, or job, has a unique ID and a status. The status can be:
+You can view a list of all the backup and restore operations and their current status. This includes operations from your Cloud Volumes ONTAP, on-premises ONTAP, Applications, and Kubernetes systems. Each operation, or job, has a unique ID and a status. The status can be:
 
 * Successful
 * In Progress

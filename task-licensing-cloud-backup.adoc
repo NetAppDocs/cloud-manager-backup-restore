@@ -43,7 +43,7 @@ If you want to use this option, set up your subscription from the Marketplace pa
 
 * A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and Cloud Backup. This includes unlimited backups for Cloud Volumes ONTAP volumes charged against this license (backup capacity is not counted against the license). This option doesn’t enable you to back up on-premises ONTAP data.
 +
-See the https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
+See the https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
 +
 If you want to use this option, you can set up the annual contract when you create a Cloud Volumes ONTAP working environment and Cloud Manager prompts you to subscribe to the AWS Marketplace.
 
