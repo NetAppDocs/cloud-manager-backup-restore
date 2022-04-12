@@ -1,0 +1,70 @@
+---
+sidebar: sidebar
+permalink: concept-protect-vm-data.html
+keywords: protect Virtual Machines, vm, policy, policies, backup, restore, SnapCenter Plug-in
+summary: Know more about protecting data on your Virtual Machines and understand about the different policies.
+---
+
+= Protect your Virtual Machines data
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+You can protect data on your Virtual Machines by integrating the SnapCenter Plug-in for VMware vSphere with Cloud Manager. You can then backup datastores to the cloud and restore Virtual Machines back to the on-premises SnapCenter with ease.
+
+You can back datastores to Amazon Web Services or Microsoft Azure.
+
+== Requirements
+Read the following requirements to make sure that you have a supported configuration before you start backing up datastores and Virtual Machines to cloud services.
+
+* SnapCenter Server 4.6P1
+* ONTAP 9.8 or later
+* Cloud Manager 3.9
+* At least one backup should have been taken in SnapCenter Plug-in for VMware vSphere.
+* At least one daily, weekly, or monthly policy in SnapCenter Plug-in for VMware vSphere with no label or same label as that of the Cloud Backup for Virtual Machines policy in Cloud Manager.
+* For a pre-canned policy, the schedule tier should be the same for the datastore in SnapCenter Plug-in for VMware vSphere and in the cloud.
+
+The following image shows each component and the connections that you need to prepare between them:
+
+image:cloud_backup_vm.png[The architecture diagram of cloud backup for Virtual Machines.]
+
+== Protection Policies
+
+You should use the one of the SnapCenter Service defined policies to back up the datastores data to cloud.
+
+NOTE: Custom polices are not supported.
+
+You can view the default policies by clicking *Backup & Restore* > *Virtual Machines* > *Policies* in Cloud Manager.
+
+|===
+| Policy Name | Label | Retention Value
+
+a|
+1 Year Daily LTR
+a|
+Daily
+a|
+366
+a|
+5 Years Daily LTR
+a|
+Daily
+a|
+1830
+a|
+7 Year Weekly LTR
+a|
+Weekly
+a|
+370
+a|
+10 Year Monthly LTR
+a|
+Monthly
+a|
+120
+|===

@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: task-restore-vm-data.html
+keywords: restore Virtual Machines
+summary: You can restore Virtual Machines from the cloud to the on-premises SnapCenter.
+---
+
+= Restore Virtual Machines from the cloud
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can restore Virtual Machines from the cloud back to the on-premises vCenter. The backup will be restored to the exact same location from where the backup was taken. You can restore VMs from the datastore or from the VMs view.
+
+You cannot restore the backup to any other alternate location.
+
+.Steps
+
+. In Cloud Manager, click *Backup & Restore* > *Virtual Machines* > *SnapCenter Plug-in for VMware vSphere* and select the SnapCenter Plug-in whose Virtual Machine you want to restore.
+. To restore from Datastore:
+.. Click image:icon-action.png[action] corresponding to the datastore that you want to restore and click *View Details*.
+.. Click *Restore* corresponding to the backup you want to restore.
+.. Select the Virtual Machine that you want to restore from the backup and click *Next*.
+.. Review the details and click *Restore*.
+. To restore from Virtual Machines:
+.. Click image:icon-action.png[action] corresponding to the Virtual Machine that you want to restore and click *Restore*.
+.. Select the backup through which you want to restore the Virtual Machine and click *Next*.
+.. Review the details and click *Restore*.
+
+The VM is restored to the same location from where the backup was taken.

@@ -71,6 +71,16 @@ sidebar:
               url: /task-restore-oracle-data.html
             - title: Restore SQL Server database
               url: /task-restore-sql-data.html
+    - title: Backup and restore Virtual Machines data
+      entries:
+        - title: Protect your Virtual Machines data
+          url: /concept-protect-vm-data.html
+        - title: Back up datastores to the cloud
+          url: /task-backup-vm-data-to-cloud.html
+        - title: Manage protection of Virtual Machines
+          url: /task-manage-vm-data-in-cloud.html
+        - title: Restore Virtual Machines data
+          url: /task-restore-vm-data.html
     - title: Reference
       entries:
         - title: Supported AWS archive storage tiers

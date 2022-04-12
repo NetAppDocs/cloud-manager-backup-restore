@@ -1,0 +1,82 @@
+---
+sidebar: sidebar
+permalink: task-backup-vm-data-to-cloud.html
+keywords: backing up, back up, backup, backup Virtual Machine data, backup vm, Azure, Amazon Web services, Cloud Backup, cloud backup service, backup datastores
+summary: Back up your datastores from on-premises ONTAP to cloud.
+---
+
+= Back up datastores to the cloud
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+You can backup datastores to the cloud by integrating the SnapCenter Plug-in for VMware vSphere with Cloud Manager. This will help the VM administrators to easily and quickly backup and archive data for storage efficiency and accelerate cloud transition.
+
+== Register SnapCenter Plug-in for VMware vSphere
+
+You should register the SnapCenter Plug-in for VMware vSphere in Cloud Manager for the datastores and Virtual Machines to be displayed in Cloud Manager. Only a user with administrative access can register the SnapCenter Plug-in.
+
+NOTE: You can register multiple SnapCenter Plug-in. However, once registered, you cannot remove the SnapCenter Plug-in.
+
+.Steps
+
+. In Cloud Manager UI, click *Backup & Restore* > *Virtual Machines*.
+. From the *Settings* drop-down, click *SnapCenter Plug-in for VMware vSphere*.
+. Click *Register SnapCenter Plug-in for VMware vSphere*.
+. Specify the following details:
+.. In the SnapCenter Plug-in for VMware vSphere field, specify the FQDN or IP address of the SnapCenter Plug-in.
+.. In the Port field, specify the port number on which the SnapCenter Plug-in is running.
+.. In the Username and Password field, specify the credentials of the user with SnapCenter Admin role.
+. Click *Register*.
+
+*After you finish*
+
+Click *Backup & Restore > Virtual Machines* to view all the datastores and Virtual Machines that are protected using the registered SnapCenter Plug-in for VMware vSphere.
+
+== Back up datastores
+
+You can backup one or more datastores simultaneously to the cloud using a single policy. Only the default policies can be assigned to the datastore.
+
+.Steps
+
+. In Cloud Manager UI, click *Backup & Restore* > *Virtual Machine*.
+. Click image:icon-action.png[action] corresponding to the datastore that you want to back up and click *Activate Backup*.
+. Add the working environment.
++
+Configure the ONTAP clusters that you want Cloud Manager to discover to back up your datastores. After adding the working environment for one of the datastores, it can be reused for all the other datastores residing on the same ONTAP cluster.
++
+.. Click *Add Working Environment* corresponding to the SVM.
+.. In the Add Working Environment wizard:
+... Specify the IP address of the ONTAP cluster.
+... Specify the credentials of the ONTAP cluster user.
+.. Click *Add Working Environment*.
+. Select and configure the cloud provider.
++
+[role="tabbed-block"]
+====
+
+.Configure Amazon Web Services
+--
+.. Specify the AWS account.
+.. In the AWS Access Key field, specify the key for data encryption.
+.. In the AWS Secret Key field, specify the password for data encryption.
+.. Select the region where you want to create the backups.
+.. Specify the IP addresses of the ONTAP clusters that were added as the working environments.
+--
+
+.Configure Microsoft Azure
+--
+.. Specify the Azure subscription ID.
+.. Select the region where you want to create the backups.
+.. Create a new resource group or use an existing resource group.
+.. Specify the IP addresses of the ONTAP clusters that were added as the working environments.
+--
+====
+
+[start=5]
+. In the Assign Policy page, select the policy and click *Next*.
+. Review the details and click *Activate Backup*.
