@@ -15,7 +15,7 @@ summary: You can restore Virtual Machines from the cloud to the on-premises Snap
 [.lead]
 You can restore Virtual Machines from the cloud back to the on-premises vCenter. The backup will be restored to the exact same location from where the backup was taken. You cannot restore the backup to any other alternate location. You can restore Virtual Machines from the datastore or from the VMs view.
 
-NOTE: You cannot restore spanned Virtual Machines.
+NOTE: You cannot restore Virtual Machines that are spanned across datastores.
 
 .Steps
 
