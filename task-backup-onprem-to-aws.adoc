@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task-backup-onprem-to-aws.html
 keywords: backing up, back up, backup, backup on-prem ontap, on-premises, back up volumes, cloud backup, aws, aws s3, amazon s3
-summary: Complete a few steps to get started backing up data from your on-premises ONTAP systems to Amazon S3.
+summary: Complete a few steps to get started backing up data from your on-premises ONTAP systems to Amazon S3 storage.
 ---
 
 = Backing up on-premises ONTAP data to Amazon S3
@@ -21,70 +21,73 @@ TIP: In most cases you'll use Cloud Manager for all backup and restore operation
 
 == Quick start
 
-Get started quickly by following these steps, or scroll down to the remaining sections for full details.
+Get started quickly by following these steps. Details for each step are provided in the following sections in this topic.
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] Verify support for your configuration
-
-[role="quick-margin-list"]
-* You have discovered the on-premises cluster and added it to a working environment in Cloud Manager. See https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html[Discovering ONTAP clusters^] for details.
-** The cluster is running ONTAP 9.7P5 or later.
-** The cluster has a SnapMirror license -- it is included as part of the Premium Bundle or Data Protection Bundle.
-** The cluster must have the required network connections to S3 storage and to the Connector.
-* The Connector must have the required network connections to S3 storage and to the cluster, and the required permissions.
-* You have a valid AWS subscription for the object storage space where your backups will be located.
-* You have an AWS Account with an access key and secret key, and the link:task-backup-onprem-to-aws.html#preparing-amazon-s3-for-backups[required permissions] so the ONTAP cluster can back up and restore data.
-
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Enable Cloud Backup on the system
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] Identify the configuration method you'll use
 
 [role="quick-margin-para"]
-Select the working environment and click *Enable > Backup Volumes* next to the Backup & Restore service in the right-panel, and then follow the setup wizard.
+You can choose between two methods for connecting your on-premises ONTAP systems to AWS S3. Decide whether you'll connect the cluster directly to AWS S3 using a public S3 endpoint, or whether you'll use a VPN or AWS Direct Connect and route traffic through a VPC Endpoint interface to AWS S3.
 
 [role="quick-margin-para"]
-image:screenshot_backup_onprem_enable.png[A screenshot that shows the Backup & Restore Enable button which is available after you select a working environment.]
+<<Network diagrams for connection options,See the available connection methods.>>
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Select the cloud provider and enter the provider details
-
-[role="quick-margin-para"]
-Select Amazon Web Services as your provider and then enter the provider details. You'll need to select the AWS Account and the region where you want to create the backups. You can also choose your own customer-managed key for data encryption instead of using the default Amazon S3 encryption key.
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Prepare your Connector
 
 [role="quick-margin-para"]
-image:screenshot_backup_provider_settings_aws.png[A screenshot that shows the cloud provider details when backing up volumes from an ONTAP system to AWS S3.]
-
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png[Four] Select the cluster IPspace and optionally select an AWS PrivateLink connection
+If you already have a Connector deployed in your AWS VPC, then you're all set. If not, then you'll need to create a new Connector in AWS in order to back up ONTAP data to AWS S3 storage.
 
 [role="quick-margin-para"]
-Select the IPspace in the ONTAP cluster where the volumes reside. You can also choose to use an existing AWS PrivateLink configuration for a more secure connection to the VPC from your on-prem data center.
+You'll also need to customize network settings for the Connector so that it can connect to AWS S3. <<Prepare your Connector,See how to create a Connector and how to define required network settings.>>
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Prepare your ONTAP cluster
 
 [role="quick-margin-para"]
-image:screenshot_backup_onprem_aws_networking.png[A screenshot that shows the networking details when backing up volumes from an ONTAP system to AWS S3.]
-
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png[Five] Define the default backup policy
+Discover your ONTAP cluster in Cloud Manager, verify that the cluster meets minimum requirements, and customize network settings so the cluster can connect to AWS S3.
 
 [role="quick-margin-para"]
-The default policy backs up volumes every day and retains the most recent 30 backup copies of each volume. Change to hourly, daily, weekly, or monthly backups, or select one of the system-defined policies that provide more options. You can also change the number of backup copies you want to retain.
+<<Prepare your ONTAP cluster,See how to get your on-premises ONTAP cluster ready.>>
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png[Four] Prepare Amazon S3 as your backup target
+
+[role="quick-margin-para"]
+Set up permissions for the Connector to create and manage the S3 bucket, and to restore data using the Restore instance. And set up permissions for the on-premises ONTAP cluster so it can read and write data to the S3 bucket.
+
+[role="quick-margin-para"]
+You can optionally set up Amazon S3 encryption so you can choose your own custom-managed keys for data encryption. <<Prepare Amazon S3,See how to get your AWS S3 environment ready to receive ONTAP backups.>>
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png[Five] Enable Cloud Backup on the system
+
+[role="quick-margin-para"]
+Select the working environment and click *Enable > Backup Volumes* next to the Backup & Restore service in the right-panel. Then follow the setup wizard to define the default backup policy, the number of backups to retain, and the volumes you want to back up.
 
 [role="quick-margin-para"]
 By default, backups are stored in S3 Standard storage. If your cluster is using ONTAP 9.10.1 or greater, you can choose to tier backups to either S3 Glacier or S3 Glacier Deep Archive storage after a certain number of days for further cost optimization.
 
 [role="quick-margin-para"]
-image:screenshot_backup_policy_aws.png[A screenshot that shows the Cloud Backup settings where you can choose the backup schedule and retention period.]
+<<Enable Cloud Backup,See how to activate Cloud Backup on your ONTAP volumes.>>
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png[Six] Select the volumes that you want to back up
+== Network diagrams for connection options
 
-[role="quick-margin-para"]
-Identify which volumes you want to back up using the default backup policy in the Select Volumes page. If you want to assign different backup policies to certain volumes, you can create additional policies and apply them to volumes later.
+There are two connection methods that you may use for configuring backups from on-premises ONTAP systems to AWS S3.
 
-== Requirements
+* Public connection - Directly connect the ONTAP system to AWS S3 using a public S3 endpoint.
+* Private connection - Use a VPN or AWS Direct Connect and route traffic through a VPC Endpoint interface that uses a private IP address.
 
-Read the following requirements to make sure you have a supported configuration before you start backing up on-premises volumes to S3 storage.
-
-The following image shows each component and the connections that you need to prepare between them:
+The following image shows the public connection method and the connections that you need to prepare between the components:
 
 image:diagram_cloud_backup_onprem_aws.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located.]
 
-Note that when the Cloud Restore instance is deployed in the cloud, it is located in the same subnet as the Connector.
+The following image shows the private connection method and the connections that you need to prepare between the components:
 
-=== Preparing your Connector
+image:diagram_cloud_backup_onprem_aws_vpc.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located.]
+
+Note that when the Cloud Restore instance is deployed in the cloud, it is located in the same subnet as the Connector.
+//
+// == Requirements
+//
+// Read the following requirements to make sure you have a supported configuration before you start backing up on-premises volumes to S3 storage.
+
+== Prepare your Connector
 
 The Cloud Manager Connector is the main software for Cloud Manager functionality. A Connector is required to back up and restore your ONTAP data.
 
@@ -102,10 +105,11 @@ Connector networking requirements::
 ** An HTTPS connection over port 443 to your S3 object storage
 ** An HTTPS connection over port 443 to your ONTAP cluster management LIF
 
-* (Optional) Enable a VPC Endpoint to S3. This is needed if you have a Direct Connect or VPN connection from your ONTAP cluster to the VPC and you want communication between the Connector and S3 to stay in your AWS internal network.
+* (Optional) Enable a VPC Endpoint interface to S3. This is needed if you have a Direct Connect or VPN connection from your ONTAP cluster to the VPC and you want communication between the Connector and S3 to stay in your AWS internal network.
 
-=== Preparing your ONTAP cluster
+== Prepare your ONTAP cluster
 
+Discover your ONTAP cluster in Cloud Manager::
 You need to discover your on-premises ONTAP cluster in Cloud Manager before you can start backing up volume data.
 
 https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html[Learn how to discover a cluster^].
@@ -133,8 +137,37 @@ When you set up Cloud Backup, you are prompted for the IPspace to use. You shoul
 If you use are using a different IPspace than "Default", then you might need to create a static route to get access to the object storage.
 *	DNS servers must have been configured for the storage VM where the volumes are located. See how to https://docs.netapp.com/us-en/ontap/networking/configure_dns_services_auto.html[configure DNS services for the SVM^].
 * Update firewall rules, if necessary, to allow Cloud Backup connections from ONTAP to object storage through port 443 and name resolution traffic from the storage VM to the DNS server over port 53 (TCP/UDP).
+* If you are using a Private Endpoint in AWS for the S3 connection then in order for HTTPS/443 to be used you need to load the S3 endpoint certificate into the ONTAP cluster.
++
+.	Obtain the DNS name of the endpoint from the AWS Console.
++
+image:screenshot_endpoint_dns_aws_console.png[A screenshot of the DNS name of the VPC endpoint from the AWS Console.]
++
+.	Obtain the certificate from the VPC S3 endpoint. You do this by logging into the Cloud Manager Connector and running the following command. When entering the DNS name of the endpoint add “bucket” to the beginning replacing the “*”:
++
+[source,text]
+[ec2-user@ip-10-160-4-68 ~]$ openssl s_client -connect bucket.vpce-0ff5c15df7e00fbab-yxs7lt8v.s3.us-west-2.vpce.amazonaws.com:443 -showcerts
++
+.	From the output of this command, copy the data for the S3 certificate (all data between and including the BEGIN / END CERTIFICATE tags):
++
+[source,text]
+Certificate chain
+0 s:/CN=s3.us-west-2.amazonaws.com`
+   i:/C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+-----BEGIN CERTIFICATE-----
+MIIM6zCCC9OgAwIBAgIQA7MGJ4FaDBR8uL0KR3oltTANBgkqhkiG9w0BAQsFADBG
+…
+…
+GqvbOz/oO2NWLLFCqI+xmkLcMiPrZy+/6Af+HH2mLCM4EsI2b+IpBmPkriWnnxo=
+-----END CERTIFICATE-----
++
+.	Log into the ONTAP cluster CLI and apply the certificate copied above:
++
+[source,text]
+cluster1::> security certificate install -vserver cluster1 -type server-ca
+Please enter Certificate: Press <Enter> when done
 
-=== Verify license requirements
+== Verify license requirements
 
 * Before your 30-day free trial of Cloud Backup expires, you'll need to subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from AWS, or purchase and activate a Cloud Backup BYOL license from NetApp. These licenses are for your account and can be used across multiple systems.
 +
@@ -145,11 +178,9 @@ If you use are using a different IPspace than "Default", then you might need to 
 +
 You can create backups from on-premises systems to Amazon S3 in all regions https://cloud.netapp.com/cloud-volumes-global-regions[where Cloud Volumes ONTAP is supported^]; including AWS GovCloud regions. You specify the region where backups will be stored when you set up the service.
 
-* A SnapMirror license is required on the cluster. Note that the "Hybrid Cloud Bundle" is not required when using Cloud Backup.
+== Prepare Amazon S3
 
-=== Preparing Amazon S3
-
-==== Set up S3 permissions
+=== Set up S3 permissions
 
 When you're using Amazon S3, you must configure two sets of permissions:
 
@@ -224,7 +255,7 @@ If you deployed the Connector using version 3.9.15 or greater, these permissions
 +
 See the https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[AWS Documentation: Creating a Role to Delegate Permissions to an IAM User^] for details.
 
-==== Verify Cloud Restore internet access
+=== Verify Cloud Restore internet access
 
 If your virtual or physical network uses a proxy server for internet access, ensure that the Cloud Restore instance has outbound internet access to contact the following endpoints.
 
@@ -243,11 +274,11 @@ If your virtual or physical network uses a proxy server for internet access, ens
 
 |===
 
-==== Set up Amazon S3 encryption (optional)
+=== Set up Amazon S3 encryption (optional)
 
 You can choose your own custom-managed keys for data encryption in the Backup activation wizard instead of using the default Amazon S3 encryption keys. In this case you'll need to have the encryption managed keys already set up. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-setting-up-kms.html[See how to use your own keys^].
 
-==== Set up a VPC endpoint interface (optional)
+=== Set up a VPC endpoint interface (optional)
 
 If you want to have a more secure connection over the public internet from your on-prem data center to the VPC, there's an option to select an AWS PrivateLink connection in the Backup activation wizard. It is required if you are connecting your on-premises system via VPN or AWS Direct Connect. In this case you'll need to have created an Interface endpoint configuration using the Amazon VPC console or the command line. https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html[See details about using AWS PrivateLink for Amazon S3^].
 
@@ -255,7 +286,7 @@ Note that you'll also need to modify the security group configuration that is as
 
 image:screenshot_backup_aws_sec_group.png[A screenshot of the AWS security group associated with the Connector.]
 
-== Enabling Cloud Backup
+== Enable Cloud Backup
 
 Enable Cloud Backup at any time directly from the on-premises working environment.
 
