@@ -26,20 +26,20 @@ Get started quickly by following these steps. Details for each step are provided
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] Identify the configuration method you'll use
 
 [role="quick-margin-para"]
-You can choose between two methods for connecting your on-premises ONTAP systems to AWS S3. Decide whether you'll connect the cluster directly to AWS S3 using a public S3 endpoint, or whether you'll use a VPN or AWS Direct Connect and route traffic through a VPC Endpoint interface to AWS S3.
+Choose whether you'll connect your on-premises ONTAP cluster directly to AWS S3 using a public S3 endpoint, or whether you'll use a VPN or AWS Direct Connect and route traffic through a private VPC Endpoint interface to AWS S3.
 
 [role="quick-margin-para"]
 <<Network diagrams for connection options,See the available connection methods.>>
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Prepare your Connector
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Prepare your Cloud Manager Connector
 
 [role="quick-margin-para"]
-If you already have a Connector deployed in your AWS VPC, then you're all set. If not, then you'll need to create a new Connector in AWS in order to back up ONTAP data to AWS S3 storage.
+If you already have a Connector deployed in your AWS VPC, then you're all set. If not, then you'll need to create a Connector in AWS in order to back up ONTAP data to AWS S3 storage. You'll also need to customize network settings for the Connector so that it can connect to AWS S3.
 
 [role="quick-margin-para"]
-You'll also need to customize network settings for the Connector so that it can connect to AWS S3. <<Prepare your Connector,See how to create a Connector and how to define required network settings.>>
+<<Prepare your Connector,See how to create a Connector and how to define required network settings.>>
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Prepare your ONTAP cluster
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Prepare your on-premises ONTAP cluster
 
 [role="quick-margin-para"]
 Discover your ONTAP cluster in Cloud Manager, verify that the cluster meets minimum requirements, and customize network settings so the cluster can connect to AWS S3.
@@ -53,22 +53,19 @@ Discover your ONTAP cluster in Cloud Manager, verify that the cluster meets mini
 Set up permissions for the Connector to create and manage the S3 bucket, and to restore data using the Restore instance. And set up permissions for the on-premises ONTAP cluster so it can read and write data to the S3 bucket.
 
 [role="quick-margin-para"]
-You can optionally set up Amazon S3 encryption so you can choose your own custom-managed keys for data encryption. <<Prepare Amazon S3,See how to get your AWS S3 environment ready to receive ONTAP backups.>>
+Optionally, you can set up your own custom-managed keys for data encryption instead of using the default Amazon S3 encryption keys. <<Prepare Amazon S3,See how to get your AWS S3 environment ready to receive ONTAP backups.>>
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png[Five] Enable Cloud Backup on the system
 
 [role="quick-margin-para"]
-Select the working environment and click *Enable > Backup Volumes* next to the Backup & Restore service in the right-panel. Then follow the setup wizard to define the default backup policy, the number of backups to retain, and the volumes you want to back up.
+Select the working environment and click *Enable > Backup Volumes* next to the Backup & Restore service in the right-panel. Then follow the setup wizard to define the default backup policy and number of backups to retain, and select the volumes you want to back up.
 
 [role="quick-margin-para"]
-By default, backups are stored in S3 Standard storage. If your cluster is using ONTAP 9.10.1 or greater, you can choose to tier backups to either S3 Glacier or S3 Glacier Deep Archive storage after a certain number of days for further cost optimization.
-
-[role="quick-margin-para"]
-<<Enable Cloud Backup,See how to activate Cloud Backup on your ONTAP volumes.>>
+<<Enable Cloud Backup,See how to activate Cloud Backup on your volumes.>>
 
 == Network diagrams for connection options
 
-There are two connection methods that you may use for configuring backups from on-premises ONTAP systems to AWS S3.
+There are two connection methods you can use when configuring backups from on-premises ONTAP systems to AWS S3.
 
 * Public connection - Directly connect the ONTAP system to AWS S3 using a public S3 endpoint.
 * Private connection - Use a VPN or AWS Direct Connect and route traffic through a VPC Endpoint interface that uses a private IP address.
@@ -91,14 +88,16 @@ Note that when the Cloud Restore instance is deployed in the cloud, it is locate
 
 The Cloud Manager Connector is the main software for Cloud Manager functionality. A Connector is required to back up and restore your ONTAP data.
 
-Creating or switching Connectors::
+=== Creating or switching Connectors
+
 If you already have a Connector deployed in your AWS VPC then you're all set. If not, then you'll need to create a new Connector in AWS in order to back up ONTAP data to AWS S3 storage. You can't use a Connector that's deployed on-premises, or that's deployed in another cloud provider.
 
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html[Learn about Connectors^]
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-aws.html[Create a Connector in AWS^]
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html[Switch between Connectors^]
 
-Connector networking requirements::
+=== Connector networking requirements
+
 * Ensure that the network where the Connector is installed enables the following connections:
 +
 ** An HTTPS connection over port 443 to the Cloud Backup service
@@ -109,12 +108,14 @@ Connector networking requirements::
 
 == Prepare your ONTAP cluster
 
-Discover your ONTAP cluster in Cloud Manager::
+=== Discover your ONTAP cluster in Cloud Manager
+
 You need to discover your on-premises ONTAP cluster in Cloud Manager before you can start backing up volume data.
 
 https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html[Learn how to discover a cluster^].
 
-ONTAP requirements::
+=== ONTAP requirements
+
 * ONTAP 9.7P5 and later.
 * A SnapMirror license (included as part of the Premium Bundle or Data Protection Bundle).
 +
@@ -125,7 +126,8 @@ See how to https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-conc
 +
 See how to https://docs.netapp.com/us-en/ontap/system-admin/manage-cluster-time-concept.html[configure your cluster time^].
 
-Cluster networking requirements::
+=== Cluster networking requirements
+
 * The cluster requires an inbound connection from the Connector to the cluster management LIF.
 * An intercluster LIF is required on each ONTAP node that hosts the volumes you want to back up. These intercluster LIFs must be able to access the object store.
 +
