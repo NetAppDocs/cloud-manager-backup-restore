@@ -104,7 +104,7 @@ If you already have a Connector deployed in your AWS VPC then you're all set. If
 ** An HTTPS connection over port 443 to your S3 object storage
 ** An HTTPS connection over port 443 to your ONTAP cluster management LIF
 
-* (Optional) Enable a VPC Endpoint interface to S3. This is needed if you have a Direct Connect or VPN connection from your ONTAP cluster to the VPC and you want communication between the Connector and S3 to stay in your AWS internal network. <<Set up a VPC endpoint interface optional,See how to set up a VPC endpoint interface.>>
+* (Optional) Enable a VPC Endpoint interface to S3. This is needed if you have a Direct Connect or VPN connection from your ONTAP cluster to the VPC and you want communication between the Connector and S3 to stay in your AWS internal network. <<Set up a VPC endpoint interface (optional),See how to set up a VPC endpoint interface.>>
 
 == Prepare your ONTAP cluster
 
