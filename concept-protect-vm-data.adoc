@@ -31,8 +31,6 @@ Read the following requirements to make sure that you have a supported configura
 * Ensure that none of the volumes are encrypted because restoring encrypted volumes are not supported.
 * Ensure that there are no resource groups enabled with "*_recent*".
 
-
-
 The following image shows each component and the connections that you need to prepare between them:
 
 image:cloud_backup_vm.png[The architecture diagram of cloud backup for Virtual Machines.]
