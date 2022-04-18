@@ -219,13 +219,25 @@ If you deployed the Connector using version 3.9.15 or greater, these permissions
 . When activating the service, the Backup wizard will prompt you to enter an access key and secret key. These credentials are passed to the ONTAP cluster so that ONTAP can back up and restore data to the S3 bucket. For that, you'll need to create an IAM user with the following permissions:
 +
 [source,json]
-  "s3:ListAllMyBuckets",
-  "s3:ListBucket",
-  "s3:GetBucketLocation",
-  "s3:GetObject",
-  "s3:PutObject",
-  "s3:PutBucketencryption",
-  "s3:DeleteObject"
+{
+    "Version": "2012-10-17",
+     "Statement": [
+        {
+           "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:DeleteObject",
+                "s3:ListBucket",
+                "s3:ListAllMyBuckets",
+                "s3:GetBucketLocation",
+                "s3:PutEncryptionConfiguration"
+            ],
+            "Resource": "arn:aws:s3:::netapp-backup-*",
+            "Effect": "Allow",
+            "Sid": "backupPolicy"
+        }
+    ]
+}
 +
 See the https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[AWS Documentation: Creating a Role to Delegate Permissions to an IAM User^] for details.
 
@@ -261,7 +273,11 @@ If you want to have a more secure connection over the public internet from your 
 . Modify the security group configuration that's associated with the Cloud Manager Connector. You must change the policy to "Custom" (from "Full Access"), and you must <<Set up S3 permissions,add the S3 permissions from the backup policy>> as shown earlier.
 +
 image:screenshot_backup_aws_sec_group.png[A screenshot of the AWS security group associated with the Connector.]
-
++
+If you are using port 80 for communication to the private endpoint, you are all set. You can enable Cloud Backup on the cluster now.
++
+If you are using port 443 for communication to the private endpoint, you must copy the certificate from the VPC S3 endpoint and add the certificate to your ONTAP cluster, as shown in the next 4 steps.
++
 . Obtain the DNS name of the endpoint from the AWS Console.
 +
 image:screenshot_endpoint_dns_aws_console.png[A screenshot of the DNS name of the VPC endpoint from the AWS Console.]
