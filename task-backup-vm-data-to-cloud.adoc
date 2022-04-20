@@ -30,6 +30,8 @@ NOTE: You can register multiple SnapCenter Plug-in. However, once registered, yo
 . Specify the following details:
 .. In the SnapCenter Plug-in for VMware vSphere field, specify the FQDN or IP address of the SnapCenter Plug-in for VMware vSphere.
 .. In the Port field, specify the port number on which the SnapCenter Plug-in for VMware vSphere is running.
++
+You should ensure that the port is open for communication to happen between SnapCenter Plug-in for VMware vSphere and Cloud Backup for Applications.
 .. In the Username and Password field, specify the credentials of the user with the administrator role.
 . Click *Register*.
 

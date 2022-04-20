@@ -30,7 +30,6 @@ Read the following requirements to make sure that you have a supported configura
 * Ensure that there are no FlexGroup volumes in the datastore because backing up and restoring FlexGroup volumes are not supported.
 * Ensure that none of the volumes are encrypted because restoring encrypted volumes are not supported.
 * Ensure that there are no resource groups enabled with "*_recent*".
-* Ensure that the port 8144 is open for communication.
 
 The following image shows each component and the connections that you need to prepare between them:
 
