@@ -30,7 +30,7 @@ The datastores and Virtual Machines that are protected using the registered Snap
 *About this task*
 
 •	Only NFS datastores are displayed.
-•	Only datastores for which at least one successful backup has been taken in on-premises SnapCenter Plug-in for VMware vSphere are displayed.
+•	Only datastores for which at least one successful backup has been taken in SnapCenter Plug-in for VMware vSphere are displayed.
 
 .Steps
 

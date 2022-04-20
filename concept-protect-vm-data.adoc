@@ -38,7 +38,7 @@ image:cloud_backup_vm.png[The architecture diagram of cloud backup for Virtual M
 
 == Protection Policies
 
-You should use the one of the policies defined in the Cloud Backup for Virtual Machines to back up the datastores data to cloud.
+You should use the one of the policies defined in the Cloud Backup for Virtual Machines to back up  datastores to cloud.
 
 NOTE: Custom polices are not supported.
 
