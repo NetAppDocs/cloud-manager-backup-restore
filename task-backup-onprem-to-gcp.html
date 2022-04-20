@@ -819,7 +819,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-05 16:35:01 +0000">04/05/2022</time>
+    <time datetime="2022-04-18 19:42:38 +0000">04/18/2022</time>
     
   
 
@@ -926,13 +926,29 @@ In most cases you&#8217;ll use Cloud Manager for all backup and restore operatio
 <p>Read the following requirements to make sure you have a supported configuration before you start backing up on-premises volumes to Google Cloud storage.</p>
 </div>
 <div class="paragraph">
-<p>The following image shows each component and the connections that you need to prepare between them:</p>
+<p>There are two connection methods you can use when configuring backups from on-premises ONTAP systems to Google Cloud Storage.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Public connection - Directly connect the ONTAP system to Google Cloud Storage using a public Google endpoint.</p>
+</li>
+<li>
+<p>Private connection - Use a VPN or Private Service Connect and route traffic through a Private Google Access interface that uses a private IP address.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following image shows the public connection method and the connections that you need to prepare between the components:</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./media/diagram_cloud_backup_onprem_google.png" alt="A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located."></span></p>
 </div>
 <div class="paragraph">
-<p>Note that the Cloud Restore instance is not shown in this diagram because single-file restore is not currently supported in GCP.</p>
+<p>The following image shows the private connection method and the connections that you need to prepare between the components:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/diagram_cloud_backup_onprem_google_vpc.png" alt="A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located."></span></p>
 </div>
 <div class="sect2">
 <h3 id="preparing-your-ontap-clusters">Preparing your ONTAP clusters</h3>
@@ -1072,7 +1088,7 @@ In most cases you&#8217;ll use Cloud Manager for all backup and restore operatio
 <div class="ulist">
 <ul>
 <li>
-<p>For Cloud Backup PAYGO licensing, you&#8217;ll need a subscription to the <a href="https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&amp;rif_reserved" target="_blank" rel="noopener">Google</a> Cloud Manager Marketplace offering to continue using Cloud Backup. Billing for Cloud Backup is done through this subscription.</p>
+<p>For Cloud Backup PAYGO licensing, you&#8217;ll need a subscription to the <a href="https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project" target="_blank" rel="noopener">Google</a> Cloud Manager Marketplace offering to continue using Cloud Backup. Billing for Cloud Backup is done through this subscription.</p>
 </li>
 <li>
 <p>For Cloud Backup BYOL licensing, you don&#8217;t need a subscription. You need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. <a href="task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license">Learn how to manage your BYOL licenses</a>.</p>

@@ -819,7 +819,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-05 16:35:01 +0000">04/05/2022</time>
+    <time datetime="2022-04-20 20:21:40 +0000">04/20/2022</time>
     
   
 
@@ -936,10 +936,29 @@ In most cases you&#8217;ll use Cloud Manager for all backup and restore operatio
 <p>Read the following requirements to make sure you have a supported configuration before you start backing up on-premises volumes to Azure Blob storage.</p>
 </div>
 <div class="paragraph">
-<p>The following image shows each component and the connections that you need to prepare between them:</p>
+<p>There are two connection methods you can use when configuring backups from on-premises ONTAP systems to Azure Blob.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Public connection - Directly connect the ONTAP system to Azure Blob storage using a public Azure endpoint.</p>
+</li>
+<li>
+<p>Private connection - Use a VPN or ExpressRoute and route traffic through a VNet Private Endpoint that uses a private IP address.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following image shows the public connection method and the connections that you need to prepare between the components:</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./media/diagram_cloud_backup_onprem_azure.png" alt="A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located."></span></p>
+</div>
+<div class="paragraph">
+<p>The following image shows the private connection method and the connections that you need to prepare between the components:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/diagram_cloud_backup_onprem_azure_vnet.png" alt="A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located."></span></p>
 </div>
 <div class="paragraph">
 <p>Note that when the Cloud Restore instance is deployed in the cloud, it is located in the same subnet as the Connector.</p>
@@ -1115,6 +1134,10 @@ In most cases you&#8217;ll use Cloud Manager for all backup and restore operatio
 <td class="tableblock halign-left valign-top"><p class="tableblock">http://olcentgbl.trafficmanager.net<br>
 https://olcentgbl.trafficmanager.net</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Provides CentOS packages for the Cloud Restore virtual machine.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https://download.docker.com/linux/centos/docker-ce.repo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provides the Docker Engine packages.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">http://cloudmanagerinfraprod.azurecr.io<br>
