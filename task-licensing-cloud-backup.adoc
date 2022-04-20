@@ -31,7 +31,7 @@ For pay-as-you-go you'll pay your cloud provider for object storage costs and fo
 
 * Azure: https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview[Go to the Cloud Manager Marketplace offering for pricing details^].
 
-* GCP: https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved[Go to the Cloud Manager Marketplace offering for pricing details^].
+* GCP: https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project[Go to the Cloud Manager Marketplace offering for pricing details^].
 
 == Subscribe to yearly contracts through AWS
 

@@ -77,9 +77,18 @@ Identify which volumes you want to back up using the default backup policy in th
 
 Read the following requirements to make sure you have a supported configuration before you start backing up on-premises volumes to Azure Blob storage.
 
-The following image shows each component and the connections that you need to prepare between them:
+There are two connection methods you can use when configuring backups from on-premises ONTAP systems to Azure Blob.
+
+* Public connection - Directly connect the ONTAP system to Azure Blob storage using a public Azure endpoint.
+* Private connection - Use a VPN or ExpressRoute and route traffic through a VNet Private Endpoint that uses a private IP address.
+
+The following image shows the public connection method and the connections that you need to prepare between the components:
 
 image:diagram_cloud_backup_onprem_azure.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located.]
+
+The following image shows the private connection method and the connections that you need to prepare between the components:
+
+image:diagram_cloud_backup_onprem_azure_vnet.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located.]
 
 Note that when the Cloud Restore instance is deployed in the cloud, it is located in the same subnet as the Connector.
 
@@ -166,6 +175,11 @@ A SnapMirror license is required on the cluster. Note that the "Hybrid Cloud Bun
 \https://olcentgbl.trafficmanager.net
 
 | Provides CentOS packages for the Cloud Restore virtual machine.
+
+|
+\https://download.docker.com/linux/centos/docker-ce.repo
+
+| Provides the Docker Engine packages.
 
 |
 \http://cloudmanagerinfraprod.azurecr.io
