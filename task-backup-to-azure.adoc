@@ -103,6 +103,11 @@ The Cloud Restore virtual machine requires outbound internet access. If your vir
 | Provides CentOS packages for the Cloud Restore virtual machine.
 
 |
+\https://download.docker.com/linux/centos/docker-ce.repo
+
+| Provides the Docker Engine packages.
+
+|
 \http://cloudmanagerinfraprod.azurecr.io
 \https://cloudmanagerinfraprod.azurecr.io
 
