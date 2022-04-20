@@ -177,6 +177,11 @@ A SnapMirror license is required on the cluster. Note that the "Hybrid Cloud Bun
 | Provides CentOS packages for the Cloud Restore virtual machine.
 
 |
+\https://download.docker.com/linux/centos/docker-ce.repo
+
+| Provides the Docker Engine packages.
+
+|
 \http://cloudmanagerinfraprod.azurecr.io
 \https://cloudmanagerinfraprod.azurecr.io
 
