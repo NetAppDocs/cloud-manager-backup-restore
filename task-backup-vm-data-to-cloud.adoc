@@ -18,7 +18,7 @@ You can backup datastores to the cloud by integrating the SnapCenter Plug-in for
 
 == Register SnapCenter Plug-in for VMware vSphere
 
-You should register the SnapCenter Plug-in for VMware vSphere in Cloud Manager for the datastores and Virtual Machines to be displayed in Cloud Manager. Only a user with administrative access can register the SnapCenter Plug-in.
+You should register the SnapCenter Plug-in for VMware vSphere in Cloud Manager for the datastores and Virtual Machines to be displayed in Cloud Manager. Only a user with administrative access can register the SnapCenter Plug-in for VMware vSphere.
 
 NOTE: You can register multiple SnapCenter Plug-in. However, once registered, you cannot remove the SnapCenter Plug-in.
 
@@ -28,14 +28,14 @@ NOTE: You can register multiple SnapCenter Plug-in. However, once registered, yo
 . From the *Settings* drop-down, click *SnapCenter Plug-in for VMware vSphere*.
 . Click *Register SnapCenter Plug-in for VMware vSphere*.
 . Specify the following details:
-.. In the SnapCenter Plug-in for VMware vSphere field, specify the FQDN or IP address of the SnapCenter Plug-in.
-.. In the Port field, specify the port number on which the SnapCenter Plug-in is running.
-.. In the Username and Password field, specify the credentials of the user with SnapCenter Admin role.
+.. In the SnapCenter Plug-in for VMware vSphere field, specify the FQDN or IP address of the SnapCenter Plug-in for VMware vSphere.
+.. In the Port field, specify the port number on which the SnapCenter Plug-in for VMware vSphere is running.
+.. In the Username and Password field, specify the credentials of the user with the administrator role.
 . Click *Register*.
 
 *After you finish*
 
-Click *Backup & Restore > Virtual Machines* to view all the datastores and Virtual Machines that are protected using the registered SnapCenter Plug-in for VMware vSphere.
+Click *Backup & Restore > Virtual Machines* to view all the datastores and Virtual Machines that are eligible for protection using the registered SnapCenter Plug-in for VMware vSphere.
 
 == Back up datastores
 
@@ -43,7 +43,7 @@ You can backup one or more datastores simultaneously to the cloud using a single
 
 .Steps
 
-. In Cloud Manager UI, click *Backup & Restore* > *Virtual Machine*.
+. In Cloud Manager UI, click *Backup & Restore* > *Virtual Machines*.
 . Click image:icon-action.png[action] corresponding to the datastore that you want to back up and click *Activate Backup*.
 . Add the working environment.
 +

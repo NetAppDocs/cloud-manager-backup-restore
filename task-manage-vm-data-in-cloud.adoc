@@ -24,16 +24,13 @@ You can view all the default pre-canned policies. For each of these policies, wh
 
 The associated Cloud Backup for Virtual Machines policies and all the Virtual Machines are listed.
 
-NOTE: You should not delete the Cloud Backup for Virtual Machines policies.
-
 == View the datastores and Virtual Machines
 The datastores and Virtual Machines that are protected using the registered SnapCenter Plug-in for VMware vSphere are displayed.
 
 *About this task*
 
 •	Only NFS datastores are displayed.
-•	Only datastores that are protected in the on-premises SnapCenter are displayed.
-•	Only datastores for which at least one successful backup has been taken in on-premises SnapCenter are displayed.
+•	Only datastores for which at least one successful backup has been taken in on-premises SnapCenter Plug-in for VMware vSphere are displayed.
 
 .Steps
 
