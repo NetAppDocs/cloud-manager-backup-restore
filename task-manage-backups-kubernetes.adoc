@@ -43,7 +43,7 @@ image:screenshot_backup_settings_button.png[A screenshot that shows the Backup S
 
 . From the _Backup Settings_ page, click image:screenshot_horizontal_more_button.gif[More icon] for the working environment where you want to change the settings, and select *Manage Policies*.
 +
-image:screenshot_backup_modify_policy.png[A screenshot that shows the Manage Policies option from the Backup Settings page.]
+image:screenshot_backup_modify_policy_k8s.png[A screenshot that shows the Manage Policies option from the Backup Settings page.]
 
 . From the _Manage Policies_ page, click *Edit Policy* for the backup policy you want to change in that working environment.
 +
@@ -65,7 +65,7 @@ image:screenshot_backup_settings_button.png[A screenshot that shows the Backup S
 
 . From the _Backup Settings page_, click image:screenshot_horizontal_more_button.gif[More icon] for the Kubernetes cluster and select *Manage Volumes*.
 +
-image:screenshot_backup_manage_volumes.png[A screenshot that shows the Manage Volumes button from the Backup Settings page.]
+image:screenshot_backup_manage_volumes_k8s.png[A screenshot that shows the Manage Volumes button from the Backup Settings page.]
 
 . Select the checkbox for a volume, or volumes, that you want to change, and then click *Activate* or *Deactivate* depending on whether you want to start or stop backups for the volume.
 +
@@ -92,7 +92,7 @@ image:screenshot_backup_settings_button.png[A screenshot that shows the Backup S
 
 . From the _Backup Settings_ page, click image:screenshot_horizontal_more_button.gif[More icon] for the working environment where you want to add the new policy, and select *Manage Policies*.
 +
-image:screenshot_backup_modify_policy.png[A screenshot that shows the Manage Policies option from the Backup Settings page.]
+image:screenshot_backup_modify_policy_k8s.png[A screenshot that shows the Manage Policies option from the Backup Settings page.]
 
 . From the _Manage Policies_ page, click *Add New Policy*.
 +
@@ -116,7 +116,7 @@ image:screenshot_backup_settings_button.png[A screenshot that shows the Backup S
 
 . From the _Backup Settings page_, click image:screenshot_horizontal_more_button.gif[More icon] for the working environment where the volumes exist, and select *Manage Volumes*.
 +
-image:screenshot_backup_manage_volumes.png[A screenshot that shows the Manage Volumes button from the Backup Settings page.]
+image:screenshot_backup_manage_volumes_k8s.png[A screenshot that shows the Manage Volumes button from the Backup Settings page.]
 
 . Select the checkbox for a volume, or volumes, that you want to change the policy for, and then click *Change Policy*.
 +
@@ -166,7 +166,7 @@ image:screenshot_backup_settings_button.png[A screenshot that shows the Backup S
 
 . Click image:screenshot_horizontal_more_button.gif[More icon] for the Kubernetes cluster where you want to delete all backups and select *Delete All Backups*.
 +
-image:screenshot_delete_all_backups.png[A screenshot of selecting the Delete All Backups button to delete all backups for a working environment.]
+image:screenshot_delete_all_backups_k8s.png[A screenshot of selecting the Delete All Backups button to delete all backups for a working environment.]
 
 . In the confirmation dialog box, enter the name of the working environment and click *Delete*.
 
@@ -226,7 +226,7 @@ image:screenshot_backup_settings_button.png[A screenshot that shows the Backup S
 
 . From the _Backup Settings page_, click image:screenshot_horizontal_more_button.gif[More icon] for the working environment, or the Kubernetes cluster, where you want to disable backups and select *Deactivate Backup*.
 +
-image:screenshot_disable_backups.png[A screenshot of the Deactivate Backup button for a working environment.]
+image:screenshot_disable_backups_k8s.png[A screenshot of the Deactivate Backup button for a working environment.]
 
 . In the confirmation dialog box, click *Deactivate*.
 
