@@ -42,12 +42,12 @@ This table provides a comparison of the 2 methods.
 | Search & Restore
 
 | Browse through a folder-style structure to find the volume or file within a single backup file | Search for a volume or file across *all backup files* by partial or full volume name, partial or full file name, size range, and additional search filters
-| Volume restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. File restore works with backup files stored in Amazon S3 and Azure Blob | Volume and file restore works with backup files stored in Amazon S3
+| Volume restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. File restore works with backup files stored in Amazon S3 and Azure Blob | Volume and file restore works with backup files stored in Amazon S3 and Google Cloud
 | Does not handle files that have been renamed or deleted | Handles newly created/deleted/renamed directories and newly created/deleted/renamed files
 | Browse for results across public or private clouds | Browse for results across public clouds and local Snapshots copies
 | Separate Cloud Restore instance is required for file restore | No Cloud Restore instance required
-| No additional Amazon resources required | New bucket and Amazon Athena and AWS Glue resources required per account
-| Cost associated with Cloud Restore instance when browsing backups for individual files | Cost associated with Amazon Athena and AWS Glue resources when scanning your backups and volumes for search results
+| No additional cloud provider resources required | Additional bucket and AWS or Google resources required per account
+| Cost associated with Cloud Restore instance when browsing backups for individual files | Cost associated with AWS or Google resources when scanning your backups and volumes for search results
 
 |===
 
@@ -302,10 +302,12 @@ You can restore a volume, or individual files, from an ONTAP backup file to the 
 On-premises ONTAP system
 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
+| Google Cloud Storage | Cloud Volumes ONTAP in Google
+On-premises ONTAP system
+| Cloud Volumes ONTAP in Google
+On-premises ONTAP system
 
 |===
-
-Additional cloud providers will be supported in future releases.
 
 Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
 
@@ -320,15 +322,21 @@ Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP
 
 * AWS requirements:
 
-** Specific Amazon Athena, AWS Glue, and AWS S3 permissions must be added to the user role that provides Cloud Manager with permissions. link:task-backup-onprem-to-aws.html#preparing-amazon-s3-for-backups[Make sure all the permissions are configured correctly].
+** Specific Amazon Athena, AWS Glue, and AWS S3 permissions must be added to the user role that provides Cloud Manager with permissions. link:task-backup-onprem-to-aws.html#set-up-s3-permissions[Make sure all the permissions are configured correctly].
 +
 Note that if you were already using Cloud Backup with a Connector you configured in the past, you'll need to add the Athena and Glue permissions to the Cloud Manager user role now. These are new, and they are required for Search & Restore.
+
+* Google Cloud requirements:
+
+** Specific Google BigQuery permissions must be added to the user role that provides Cloud Manager with permissions. link:task-backup-onprem-to-gcp.html#verify-or-add-permissions-to-the-connector[Make sure all the permissions are configured correctly].
++
+Note that if you were already using Cloud Backup with a Connector you configured in the past, you'll need to add the BigQuery permissions to the Cloud Manager user role now. These are new, and they are required for Search & Restore.
 
 === Search & Restore process
 
 The process goes like this:
 
-. Before you can use Search & Restore, you need to enable "Indexing" on each source working environment from which you'll want to restore volumes or files. This allows the Indexed Catalog to track the backup files for every volume. It enables SnapDiff v3 on data-serving SVMs, and provisions a new S3 bucket and the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service^] and https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service^].
+. Before you can use Search & Restore, you need to enable "Indexing" on each source working environment from which you'll want to restore volumes or files. This allows the Indexed Catalog to track the backup files for every volume.
 
 . When you want to restore a volume or files from a volume backup, under _Search & Restore_, click *Search & Restore*.
 
@@ -350,7 +358,9 @@ As you can see, you really only need to know a partial volume or file name and C
 
 Before you can use Search & Restore, you need to enable "Indexing" on each source working environment from which you're planning to restore volumes or files. This allows the Indexed Catalog to track every volume and every backup file - making your searches very quick and efficient.
 
-When you enable this functionality, Cloud Backup enables SnapDiff v3 on the SVM for your volumes, and it creates a new bucket in which it provisions the Amazon Athena interactive query service and AWS Glue serverless data integration service.
+When you enable this functionality, Cloud Backup enables SnapDiff v3 on the SVM for your volumes, and it performs the following actions:
+* For backups stored in AWS, it provisions a new S3 bucket and the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service^] and https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service^].
+* For backups stored in Google Cloud, it provisions a new bucket and the https://cloud.google.com/bigquery[Google Cloud BigQuery service^].
 
 If Indexing has already been enabled for your working environment, go to the next section to restore your data.
 
