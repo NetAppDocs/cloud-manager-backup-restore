@@ -359,6 +359,7 @@ As you can see, you really only need to know a partial volume or file name and C
 Before you can use Search & Restore, you need to enable "Indexing" on each source working environment from which you're planning to restore volumes or files. This allows the Indexed Catalog to track every volume and every backup file - making your searches very quick and efficient.
 
 When you enable this functionality, Cloud Backup enables SnapDiff v3 on the SVM for your volumes, and it performs the following actions:
+
 * For backups stored in AWS, it provisions a new S3 bucket and the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service^] and https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service^].
 * For backups stored in Google Cloud, it provisions a new bucket and the https://cloud.google.com/bigquery[Google Cloud BigQuery service^].
 

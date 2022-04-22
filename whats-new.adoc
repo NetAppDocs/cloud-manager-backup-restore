@@ -16,6 +16,19 @@ summary: Learn what's new in Cloud Backup.
 Learn what's new in Cloud Backup.
 
 // tag::whats-new[]
+== 1 May 2022
+
+=== Search & Restore feature is not supported with backup files in Google Cloud Storage
+
+df
+
+=== Kubernetes cluster setting to automatically back up new volumes created in the cluster
+
+sdfdfg
+
+=== Licensing something...
+
+ 
 == 4 April 2022
 
 === Cloud Backup for Applications 1.1.0 (powered by SnapCenter) is now GA
@@ -37,12 +50,13 @@ Now you can search for a volume or file across *all ONTAP backup files* by parti
 If your GKE cluster has NetApp Astra Trident installed, and it's using Cloud Volumes ONTAP for GCP as backend storage for the cluster, then you can back up and restore your persistent volumes to and from Google Cloud storage. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-kubernetes-to-gcp.html[Go here for details].
 
 === The Beta capability to use Cloud Data Sense to scan your Cloud Backup files has been discontinued in this release
+// end::whats-new[]
 
 == 14 February 2022
 
 === Now you can assign backup policies to individual volumes in a single cluster
 
-In the past you could assign only a single backup policy to all volumes in a cluster. Now you can create multiple backup policies for a single cluster and apply different policies to different volumes. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-manage-backups-ontap#changing-the-policy-assigned-to-existing-volumes[See how to create new backup policies for a cluster and assign them to selected volumes].
+In the past you could assign only a single backup policy to all volumes in a cluster. Now you can create multiple backup policies for a single cluster and apply different policies to different volumes. link:task-manage-backups-ontap#changing-the-policy-assigned-to-existing-volumes[See how to create new backup policies for a cluster and assign them to selected volumes].
 
 === A new option enables you to automatically apply a default backup policy to newly created volumes
 
@@ -52,8 +66,7 @@ This option is available when enabling backup in a new working environment, or f
 
 === New Job Monitor is available to see the in-process status of all backup and restore jobs
 
-The Job Monitor can be very helpful when you have initiated an operation against multiple volumes, like changing the backup policy, or deleting backups, so you can see when the operation has completed on all volumes. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-monitor-backup-jobs.html[See how to use the Job Monitor].
-// end::whats-new[]
+The Job Monitor can be very helpful when you have initiated an operation against multiple volumes, like changing the backup policy, or deleting backups, so you can see when the operation has completed on all volumes. link:task-monitor-backup-jobs.html[See how to use the Job Monitor].
 
 == 2 January 2022
 
