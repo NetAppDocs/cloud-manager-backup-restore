@@ -18,17 +18,30 @@ Learn what's new in Cloud Backup.
 // tag::whats-new[]
 == 1 May 2022
 
-=== Search & Restore feature is not supported with backup files in Google Cloud Storage
+=== Search & Restore is now supported with backup files in Google Cloud Storage
 
-df
+The Search & Restore method of restoring volumes and files was introduced in April for users who store their backup files in AWS. Now the capability is available for users who store their backup files in Google Cloud Storage. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html#prerequisites-2[See how to restore your volumes and files using Search & Restore].
 
-=== Kubernetes cluster setting to automatically back up new volumes created in the cluster
+=== Configure a backup policy to be applied automatically to newly created volumes in Kubernetes clusters
 
-sdfdfg
+If you added new persistent volumes to your Kubernetes clusters after Cloud Backup has been activated, you needed to remember to configure backups for those volumes. Now you can select a policy that will be applied automatically. This option is available in the setup wizard when activating Cloud Backup for a new Kubernetes cluster, or https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-manage-backups-kubernetes.html#setting-a-backup-policy-to-be-assigned-to-new-volumes[from the _Backup Settings_ page] for clusters that have already activated Cloud Backup.
 
-=== Licensing something...
+=== Change to how Cloud Backup licensing is implemented
 
- 
+There are a few changes to how licensing is implemented with Cloud Backup:
+
+* You must sign up for a PAYGO Marketplace subscription from your cloud provider, or a BYOL license from NetApp, before you can activate Cloud Backup.
+* The 30-day Free Trial is available only when using a PAYGO subscription from your cloud provider - it is not available when using the BYOL.
+* The Free Trial starts the day the Marketplace subscription starts. For example, if you try to use the Free Trial after you have been using a Marketplace subscription for 30 days for a Cloud Volumes ONTAP system, the Cloud Backup Trial will not be available.
+
+https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-licensing-cloud-backup.html[Learn more about the available licensing models].
+
+=== Support has been added to back up on-premises ONTAP cluster data in sites without internet access
+
+If your on-prem ONTAP cluster resides in a site with no internet access, also known as a dark site or offline site, now you can use Cloud Backup to back up volume data to a NetApp StorageGRID systems that resides in the same site. This functionality requires that the Cloud Manager Connector (version 3.9.17 or greater) is also deployed in the offline site.
+
+https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-private-cloud.html[See how to back up data in an offline site].
+
 == 4 April 2022
 
 === Cloud Backup for Applications 1.1.0 (powered by SnapCenter) is now GA
