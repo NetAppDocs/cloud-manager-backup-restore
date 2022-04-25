@@ -26,7 +26,7 @@ The Search & Restore method of restoring volumes and files was introduced in Apr
 
 If you added new persistent volumes to your Kubernetes clusters after Cloud Backup has been activated, you needed to remember to configure backups for those volumes. Now you can select a policy that will be applied automatically. This option is available in the setup wizard when activating Cloud Backup for a new Kubernetes cluster, or https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-manage-backups-kubernetes.html#setting-a-backup-policy-to-be-assigned-to-new-volumes[from the _Backup Settings_ page] for clusters that have already activated Cloud Backup.
 
-=== Change to how Cloud Backup licensing is implemented
+=== Cloud Backup now requires a license before being activated on a working environment
 
 There are a few changes to how licensing is implemented with Cloud Backup:
 

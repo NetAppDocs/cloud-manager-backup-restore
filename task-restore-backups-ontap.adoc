@@ -19,6 +19,8 @@ You can restore a *volume* (as a new volume) to the original working environment
 
 You can restore *files* to a volume in the original working environment, to a volume in a different working environment that's using the same cloud account, or to a volume on an on-premises ONTAP system.
 
+A valid Cloud Backup license is required to restore data from backup files to a production system.
+
 == The Restore Dashboard
 
 You use the Restore Dashboard to perform volume and file restore operations. You access the Restore Dashboard by clicking *Backup & Restore* from the top of Cloud Manager, and then clicking the *Restore* tab. You can also click image:screenshot_gallery_options.gif[More button] > *View Restore Dashboard* from the Backup & Restore service from the Services panel.

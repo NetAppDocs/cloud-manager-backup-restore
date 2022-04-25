@@ -182,7 +182,7 @@ image:screenshot_backup_view_backups.png[A screenshot that shows the List of all
 
 == Deleting backups
 
-Cloud Backup enables you to delete a single backup file, delete all backups for a volume, or delete all backups of all volumes in a working environment or Kubernetes cluster. You might want to delete all backups if you no longer need the backups or if you deleted the source volume and want to remove all backups.
+Cloud Backup enables you to delete a single backup file, delete all backups for a volume, or delete all backups of all volumes in a working environment. You might want to delete all backups if you no longer need the backups or if you deleted the source volume and want to remove all backups.
 
 CAUTION: If you plan to delete a working environment or cluster that has backups, you must delete the backups *before* deleting the system. Cloud Backup doesn’t automatically delete backups when you delete a system, and there is no current support in the UI to delete the backups after the system has been deleted. You'll continue to be charged for object storage costs for any remaining backups.
 
@@ -196,7 +196,7 @@ Deleting all backups for a working environment does not disable future backups o
 +
 image:screenshot_backup_settings_button.png[A screenshot that shows the Backup Settings button which is available after you select a working environment.]
 
-. Click image:screenshot_horizontal_more_button.gif[More icon] for the working environment, or the Kubernetes cluster, where you want to delete all backups and select *Delete All Backups*.
+. Click image:screenshot_horizontal_more_button.gif[More icon] for the working environment where you want to delete all backups and select *Delete All Backups*.
 +
 image:screenshot_delete_all_backups.png[A screenshot of selecting the Delete All Backups button to delete all backups for a working environment.]
 
@@ -244,9 +244,9 @@ image:screenshot_delete_one_backup.png[A screenshot showing how to delete a sing
 
 . In the confirmation dialog box, click *Delete*.
 
-== Disabling Cloud Backup for a working environment
+== Deactivating Cloud Backup for a working environment
 
-Disabling Cloud Backup for a working environment disables backups of each volume on the system, and it also disables the ability to restore a volume. Any existing backups will not be deleted. This does not unregister the backup service from this working environment - it basically allows you to pause all backup and restore activity for a period of time.
+Deactivating Cloud Backup for a working environment disables backups of each volume on the system, and it also disables the ability to restore a volume. Any existing backups will not be deleted. This does not unregister the backup service from this working environment - it basically allows you to pause all backup and restore activity for a period of time.
 
 Note that you'll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you <<Deleting all backup files for a working environment,delete the backups>>.
 
@@ -256,7 +256,7 @@ Note that you'll continue to be charged by your cloud provider for object storag
 +
 image:screenshot_backup_settings_button.png[A screenshot that shows the Backup Settings button which is available after you select a working environment.]
 
-. From the _Backup Settings page_, click image:screenshot_horizontal_more_button.gif[More icon] for the working environment, or the Kubernetes cluster, where you want to disable backups and select *Deactivate Backup*.
+. From the _Backup Settings page_, click image:screenshot_horizontal_more_button.gif[More icon] for the working environment where you want to disable backups and select *Deactivate Backup*.
 +
 image:screenshot_disable_backups.png[A screenshot of the Deactivate Backup button for a working environment.]
 
