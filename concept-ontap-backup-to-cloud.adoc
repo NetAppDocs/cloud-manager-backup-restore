@@ -133,13 +133,7 @@ There are three ways to pay for the Backup service. The first option is to subsc
 
 == Licensing
 
-Cloud Backup is available in three licensing options: Pay As You Go (PAYGO), an annual contract from the AWS Marketplace, and Bring Your Own License (BYOL). A 30-day free trial is available if you don’t have a license.
-
-=== Free trial
-
-When using the 30-day free trial, you are notified about the number of free trial days that remain. At the end of your free trial, backups stop being created. You must subscribe to the service or purchase a license to continue using the service.
-
-Backup files are not deleted when the service is disabled. You'll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you delete the backups.
+Cloud Backup is available in three licensing options: Pay As You Go (PAYGO) subscription, an annual contract from the AWS Marketplace, and Bring Your Own License (BYOL). A 30-day free trial is available when you get a PAYGO subscription.
 
 === Pay-as-you-go subscription
 

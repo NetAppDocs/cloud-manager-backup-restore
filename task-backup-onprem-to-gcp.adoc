@@ -163,7 +163,7 @@ bigquery.tables.create
 
 . Click *Update* to save the edited role.
 
-== Verify license requirements
+=== Verify license requirements
 
 * Before you can activate Cloud Backup for your cluster, you'll need to either subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from Google, or purchase and activate a Cloud Backup BYOL license from NetApp. These licenses are for your account and can be used across multiple systems.
 

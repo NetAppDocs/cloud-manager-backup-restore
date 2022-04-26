@@ -150,7 +150,7 @@ Ensure that the Connector has the required networking connections.
 
 You can create backups from on-premises systems to Azure Blob in all regions https://cloud.netapp.com/cloud-volumes-global-regions[where Cloud Volumes ONTAP is supported^]; including Azure Government regions. You specify the region where the backups will be stored when you set up the service.
 
-== Verify license requirements
+=== Verify license requirements
 
 * Before you can activate Cloud Backup for your cluster, you'll need to either subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from Azure, or purchase and activate a Cloud Backup BYOL license from NetApp. These licenses are for your account and can be used across multiple systems.
 
