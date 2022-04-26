@@ -249,6 +249,11 @@ If your virtual or physical network uses a proxy server for internet access, ens
 | \http://amazonlinux.us-east-1.amazonaws.com/2/extras/docker/stable/ x86_64/4bf88ee77c395ffe1e0c3ca68530dfb3a683ec65a4a1ce9c0ff394be50e922b2/ | CentOS package for the Cloud Restore Instance AMI.
 
 |
+\https://download.docker.com/linux/centos/docker-ce.repo
+
+| Provides the Docker Engine packages.
+
+|
 \http://cloudmanagerinfraprod.azurecr.io
 \https://cloudmanagerinfraprod.azurecr.io
 
