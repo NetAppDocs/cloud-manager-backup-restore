@@ -199,9 +199,9 @@ Here are the specific S3 permissions from the policy:
 //
 // |===
 
-== Enabling Cloud Backup on an existing system
+== Enabling Cloud Backup
 
-Enable Cloud Backup at any time directly from the working environment.
+Enable Cloud Backup at any time directly from the Kubernetes working environment.
 
 .Steps
 

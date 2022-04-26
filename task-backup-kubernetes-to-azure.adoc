@@ -149,9 +149,9 @@ Cloud Backup is supported in all Azure regions https://cloud.netapp.com/cloud-vo
 //
 // |===
 
-== Enabling Cloud Backup on an existing system
+== Enabling Cloud Backup
 
-Enable Cloud Backup at any time directly from the working environment.
+Enable Cloud Backup at any time directly from the Kubernetes working environment.
 
 .Steps
 

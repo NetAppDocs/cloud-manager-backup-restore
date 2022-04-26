@@ -239,4 +239,4 @@ Cloud Backup starts taking the initial backups of each selected volume and the V
 .What's next?
 
 You can link:task-manage-backups-ontap.html[start and stop backups for volumes or change the backup schedule^].
-You can also link:task-restore-backups-ontap.html[restore entire volumes from a backup file^] to a Cloud Volumes ONTAP system in Google, or to an on-premises ONTAP system.
+You can also link:task-restore-backups-ontap.html[restore volumes or files from a backup file^] to a Cloud Volumes ONTAP system in Google, or to an on-premises ONTAP system.

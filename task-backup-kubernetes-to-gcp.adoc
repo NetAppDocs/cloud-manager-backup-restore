@@ -131,9 +131,9 @@ And you need to have a Google subscription for the storage space where your back
 GCP Service Account::
 You need to have a service account in your Google Cloud Project that has the predefined Storage Admin role. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-creating-gcp-service-account.html[Learn how to create a service account^].
 
-== Enabling Cloud Backup on an existing system
+== Enabling Cloud Backup
 
-Enable Cloud Backup at any time directly from the working environment.
+Enable Cloud Backup at any time directly from the Kubernetes working environment.
 
 .Steps
 
