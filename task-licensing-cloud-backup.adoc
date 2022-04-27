@@ -21,7 +21,7 @@ A few notes before you read any further:
 * The Cloud Backup bring-your-own-license (BYOL) is a floating license that you can use across all systems associated with your Cloud Manager account. So if you have sufficient backup capacity available from an existing BYOL license, you won't need to purchase another BYOL license.
 * When backing up on-prem ONTAP data to StorageGRID, you need a BYOL license, but there's no cost for cloud provider storage space.
 
-link:concept-backup-to-cloud.html#licensing[Learn more about the licensing and costs related to Cloud Backup.]
+link:concept-ontap-backup-to-cloud.html#cost[Learn more about the costs related to using Cloud Backup.]
 
 == 30-day free trial
 
