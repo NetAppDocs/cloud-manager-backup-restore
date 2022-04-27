@@ -46,7 +46,7 @@ This table provides a comparison of the 2 methods.
 | Browse through a folder-style structure to find the volume or file within a single backup file | Search for a volume or file across *all backup files* by partial or full volume name, partial or full file name, size range, and additional search filters
 | Volume restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. File restore works with backup files stored in Amazon S3 and Azure Blob | Volume and file restore works with backup files stored in Amazon S3 and Google Cloud
 | Does not handle files that have been renamed or deleted | Handles newly created/deleted/renamed directories and newly created/deleted/renamed files
-| Browse for results across public or private clouds | Browse for results across public clouds and local Snapshots copies
+| Browse for results across public and private clouds | Browse for results across public clouds and local Snapshots copies
 | Separate Cloud Restore instance is required for file restore | No Cloud Restore instance required
 | No additional cloud provider resources required | Additional bucket and AWS or Google resources required per account
 | Cost associated with Cloud Restore instance when browsing backups for individual files | Cost associated with AWS or Google resources when scanning your backups and volumes for search results
@@ -363,8 +363,7 @@ Before you can use Search & Restore, you need to enable "Indexing" on each sourc
 When you enable this functionality, Cloud Backup enables SnapDiff v3 on the SVM for your volumes, and it performs the following actions:
 
 * For backups stored in AWS, it provisions a new S3 bucket and the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service^] and https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service^].
-* For backups stored in Google Cloud, it provisions a new bucket and the https://cloud.google.com/bigquery[Google Cloud BigQuery service^].
-
+* For backups stored in Google Cloud, it provisions a new bucket, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
 If Indexing has already been enabled for your working environment, go to the next section to restore your data.
 
 To enable Indexing for a working environment:

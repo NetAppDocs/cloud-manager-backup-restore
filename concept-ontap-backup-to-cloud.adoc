@@ -120,7 +120,7 @@ The instance is named _Cloud-Restore-Instance_ with your Account ID concatenated
 +
 ** In AWS, https://aws.amazon.com/athena/faqs/[Amazon Athena^] and https://aws.amazon.com/glue/faqs/[AWS Glue^] resources are deployed in a new S3 bucket.
 +
-** In Google, the https://cloud.google.com/bigquery[Google Cloud BigQuery service^] resources are deployed in a new bucket.
+** In Google, a new bucket is deployed, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
 
 * If you need to restore volume data from a backup file that has been moved to archival storage (supported with AWS when using ONTAP 9.10.1+), then there's an additional per-GiB retrieval fee and per-request fee from the cloud provider.
 //and Azure
