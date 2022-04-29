@@ -29,7 +29,7 @@ Read the following requirements to make sure that you have a supported configura
 * For a pre-canned policy, the schedule tier should be the same for the datastore in SnapCenter Plug-in for VMware vSphere and in the cloud.
 * Ensure that there are no FlexGroup volumes in the datastore because backing up and restoring FlexGroup volumes are not supported.
 * Ensure that none of the volumes are encrypted because restoring encrypted volumes are not supported.
-* Ensure that there are no resource groups enabled with "*_recent*".
+* Disable "*_recent*" on the required resoruce groups. If you have "*_recent*" enabled for the resource group, then the backups of those resource groups cannot be used for data protection to cloud and subsequently cannot be used for the restore operation.
 
 The following image shows each component and the connections that you need to prepare between them:
 
