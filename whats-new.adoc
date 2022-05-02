@@ -16,7 +16,7 @@ summary: Learn what's new in Cloud Backup.
 Learn what's new in Cloud Backup.
 
 // tag::whats-new[]
-== 1 May 2022
+== 2 May 2022
 
 === Search & Restore is now supported with backup files in Google Cloud Storage
 
@@ -24,15 +24,15 @@ The Search & Restore method of restoring volumes and files was introduced in Apr
 
 === Configure a backup policy to be applied automatically to newly created volumes in Kubernetes clusters
 
-If you added new persistent volumes to your Kubernetes clusters after Cloud Backup has been activated, you needed to remember to configure backups for those volumes. Now you can select a policy that will be applied automatically. This option is available in the setup wizard when activating Cloud Backup for a new Kubernetes cluster, or https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-manage-backups-kubernetes.html#setting-a-backup-policy-to-be-assigned-to-new-volumes[from the _Backup Settings_ page] for clusters that have already activated Cloud Backup.
+If you added new persistent volumes to your Kubernetes clusters after Cloud Backup was activated, in the past you needed to remember to configure backups for those volumes. Now you can select a policy that will be applied automatically to newly created volumes. This option is available in the setup wizard when activating Cloud Backup for a new Kubernetes cluster, or https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-manage-backups-kubernetes.html#setting-a-backup-policy-to-be-assigned-to-new-volumes[from the _Backup Settings_ page] for clusters that have already activated Cloud Backup.
 
 === Cloud Backup now requires a license before being activated on a working environment
 
 There are a few changes to how licensing is implemented with Cloud Backup:
 
-* You must sign up for a PAYGO Marketplace subscription from your cloud provider, or a BYOL license from NetApp, before you can activate Cloud Backup.
-* The 30-day Free Trial is available only when using a PAYGO subscription from your cloud provider - it is not available when using the BYOL.
-* The Free Trial starts the day the Marketplace subscription starts. For example, if you try to use the Free Trial after you have been using a Marketplace subscription for 30 days for a Cloud Volumes ONTAP system, the Cloud Backup Trial will not be available.
+* You must sign up for a PAYGO Marketplace subscription from your cloud provider, or purchase a BYOL license from NetApp, before you can activate Cloud Backup.
+* The 30-day Free Trial is available only when using a PAYGO subscription from your cloud provider - it is not available when using the BYOL license.
+* The Free Trial starts the day the Marketplace subscription starts. For example, if you activate the Free Trial after you have been using a Marketplace subscription for 30 days for a Cloud Volumes ONTAP system, the Cloud Backup Trial will not be available.
 
 https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-licensing-cloud-backup.html[Learn more about the available licensing models].
 //
