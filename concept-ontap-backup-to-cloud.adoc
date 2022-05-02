@@ -64,7 +64,7 @@ NetApp StorageGRID
 
 You can restore a volume, or individual files, from an ONTAP backup file to the following working environments:
 
-[cols=3*,options="header",cols="25,33,33",width="95%"]
+[cols=3*,options="header",cols="25,33,37",width="95%"]
 |===
 
 | Backup File
@@ -78,7 +78,9 @@ On-premises ONTAP system
 On-premises ONTAP system | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system
 | Google Cloud Storage | Cloud Volumes ONTAP in Google
-On-premises ONTAP system |
+On-premises ONTAP system
+| Cloud Volumes ONTAP in Google
+On-premises ONTAP system
 | NetApp StorageGRID | On-premises ONTAP system |
 
 |===
@@ -114,9 +116,14 @@ The instance is named _Cloud-Restore-Instance_ with your Account ID concatenated
 
 * For Volume Restore using Browse & Restore, there is no cost because no separate instance or virtual machine is required.
 
-* For Volume or File Restore using Search & Restore, the https://aws.amazon.com/athena/faqs/[Amazon Athena^] and https://aws.amazon.com/glue/faqs/[AWS Glue^] resources are used to search through your volumes and backup files. A per-TiB cost is associated with the amount of data that is scanned by your search requests. Search & Restore is supported only when restoring data from a backup file in Amazon S3 at this time.
+* For Volume or File Restore using Search & Restore, certain resources are provisioned by your cloud provider and there is per-TiB cost associated with the amount of data that is scanned by your search requests.
++
+** In AWS, https://aws.amazon.com/athena/faqs/[Amazon Athena^] and https://aws.amazon.com/glue/faqs/[AWS Glue^] resources are deployed in a new S3 bucket.
++
+** In Google, a new bucket is deployed, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
 
-* If you need to restore volume data from a backup file that has been moved to archival storage (supported with AWS and Azure when using ONTAP 9.10.1+), then there's an additional per-GiB retrieval fee and per-request fee from the cloud provider.
+* If you need to restore volume data from a backup file that has been moved to archival storage (supported with AWS when using ONTAP 9.10.1+), then there's an additional per-GiB retrieval fee and per-request fee from the cloud provider.
+//and Azure
 
 *Service charges*
 
@@ -126,29 +133,11 @@ There are three ways to pay for the Backup service. The first option is to subsc
 
 == Licensing
 
-Cloud Backup is available in three licensing options: Pay As You Go (PAYGO), an annual contract from the AWS Marketplace, and Bring Your Own License (BYOL). A 30-day free trial is available if you don’t have a license.
-
-=== Free trial
-
-When using the 30-day free trial, you are notified about the number of free trial days that remain. At the end of your free trial, backups stop being created. You must subscribe to the service or purchase a license to continue using the service.
-
-Backup files are not deleted when the service is disabled. You'll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you delete the backups.
+Cloud Backup is available in three licensing options: Pay As You Go (PAYGO) subscription, an annual contract from the AWS Marketplace, and Bring Your Own License (BYOL). A 30-day free trial is available when you get a PAYGO subscription.
 
 === Pay-as-you-go subscription
 
 Cloud Backup offers consumption-based licensing in a pay-as-you-go model. After subscribing through your cloud provider’s marketplace, you pay per GiB for data that’s backed up—​there’s no up-front payment. You are billed by your cloud provider through your monthly bill.
-
-You should subscribe even if you have a free trial or if you bring your own license (BYOL):
-
-* Subscribing ensures that there’s no disruption of service after your free trial ends.
-+
-When the trial ends, you’ll be charged hourly according to the amount of data that you back up.
-
-* If you back up more data than allowed by your BYOL license, then data backup continues through your pay-as-you-go subscription.
-+
-For example, if you have a 10 TiB BYOL license, all capacity beyond the 10 TiB is charged through the PAYGO subscription.
-
-You won’t be charged from your pay-as-you-go subscription during your free trial or if you haven’t exceeded your BYOL license.
 
 link:task-licensing-cloud-backup.html#use-a-cloud-backup-paygo-subscription[Learn how to set up a pay-as-you-go subscription].
 
@@ -157,12 +146,8 @@ link:task-licensing-cloud-backup.html#use-a-cloud-backup-paygo-subscription[Lear
 Two annual contracts are available for 12, 24, or 36 month terms from the AWS Marketplace:
 
 *	A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
-+
-You’ll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your AWS credentials in Cloud Manager.
 
 * A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and Cloud Backup. This includes unlimited backups for Cloud Volumes ONTAP volumes charged against this license (backup capacity is not counted against the license).
-+
-You can set up the annual contract when you create a Cloud Volumes ONTAP working environment and Cloud Manager will prompt you to subscribe to the AWS Marketplace.
 
 link:task-licensing-cloud-backup.html#subscribe-to-yearly-contracts-through-aws[Learn how to set up yearly AWS contracts].
 
