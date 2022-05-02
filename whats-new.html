@@ -296,9 +296,9 @@
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
                   <a href="https://docs.netapp.com/ja-jp/cloud-manager-backup-restore/whats-new.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/cloud-manager-backup-restore/whats-new.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
                   <a href="https://docs.netapp.com/ko-kr/cloud-manager-backup-restore/whats-new.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/cloud-manager-backup-restore/whats-new.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
                 </li></ul>
             </li>
           </ul>
@@ -819,7 +819,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-05 16:35:01 +0000">04/05/2022</time>
+    <time datetime="2022-05-02 12:29:04 +0000">05/02/2022</time>
     
   
 
@@ -849,6 +849,45 @@
 <div class="sectionbody">
 <div class="paragraph lead">
 <p>Learn what&#8217;s new in Cloud Backup.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2-may-2022">2 May 2022</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="search-restore-is-now-supported-with-backup-files-in-google-cloud-storage">Search &amp; Restore is now supported with backup files in Google Cloud Storage</h3>
+<div class="paragraph">
+<p>The Search &amp; Restore method of restoring volumes and files was introduced in April for users who store their backup files in AWS. Now the capability is available for users who store their backup files in Google Cloud Storage. <a href="https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html#prerequisites-2">See how to restore your volumes and files using Search &amp; Restore</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configure-a-backup-policy-to-be-applied-automatically-to-newly-created-volumes-in-kubernetes-clusters">Configure a backup policy to be applied automatically to newly created volumes in Kubernetes clusters</h3>
+<div class="paragraph">
+<p>If you added new persistent volumes to your Kubernetes clusters after Cloud Backup was activated, in the past you needed to remember to configure backups for those volumes. Now you can select a policy that will be applied automatically to newly created volumes. This option is available in the setup wizard when activating Cloud Backup for a new Kubernetes cluster, or <a href="https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-manage-backups-kubernetes.html#setting-a-backup-policy-to-be-assigned-to-new-volumes">from the <em>Backup Settings</em> page</a> for clusters that have already activated Cloud Backup.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cloud-backup-now-requires-a-license-before-being-activated-on-a-working-environment">Cloud Backup now requires a license before being activated on a working environment</h3>
+<div class="paragraph">
+<p>There are a few changes to how licensing is implemented with Cloud Backup:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You must sign up for a PAYGO Marketplace subscription from your cloud provider, or purchase a BYOL license from NetApp, before you can activate Cloud Backup.</p>
+</li>
+<li>
+<p>The 30-day Free Trial is available only when using a PAYGO subscription from your cloud provider - it is not available when using the BYOL license.</p>
+</li>
+<li>
+<p>The Free Trial starts the day the Marketplace subscription starts. For example, if you activate the Free Trial after you have been using a Marketplace subscription for 30 days for a Cloud Volumes ONTAP system, the Cloud Backup Trial will not be available.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-licensing-cloud-backup.html">Learn more about the available licensing models</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -896,7 +935,7 @@
 <div class="sect2">
 <h3 id="now-you-can-assign-backup-policies-to-individual-volumes-in-a-single-cluster">Now you can assign backup policies to individual volumes in a single cluster</h3>
 <div class="paragraph">
-<p>In the past you could assign only a single backup policy to all volumes in a cluster. Now you can create multiple backup policies for a single cluster and apply different policies to different volumes. <a href="https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-manage-backups-ontap#changing-the-policy-assigned-to-existing-volumes">See how to create new backup policies for a cluster and assign them to selected volumes</a>.</p>
+<p>In the past you could assign only a single backup policy to all volumes in a cluster. Now you can create multiple backup policies for a single cluster and apply different policies to different volumes. <a href="task-manage-backups-ontap#changing-the-policy-assigned-to-existing-volumes">See how to create new backup policies for a cluster and assign them to selected volumes</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -911,7 +950,7 @@
 <div class="sect2">
 <h3 id="new-job-monitor-is-available-to-see-the-in-process-status-of-all-backup-and-restore-jobs">New Job Monitor is available to see the in-process status of all backup and restore jobs</h3>
 <div class="paragraph">
-<p>The Job Monitor can be very helpful when you have initiated an operation against multiple volumes, like changing the backup policy, or deleting backups, so you can see when the operation has completed on all volumes. <a href="https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-monitor-backup-jobs.html">See how to use the Job Monitor</a>.</p>
+<p>The Job Monitor can be very helpful when you have initiated an operation against multiple volumes, like changing the backup policy, or deleting backups, so you can see when the operation has completed on all volumes. <a href="task-monitor-backup-jobs.html">See how to use the Job Monitor</a>.</p>
 </div>
 </div>
 </div>

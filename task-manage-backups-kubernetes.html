@@ -296,9 +296,9 @@
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
                   <a href="https://docs.netapp.com/ja-jp/cloud-manager-backup-restore/task-manage-backups-kubernetes.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/cloud-manager-backup-restore/task-manage-backups-kubernetes.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
                   <a href="https://docs.netapp.com/ko-kr/cloud-manager-backup-restore/task-manage-backups-kubernetes.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/cloud-manager-backup-restore/task-manage-backups-kubernetes.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
                 </li></ul>
             </li>
           </ul>
@@ -819,7 +819,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-05 16:35:01 +0000">04/05/2022</time>
+    <time datetime="2022-04-22 16:29:33 +0000">04/22/2022</time>
     
   
 
@@ -882,6 +882,43 @@ Do not manage or change backup files directly from your cloud provider environme
 </div>
 </div>
 <div class="sect1">
+<h2 id="enabling-and-disabling-backups-of-volumes">Enabling and disabling backups of volumes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can stop backing up a volume if you do not need backup copies of that volume and you do not want to pay for the cost to store the backups. You can also add a new volume to the backup list if it is not currently being backed up.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the <strong>Kubernetes</strong> tab, select <strong>Backup Settings</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_settings_button_k8s.png" alt="A screenshot that shows the Backup Settings button which is available after you select a working environment."></span></p>
+</div>
+</li>
+<li>
+<p>From the <em>Backup Settings page</em>, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the Kubernetes cluster and select <strong>Manage Persistent Volumes</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_manage_volumes_k8s.png" alt="A screenshot that shows the Manage Persistent Volumes button from the Backup Settings page."></span></p>
+</div>
+</li>
+<li>
+<p>Select the checkbox for a volume, or volumes, that you want to change, and then click <strong>Activate</strong> or <strong>Deactivate</strong> depending on whether you want to start or stop backups for the volume.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_manage_volumes_page_k8s.png" alt="The Manage Volumes page where you can select or deselect volumes."></span></p>
+</div>
+</li>
+<li>
+<p>Click <strong>Save</strong> to commit your changes.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> When stopping a volume from being backed up you’ll continue to be charged by your cloud provider for object storage costs for the capacity that the backups use unless you <a href="#deleting-backups">delete the backups</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="editing-an-existing-backup-policy">Editing an existing backup policy</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -891,15 +928,15 @@ Do not manage or change backup files directly from your cloud provider environme
 <div class="title">Steps</div>
 <ol class="arabic">
 <li>
-<p>From the <strong>Volumes</strong> tab, select <strong>Backup Settings</strong>.</p>
+<p>From the <strong>Kubernetes</strong> tab, select <strong>Backup Settings</strong>.</p>
 <div class="paragraph">
-<p><span class="image"><img src="./media/screenshot_backup_settings_button.png" alt="A screenshot that shows the Backup Settings button from the Volumes tab."></span></p>
+<p><span class="image"><img src="./media/screenshot_backup_settings_button_k8s.png" alt="A screenshot that shows the Backup Settings button from the Volumes tab."></span></p>
 </div>
 </li>
 <li>
 <p>From the <em>Backup Settings</em> page, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the working environment where you want to change the settings, and select <strong>Manage Policies</strong>.</p>
 <div class="paragraph">
-<p><span class="image"><img src="./media/screenshot_backup_modify_policy.png" alt="A screenshot that shows the Manage Policies option from the Backup Settings page."></span></p>
+<p><span class="image"><img src="./media/screenshot_backup_modify_policy_k8s.png" alt="A screenshot that shows the Manage Policies option from the Backup Settings page."></span></p>
 </div>
 </li>
 <li>
@@ -919,46 +956,6 @@ Do not manage or change backup files directly from your cloud provider environme
 </div>
 </div>
 <div class="sect1">
-<h2 id="enabling-and-disabling-backups-of-volumes">Enabling and disabling backups of volumes</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>You can stop backing up a volume if you do not need backup copies of that volume and you do not want to pay for the cost to store the backups. You can also add a new volume to the backup list if it is not currently being backed up.</p>
-</div>
-<div class="olist arabic">
-<div class="title">Steps</div>
-<ol class="arabic">
-<li>
-<p>From the <strong>Kubernetes</strong> tab, select <strong>Backup Settings</strong>.</p>
-<div class="paragraph">
-<p><span class="image"><img src="./media/screenshot_backup_settings_button.png" alt="A screenshot that shows the Backup Settings button which is available after you select a working environment."></span></p>
-</div>
-</li>
-<li>
-<p>From the <em>Backup Settings page</em>, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the Kubernetes cluster and select <strong>Manage Volumes</strong>.</p>
-<div class="paragraph">
-<p><span class="image"><img src="./media/screenshot_backup_manage_volumes.png" alt="A screenshot that shows the Manage Volumes button from the Backup Settings page."></span></p>
-</div>
-</li>
-<li>
-<p>Select the checkbox for a volume, or volumes, that you want to change, and then click <strong>Activate</strong> or <strong>Deactivate</strong> depending on whether you want to start or stop backups for the volume.</p>
-<div class="paragraph">
-<p><span class="image"><img src="./media/screenshot_backup_manage_volumes_page.png" alt="The Manage Volumes page where you can select or deselect volumes."></span></p>
-</div>
-<div class="paragraph">
-<p>You can choose to have all volumes added in the future to have backup enabled, or not, by using the checkbox for "Automatically back up future volumes&#8230;&#8203;". If you disable this setting, you&#8217;ll need to manually enable backups for volumes added in the future.</p>
-</div>
-</li>
-<li>
-<p>Click <strong>Save</strong> to commit your changes.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Note:</strong> When stopping a volume from being backed up you’ll continue to be charged by your cloud provider for object storage costs for the capacity that the backups use unless you <a href="#deleting-backups">delete the backups</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="adding-a-new-backup-policy">Adding a new backup policy</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -971,15 +968,15 @@ Do not manage or change backup files directly from your cloud provider environme
 <div class="title">Steps</div>
 <ol class="arabic">
 <li>
-<p>From the <strong>Volumes</strong> tab, select <strong>Backup Settings</strong>.</p>
+<p>From the <strong>Kubernetes</strong> tab, select <strong>Backup Settings</strong>.</p>
 <div class="paragraph">
-<p><span class="image"><img src="./media/screenshot_backup_settings_button.png" alt="A screenshot that shows the Backup Settings button from the Volumes tab."></span></p>
+<p><span class="image"><img src="./media/screenshot_backup_settings_button_k8s.png" alt="A screenshot that shows the Backup Settings button from the Volumes tab."></span></p>
 </div>
 </li>
 <li>
 <p>From the <em>Backup Settings</em> page, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the working environment where you want to add the new policy, and select <strong>Manage Policies</strong>.</p>
 <div class="paragraph">
-<p><span class="image"><img src="./media/screenshot_backup_modify_policy.png" alt="A screenshot that shows the Manage Policies option from the Backup Settings page."></span></p>
+<p><span class="image"><img src="./media/screenshot_backup_modify_policy_k8s.png" alt="A screenshot that shows the Manage Policies option from the Backup Settings page."></span></p>
 </div>
 </li>
 <li>
@@ -999,6 +996,43 @@ Do not manage or change backup files directly from your cloud provider environme
 </div>
 </div>
 <div class="sect1">
+<h2 id="setting-a-backup-policy-to-be-assigned-to-new-volumes">Setting a backup policy to be assigned to new volumes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you did not select the option to automatically assign a backup policy to newly created volumes when you first activated Cloud Backup on your Kubernetes cluster, you can choose this option in the <em>Backup Settings</em> page later. Having a backup policy assigned to newly created volumes ensures that all your data is protected.</p>
+</div>
+<div class="paragraph">
+<p>Note that the policy that you want to apply to the volumes must already exist. <a href="#adding-a-new-backup-policy">See how to add a new backup policy for a working environment</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can also disable this setting so that newly created volumes do not get backed up automatically. In that case you&#8217;ll need to manually enable backups for any specific volumes that you do want to back up in the future.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the <strong>Kubernetes</strong> tab, select <strong>Backup Settings</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_settings_button_k8s.png" alt="A screenshot that shows the Backup Settings button which is available after you select a working environment."></span></p>
+</div>
+</li>
+<li>
+<p>From the <em>Backup Settings page</em>, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the working environment where the volumes exist, and select <strong>Auto Backup New Volumes</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_auto_backup_new_volumes_k8s.png" alt="A screenshot of selecting the Auto Backup New Volumes option from the Backup Settings page."></span></p>
+</div>
+</li>
+<li>
+<p>Select the checkbox "Automatically back up future persistent volumes&#8230;&#8203;", choose the backup policy that you want to apply to new volumes, and click <strong>Save</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_auto_backup_k8s.png" alt="A screenshot showing how to select a backup policy to be assigned to all future volume on the cluster."></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="changing-the-policy-assigned-to-existing-volumes">Changing the policy assigned to existing volumes</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1011,15 +1045,15 @@ Do not manage or change backup files directly from your cloud provider environme
 <div class="title">Steps</div>
 <ol class="arabic">
 <li>
-<p>From the <strong>Volumes</strong> tab, select <strong>Backup Settings</strong>.</p>
+<p>From the <strong>Kubernetes</strong> tab, select <strong>Backup Settings</strong>.</p>
 <div class="paragraph">
-<p><span class="image"><img src="./media/screenshot_backup_settings_button.png" alt="A screenshot that shows the Backup Settings button which is available after you select a working environment."></span></p>
+<p><span class="image"><img src="./media/screenshot_backup_settings_button_k8s.png" alt="A screenshot that shows the Backup Settings button which is available after you select a working environment."></span></p>
 </div>
 </li>
 <li>
-<p>From the <em>Backup Settings page</em>, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the working environment where the volumes exist, and select <strong>Manage Volumes</strong>.</p>
+<p>From the <em>Backup Settings page</em>, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the working environment where the volumes exist, and select <strong>Manage Persistent Volumes</strong>.</p>
 <div class="paragraph">
-<p><span class="image"><img src="./media/screenshot_backup_manage_volumes.png" alt="A screenshot that shows the Manage Volumes button from the Backup Settings page."></span></p>
+<p><span class="image"><img src="./media/screenshot_backup_manage_volumes_k8s.png" alt="A screenshot that shows the Manage Persistent Volumes button from the Backup Settings page."></span></p>
 </div>
 </li>
 <li>
@@ -1111,13 +1145,13 @@ If you plan to delete a working environment or cluster that has backups, you mus
 <li>
 <p>From the <strong>Kubernetes</strong> tab, select <strong>Backup Settings</strong>.</p>
 <div class="paragraph">
-<p><span class="image"><img src="./media/screenshot_backup_settings_button.png" alt="A screenshot that shows the Backup Settings button which is available after you select a working environment."></span></p>
+<p><span class="image"><img src="./media/screenshot_backup_settings_button_k8s.png" alt="A screenshot that shows the Backup Settings button which is available after you select a working environment."></span></p>
 </div>
 </li>
 <li>
 <p>Click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the Kubernetes cluster where you want to delete all backups and select <strong>Delete All Backups</strong>.</p>
 <div class="paragraph">
-<p><span class="image"><img src="./media/screenshot_delete_all_backups.png" alt="A screenshot of selecting the Delete All Backups button to delete all backups for a working environment."></span></p>
+<p><span class="image"><img src="./media/screenshot_delete_all_backups_k8s.png" alt="A screenshot of selecting the Delete All Backups button to delete all backups for a working environment."></span></p>
 </div>
 </li>
 <li>
@@ -1210,13 +1244,13 @@ If you plan to delete a working environment or cluster that has backups, you mus
 <li>
 <p>From the <strong>Kubernetes</strong> tab, select <strong>Backup Settings</strong>.</p>
 <div class="paragraph">
-<p><span class="image"><img src="./media/screenshot_backup_settings_button.png" alt="A screenshot that shows the Backup Settings button which is available after you select a working environment."></span></p>
+<p><span class="image"><img src="./media/screenshot_backup_settings_button_k8s.png" alt="A screenshot that shows the Backup Settings button which is available after you select a working environment."></span></p>
 </div>
 </li>
 <li>
 <p>From the <em>Backup Settings page</em>, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the working environment, or the Kubernetes cluster, where you want to disable backups and select <strong>Deactivate Backup</strong>.</p>
 <div class="paragraph">
-<p><span class="image"><img src="./media/screenshot_disable_backups.png" alt="A screenshot of the Deactivate Backup button for a working environment."></span></p>
+<p><span class="image"><img src="./media/screenshot_disable_backups_k8s.png" alt="A screenshot of the Deactivate Backup button for a working environment."></span></p>
 </div>
 </li>
 <li>
@@ -1269,7 +1303,7 @@ An <strong>Activate Backup</strong> button appears for that working environment 
 <li>
 <p>From the <strong>Kubernetes</strong> tab, select <strong>Backup Settings</strong>.</p>
 <div class="paragraph">
-<p><span class="image"><img src="./media/screenshot_backup_settings_button.png" alt="A screenshot that shows the Backup Settings button which is available after you select a working environment."></span></p>
+<p><span class="image"><img src="./media/screenshot_backup_settings_button_k8s.png" alt="A screenshot that shows the Backup Settings button which is available after you select a working environment."></span></p>
 </div>
 </li>
 <li>

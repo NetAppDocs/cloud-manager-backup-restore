@@ -296,9 +296,9 @@
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
                   <a href="https://docs.netapp.com/ja-jp/cloud-manager-backup-restore/concept-ontap-backup-to-cloud.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/cloud-manager-backup-restore/concept-ontap-backup-to-cloud.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
                   <a href="https://docs.netapp.com/ko-kr/cloud-manager-backup-restore/concept-ontap-backup-to-cloud.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/cloud-manager-backup-restore/concept-ontap-backup-to-cloud.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
                 </li></ul>
             </li>
           </ul>
@@ -819,7 +819,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-08 13:58:17 +0000">04/08/2022</time>
+    <time datetime="2022-04-27 17:39:17 +0000">04/27/2022</time>
     
   
 
@@ -949,9 +949,9 @@ NetApp StorageGRID</p></td>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 95%;">
 <colgroup>
-<col style="width: 27.4725%;">
-<col style="width: 36.2637%;">
-<col style="width: 36.2638%;">
+<col style="width: 26.3157%;">
+<col style="width: 34.7368%;">
+<col style="width: 38.9475%;">
 </colgroup>
 <thead>
 <tr>
@@ -983,7 +983,8 @@ On-premises ONTAP system</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Google Cloud Storage</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Volumes ONTAP in Google<br>
 On-premises ONTAP system</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Volumes ONTAP in Google<br>
+On-premises ONTAP system</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NetApp StorageGRID</p></td>
@@ -1043,10 +1044,20 @@ On-premises ONTAP system</p></td>
 <p>For Volume Restore using Browse &amp; Restore, there is no cost because no separate instance or virtual machine is required.</p>
 </li>
 <li>
-<p>For Volume or File Restore using Search &amp; Restore, the <a href="https://aws.amazon.com/athena/faqs/" target="_blank" rel="noopener">Amazon Athena</a> and <a href="https://aws.amazon.com/glue/faqs/" target="_blank" rel="noopener">AWS Glue</a> resources are used to search through your volumes and backup files. A per-TiB cost is associated with the amount of data that is scanned by your search requests. Search &amp; Restore is supported only when restoring data from a backup file in Amazon S3 at this time.</p>
+<p>For Volume or File Restore using Search &amp; Restore, certain resources are provisioned by your cloud provider and there is per-TiB cost associated with the amount of data that is scanned by your search requests.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In AWS, <a href="https://aws.amazon.com/athena/faqs/" target="_blank" rel="noopener">Amazon Athena</a> and <a href="https://aws.amazon.com/glue/faqs/" target="_blank" rel="noopener">AWS Glue</a> resources are deployed in a new S3 bucket.</p>
 </li>
 <li>
-<p>If you need to restore volume data from a backup file that has been moved to archival storage (supported with AWS and Azure when using ONTAP 9.10.1+), then there&#8217;s an additional per-GiB retrieval fee and per-request fee from the cloud provider.</p>
+<p>In Google, a new bucket is deployed, and the <a href="https://cloud.google.com/bigquery" target="_blank" rel="noopener">Google Cloud BigQuery services</a> are provisioned on an account/project level.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If you need to restore volume data from a backup file that has been moved to archival storage (supported with AWS when using ONTAP 9.10.1+), then there&#8217;s an additional per-GiB retrieval fee and per-request fee from the cloud provider.</p>
 </li>
 </ul>
 </div>
@@ -1065,43 +1076,12 @@ On-premises ONTAP system</p></td>
 <h2 id="licensing">Licensing</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Cloud Backup is available in three licensing options: Pay As You Go (PAYGO), an annual contract from the AWS Marketplace, and Bring Your Own License (BYOL). A 30-day free trial is available if you don’t have a license.</p>
-</div>
-<div class="sect2">
-<h3 id="free-trial">Free trial</h3>
-<div class="paragraph">
-<p>When using the 30-day free trial, you are notified about the number of free trial days that remain. At the end of your free trial, backups stop being created. You must subscribe to the service or purchase a license to continue using the service.</p>
-</div>
-<div class="paragraph">
-<p>Backup files are not deleted when the service is disabled. You&#8217;ll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you delete the backups.</p>
-</div>
+<p>Cloud Backup is available in three licensing options: Pay As You Go (PAYGO) subscription, an annual contract from the AWS Marketplace, and Bring Your Own License (BYOL). A 30-day free trial is available when you get a PAYGO subscription.</p>
 </div>
 <div class="sect2">
 <h3 id="pay-as-you-go-subscription">Pay-as-you-go subscription</h3>
 <div class="paragraph">
 <p>Cloud Backup offers consumption-based licensing in a pay-as-you-go model. After subscribing through your cloud provider’s marketplace, you pay per GiB for data that’s backed up—​there’s no up-front payment. You are billed by your cloud provider through your monthly bill.</p>
-</div>
-<div class="paragraph">
-<p>You should subscribe even if you have a free trial or if you bring your own license (BYOL):</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Subscribing ensures that there’s no disruption of service after your free trial ends.</p>
-<div class="paragraph">
-<p>When the trial ends, you’ll be charged hourly according to the amount of data that you back up.</p>
-</div>
-</li>
-<li>
-<p>If you back up more data than allowed by your BYOL license, then data backup continues through your pay-as-you-go subscription.</p>
-<div class="paragraph">
-<p>For example, if you have a 10 TiB BYOL license, all capacity beyond the 10 TiB is charged through the PAYGO subscription.</p>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>You won’t be charged from your pay-as-you-go subscription during your free trial or if you haven’t exceeded your BYOL license.</p>
 </div>
 <div class="paragraph">
 <p><a href="task-licensing-cloud-backup.html#use-a-cloud-backup-paygo-subscription">Learn how to set up a pay-as-you-go subscription</a>.</p>
@@ -1116,15 +1096,9 @@ On-premises ONTAP system</p></td>
 <ul>
 <li>
 <p>A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.</p>
-<div class="paragraph">
-<p>You’ll also need to pay for your Cloud Volumes ONTAP systems using this annual contract subscription since you can assign only one active subscription to your AWS credentials in Cloud Manager.</p>
-</div>
 </li>
 <li>
 <p>A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and Cloud Backup. This includes unlimited backups for Cloud Volumes ONTAP volumes charged against this license (backup capacity is not counted against the license).</p>
-<div class="paragraph">
-<p>You can set up the annual contract when you create a Cloud Volumes ONTAP working environment and Cloud Manager will prompt you to subscribe to the AWS Marketplace.</p>
-</div>
 </li>
 </ul>
 </div>

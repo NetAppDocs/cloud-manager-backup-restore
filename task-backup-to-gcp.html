@@ -296,9 +296,9 @@
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
                   <a href="https://docs.netapp.com/ja-jp/cloud-manager-backup-restore/task-backup-to-gcp.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/cloud-manager-backup-restore/task-backup-to-gcp.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
                   <a href="https://docs.netapp.com/ko-kr/cloud-manager-backup-restore/task-backup-to-gcp.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/cloud-manager-backup-restore/task-backup-to-gcp.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
                 </li></ul>
             </li>
           </ul>
@@ -819,7 +819,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-05 16:35:01 +0000">04/05/2022</time>
+    <time datetime="2022-04-26 18:11:17 +0000">04/26/2022</time>
     
   
 
@@ -937,7 +937,48 @@
 <dd>
 <p>You need to have a service account in your Google Cloud Project that has the predefined Storage Admin role. <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-creating-gcp-service-account.html" target="_blank" rel="noopener">Learn how to create a service account</a>.</p>
 </dd>
+<dt class="hdlist1">Verify or add permissions to the Connector</dt>
+<dd>
+<p>To use the Cloud Backup Search &amp; Restore functionality, you need to have specific permissions in the role for the Connector so that it can access the Google Cloud BigQuery service. See the permissions below, and follow the steps if you need to modify the policy.</p>
+</dd>
 </dl>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>In <a href="https://console.cloud.google.com" target="_blank" rel="noopener">Cloud Console</a>, go to the <strong>Roles</strong> page.</p>
+</li>
+<li>
+<p>Using the drop-down list at the top of the page, select the project or organization that contains the role that you want to edit.</p>
+</li>
+<li>
+<p>Click a custom role.</p>
+</li>
+<li>
+<p>Click <strong>Edit Role</strong> to update the role&#8217;s permissions.</p>
+</li>
+<li>
+<p>Click <strong>Add Permissions</strong> to add the following new permissions to the role.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">bigquery.jobs.get
+bigquery.jobs.list
+bigquery.jobs.listAll
+bigquery.datasets.create
+bigquery.datasets.get
+bigquery.jobs.create
+bigquery.tables.get
+bigquery.tables.getData
+bigquery.tables.list
+bigquery.tables.create</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Click <strong>Update</strong> to save the edited role.</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1075,7 +1116,7 @@ You can also <a href="task-restore-backups-ontap.html" target="_blank" rel="noop
 <div class="paragraph">
 <div class="title">What&#8217;s next?</div>
 <p>You can <a href="task-manage-backups-ontap.html" target="_blank" rel="noopener">start and stop backups for volumes or change the backup schedule</a>.<br>
-You can also <a href="task-restore-backups-ontap.html" target="_blank" rel="noopener">restore entire volumes from a backup file</a> to a Cloud Volumes ONTAP system in Google, or to an on-premises ONTAP system.</p>
+You can also <a href="task-restore-backups-ontap.html" target="_blank" rel="noopener">restore volumes or files from a backup file</a> to a Cloud Volumes ONTAP system in Google, or to an on-premises ONTAP system.</p>
 </div>
 </div>
 </div>

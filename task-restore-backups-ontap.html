@@ -296,9 +296,9 @@
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
                   <a href="https://docs.netapp.com/ja-jp/cloud-manager-backup-restore/task-restore-backups-ontap.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/cloud-manager-backup-restore/task-restore-backups-ontap.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
                   <a href="https://docs.netapp.com/ko-kr/cloud-manager-backup-restore/task-restore-backups-ontap.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/cloud-manager-backup-restore/task-restore-backups-ontap.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
                 </li></ul>
             </li>
           </ul>
@@ -819,7 +819,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-05 16:35:01 +0000">04/05/2022</time>
+    <time datetime="2022-04-27 17:39:17 +0000">04/27/2022</time>
     
   
 
@@ -847,6 +847,9 @@
 </div>
 <div class="paragraph">
 <p>You can restore <strong>files</strong> to a volume in the original working environment, to a volume in a different working environment that&#8217;s using the same cloud account, or to a volume on an on-premises ONTAP system.</p>
+</div>
+<div class="paragraph">
+<p>A valid Cloud Backup license is required to restore data from backup files to a production system.</p>
 </div>
 </div>
 </div>
@@ -903,14 +906,14 @@ Cloud Backup must already be activated for at least one working environment and 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Volume restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. File restore works with backup files stored in Amazon S3 and Azure Blob</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Volume and file restore works with backup files stored in Amazon S3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volume and file restore works with backup files stored in Amazon S3 and Google Cloud</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Does not handle files that have been renamed or deleted</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Handles newly created/deleted/renamed directories and newly created/deleted/renamed files</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Browse for results across public or private clouds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Browse for results across public and private clouds</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Browse for results across public clouds and local Snapshots copies</p></td>
 </tr>
 <tr>
@@ -918,12 +921,12 @@ Cloud Backup must already be activated for at least one working environment and 
 <td class="tableblock halign-left valign-top"><p class="tableblock">No Cloud Restore instance required</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No additional Amazon resources required</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">New bucket and Amazon Athena and AWS Glue resources required per account</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No additional cloud provider resources required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Additional bucket and AWS or Google resources required per account</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cost associated with Cloud Restore instance when browsing backups for individual files</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cost associated with Amazon Athena and AWS Glue resources when scanning your backups and volumes for search results</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cost associated with AWS or Google resources when scanning your backups and volumes for search results</p></td>
 </tr>
 </tbody>
 </table>
@@ -1384,11 +1387,15 @@ On-premises ONTAP system</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Volumes ONTAP in AWS<br>
 On-premises ONTAP system</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Google Cloud Storage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Volumes ONTAP in Google<br>
+On-premises ONTAP system</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Volumes ONTAP in Google<br>
+On-premises ONTAP system</p></td>
+</tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>Additional cloud providers will be supported in future releases.</p>
-</div>
 <div class="paragraph">
 <p>Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.</p>
 </div>
@@ -1421,9 +1428,22 @@ On-premises ONTAP system</p></td>
 <div class="ulist">
 <ul>
 <li>
-<p>Specific Amazon Athena, AWS Glue, and AWS S3 permissions must be added to the user role that provides Cloud Manager with permissions. <a href="task-backup-onprem-to-aws.html#preparing-amazon-s3-for-backups">Make sure all the permissions are configured correctly</a>.</p>
+<p>Specific Amazon Athena, AWS Glue, and AWS S3 permissions must be added to the user role that provides Cloud Manager with permissions. <a href="task-backup-onprem-to-aws.html#set-up-s3-permissions">Make sure all the permissions are configured correctly</a>.</p>
 <div class="paragraph">
 <p>Note that if you were already using Cloud Backup with a Connector you configured in the past, you&#8217;ll need to add the Athena and Glue permissions to the Cloud Manager user role now. These are new, and they are required for Search &amp; Restore.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Google Cloud requirements:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Specific Google BigQuery permissions must be added to the user role that provides Cloud Manager with permissions. <a href="task-backup-onprem-to-gcp.html#verify-or-add-permissions-to-the-connector">Make sure all the permissions are configured correctly</a>.</p>
+<div class="paragraph">
+<p>Note that if you were already using Cloud Backup with a Connector you configured in the past, you&#8217;ll need to add the BigQuery permissions to the Cloud Manager user role now. These are new, and they are required for Search &amp; Restore.</p>
 </div>
 </li>
 </ul>
@@ -1440,7 +1460,7 @@ On-premises ONTAP system</p></td>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Before you can use Search &amp; Restore, you need to enable "Indexing" on each source working environment from which you&#8217;ll want to restore volumes or files. This allows the Indexed Catalog to track the backup files for every volume. It enables SnapDiff v3 on data-serving SVMs, and provisions a new S3 bucket and the <a href="https://aws.amazon.com/athena/faqs/" target="_blank" rel="noopener">Amazon Athena interactive query service</a> and <a href="https://aws.amazon.com/glue/faqs/" target="_blank" rel="noopener">AWS Glue serverless data integration service</a>.</p>
+<p>Before you can use Search &amp; Restore, you need to enable "Indexing" on each source working environment from which you&#8217;ll want to restore volumes or files. This allows the Indexed Catalog to track the backup files for every volume.</p>
 </li>
 <li>
 <p>When you want to restore a volume or files from a volume backup, under <em>Search &amp; Restore</em>, click <strong>Search &amp; Restore</strong>.</p>
@@ -1475,10 +1495,18 @@ On-premises ONTAP system</p></td>
 <p>Before you can use Search &amp; Restore, you need to enable "Indexing" on each source working environment from which you&#8217;re planning to restore volumes or files. This allows the Indexed Catalog to track every volume and every backup file - making your searches very quick and efficient.</p>
 </div>
 <div class="paragraph">
-<p>When you enable this functionality, Cloud Backup enables SnapDiff v3 on the SVM for your volumes, and it creates a new bucket in which it provisions the Amazon Athena interactive query service and AWS Glue serverless data integration service.</p>
+<p>When you enable this functionality, Cloud Backup enables SnapDiff v3 on the SVM for your volumes, and it performs the following actions:</p>
 </div>
-<div class="paragraph">
-<p>If Indexing has already been enabled for your working environment, go to the next section to restore your data.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For backups stored in AWS, it provisions a new S3 bucket and the <a href="https://aws.amazon.com/athena/faqs/" target="_blank" rel="noopener">Amazon Athena interactive query service</a> and <a href="https://aws.amazon.com/glue/faqs/" target="_blank" rel="noopener">AWS Glue serverless data integration service</a>.</p>
+</li>
+<li>
+<p>For backups stored in Google Cloud, it provisions a new bucket, and the <a href="https://cloud.google.com/bigquery" target="_blank" rel="noopener">Google Cloud BigQuery services</a> are provisioned on an account/project level.<br>
+If Indexing has already been enabled for your working environment, go to the next section to restore your data.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>To enable Indexing for a working environment:</p>

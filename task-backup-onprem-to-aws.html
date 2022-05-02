@@ -296,9 +296,9 @@
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
                   <a href="https://docs.netapp.com/ja-jp/cloud-manager-backup-restore/task-backup-onprem-to-aws.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/cloud-manager-backup-restore/task-backup-onprem-to-aws.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
                   <a href="https://docs.netapp.com/ko-kr/cloud-manager-backup-restore/task-backup-onprem-to-aws.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/cloud-manager-backup-restore/task-backup-onprem-to-aws.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
                 </li></ul>
             </li>
           </ul>
@@ -819,7 +819,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-18 19:42:38 +0000">04/18/2022</time>
+    <time datetime="2022-04-26 17:25:23 +0000">04/26/2022</time>
     
   
 
@@ -1067,11 +1067,11 @@ In most cases you&#8217;ll use Cloud Manager for all backup and restore operatio
 <div class="ulist">
 <ul>
 <li>
-<p>Before your 30-day free trial of Cloud Backup expires, you&#8217;ll need to subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from AWS, or purchase and activate a Cloud Backup BYOL license from NetApp. These licenses are for your account and can be used across multiple systems.</p>
+<p>Before you can activate Cloud Backup for your cluster, you&#8217;ll need to either subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from AWS, or purchase and activate a Cloud Backup BYOL license from NetApp. These licenses are for your account and can be used across multiple systems.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>For Cloud Backup PAYGO licensing, you&#8217;ll need a subscription to the <a href="https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&amp;ref_=beagle&amp;applicationId=AWSMPContessa" target="_blank" rel="noopener">AWS Cloud Manager Marketplace offering</a> to continue using Cloud Backup. Billing for Cloud Backup is done through this subscription.</p>
+<p>For Cloud Backup PAYGO licensing, you&#8217;ll need a subscription to the <a href="https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&amp;ref_=beagle&amp;applicationId=AWSMPContessa" target="_blank" rel="noopener">AWS Cloud Manager Marketplace offering</a> to use Cloud Backup. Billing for Cloud Backup is done through this subscription.</p>
 </li>
 <li>
 <p>For Cloud Backup BYOL licensing, you&#8217;ll need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. <a href="task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license">Learn how to manage your BYOL licenses</a>.</p>
@@ -1224,6 +1224,10 @@ In most cases you&#8217;ll use Cloud Manager for all backup and restore operatio
 <td class="tableblock halign-left valign-top"><p class="tableblock">CentOS package for the Cloud Restore Instance AMI.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https://download.docker.com/linux/centos/docker-ce.repo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provides the Docker Engine packages.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">http://cloudmanagerinfraprod.azurecr.io<br>
 https://cloudmanagerinfraprod.azurecr.io</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Restore Instance image repository.</p></td>
@@ -1342,6 +1346,9 @@ Please enter Certificate: Press &lt;Enter&gt; when done</code></pre>
 </li>
 </ol>
 </div>
+</li>
+<li>
+<p>If you don&#8217;t have an existing Cloud Backup license for your account, you&#8217;ll be prompted at this point to select the type of charging method that you want to use. You can subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from AWS (or if you have multiple subscriptions you&#8217;ll need to select one), or purchase and activate a Cloud Backup BYOL license from NetApp. <a href="task-licensing-cloud-backup.html">Learn how to set up Cloud Backup licensing.</a></p>
 </li>
 <li>
 <p>Enter the networking details and click <strong>Next</strong>.</p>

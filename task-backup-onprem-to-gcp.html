@@ -296,9 +296,9 @@
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
                   <a href="https://docs.netapp.com/ja-jp/cloud-manager-backup-restore/task-backup-onprem-to-gcp.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/cloud-manager-backup-restore/task-backup-onprem-to-gcp.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
-                </li><li class="n-menu__list-item n-menu__list-item--level-1">
                   <a href="https://docs.netapp.com/ko-kr/cloud-manager-backup-restore/task-backup-onprem-to-gcp.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/cloud-manager-backup-restore/task-backup-onprem-to-gcp.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
                 </li></ul>
             </li>
           </ul>
@@ -819,7 +819,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-18 19:42:38 +0000">04/18/2022</time>
+    <time datetime="2022-04-26 18:32:48 +0000">04/26/2022</time>
     
   
 
@@ -1075,31 +1075,72 @@ In most cases you&#8217;ll use Cloud Manager for all backup and restore operatio
 </div>
 </div>
 <div class="sect2">
-<h3 id="supported-regions">Supported regions</h3>
+<h3 id="verify-or-add-permissions-to-the-connector">Verify or add permissions to the Connector</h3>
 <div class="paragraph">
-<p>You can create backups from on-premises systems to Google Cloud storage in all regions <a href="https://cloud.netapp.com/cloud-volumes-global-regions" target="_blank" rel="noopener">where Cloud Volumes ONTAP is supported</a>. You specify the region where the backups will be stored when you set up the service.</p>
+<p>To use the Cloud Backup Search &amp; Restore functionality, you need to have specific permissions in the role for the Connector so that it can access the Google Cloud BigQuery service. See the permissions below, and follow the steps if you need to modify the policy.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>In <a href="https://console.cloud.google.com" target="_blank" rel="noopener">Cloud Console</a>, go to the <strong>Roles</strong> page.</p>
+</li>
+<li>
+<p>Using the drop-down list at the top of the page, select the project or organization that contains the role that you want to edit.</p>
+</li>
+<li>
+<p>Click a custom role.</p>
+</li>
+<li>
+<p>Click <strong>Edit Role</strong> to update the role&#8217;s permissions.</p>
+</li>
+<li>
+<p>Click <strong>Add Permissions</strong> to add the following new permissions to the role.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">bigquery.jobs.get
+bigquery.jobs.list
+bigquery.jobs.listAll
+bigquery.datasets.create
+bigquery.datasets.get
+bigquery.jobs.create
+bigquery.tables.get
+bigquery.tables.getData
+bigquery.tables.list
+bigquery.tables.create</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Click <strong>Update</strong> to save the edited role.</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="license-requirements">License requirements</h3>
-<div class="paragraph">
-<p>Before your 30-day free trial of Cloud Backup expires, you need to subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from Google, or purchase and activate a Cloud Backup BYOL license from NetApp. These licenses are for the account and can be used across multiple systems.</p>
-</div>
+<h3 id="verify-license-requirements">Verify license requirements</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>For Cloud Backup PAYGO licensing, you&#8217;ll need a subscription to the <a href="https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project" target="_blank" rel="noopener">Google</a> Cloud Manager Marketplace offering to continue using Cloud Backup. Billing for Cloud Backup is done through this subscription.</p>
+<p>Before you can activate Cloud Backup for your cluster, you&#8217;ll need to either subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from Google, or purchase and activate a Cloud Backup BYOL license from NetApp. These licenses are for your account and can be used across multiple systems.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For Cloud Backup PAYGO licensing, you&#8217;ll need a subscription to the <a href="https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project" target="_blank" rel="noopener">Google</a> Cloud Manager Marketplace offering to use Cloud Backup. Billing for Cloud Backup is done through this subscription.</p>
 </li>
 <li>
-<p>For Cloud Backup BYOL licensing, you don&#8217;t need a subscription. You need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. <a href="task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license">Learn how to manage your BYOL licenses</a>.</p>
+<p>For Cloud Backup BYOL licensing, you&#8217;ll need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. <a href="task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license">Learn how to manage your BYOL licenses</a>.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
+</li>
+<li>
 <p>You need to have a Google subscription for the object storage space where your backups will be located.</p>
-</div>
 <div class="paragraph">
-<p>A SnapMirror license is required on the cluster. Note that the "Hybrid Cloud Bundle" is not required when using Cloud Backup.</p>
+<p>You can create backups from on-premises systems to Google Cloud Storage in all regions <a href="https://cloud.netapp.com/cloud-volumes-global-regions" target="_blank" rel="noopener">where Cloud Volumes ONTAP is supported</a>. You specify the region where backups will be stored when you set up the service.</p>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -1175,6 +1216,9 @@ In most cases you&#8217;ll use Cloud Manager for all backup and restore operatio
 </div>
 </li>
 <li>
+<p>If you don&#8217;t have an existing Cloud Backup license for your account, you&#8217;ll be prompted at this point to select the type of charging method that you want to use. You can subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from Google (or if you have multiple subscriptions you&#8217;ll need to select one), or purchase and activate a Cloud Backup BYOL license from NetApp. <a href="task-licensing-cloud-backup.html">Learn how to set up Cloud Backup licensing.</a></p>
+</li>
+<li>
 <p>In the <em>Define Policy</em> page, select an existing backup schedule and retention value, or define a new default backup policy, and click <strong>Next</strong>.</p>
 <div class="paragraph">
 <p><span class="image"><img src="./media/screenshot_backup_policy_gcp.png" alt="A screenshot that shows the Cloud Backup settings where you can choose your backup schedule and retention period."></span></p>
@@ -1214,7 +1258,7 @@ In most cases you&#8217;ll use Cloud Manager for all backup and restore operatio
 <div class="paragraph">
 <div class="title">What&#8217;s next?</div>
 <p>You can <a href="task-manage-backups-ontap.html" target="_blank" rel="noopener">start and stop backups for volumes or change the backup schedule</a>.<br>
-You can also <a href="task-restore-backups-ontap.html" target="_blank" rel="noopener">restore entire volumes from a backup file</a> to a Cloud Volumes ONTAP system in Google, or to an on-premises ONTAP system.</p>
+You can also <a href="task-restore-backups-ontap.html" target="_blank" rel="noopener">restore volumes or files from a backup file</a> to a Cloud Volumes ONTAP system in Google, or to an on-premises ONTAP system.</p>
 </div>
 </div>
 </div>
