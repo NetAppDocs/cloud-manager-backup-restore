@@ -79,10 +79,6 @@ The following image shows the private connection method and the connections that
 image:diagram_cloud_backup_onprem_aws_vpc.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located.]
 
 Note that when the Cloud Restore instance is deployed in the cloud, it is located in the same subnet as the Connector.
-//
-// == Requirements
-//
-// Read the following requirements to make sure you have a supported configuration before you start backing up on-premises volumes to S3 storage.
 
 == Prepare your Connector
 
@@ -143,9 +139,9 @@ If you use are using a different IPspace than "Default", then you might need to 
 
 == Verify license requirements
 
-* Before your 30-day free trial of Cloud Backup expires, you'll need to subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from AWS, or purchase and activate a Cloud Backup BYOL license from NetApp. These licenses are for your account and can be used across multiple systems.
-+
-** For Cloud Backup PAYGO licensing, you'll need a subscription to the https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa[AWS Cloud Manager Marketplace offering^] to continue using Cloud Backup. Billing for Cloud Backup is done through this subscription.
+* Before you can activate Cloud Backup for your cluster, you'll need to either subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from AWS, or purchase and activate a Cloud Backup BYOL license from NetApp. These licenses are for your account and can be used across multiple systems.
+
+** For Cloud Backup PAYGO licensing, you'll need a subscription to the https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa[AWS Cloud Manager Marketplace offering^] to use Cloud Backup. Billing for Cloud Backup is done through this subscription.
 ** For Cloud Backup BYOL licensing, you'll need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[Learn how to manage your BYOL licenses].
 
 * You need to have an AWS subscription for the object storage space where your backups will be located.
@@ -253,6 +249,11 @@ If your virtual or physical network uses a proxy server for internet access, ens
 | \http://amazonlinux.us-east-1.amazonaws.com/2/extras/docker/stable/ x86_64/4bf88ee77c395ffe1e0c3ca68530dfb3a683ec65a4a1ce9c0ff394be50e922b2/ | CentOS package for the Cloud Restore Instance AMI.
 
 |
+\https://download.docker.com/linux/centos/docker-ce.repo
+
+| Provides the Docker Engine packages.
+
+|
 \http://cloudmanagerinfraprod.azurecr.io
 \https://cloudmanagerinfraprod.azurecr.io
 
@@ -327,6 +328,8 @@ The access key and secret key are for the IAM user you created to give the ONTAP
 .. Whether you'll use the default Amazon S3 encryption keys, or choose your own customer-managed keys from your AWS account, to manage encryption of your data. (https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-setting-up-kms.html[See how to use your own keys]).
 +
 image:screenshot_backup_provider_settings_aws.png[A screenshot that shows the cloud provider details when backing up volumes from an ONTAP system to AWS S3.]
+
+. If you don't have an existing Cloud Backup license for your account, you'll be prompted at this point to select the type of charging method that you want to use. You can subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from AWS (or if you have multiple subscriptions you'll need to select one), or purchase and activate a Cloud Backup BYOL license from NetApp. link:task-licensing-cloud-backup.html[Learn how to set up Cloud Backup licensing.]
 
 . Enter the networking details and click *Next*.
 
