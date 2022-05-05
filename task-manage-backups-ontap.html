@@ -821,7 +821,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-25 19:47:12 +0000">04/25/2022</time>
+    <time datetime="2022-05-05 18:48:43 +0000">05/05/2022</time>
     
   
 
@@ -908,9 +908,6 @@ Do not manage or change backup files directly from your cloud provider environme
 <p>Select the checkbox for a volume, or volumes, that you want to change, and then click <strong>Activate</strong> or <strong>Deactivate</strong> depending on whether you want to start or stop backups for the volume.</p>
 <div class="paragraph">
 <p><span class="image"><img src="./media/screenshot_backup_manage_volumes_page.png" alt="The Manage Volumes page where you can select or deselect volumes."></span></p>
-</div>
-<div class="paragraph">
-<p>You can choose to have all volumes added in the future to have backup enabled, or not, by using the checkbox for "Automatically back up future volumes&#8230;&#8203;". If you disable this setting, you&#8217;ll need to manually enable backups for volumes added in the future.</p>
 </div>
 </li>
 <li>
@@ -1067,6 +1064,47 @@ Do not manage or change backup files directly from your cloud provider environme
 </div>
 </div>
 <div class="sect1">
+<h2 id="setting-a-backup-policy-to-be-assigned-to-new-volumes">Setting a backup policy to be assigned to new volumes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you did not select the option to automatically assign a backup policy to newly created volumes when you first activated Cloud Backup on your ONTAP cluster, you can choose this option in the <em>Backup Settings</em> page later. Having a backup policy assigned to newly created volumes ensures that all your data is protected.</p>
+</div>
+<div class="paragraph">
+<p>Note that the policy that you want to apply to the volumes must already exist. <a href="#adding-a-new-backup-policy">See how to add a new backup policy for a working environment</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can also disable this setting so that newly created volumes do not get backed up automatically. In that case you&#8217;ll need to manually enable backups for any specific volumes that you do want to back up in the future.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the <strong>Volumes</strong> tab, select <strong>Backup Settings</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_settings_button.png" alt="A screenshot that shows the Backup Settings button which is available after you select a working environment."></span></p>
+</div>
+</li>
+<li>
+<p>From the <em>Backup Settings page</em>, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the working environment where the volumes exist, and select <strong>Auto Backup New Volumes</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_auto_backup_new_volumes.png" alt="A screenshot of selecting the Auto Backup New Volumes option from the Backup Settings page."></span></p>
+</div>
+</li>
+<li>
+<p>Select the checkbox "Automatically back up new volumes&#8230;&#8203;", choose the backup policy that you want to apply to new volumes, and click <strong>Save</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_auto_backup.png" alt="A screenshot showing how to select a backup policy to be assigned to all future volume on the cluster."></span></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Result</div>
+<p>Now this backup policy will be applied to any new volume created in this working environment using Cloud Manager, System Manager, or the ONTAP CLI.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="creating-a-manual-volume-backup-at-any-time">Creating a manual volume backup at any time</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1074,6 +1112,9 @@ Do not manage or change backup files directly from your cloud provider environme
 </div>
 <div class="paragraph">
 <p>The backup name includes the timestamp so you can identify your on-demand backup from other scheduled backups.</p>
+</div>
+<div class="paragraph">
+<p>Note that when creating an ad-hoc backup, a Snapshot is created on the source volume. Since this Snapshot is not part of a normal Snapshot schedule, it will not rotate off. You may want to manually delete this Snapshot from the source volume once the backup is complete. This will allow blocks related to this Snapshot to be freed up. The name of the Snapshot will begin with <code>cbs-snapshot-adhoc-</code>. <a href="https://docs.netapp.com/us-en/ontap/san-admin/delete-all-existing-snapshot-copies-volume-task.html">See how to delete a Snapshot using the ONTAP CLI</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1165,7 +1206,7 @@ If you plan to delete a working environment or cluster that has backups, you mus
 <div class="sect2">
 <h3 id="deleting-all-backup-files-for-a-working-environment">Deleting all backup files for a working environment</h3>
 <div class="paragraph">
-<p>Deleting all backups for a working environment does not disable future backups of volumes in this working environment. If you want to stop creating backups of all volumes in a working environment, you can deactivate backups <a href="#Disabling Cloud Backup for a working environment">as described here</a>.</p>
+<p>Deleting all backups for a working environment does not disable future backups of volumes in this working environment. If you want to stop creating backups of all volumes in a working environment, you can deactivate backups <a href="#disabling-cloud-backup-for-a-working-environment">as described here</a>.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Steps</div>
@@ -1258,10 +1299,10 @@ If you plan to delete a working environment or cluster that has backups, you mus
 </div>
 </div>
 <div class="sect1">
-<h2 id="deactivating-cloud-backup-for-a-working-environment">Deactivating Cloud Backup for a working environment</h2>
+<h2 id="disabling-cloud-backup-for-a-working-environment">Disabling Cloud Backup for a working environment</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Deactivating Cloud Backup for a working environment disables backups of each volume on the system, and it also disables the ability to restore a volume. Any existing backups will not be deleted. This does not unregister the backup service from this working environment - it basically allows you to pause all backup and restore activity for a period of time.</p>
+<p>Disabling Cloud Backup for a working environment disables backups of each volume on the system, and it also disables the ability to restore a volume. Any existing backups will not be deleted. This does not unregister the backup service from this working environment - it basically allows you to pause all backup and restore activity for a period of time.</p>
 </div>
 <div class="paragraph">
 <p>Note that you&#8217;ll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you <a href="#deleting-all-backup-files-for-a-working-environment">delete the backups</a>.</p>
