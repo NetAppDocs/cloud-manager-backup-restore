@@ -15,9 +15,7 @@ summary: You can restore Virtual Machines from the cloud to the on-premises Snap
 [.lead]
 You can restore Virtual Machines from the cloud back to the on-premises vCenter. The backup will be restored to the exact same location from where the backup was taken. You cannot restore the backup to any other alternate location. You can restore Virtual Machines from the datastore or from the VMs view.
 
-NOTE:
-* You cannot restore Virtual Machines that are spanned across datastores.
-* If the source Virtual Machine is moved to another location (vMotion), and if the user triggers a restore of that Virtual Machine from Cloud Manager, then the Virtual Machine will get restored to the original source location from where the backup was taken.
+NOTE: You cannot restore Virtual Machines that are spanned across datastores.
 
 .Steps
 
@@ -26,6 +24,9 @@ NOTE:
 .. Click image:icon-action.png[action] corresponding to the datastore that you want to restore and click *View Details*.
 .. Click *Restore* corresponding to the backup you want to restore.
 .. Select the Virtual Machine that you want to restore from the backup and click *Next*.
+
+NOTE: If the source Virtual Machine is moved to another location (vMotion), and if the user triggers a restore of that Virtual Machine from Cloud Manager, then the Virtual Machine will get restored to the original source location from where the backup was taken.
+
 .. Review the details and click *Restore*.
 . To restore from Virtual Machines:
 .. Click image:icon-action.png[action] corresponding to the Virtual Machine that you want to restore and click *Restore*.
