@@ -23,6 +23,7 @@ NOTE: You cannot restore Virtual Machines that are spanned across datastores.
 
 NOTE: If the source Virtual Machine is moved to another location (vMotion), and if the user triggers a restore of that Virtual Machine from Cloud Manager, then the Virtual Machine will get restored to the original source location from where the backup was taken.
 
+[start=2]
 . To restore from Datastore:
 .. Click image:icon-action.png[action] corresponding to the datastore that you want to restore and click *View Details*.
 .. Click *Restore* corresponding to the backup you want to restore.
