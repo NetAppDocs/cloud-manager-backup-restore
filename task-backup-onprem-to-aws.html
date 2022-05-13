@@ -821,7 +821,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-10 20:36:26 +0000">05/10/2022</time>
+    <time datetime="2022-05-13 17:17:03 +0000">05/13/2022</time>
     
   
 
@@ -857,7 +857,7 @@
 </div>
 <div class="paragraph quick-margin-para">
 <div class="title"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png" alt="One"></span> Identify the configuration method you&#8217;ll use</div>
-<p>Choose whether you&#8217;ll connect your on-premises ONTAP cluster directly to AWS S3 using a public S3 endpoint, or whether you&#8217;ll use a VPN or AWS Direct Connect and route traffic through a private VPC Endpoint interface to AWS S3.</p>
+<p>Choose whether you&#8217;ll connect your on-premises ONTAP cluster directly to AWS S3 over the public internet, or whether you&#8217;ll use a VPN or AWS Direct Connect and route traffic through a private VPC Endpoint interface to AWS S3.</p>
 </div>
 <div class="paragraph quick-margin-para">
 <p><a href="#network-diagrams-for-connection-options">See the available connection methods.</a></p>
@@ -909,13 +909,13 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>The following image shows the public connection method and the connections that you need to prepare between the components:</p>
+<p>The following diagram shows the <strong>public connection</strong> method and the connections that you need to prepare between the components:</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./media/diagram_cloud_backup_onprem_aws.png" alt="A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located."></span></p>
 </div>
 <div class="paragraph">
-<p>The following image shows the private connection method and the connections that you need to prepare between the components:</p>
+<p>The following diagram shows the <strong>private connection</strong> method and the connections that you need to prepare between the components:</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./media/diagram_cloud_backup_onprem_aws_vpc.png" alt="A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located."></span></p>
@@ -942,10 +942,10 @@
 <p><a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html" target="_blank" rel="noopener">Learn about Connectors</a></p>
 </li>
 <li>
-<p><a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-aws.html" target="_blank" rel="noopener">Create a Connector in AWS</a></p>
+<p><a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html" target="_blank" rel="noopener">Getting started with Connectors</a></p>
 </li>
 <li>
-<p><a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html" target="_blank" rel="noopener">Switch between Connectors</a></p>
+<p><a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-aws.html" target="_blank" rel="noopener">Create a Connector in AWS</a></p>
 </li>
 </ul>
 </div>
@@ -959,10 +959,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>An HTTPS connection over port 443 to the Cloud Backup service</p>
-</li>
-<li>
-<p>An HTTPS connection over port 443 to your S3 object storage</p>
+<p>An HTTPS connection over port 443 to the Cloud Backup service and to your S3 object storage (see the list of endpoints <a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html" target="_blank" rel="noopener">here</a>)</p>
 </li>
 <li>
 <p>An HTTPS connection over port 443 to your ONTAP cluster management LIF</p>
@@ -971,7 +968,10 @@
 </div>
 </li>
 <li>
-<p>(Optional) Enable a VPC Endpoint interface to S3. This is needed if you have a Direct Connect or VPN connection from your ONTAP cluster to the VPC and you want communication between the Connector and S3 to stay in your AWS internal network. <a href="#set-up-a-vpc-endpoint-interface-optional">See how to set up a VPC endpoint interface.</a></p>
+<p><a href="task-backup-onprem-to-aws.html#set-up-s3-permissions">Ensure that the Connector has permissions to manage the S3 bucket</a>.</p>
+</li>
+<li>
+<p>If you have a Direct Connect or VPN connection from your ONTAP cluster to the VPC, and you want communication between the Connector and S3 to stay in your AWS internal network, you&#8217;ll need to enable a VPC Endpoint interface to S3. <a href="#configure-your-system-for-a-private-connection-using-a-vpc-endpoint-interface">See how to set up a VPC endpoint interface.</a></p>
 </li>
 </ul>
 </div>
@@ -995,7 +995,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>ONTAP 9.7P5 and later.</p>
+<p>Minimum of ONTAP 9.7P5; ONTAP 9.8P11 and later is recommended.</p>
 </li>
 <li>
 <p>A SnapMirror license (included as part of the Premium Bundle or Data Protection Bundle).</p>
@@ -1036,6 +1036,9 @@
 <div class="paragraph">
 <p>If you use are using a different IPspace than "Default", then you might need to create a static route to get access to the object storage.</p>
 </div>
+<div class="paragraph">
+<p>All intercluster LIFs within the IPspace must have access to the object store. If you can&#8217;t configure this for the current IPspace, then you&#8217;ll need to create a dedicated IPspace where all intercluster LIFs have access to the object store.</p>
+</div>
 </li>
 <li>
 <p>DNS servers must have been configured for the storage VM where the volumes are located. See how to <a href="https://docs.netapp.com/us-en/ontap/networking/configure_dns_services_auto.html" target="_blank" rel="noopener">configure DNS services for the SVM</a>.</p>
@@ -1044,7 +1047,10 @@
 <p>Update firewall rules, if necessary, to allow Cloud Backup connections from ONTAP to object storage through port 443 and name resolution traffic from the storage VM to the DNS server over port 53 (TCP/UDP).</p>
 </li>
 <li>
-<p>(Optional) If you are using a Private VPC Interface Endpoint in AWS for the S3 connection, then in order for HTTPS/443 to be used you&#8217;ll need to load the S3 endpoint certificate into the ONTAP cluster. <a href="#set-up-a-vpc-endpoint-interface-optional">See how to set up a VPC endpoint interface and load the S3 certificate.</a></p>
+<p>If you are using a Private VPC Interface Endpoint in AWS for the S3 connection, then in order for HTTPS/443 to be used, you&#8217;ll need to load the S3 endpoint certificate into the ONTAP cluster. <a href="#configure-your-system-for-a-private-connection-using-a-vpc-endpoint-interface">See how to set up a VPC endpoint interface and load the S3 certificate.</a></p>
+</li>
+<li>
+<p><a href="task-backup-onprem-to-aws.html#set-up-s3-permissions">Ensure that your ONTAP cluster has permissions to access the S3 bucket</a>.</p>
 </li>
 </ul>
 </div>
@@ -1226,15 +1232,21 @@ https://cloudmanagerinfraprod.azurecr.io</p></td>
 </table>
 </div>
 <div class="sect2">
-<h3 id="set-up-amazon-s3-encryption-optional">Set up Amazon S3 encryption (optional)</h3>
+<h3 id="set-up-customer-managed-aws-keys-for-data-encryption">Set up customer-managed AWS keys for data encryption</h3>
 <div class="paragraph">
-<p>You can choose your own custom-managed keys for data encryption in the Backup activation wizard instead of using the default Amazon S3 encryption keys. In this case you&#8217;ll need to have the encryption managed keys already set up. <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-setting-up-kms.html" target="_blank" rel="noopener">See how to use your own keys</a>.</p>
+<p>If you want to use the default Amazon S3 encryption keys to encrypt the data passed between your on-prem cluster and the S3 bucket, then you are all set because the default installation uses that type of encryption.</p>
+</div>
+<div class="paragraph">
+<p>If you want to use your own customer-managed keys for data encryption instead of using the default keys, then you&#8217;ll need to have the encryption managed keys already set up before you start the Cloud Backup wizard. <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-setting-up-kms.html" target="_blank" rel="noopener">See how to use your own keys</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="set-up-a-vpc-endpoint-interface-optional">Set up a VPC endpoint interface (optional)</h3>
+<h3 id="configure-your-system-for-a-private-connection-using-a-vpc-endpoint-interface">Configure your system for a private connection using a VPC endpoint interface</h3>
 <div class="paragraph">
-<p>If you want to have a more secure connection over the public internet from your on-prem data center to the VPC, there&#8217;s an option to select an AWS PrivateLink connection in the Backup activation wizard. It&#8217;s required if you&#8217;re connecting your on-premises system via VPN or AWS Direct Connect.</p>
+<p>If you want to use a standard public internet connection, then all the permissions are set by the Connector and there is nothing else you need to do. This type of connection is shown in the <a href="task-backup-onprem-to-aws.html#network-diagrams-for-connection-options">first diagram</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you want to have a more secure connection over the internet from your on-prem data center to the VPC, there&#8217;s an option to select an AWS PrivateLink connection in the Backup activation wizard. It&#8217;s required if you plan to use a VPN or AWS Direct Connect to connect your on-premises system through a VPC Endpoint interface that uses a private IP address. This type of connection is shown in the <a href="task-backup-onprem-to-aws.html#network-diagrams-for-connection-options">second diagram</a>.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1247,10 +1259,10 @@ https://cloudmanagerinfraprod.azurecr.io</p></td>
 <p><span class="image"><img src="./media/screenshot_backup_aws_sec_group.png" alt="A screenshot of the AWS security group associated with the Connector."></span></p>
 </div>
 <div class="paragraph">
-<p>If you are using port 80 (HTTP) for communication to the private endpoint, you are all set. You can enable Cloud Backup on the cluster now.</p>
+<p>If you&#8217;re using port 80 (HTTP) for communication to the private endpoint, you are all set. You can enable Cloud Backup on the cluster now.</p>
 </div>
 <div class="paragraph">
-<p>If you are using port 443 (HTTPS) for communication to the private endpoint, you must copy the certificate from the VPC S3 endpoint and add the certificate to your ONTAP cluster, as shown in the next 4 steps.</p>
+<p>If you&#8217;re using port 443 (HTTPS) for communication to the private endpoint, you must copy the certificate from the VPC S3 endpoint and add the certificate to your ONTAP cluster, as shown in the next 4 steps.</p>
 </div>
 </li>
 <li>
@@ -1260,7 +1272,7 @@ https://cloudmanagerinfraprod.azurecr.io</p></td>
 </div>
 </li>
 <li>
-<p>Obtain the certificate from the VPC S3 endpoint. You do this by <a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html#connect-to-the-linux-vm">logging into the VM that hosts the Cloud Manager Connector</a> and running the following command. When entering the DNS name of the endpoint, add “bucket” to the beginning, replacing the “*”:</p>
+<p>Obtain the certificate from the VPC S3 endpoint. You do this by <a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html#connect-to-the-linux-vm" target="_blank" rel="noopener">logging into the VM that hosts the Cloud Manager Connector</a> and running the following command. When entering the DNS name of the endpoint, add “bucket” to the beginning, replacing the “*”:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-text" data-lang="text">[ec2-user@ip-10-160-4-68 ~]$ openssl s_client -connect bucket.vpce-0ff5c15df7e00fbab-yxs7lt8v.s3.us-west-2.vpce.amazonaws.com:443 -showcerts</code></pre>
