@@ -30,6 +30,8 @@ Read the following requirements to make sure that you have a supported configura
 * Ensure that there are no FlexGroup volumes in the datastore because backing up and restoring FlexGroup volumes are not supported.
 * Ensure that none of the volumes are encrypted because restoring encrypted volumes are not supported.
 * Disable "*_recent*" on the required resource groups. If you have "*_recent*" enabled for the resource group, then the backups of those resource groups cannot be used for data protection to cloud and subsequently cannot be used for the restore operation.
+* Ensure that the destination datastore where the Virtual Machine will be restored has enough space to accommodate a copy of all Virtual Machine files such as VMDK, VMX, VMSD, and so on.
+* Ensure that the destination datastore does not have stale Virtual Machine files in the format of restore_xxx_xxxxxx_filename from the previous restore operation failures. You should delete the stale files before triggering a restore operation.
 
 The following image shows each component and the connections that you need to prepare between them:
 
