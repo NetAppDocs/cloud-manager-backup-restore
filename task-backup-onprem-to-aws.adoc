@@ -322,6 +322,8 @@ Enable Cloud Backup at any time directly from the on-premises working environmen
 
 . From the Canvas, select the working environment and click *Enable > Backup Volumes* next to the Backup & Restore service in the right-panel.
 +
+If the Amazon S3 destination for your backups exists as a working environment on the Canvas, you can drag the cluster onto the Amazon S3 working environment to initiate the setup wizard.
++
 image:screenshot_backup_onprem_enable.png[A screenshot that shows the Backup & Restore Enable button which is available after you select a working environment.]
 
 . Select Amazon Web Services as your provider and click *Next*.

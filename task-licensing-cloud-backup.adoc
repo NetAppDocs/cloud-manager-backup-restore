@@ -33,15 +33,16 @@ When the free trial ends, you’ll be switched over automatically to the PAYGO s
 
 For pay-as-you-go, you'll pay your cloud provider for object storage costs and for NetApp backup licensing costs on an hourly basis in a single subscription. You should subscribe even if you have a free trial or if you bring your own license (BYOL):
 
-* Subscribing ensures that there’s no disruption of service after your free trial ends.
-+
-When the trial ends, you’ll be charged hourly according to the amount of data that you back up.
-
-* If you back up more data than allowed by your BYOL license, then data backup continues through your pay-as-you-go subscription.
-+
-For example, if you have a 10 TiB BYOL license, all capacity beyond the 10 TiB is charged through the PAYGO subscription.
+* Subscribing ensures that there’s no disruption of service after your free trial ends. When the trial ends, you’ll be charged hourly according to the amount of data that you back up.
+* If you back up more data than allowed by your BYOL license, then data backup continues through your pay-as-you-go subscription. For example, if you have a 10 TiB BYOL license, all capacity beyond the 10 TiB is charged through the PAYGO subscription.
 
 You won’t be charged from your pay-as-you-go subscription during your free trial or if you haven’t exceeded your BYOL license.
+
+There are three PAYGO plans for Cloud Backup:
+
+*	A "Cloud Backup" package that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
+* A "CVO Professional" package that enables you to bundle Cloud Volumes ONTAP and Cloud Backup. This includes unlimited backups for Cloud Volumes ONTAP volumes charged against this license (backup capacity is not counted against the license). This option doesn’t enable you to back up on-premises ONTAP data.
+* A "CVO Edge Cache" package has the same capabilities as the "CVO Professional" package, but also includes support for Global File Cache. You are entitled to deploy one Global File Cache Edge system for each 3 TiB of provisioned capacity on the Cloud Volumes ONTAP system. This option is available only through the Azure Marketplace, and it doesn’t enable you to back up on-premises ONTAP data.
 
 Use these links to subscribe to Cloud Backup from your cloud provider marketplace:
 

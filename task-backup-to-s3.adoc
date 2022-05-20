@@ -211,7 +211,9 @@ Enable Cloud Backup at any time directly from the working environment.
 
 . Select the working environment and click *Enable* next to the Backup & Restore service in the right-panel.
 +
-image:screenshot_backup_cvo_enable.png[A screenshot that shows the Cloud Backup Settings button which is available after you select a working environment.]
+If the Amazon S3 destination for your backups exists as a working environment on the Canvas, you can drag the cluster onto the Amazon S3 working environment to initiate the setup wizard.
++
+image:screenshot_backup_cvo_enable.png[A screenshot that shows the Backup & Restore Enable button which is available after you select a working environment.]
 
 . Select the provider details and click *Next*.
 
