@@ -5,6 +5,19 @@ settings:
     pdf_enabled: true
   prod:
     pdf_enabled: true
+  filter:
+    label: Cloud provider
+    default: All cloud providers
+    options:
+      - name: Amazon Web Services
+        alias: AWS
+        id: aws
+      - name: Google Cloud
+        alias: Google Cloud
+        id: gcp
+      - name: Microsoft Azure
+        alias: Azure
+        id: azure
 sidebar:
   entries:
     - title: All Cloud Manager documentation
@@ -26,16 +39,22 @@ sidebar:
         - title: Protect your ONTAP data
           url: /concept-ontap-backup-to-cloud.html
         - title: Back up Cloud Volumes ONTAP to Amazon S3
+          flavor: aws
           url: /task-backup-to-s3.html
         - title: Back up Cloud Volumes ONTAP to Azure Blob
+          flavor: azure
           url: /task-backup-to-azure.html
         - title: Back up Cloud Volumes ONTAP to Google Cloud
+          flavor: gcp
           url: /task-backup-to-gcp.html
         - title: Back up on-premises ONTAP to Amazon S3
+          flavor: aws
           url: /task-backup-onprem-to-aws.html
         - title: Back up on-premises ONTAP to Azure Blob
+          flavor: azure
           url: /task-backup-onprem-to-azure.html
         - title: Back up on-premises ONTAP to Google Cloud
+          flavor: gcp
           url: /task-backup-onprem-to-gcp.html
         - title: Back up on-premises ONTAP to StorageGRID
           url: /task-backup-onprem-private-cloud.html
@@ -48,10 +67,13 @@ sidebar:
         - title: Protect your Kubernetes data
           url: /concept-kubernetes-backup-to-cloud.html
         - title: Back up to Amazon S3
+          flavor: aws
           url: /task-backup-kubernetes-to-s3.html
         - title: Back up to Azure Blob
+          flavor: azure
           url: /task-backup-kubernetes-to-azure.html
         - title: Back up to Google Cloud
+          flavor: gcp
           url: /task-backup-kubernetes-to-gcp.html
         - title: Manage Kubernetes backups
           url: /task-manage-backups-kubernetes.html
@@ -109,26 +131,35 @@ homepage:
       links:
         - title: Cloud Volumes ONTAP to Amazon S3
           url: task-backup-to-s3.html
+          flavor: aws
         - title: Cloud Volumes ONTAP to Azure Blob
           url: task-backup-to-azure.html
+          flavor: azure
         - title: Cloud Volumes ONTAP to Google Cloud
           url: task-backup-to-gcp.html
+          flavor: gcp
         - title: On-premises ONTAP to Amazon S3
           url: task-backup-onprem-to-aws.html
+          flavor: aws
         - title: On-premises ONTAP to Azure Blob
           url: task-backup-onprem-to-azure.html
+          flavor: azure
         - title: On-premises ONTAP to Google Cloud
           url: task-backup-onprem-to-gcp.html
+          flavor: gcp
         - title: On-premises ONTAP to StorageGRID
           url: task-backup-onprem-private-cloud.html
     - title: Back up Kubernetes data to the cloud
       links:
         - title: Kubernetes cluster to Amazon S3
           url: task-backup-kubernetes-to-s3.html
+          flavor: aws
         - title: Kubernetes cluster to Azure Blob
           url: task-backup-kubernetes-to-azure.html
+          flavor: azure
         - title: Kubernetes cluster to Google Cloud
           url: task-backup-kubernetes-to-gcp.html
+          flavor: gcp
     - title: Back up and restore on-premises applications data
       links:
         - title: Back up on-premises applications data to cloud
