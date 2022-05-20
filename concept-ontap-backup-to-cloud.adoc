@@ -48,16 +48,29 @@ Cloud Backup enables you to back up ONTAP volumes from the following working env
 | Source Working Environment
 | Backup File Destination
 
+ifdef::aws[]
 | Cloud Volumes ONTAP in AWS
 | Amazon S3
+endif::aws[]
+ifdef::azure[]
 | Cloud Volumes ONTAP in Azure
 | Azure Blob
+endif::azure[]
+ifdef::gcp[]
 | Cloud Volumes ONTAP in Google
 | Google Cloud Storage
+endif::gcp[]
 | On-premises ONTAP system
-| Amazon S3
+|
+ifdef::aws[]
+Amazon S3
+endif::aws[]
+ifdef::azure[]
 Azure Blob
+endif::azure[]
+ifdef::gcp[]
 Google Cloud Storage
+endif::gcp[]
 NetApp StorageGRID
 
 |===
@@ -70,17 +83,23 @@ You can restore a volume, or individual files, from an ONTAP backup file to the 
 | Backup File
 2+^| Destination Working Environment
 | *Location* | *Volume Restore* | *File Restore*
+ifdef::aws[]
 | Amazon S3 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
+endif::aws[]
+ifdef::azure[]
 | Azure Blob | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system
+endif::azure[]
+ifdef::gcp[]
 | Google Cloud Storage | Cloud Volumes ONTAP in Google
 On-premises ONTAP system
 | Cloud Volumes ONTAP in Google
 On-premises ONTAP system
+endif::gcp[]
 | NetApp StorageGRID | On-premises ONTAP system |
 
 |===
@@ -107,20 +126,28 @@ Since Cloud Backup preserves the storage efficiencies of the source volume, you 
 +
 The instance runs only when browsing a backup file to locate the individual files you want to restore. The instance is turned off when not in use to save costs.
 +
+ifdef::aws[]
 ** In AWS, the Restore instance runs on an https://aws.amazon.com/ec2/instance-types/m5/[m5n.xlarge instance^] with 4 CPUs, 16 GB memory, and EBS Only instance storage. The operating system image is Amazon Linux 2.
 +
 In regions where m5n.xlarge instance isn’t available, Restore runs on an m5.xlarge instance instead.
+endif::aws[]
+ifdef::azure[]
 ** In Azure, the Restore virtual machine runs on a https://docs.microsoft.com/en-us/azure/virtual-machines/dv3-dsv3-series#dsv3-series[Standard_D4s_v3 VM^] with 4 CPUs, 16 GB memory, and a 32 GiB disk. The operating system image is CentOS 7.5).
 +
+endif::azure[]
 The instance is named _Cloud-Restore-Instance_ with your Account ID concatenated to it. For example: _Cloud-Restore-Instance-MyAccount_.
 
 * For Volume Restore using Browse & Restore, there is no cost because no separate instance or virtual machine is required.
 
 * For Volume or File Restore using Search & Restore, certain resources are provisioned by your cloud provider and there is per-TiB cost associated with the amount of data that is scanned by your search requests.
 +
+ifdef::aws[]
 ** In AWS, https://aws.amazon.com/athena/faqs/[Amazon Athena^] and https://aws.amazon.com/glue/faqs/[AWS Glue^] resources are deployed in a new S3 bucket.
 +
+endif::aws[]
+ifdef::gcp[]
 ** In Google, a new bucket is deployed, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
+endif::gcp[]
 
 * If you need to restore volume data from a backup file that has been moved to archival storage (supported with AWS when using ONTAP 9.10.1+), then there's an additional per-GiB retrieval fee and per-request fee from the cloud provider.
 //and Azure
@@ -129,11 +156,17 @@ The instance is named _Cloud-Restore-Instance_ with your Account ID concatenated
 
 Service charges are paid to NetApp and cover both the cost to _create_ backups and to _restore_ volumes, or files, from those backups. You pay only for the data that you protect, calculated by the source logical used capacity (_before_ ONTAP efficiencies) of ONTAP volumes which are backed up to object storage. This capacity is also known as Front-End Terabytes (FETB).
 
-There are three ways to pay for the Backup service. The first option is to subscribe from your cloud provider, which enables you to pay per month. The second option is to get an annual contract - this is only available through AWS. The third option is to purchase licenses directly from NetApp. Read the <<Licensing,Licensing>> section for details.
+There are three ways to pay for the Backup service. The first option is to subscribe from your cloud provider, which enables you to pay per month. The second option is to get an annual contract. The third option is to purchase licenses directly from NetApp. Read the <<Licensing,Licensing>> section for details.
 
 == Licensing
 
-Cloud Backup is available in three licensing options: Pay As You Go (PAYGO) subscription, an annual contract from the AWS Marketplace, and Bring Your Own License (BYOL). A 30-day free trial is available when you get a PAYGO subscription.
+Cloud Backup is available in a few licensing options: Pay As You Go (PAYGO) subscription, ifdef::aws[] an annual contract from the AWS Marketplace, endif::aws[] and Bring Your Own License (BYOL). A 30-day free trial is available when you initially sign up with a PAYGO subscription.
+
+Cloud Backup is available in a few licensing options: Pay As You Go (PAYGO) subscription,
+ifdef::aws[]
+an annual contract from the AWS Marketplace,
+endif::aws[]
+and Bring Your Own License (BYOL). A 30-day free trial is available when you initially sign up with a PAYGO subscription.
 
 === Pay-as-you-go subscription
 
@@ -141,6 +174,7 @@ Cloud Backup offers consumption-based licensing in a pay-as-you-go model. After 
 
 link:task-licensing-cloud-backup.html#use-a-cloud-backup-paygo-subscription[Learn how to set up a pay-as-you-go subscription].
 
+ifdef::aws[]
 === Annual contract (AWS only)
 
 Two annual contracts are available for 12, 24, or 36 month terms from the AWS Marketplace:
@@ -150,6 +184,7 @@ Two annual contracts are available for 12, 24, or 36 month terms from the AWS Ma
 * A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and Cloud Backup. This includes unlimited backups for Cloud Volumes ONTAP volumes charged against this license (backup capacity is not counted against the license).
 
 link:task-licensing-cloud-backup.html#subscribe-to-yearly-contracts-through-aws[Learn how to set up yearly AWS contracts].
+endif::aws[]
 
 === Bring your own license
 
@@ -175,11 +210,17 @@ image:diagram_cloud_backup_general.png[A diagram showing how Cloud Backup commun
 
 Backup copies are stored in an object store that Cloud Manager creates in your cloud account. There’s one object store per cluster/working environment, and Cloud Manager names the object store as follows: "netapp-backup-clusteruuid". Be sure not to delete this object store.
 
+ifdef::aws[]
 * In AWS, Cloud Manager enables the https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html[Amazon S3 Block Public Access feature^] on the S3 bucket.
+endif::aws[]
 
+ifdef::azure[]
 * In Azure, Cloud Manager uses a new or existing resource group with a storage account for the Blob container. Cloud Manager https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent[blocks public access to your blob data] by default.
+endif::azure[]
 
+ifdef::gcp[]
 * In GCP, Cloud Manager uses a new or existing project with a storage account for the Google Cloud Storage bucket.
+endif::gcp[]
 
 * In StorageGRID, Cloud Manager uses an existing storage account for the object store bucket.
 
@@ -187,17 +228,23 @@ If you want to change the destination object store for a cluster in the future, 
 
 === Supported storage classes or access tiers
 
+ifdef::aws[]
 * In AWS, backups start in the _Standard_ storage class and transition to the _Standard-Infrequent Access_ storage class after 30 days.
 +
 If your cluster is using ONTAP 9.10.1 or greater, you can choose to tier older backups to either _S3 Glacier_ or _S3 Glacier Deep Archive_ storage after a certain number of days for further cost optimization. link:reference-aws-backup-tiers.html[Learn more about AWS archival storage^].
+endif::aws[]
 
+ifdef::azure[]
 * In Azure, backups are associated with the _Cool_ access tier.
 +
 If your cluster is using ONTAP 9.10.1 or greater, you can choose to tier older backups to _Azure Archive_ storage after a certain number of days for further cost optimization. link:reference-azure-backup-tiers.html[Learn more about Azure archival storage^].
+endif::azure[]
 
+ifdef::gcp[]
 * In GCP, backups are associated with the _Standard_ storage class by default.
 +
 You can also use the lower cost _Nearline_ storage class, or the _Coldline_ or _Archive_ storage classes. See the Google topic link:https://cloud.google.com/storage/docs/storage-classes[Storage classes^] for information about changing the storage class.
+endif::gcp[]
 
 * In StorageGRID, backups are associated with the _Standard_ storage class.
 
