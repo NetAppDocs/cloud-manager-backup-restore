@@ -160,13 +160,14 @@ There are three ways to pay for the Backup service. The first option is to subsc
 
 == Licensing
 
-Cloud Backup is available in a few licensing options: Pay As You Go (PAYGO) subscription, ifdef::aws[] an annual contract from the AWS Marketplace, endif::aws[] and Bring Your Own License (BYOL). A 30-day free trial is available when you initially sign up with a PAYGO subscription.
-
-Cloud Backup is available in a few licensing options: Pay As You Go (PAYGO) subscription,
+Cloud Backup is available in a few licensing options:
+* Pay As You Go (PAYGO) subscription
 ifdef::aws[]
-an annual contract from the AWS Marketplace,
+* an annual contract from the AWS Marketplace
 endif::aws[]
-and Bring Your Own License (BYOL). A 30-day free trial is available when you initially sign up with a PAYGO subscription.
+* Bring Your Own License (BYOL)
+
+A 30-day free trial is available when you initially sign up with a PAYGO subscription.
 
 === Pay-as-you-go subscription
 
