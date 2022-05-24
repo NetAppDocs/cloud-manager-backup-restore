@@ -106,10 +106,8 @@ sidebar:
           url: /reference-cross-account.html
           entries:
             - title: Configure Backup for multi-account access in AWS
-              flavor: aws
               url: /reference-backup-multi-account-aws.html
             - title: Configure Backup for multi-account access in Azure
-              flavor: azure
               url: /reference-backup-multi-account-azure.html
     - title: Knowledge and support
       entries:
