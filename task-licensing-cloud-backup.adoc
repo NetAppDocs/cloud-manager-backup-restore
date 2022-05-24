@@ -38,20 +38,26 @@ For pay-as-you-go, you'll pay your cloud provider for object storage costs and f
 
 You won’t be charged from your pay-as-you-go subscription during your free trial or if you haven’t exceeded your BYOL license.
 
-There are three PAYGO plans for Cloud Backup:
+There are a few PAYGO plans for Cloud Backup:
 
 *	A "Cloud Backup" package that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
 * A "CVO Professional" package that enables you to bundle Cloud Volumes ONTAP and Cloud Backup. This includes unlimited backups for Cloud Volumes ONTAP volumes charged against this license (backup capacity is not counted against the license). This option doesn’t enable you to back up on-premises ONTAP data.
+ifdef::azure[]
 * A "CVO Edge Cache" package has the same capabilities as the "CVO Professional" package, but also includes support for Global File Cache. You are entitled to deploy one Global File Cache Edge system for each 3 TiB of provisioned capacity on the Cloud Volumes ONTAP system. This option is available only through the Azure Marketplace, and it doesn’t enable you to back up on-premises ONTAP data.
+endif::azure[]
 
 Use these links to subscribe to Cloud Backup from your cloud provider marketplace:
 
+ifdef::aws[]
 * AWS: https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa[Go to the Cloud Manager Marketplace offering for pricing details^].
-
+endif::aws[]
+ifdef::azure[]
 * Azure: https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview[Go to the Cloud Manager Marketplace offering for pricing details^].
-
+endif::azure[]
 * GCP: https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project[Go to the Cloud Manager Marketplace offering for pricing details^].
+endif::gcp[]
 
+ifdef::aws[]
 == Subscribe to yearly contracts through AWS
 
 There are two annual contracts available from the https://aws.amazon.com/marketplace/pp/B086PDWSS8[AWS Marketplace page^] for Cloud Volumes ONTAP and on-premises ONTAP systems. They're available in 1-, 2-, or 3-year terms:
@@ -65,6 +71,7 @@ If you want to use this option, set up your subscription from the Marketplace pa
 See the https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-licensing.html[Cloud Volumes ONTAP licensing topic^] to learn more about this licensing option.
 +
 If you want to use this option, you can set up the annual contract when you create a Cloud Volumes ONTAP working environment and Cloud Manager prompts you to subscribe to the AWS Marketplace.
+endif::aws[]
 
 == Use a Cloud Backup BYOL license
 

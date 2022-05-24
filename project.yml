@@ -97,15 +97,19 @@ sidebar:
     - title: Reference
       entries:
         - title: Supported AWS archive storage tiers
+          flavor: aws
           url: /reference-aws-backup-tiers.html
         - title: Supported Azure archive access tiers
+          flavor: azure
           url: /reference-azure-backup-tiers.html
         - title: Cross-account and cross-region configurations
           url: /reference-cross-account.html
           entries:
             - title: Configure Backup for multi-account access in AWS
+              flavor: aws
               url: /reference-backup-multi-account-aws.html
             - title: Configure Backup for multi-account access in Azure
+              flavor: azure
               url: /reference-backup-multi-account-azure.html
     - title: Knowledge and support
       entries:

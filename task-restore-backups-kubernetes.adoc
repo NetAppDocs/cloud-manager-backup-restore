@@ -26,9 +26,15 @@ You can restore a volume from a Kubernetes backup file to the following working 
 
 | Backup File Location
 | Destination Working Environment
+ifdef::aws[]
 | Amazon S3 | Kubernetes cluster in AWS
+endif::aws[]
+ifdef::azure[]
 | Azure Blob | Kubernetes cluster in Azure
+endif::azure[]
+ifdef::gcp[]
 | Google Cloud Storage | Kubernetes cluster in Google
+endif::gcp[]
 
 |===
 
