@@ -109,7 +109,6 @@ sidebar:
               flavor: aws
               url: /reference-backup-multi-account-aws.html
             - title: Configure Backup for multi-account access in Azure
-              flavor: azure
               url: /reference-backup-multi-account-azure.html
     - title: Knowledge and support
       entries:
@@ -168,11 +167,11 @@ homepage:
     - title: Back up and restore on-premises applications data
       links:
         - title: Back up on-premises applications data to cloud
-          url: /task-backup-app-data-to-cloud.html
+          url: task-backup-app-data-to-cloud.html
         - title: Restore Oracle database
-          url: /task-restore-oracle-data.html
+          url: task-restore-oracle-data.html
         - title: Restore SQL Server database
-          url: /task-restore-sql-data.html
+          url: task-restore-sql-data.html
     - title: Restore data from backup files
       links:
         - title: Restore ONTAP volumes
