@@ -71,7 +71,7 @@ image:diagram_cloud_backup_cvo_aws.png[A diagram showing how Cloud Backup commun
 When the Cloud Restore instance is deployed in the cloud, it is located in the same subnet as the Connector.
 
 Supported ONTAP versions::
-Cloud Volumes ONTAP 9.6 and later.
+Minimum of ONTAP 9.6; ONTAP 9.8P11 and later is recommended.
 
 License requirements::
 For Cloud Backup PAYGO licensing, a Cloud Manager subscription is available in the AWS Marketplace that enables deployments of Cloud Volumes ONTAP and Cloud Backup. You need to https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa[subscribe to this Cloud Manager subscription^] before you enable Cloud Backup. Billing for Cloud Backup is done through this subscription.

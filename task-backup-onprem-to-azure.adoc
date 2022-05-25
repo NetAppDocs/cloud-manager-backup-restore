@@ -97,7 +97,7 @@ You need to discover your on-premises ONTAP clusters in Cloud Manager before you
 https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html[Learn how to discover a cluster^].
 
 ONTAP requirements::
-* ONTAP 9.7P5 and later.
+* Minimum of ONTAP 9.7P5; ONTAP 9.8P11 and later is recommended.
 * A SnapMirror license (included as part of the Premium Bundle or Data Protection Bundle).
 +
 *Note:* The "Hybrid Cloud Bundle" is not required when using Cloud Backup.

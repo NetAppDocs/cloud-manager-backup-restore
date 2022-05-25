@@ -149,8 +149,7 @@ ifdef::gcp[]
 ** In Google, a new bucket is deployed, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
 endif::gcp[]
 
-* If you need to restore volume data from a backup file that has been moved to archival storage (supported with AWS when using ONTAP 9.10.1+), then there's an additional per-GiB retrieval fee and per-request fee from the cloud provider.
-//and Azure
+* If you need to restore volume data from a backup file that has been moved to archival storage, then there's an additional per-GiB retrieval fee and per-request fee from the cloud provider.
 
 *Service charges*
 

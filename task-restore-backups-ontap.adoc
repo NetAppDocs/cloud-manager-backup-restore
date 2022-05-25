@@ -73,7 +73,7 @@ See the requirements and restore steps for the type of restore operation you wan
 
 Before you start restoring a volume or file, you should know the name of the volume or file you want to restore, the name of the working environment where the volume resides, and the approximate date of the backup file that you want to restore from.
 
-*Note:* If the backup file for the volume that you want to restore resides in archival storage (available for AWS and Azure starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur a cost. Additionally, the destination cluster must also be running ONTAP 9.10.1 or greater.
+*Note:* If the backup file for the volume that you want to restore resides in archival storage (starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur a cost. Additionally, the destination cluster must also be running ONTAP 9.10.1 or greater.
 
 ifdef::aws[]
 link:reference-aws-backup-tiers.html[Learn more about restoring from AWS archival storage].
@@ -273,7 +273,9 @@ endif::aws[]
 ifdef::azure[]
 * When restoring from Azure Blob, enter the IPspace in the ONTAP cluster where the destination volume resides.
 endif::azure[]
-// * When restoring from Google Cloud Storage, enter the IPspace in the ONTAP cluster where the destination volumes reside, and the Access Key and Secret Key needed to access the object storage.
+//ifdef::gcp[]
+//* When restoring from Google Cloud Storage, enter the IPspace in the ONTAP cluster where the destination volumes reside, and the Access Key and Secret Key needed to access the object storage.
+//endif::gcp[]
 
 . Then select the *Volume* and the *Folder* where you want to restore the files.
 +
@@ -304,7 +306,7 @@ When you restore a volume from a backup file, Cloud Backup creates a _new_ volum
 
 You can restore files to the original volume location, to a different volume in the same working environment, or to a different working environment that's using the same cloud account. You can also restore files to a volume on an on-premises ONTAP system.
 
-If the backup file for the volume that you want to restore resides in archival storage (available for AWS starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur additional cost. Note that the destination cluster must also be running ONTAP 9.10.1 or greater, and that file restore from archival storage is not currently supported.
+If the backup file for the volume that you want to restore resides in archival storage (available starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur additional cost. Note that the destination cluster must also be running ONTAP 9.10.1 or greater, and that file restore from archival storage is not currently supported.
 
 ifdef::aws[]
 link:reference-aws-backup-tiers.html[Learn more about restoring from AWS archival storage].

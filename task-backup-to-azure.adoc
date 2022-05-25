@@ -70,7 +70,7 @@ image:diagram_cloud_backup_cvo_azure.png[A diagram showing how Cloud Backup comm
 When the Cloud Restore virtual machine is deployed in the cloud, it is located in the same subnet as the Connector.
 
 Supported ONTAP versions::
-Cloud Volumes ONTAP 9.7P5 and later.
+Minimum of ONTAP 9.7P5; ONTAP 9.8P11 and later is recommended.
 
 License requirements::
 For Cloud Backup PAYGO licensing, a subscription through the Azure Marketplace is required before you enable Cloud Backup. Billing for Cloud Backup is done through this subscription. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-azure.html[You can subscribe from the Details & Credentials page of the working environment wizard^].
