@@ -54,6 +54,7 @@ endif::aws[]
 ifdef::azure[]
 * Azure: https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview[Go to the Cloud Manager Marketplace offering for pricing details^].
 endif::azure[]
+ifdef::gcp[]
 * GCP: https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project[Go to the Cloud Manager Marketplace offering for pricing details^].
 endif::gcp[]
 

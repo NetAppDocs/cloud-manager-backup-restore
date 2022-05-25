@@ -23,7 +23,7 @@ Backup features:
 
 * Back up independent copies of your data volumes to low-cost object storage.
 * Apply a single backup policy to all volumes in a cluster, or assign different backup policies to volumes that have unique recovery point objectives.
-* Tier older backup files to archival storage to save costs (supported with AWS and Azure when using ONTAP 9.10.1+)
+* Tier older backup files to archival storage to save costs (supported when using ONTAP 9.10.1+)
 * Back up from cloud to cloud, and from on-premises systems to public or private cloud.
 * For Cloud Volumes ONTAP systems, your backups can reside on a different subscription/account or different region.
 * Backup data is secured with AES-256 bit encryption at-rest and TLS 1.2 HTTPS connections in-flight.
@@ -300,7 +300,7 @@ FlexGroup volumes and SnapLock volumes aren't currently supported.
 
 == Limitations
 
-* The ability to tier older backup files to archival storage requires that the cluster is running ONTAP 9.10.1 or greater (supported currently with AWS and Azure). Restoring volumes from backup files that reside in archival storage also requires that the destination cluster is running ONTAP 9.10.1+.
+* The ability to tier older backup files to archival storage requires that the cluster is running ONTAP 9.10.1 or greater. Restoring volumes from backup files that reside in archival storage also requires that the destination cluster is running ONTAP 9.10.1+.
 
 * When creating or editing a backup policy when no volumes are assigned to the policy, the number of retained backups can be a maximum of 1018. As a workaround you can reduce the number of backups to create the policy. Then you can edit the policy to create up to 4000 backups after you assign volumes to the policy.
 
