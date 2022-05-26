@@ -52,7 +52,7 @@ Before you start, you should know the name of the volume you want to restore and
 +
 image:screenshot_backup_view_k8s_backups_button.png[A screenshot of the Kubernetes dashboard with the list of all Kubernetes clusters and volumes that are being backed up.]
 
-. Locate the volume you want to restore, click image:screenshot_horizontal_more_button.gif[More icon], and then *Volume Details*.
+. Locate the volume you want to restore, click image:screenshot_horizontal_more_button.gif[More icon], and then click *Details & Backup List*.
 +
 The list of all backup files for that volume is displayed along with details about the source volume, destination location, and backup details.
 +

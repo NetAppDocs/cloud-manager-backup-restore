@@ -47,7 +47,6 @@ This table provides a comparison of the 2 methods.
 | Volume restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. File restore works with backup files stored in Amazon S3 and Azure Blob | Volume and file restore works with backup files stored in Amazon S3 and Google Cloud
 | Does not handle files that have been renamed or deleted | Handles newly created/deleted/renamed directories and newly created/deleted/renamed files
 | Browse for results across public and private clouds | Browse for results across public clouds and local Snapshots copies
-| Separate Cloud Restore instance is required for file restore | No Cloud Restore instance required
 | No additional cloud provider resources required | Additional bucket and AWS or Google resources required per account
 | Cost associated with Cloud Restore instance when browsing backups for individual files | Cost associated with AWS or Google resources when scanning your backups and volumes for search results
 
@@ -196,15 +195,9 @@ TIP: You can't restore individual files if the backup file resides in archival s
 
 * The ONTAP version must be 9.6 or greater in your Cloud Volumes ONTAP or on-premises ONTAP systems to perform file restore operations.
 
-* Restoring individual files from a backup file uses a separate Restore instance/virtual machine. See the link:concept-ontap-backup-to-cloud.html#cost[type of instance that will be deployed for File Restore operations] and make sure your environment is ready.
 ifdef::aws[]
-* Restoring files from backups on Amazon S3 requires that specific AWS EC2 permissions have been added to the user role that provides Cloud Manager with permissions. You'll also need to allow outbound internet access to contact certain endpoints. link:task-backup-onprem-to-aws.html#preparing-amazon-s3-for-backups[Verify that your configuration is ready to restore files].
-
 * AWS cross-account restore requires manual action in the AWS console. See the AWS topic https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html[granting cross-account bucket permissions^] for details.
 endif::aws[]
-ifdef::azure[]
-* Restoring files from backups on Azure Blob requires that outbound internet access is available to contact certain endpoints. link:task-backup-onprem-to-azure.html#preparing-azure-blob-storage-for-backups[Verify that your configuration is ready to restore files].
-endif::azure[]
 
 ==== File Restore process
 
@@ -212,15 +205,13 @@ The process goes like this:
 
 . When you want to restore one or more files from a volume backup, click the *Restore* tab, click *Restore Files* under _Browse & Restore_, and select the backup file in which the file (or files) reside.
 
-. The Restore instance starts up and displays the folders and files that exist within the selected backup file.
-+
-*Note:* The Restore instance is deployed in your cloud providers' environment the first time you restore a file.
+. Cloud Backup displays the folders and files that exist within the selected backup file.
 
 . Choose the file (or files) that you want to restore from that backup.
 
 . Select the location where you want the file(s) to be restored (the working environment, volume, and folder), and click *Restore*.
 
-. The file(s) are restored, and then the Restore instance is shut down after a period of inactivity to save costs.
+. The file(s) are restored.
 
 image:diagram_browse_restore_file.png["A diagram that shows the flow to perform a file restore operation using Browse & Restore."]
 
@@ -248,9 +239,7 @@ image:screenshot_restore_files_selection.png[A screenshot of selecting the Resto
 +
 image:screenshot_restore_select_source.png[A screenshot of selecting the volume and backup for the files you want to restore.]
 
-. Click *Continue* and the Restore instance is started. After a few minutes, the list of folders and files from the volume backup are displayed.
-+
-*Note:* The Restore instance is deployed in your cloud providers' environment the first time you restore a file, so this step could take a few minutes longer the first time.
+. Click *Continue* and the list of folders and files from the volume backup are displayed.
 +
 image:screenshot_restore_select_files.png[A screenshot of the Select Files page so you can navigate to the files you want to restore.]
 
@@ -293,8 +282,6 @@ You have a few options for the location when restoring files.
 * If you have selected the same destination Working Environment and Volume as where the source file was located, you can select *Maintain Source Folder Path* to restore the file, or all files, to the same folder where they existed in the source structure. All the same folders and sub-folders must already exist; folders are not created.
 
 . Click *Restore* and you are returned to the Restore Dashboard so you can review the progress of the restore operation. You can also click the *Job Monitor* tab to see the restore progress.
-
-The Restore instance is shut down after a certain period of inactivity to save you money so that you incur costs only when it is active.
 
 == Restoring ONTAP data using Search & Restore
 
