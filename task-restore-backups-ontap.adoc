@@ -48,7 +48,7 @@ This table provides a comparison of the 2 methods.
 | Does not handle files that have been renamed or deleted | Handles newly created/deleted/renamed directories and newly created/deleted/renamed files
 | Browse for results across public and private clouds | Browse for results across public clouds and local Snapshots copies
 | No additional cloud provider resources required | Additional bucket and AWS or Google resources required per account
-| Cost associated with Cloud Restore instance when browsing backups for individual files | Cost associated with AWS or Google resources when scanning your backups and volumes for search results
+| No additional cloud provider costs required | Cost associated with AWS or Google resources when scanning your backups and volumes for search results
 
 |===
 
