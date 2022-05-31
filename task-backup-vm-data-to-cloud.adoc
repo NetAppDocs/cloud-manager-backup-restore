@@ -16,6 +16,8 @@ summary: Back up your datastores from on-premises ONTAP to cloud.
 
 You can back up datastores to the cloud by integrating the SnapCenter Plug-in for VMware vSphere with Cloud Manager. This will help the VM administrators to easily and quickly back up and archive data for storage efficiency and accelerate cloud transition.
 
+NOTE: Ensure that you have met all the link:concept-protect-vm-data.html#Requirements[requirements] before backing up datastores to the cloud.
+
 == Register SnapCenter Plug-in for VMware vSphere
 
 You should register the SnapCenter Plug-in for VMware vSphere in Cloud Manager for the datastores and virtual machines to be displayed in Cloud Manager. Only a user with administrative access can register the SnapCenter Plug-in for VMware vSphere.
@@ -42,10 +44,6 @@ Click *Backup & Restore > Virtual Machines* to view all the datastores and virtu
 == Back up datastores
 
 You can back up one or more datastores simultaneously to the cloud using a single policy. Only the default policies can be assigned to the datastore.
-
-.What you'll need
-
-Ensure that you have met all the link:concept-protect-vm-data.html#Requirements[requirements] before backing up datastores to the cloud.
 
 .Steps
 
