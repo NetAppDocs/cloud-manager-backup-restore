@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: task-manage-vm-data-in-cloud.html
-keywords: manage backups, Virtual Machines, view datastores, view Virtual Machines, edit
-summary: You can view the datastores and Virtual Machines and edit the SnapCenter Plug-in for VMware vSphere instances.
+keywords: manage backups, virtual machines, view datastores, view virtual machines, edit
+summary: You can view the datastores and virtual machines and edit the SnapCenter Plug-in for VMware vSphere instances.
 ---
 
-= Manage protection of Virtual Machines
+= Manage protection of virtual machines
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,19 +13,19 @@ summary: You can view the datastores and Virtual Machines and edit the SnapCente
 :imagesdir: ./media/
 
 [.lead]
-You can view policies, datastores, and Virtual Machines before you backup and restore data. Depending upon the change in database, policies, or resource groups, you can refresh the updates from the Cloud Manager UI.
+You can view policies, datastores, and virtual machines before you back up and restore data. Depending upon the change in database, policies, or resource groups, you can refresh the updates from the Cloud Manager UI.
 
 == View policies
-You can view all the default pre-canned policies. For each of these policies, when you view the details, all the associated Cloud Backup for Virtual Machines policies and all the associated Virtual Machines are listed.
+You can view all the default pre-canned policies. For each of these policies, when you view the details, all the associated Cloud Backup for Virtual Machines policies and all the associated virtual machines are listed.
 
 . Click *Backup & Restore > Virtual Machines*.
 . From the *Settings* drop-down, click *Policies*.
 . Click *View Details* corresponding to policy whose details you want to view.
 
-The associated Cloud Backup for Virtual Machines policies and all the Virtual Machines are listed.
+The associated Cloud Backup for Virtual Machines policies and all the virtual machines are listed.
 
-== View the datastores and Virtual Machines
-The datastores and Virtual Machines that are protected using the registered SnapCenter Plug-in for VMware vSphere are displayed.
+== View the datastores and virtual machines
+The datastores and virtual machines that are protected using the registered SnapCenter Plug-in for VMware vSphere are displayed.
 
 *About this task*
 
@@ -35,7 +35,7 @@ The datastores and Virtual Machines that are protected using the registered Snap
 .Steps
 
 . In Cloud Manager UI, click *Backup & Restore* > *Virtual Machines* > *Settings* > *SnapCenter Plug-in for VMware vSphere*.
-. Click the SnapCenter Plug-in for VMware vSphere for which you want to see the datastores and Virtual Machines.
+. Click the SnapCenter Plug-in for VMware vSphere for which you want to see the datastores and virtual machines.
 
 == Edit the SnapCenter Plug-in for VMware vSphere Instance
 You can edit the details of the SnapCenter Plug-in for VMware vSphere in Cloud Manager
@@ -52,7 +52,7 @@ When new volumes are added to the database, or if there is a change to the polic
 
 . Click *Backup & Restore > Virtual Machines*.
 . From the *Settings* drop-down, click *SnapCenter Plug-in for VMware vSphere*.
-. Click image:icon-action.png[action] corresponding to the SnapCenter Plug-in for VMware vSphere hosting the Virtual Machine and click *Refresh*.
+. Click image:icon-action.png[action] corresponding to the SnapCenter Plug-in for VMware vSphere hosting the virtual machine and click *Refresh*.
 +
 The new changes are discovered.
 . Click image:icon-action.png[action] corresponding to the datastore and click *Refresh Protection* to enable cloud protection for the changes.
