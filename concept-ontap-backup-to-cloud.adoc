@@ -100,7 +100,7 @@ On-premises ONTAP system
 | Cloud Volumes ONTAP in Google
 On-premises ONTAP system
 endif::gcp[]
-| NetApp StorageGRID | On-premises ONTAP system |
+| NetApp StorageGRID | On-premises ONTAP system | On-premises ONTAP system
 
 |===
 

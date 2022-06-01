@@ -44,7 +44,7 @@ This table provides a comparison of the 2 methods.
 | Search & Restore
 
 | Browse through a folder-style structure to find the volume or file within a single backup file | Search for a volume or file across *all backup files* by partial or full volume name, partial or full file name, size range, and additional search filters
-| Volume restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. File restore works with backup files stored in Amazon S3 and Azure Blob | Volume and file restore works with backup files stored in Amazon S3 and Google Cloud
+| Volume and file restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. | Volume and file restore works with backup files stored in Amazon S3 and Google Cloud
 | Does not handle files that have been renamed or deleted | Handles newly created/deleted/renamed directories and newly created/deleted/renamed files
 | Browse for results across public and private clouds | Browse for results across public clouds and local Snapshots copies
 | No additional cloud provider resources required | Additional bucket and AWS or Google resources required per account
@@ -105,9 +105,10 @@ On-premises ONTAP system
 endif::azure[]
 ifdef::gcp[]
 | Google Cloud Storage | Cloud Volumes ONTAP in Google
-On-premises ONTAP system |
+On-premises ONTAP system | Cloud Volumes ONTAP in Google
+On-premises ONTAP system
 endif::gcp[]
-| NetApp StorageGRID | On-premises ONTAP system |
+| NetApp StorageGRID | On-premises ONTAP system | On-premises ONTAP system
 
 |===
 
@@ -262,9 +263,10 @@ endif::aws[]
 ifdef::azure[]
 * When restoring from Azure Blob, enter the IPspace in the ONTAP cluster where the destination volume resides.
 endif::azure[]
-//ifdef::gcp[]
-//* When restoring from Google Cloud Storage, enter the IPspace in the ONTAP cluster where the destination volumes reside, and the Access Key and Secret Key needed to access the object storage.
-//endif::gcp[]
+ifdef::gcp[]
+* When restoring from Google Cloud Storage, enter the IPspace in the ONTAP cluster where the destination volumes reside, and the Access Key and Secret Key needed to access the object storage.
+endif::gcp[]
+* When restoring from StorageGRID, enter the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume resides.
 
 . Then select the *Volume* and the *Folder* where you want to restore the files.
 +
@@ -395,6 +397,7 @@ endif::aws[]
 ifdef::gcp[]
 * For backups stored in Google Cloud, it provisions a new bucket, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
 endif::gcp[]
+
 If Indexing has already been enabled for your working environment, go to the next section to restore your data.
 
 To enable Indexing for a working environment:
