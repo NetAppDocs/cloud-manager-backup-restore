@@ -88,6 +88,7 @@ After retrying if the working environment details are not updated, ensure that y
 [role="tabbed-block"]
 ====
 
+ifdef::aws[]
 .Configure Amazon Web Services
 --
 .. Specify the AWS account.
@@ -96,7 +97,9 @@ After retrying if the working environment details are not updated, ensure that y
 .. Select the region where you want to create the backups.
 .. Specify the IP addresses of the ONTAP clusters that were added as the working environments.
 --
+endif::aws[]
 
+ifdef::azure[]
 .Configure Microsoft Azure
 --
 .. Specify the Azure subscription ID.
@@ -104,6 +107,8 @@ After retrying if the working environment details are not updated, ensure that y
 .. Either create a new resource group or use an existing resource group.
 .. Specify the IP addresses of the ONTAP clusters that were added as the working environments.
 --
+endif::azure[]
+
 ====
 
 [start=5]

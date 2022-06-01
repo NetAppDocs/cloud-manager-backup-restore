@@ -16,7 +16,14 @@ summary:  Integrate Cloud Backup for Applications with Cloud Manager and on-prem
 
 You can integrate Cloud Backup for Applications with Cloud Manager and on-premises SnapCenter to back up the application consistent Snapshots from on-premises ONTAP to cloud. When required you can restore from cloud to on-premises SnapCenter Server.
 
-You can back up Oracle and Microsoft SQL applications data from on-premises ONTAP to either Amazon Web Services or Microsoft Azure.
+You can back up Oracle and Microsoft SQL applications data from on-premises ONTAP to the following cloud providers:
+
+ifdef::aws[]
+* Amazon Web Services
+endif::aws[]
+ifdef::azure[]
+* Microsoft Azure
+endif::azure[]
 
 NOTE: You should be using SnapCenter Software 4.6.
 

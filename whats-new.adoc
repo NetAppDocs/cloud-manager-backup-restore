@@ -16,6 +16,12 @@ summary: Learn what's new in Cloud Backup.
 Learn what's new in Cloud Backup.
 
 // tag::whats-new[]
+== 6 June 2022
+
+=== New stuff
+
+Details of new stuff
+
 == 2 May 2022
 
 === Search & Restore is now supported with backup files in Google Cloud Storage
@@ -56,15 +62,15 @@ https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-protect-app-d
 === New Search & Restore feature to search for volumes or files across all ONTAP backup files
 
 Now you can search for a volume or file across *all ONTAP backup files* by partial or full volume name, partial or full file name, size range, and additional search filters. This is a great new way to find the data you want to restore if you are not sure which cluster or volume was the source for the data. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html#restoring-ontap-data-using-search-restore[Learn how to use Search & Restore].
+// end::whats-new[]
 
 == 3 March 2022
 
 === Ability to back up persistent volumes from your GKE Kubernetes clusters to Google Cloud storage
 
-If your GKE cluster has NetApp Astra Trident installed, and it's using Cloud Volumes ONTAP for GCP as backend storage for the cluster, then you can back up and restore your persistent volumes to and from Google Cloud storage. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-kubernetes-to-gcp.html[Go here for details].
+If your GKE cluster has NetApp Astra Trident installed, and it's using Cloud Volumes ONTAP for GCP as backend storage for the cluster, then you can back up and restore your persistent volumes to and from Google Cloud storage. link:task-backup-kubernetes-to-gcp.html[Go here for details].
 
 === The Beta capability to use Cloud Data Sense to scan your Cloud Backup files has been discontinued in this release
-// end::whats-new[]
 
 == 14 February 2022
 

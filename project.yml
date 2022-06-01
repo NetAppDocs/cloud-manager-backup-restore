@@ -94,6 +94,8 @@ sidebar:
               url: /task-restore-oracle-data.html
             - title: Restore SQL Server database
               url: /task-restore-sql-data.html
+    - title: Automate with the REST API
+      url: /api-backup-restore.html
     - title: Reference
       entries:
         - title: Supported AWS archive storage tiers
