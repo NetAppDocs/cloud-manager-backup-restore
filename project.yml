@@ -81,6 +81,7 @@ sidebar:
         - title: Restore from Kubernetes backups
           url: /task-restore-backups-kubernetes.html
     - title: Back up and restore on-premises applications data
+      flavor: aws,azure
       entries:
         - title: Protect your on-premises applications data
           url: /concept-protect-app-data-to-cloud.html
