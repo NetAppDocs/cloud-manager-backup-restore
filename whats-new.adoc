@@ -18,9 +18,20 @@ Learn what's new in Cloud Backup.
 // tag::whats-new[]
 == 6 June 2022
 
-=== New stuff
+=== Cloud Restore instance is no longer necessary for ONTAP Browse & Restore functionality
 
-Details of new stuff
+A separate Cloud Restore instance/virtual machine used to be required for file-level Browse & Restore operations from S3 and Blob storage. This instance shut down when not in use -- but it still added some time and cost when restoring files. This functionality has been replaced with a no-cost container that gets deployed on the Connector when needed. It provides the following advantages:
+
+* No added cost for file-level restore operations
+* Faster restore operations
+* Support for Browse & Restore operations from Google Cloud and StorageGRID storage
+* Support for Browse & Restore operations when the Connector is installed on your premises
+
+Note that the Cloud Restore instance will be removed automatically if you were previously using it.
+
+=== Cloud Backup APIs are now available for managing backup and restore operations
+
+The APIs are available at https://api.cloudbackup.netapp.com/docs. link:api-backup-restore.html[Go here for an overview of the APIs].
 
 == 2 May 2022
 

@@ -109,6 +109,13 @@ ifdef::azure[]
 --
 endif::azure[]
 
+ifdef::gcp[]
+.Configure Google Cloud
+--
+Not currently supported
+--
+endif::gcp[]
+
 ====
 
 [start=5]
