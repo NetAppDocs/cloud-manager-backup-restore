@@ -82,9 +82,11 @@ This API will return a response like the following. You can retrieve the agent i
 
 == Example using the APIs
 
-The following example shows an API call to activate backup on Working Environment with a new policy that has daily, hourly, and weekly labels set and archive after days set as 180 days, in East-US-2 region in Azure cloud. Please note this enables backup only on Working Environment but no volumes are backed up.  If you choose “"auto-backup-enabled": true then any volumes already existing in the system would be backed up, plus future volumes added.
+The following example shows an API call to activate backup on Working Environment with a new policy that has daily, hourly, and weekly labels set and archive after days set as 180 days, in East-US-2 region in Azure cloud. Please note this enables backup only on Working Environment but no volumes are backed up. If you choose “"auto-backup-enabled": true then any volumes already existing in the system would be backed up, plus future volumes added.
 
 .API Request
+
+You'll see that we use the Cloud Central account ID "account-DpTFcxN3", Cloud Manager Connector ID "iZwFFeVCZjWnzGlw8RgD0QQNANZvpP7Iclients", and user token "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5rSXlPVFUzUWpZek1E…y6nyhBjwkeMwHc4ValobjUmju2x0xUH48g" in this command.
 
 [source,http]
 curl --location --request POST 'https://cloudmanager.cloud.netapp.com/account/account-DpTFcxN3/providers/cloudmanager_cbs/api/v3/backup/working-environment/VsaWorkingEnvironment-99hPYEgk' \

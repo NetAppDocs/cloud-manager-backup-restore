@@ -159,7 +159,7 @@ endif::azure[]
 ifdef::gcp[]
 * When restoring from Google Cloud Storage, select the Google Cloud Project and the Access Key and Secret Key to access the object storage, the region where the backups are stored, and the IPspace in the ONTAP cluster where the destination volume will reside.
 endif::gcp[]
-* When restoring from StorageGRID, select the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume will reside.
+* When restoring from StorageGRID, enter the FQDN of the StorageGRID server and the port that ONTAP should use for HTTPS communication with StorageGRID, select the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume will reside.
 
 . Enter the name you want to use for the restored volume, and select the Storage VM where the volume will reside. By default, *<source_volume_name>_restore* is used as the volume name.
 +
@@ -266,7 +266,7 @@ endif::azure[]
 ifdef::gcp[]
 * When restoring from Google Cloud Storage, enter the IPspace in the ONTAP cluster where the destination volumes reside, and the Access Key and Secret Key needed to access the object storage.
 endif::gcp[]
-* When restoring from StorageGRID, enter the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume resides.
+* When restoring from StorageGRID, enter the FQDN of the StorageGRID server and the port that ONTAP should use for HTTPS communication with StorageGRID, enter the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume resides.
 
 . Then select the *Volume* and the *Folder* where you want to restore the files.
 +
