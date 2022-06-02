@@ -18,20 +18,20 @@ Learn what's new in Cloud Backup.
 // tag::whats-new[]
 == 6 June 2022
 
-=== Cloud Restore instance is no longer necessary for ONTAP Browse & Restore functionality
+=== Cloud Restore instance is not needed for ONTAP Browse & Restore functionality
 
 A separate Cloud Restore instance/virtual machine used to be required for file-level Browse & Restore operations from S3 and Blob storage. This instance shut down when not in use -- but it still added some time and cost when restoring files. This functionality has been replaced with a no-cost container that gets deployed on the Connector when needed. It provides the following advantages:
 
 * No added cost for file-level restore operations
-* Faster restore operations
-* Support for Browse & Restore operations from Google Cloud and StorageGRID storage
-* Support for Browse & Restore operations when the Connector is installed on your premises
+* Faster file-level restore operations
+* Support for Browse & Restore operations for files from Google Cloud and StorageGRID storage
+* Support for Browse & Restore operations for files when the Connector is installed on your premises
 
-Note that the Cloud Restore instance will be removed automatically if you were previously using it.
+Note that the Cloud Restore instance/VM will be removed automatically if you were previously using it.
 
 === Cloud Backup APIs are now available for managing backup and restore operations
 
-The APIs are available at https://api.cloudbackup.netapp.com/docs. link:api-backup-restore.html[Go here for an overview of the APIs].
+The APIs are available at https://api.cloudbackup.netapp.com/docs. See link:api-backup-restore.html[this page] for an overview of the APIs.
 
 == 2 May 2022
 
@@ -64,11 +64,11 @@ https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-licensing-cloud-
 
 === Cloud Backup for Applications 1.1.0 (powered by SnapCenter) is now GA
 
-The new Cloud Backup for Applications capability enables you to offload existing application consistent Snapshots (backups) for Oracle and Microsoft SQL from on-premises primary storage to cloud object storage in AWS S3 or Azure Blob.
+The new Cloud Backup for Applications capability enables you to offload existing application consistent Snapshots (backups) for Oracle and Microsoft SQL from on-premises primary storage to cloud object storage in Amazon S3 or Azure Blob.
 
 When required, you can restore this data from cloud to on-premises.
 
-https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-protect-app-data-to-cloud.html[Learn more about protecting on-premises applications data to cloud].
+https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-protect-app-data-to-cloud.html[Learn more about protecting on-premises applications data to the cloud].
 
 === New Search & Restore feature to search for volumes or files across all ONTAP backup files
 

@@ -327,12 +327,16 @@ On-premises ONTAP system
 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
 endif::aws[]
+ifdef::azure[]
+| Azure Blob | Not currently supported |
+endif::azure[]
 ifdef::gcp[]
 | Google Cloud Storage | Cloud Volumes ONTAP in Google
 On-premises ONTAP system
 | Cloud Volumes ONTAP in Google
 On-premises ONTAP system
 endif::gcp[]
+| NetApp StorageGRID | Not currently supported |
 
 |===
 
