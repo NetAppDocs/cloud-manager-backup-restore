@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: api-backup-restore.html
-keywords: api, apis, rest, restful, authorization, getting started, body, header, token, reference, expired token, expires, expired, token expired, list apis, 202, https status code 202, status code 202, id, id field, box
+keywords: api, apis, rest, restful, authorization, getting started, body, header, token, reference, expired token, expires, expired, token expired, list apis
 summary: The Cloud Backup capabilities that are available through the web UI are also available through RESTful APIs.
 ---
 
@@ -152,7 +152,7 @@ curl --location --request GET 'https://cloudmanager.cloud.netapp.com/account/acc
     ]
 }
 
-.Until "status" is "COMPLETED".
+.Monitor until "status" is "COMPLETED".
 
 [source,text]
 {
@@ -176,4 +176,4 @@ The API response includes an "expires_in" field that states when the token expir
 
 == API reference
 
-Documentation for each Cloud Backup API is available from https://api.cloudbackup.netapp.com/docs.
+Documentation for each Cloud Backup API is available from https://docs.netapp.com/us-en/cloud-manager-automation/cbs/overview.html.
