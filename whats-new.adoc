@@ -16,7 +16,7 @@ summary: Learn what's new in Cloud Backup.
 Learn what's new in Cloud Backup.
 
 // tag::whats-new[]
-== 6 June 2022
+== 7 June 2022
 
 === Cloud Restore instance is not needed for ONTAP Browse & Restore functionality
 
@@ -24,14 +24,27 @@ A separate Cloud Restore instance/virtual machine used to be required for file-l
 
 * No added cost for file-level restore operations
 * Faster file-level restore operations
-* Support for Browse & Restore operations for files from Google Cloud and StorageGRID storage
-* Support for Browse & Restore operations for files when the Connector is installed on your premises
+* Support for Browse & Restore operations for files from the cloud when the Connector is installed on your premises
 
 Note that the Cloud Restore instance/VM will be removed automatically if you were previously using it.
 
+=== Browse & Restore support for files from Google Cloud and StorageGRID storage
+
+With the addition of the container for Browse & Restore operations (as described above), file restore operations now can be performed from backup files stored in Google Cloud and StorageGRID systems. Now Browse & Restore can be used to restore files across all public cloud providers and from StorageGRID. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html#restoring-ontap-data-using-browse-restore[See how to use Browse & Restore to restore volumes and files from your ONTAP backups].
+
+=== Drag and drop to enable Cloud Backup to S3 storage
+
+If the Amazon S3 destination for your backups exists as a working environment on the Canvas, you can drag your on-prem ONTAP cluster or Cloud Volumes ONTAP system (installed in AWS) onto the Amazon S3 working environment to initiate the setup wizard.
+
 === Cloud Backup APIs are now available for managing backup and restore operations
 
-The APIs are available at https://api.cloudbackup.netapp.com/docs. See link:api-backup-restore.html[this page] for an overview of the APIs.
+The APIs are available at https://docs.netapp.com/us-en/cloud-manager-automation/cbs/overview.html. See link:api-backup-restore.html[this page] for an overview of the APIs.
+//
+//=== Support has been added to back up on-premises ONTAP cluster data in sites without internet access
+//
+//If your on-prem ONTAP cluster resides in a site with no internet access, also known as a dark site or offline site, now you can use Cloud Backup to back up volume data to a NetApp StorageGRID systems that resides in the same site. This functionality requires that the Cloud Manager Connector (version 3.9.17 or greater) is also deployed in the offline site.
+//
+//https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-private-cloud.html[See how to back up data in an offline site].
 
 == 2 May 2022
 
@@ -53,12 +66,6 @@ There are a few changes to how licensing is implemented with Cloud Backup:
 * The Free Trial starts the day the Marketplace subscription starts. For example, if you activate the Free Trial after you have been using a Marketplace subscription for 30 days for a Cloud Volumes ONTAP system, the Cloud Backup Trial will not be available.
 
 https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-licensing-cloud-backup.html[Learn more about the available licensing models].
-//
-//=== Support has been added to back up on-premises ONTAP cluster data in sites without internet access
-//
-//If your on-prem ONTAP cluster resides in a site with no internet access, also known as a dark site or offline site, now you can use Cloud Backup to back up volume data to a NetApp StorageGRID systems that resides in the same site. This functionality requires that the Cloud Manager Connector (version 3.9.17 or greater) is also deployed in the offline site.
-//
-//https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-private-cloud.html[See how to back up data in an offline site].
 
 == 4 April 2022
 
