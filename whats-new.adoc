@@ -16,6 +16,14 @@ summary: Learn what's new in Cloud Backup.
 Learn what's new in Cloud Backup.
 
 // tag::whats-new[]
+== 8 June 2022
+
+=== Cloud Backup for Virtual Machines 1.1.0 is now GA
+
+You can protect data on your virtual machines by integrating the SnapCenter Plug-in for VMware vSphere with Cloud Manager. You can back up datastores to the cloud and restore virtual machines back to the on-premises SnapCenter Plug-in for VMware vSphere with ease.
+
+https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-protect-vm-data.html[Learn more about protecting on-premises applications data to cloud].
+
 == 2 May 2022
 
 === Search & Restore is now supported with backup files in Google Cloud Storage

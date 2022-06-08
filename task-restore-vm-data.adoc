@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: task-restore-vm-data.html
+keywords: restore virtual machines
+summary: You can restore virtual machines from the cloud to the on-premises SnapCenter.
+---
+
+= Restore virtual machines from the cloud
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can restore virtual machines from the cloud back to the on-premises vCenter. The backup will be restored to the exact same location from where the backup was taken. You cannot restore the backup to any other alternate location. You can restore virtual machines from the datastore or from the VMs view.
+
+NOTE: You cannot restore virtual machines that are spanned across datastores.
+
+.What you'll need
+
+Ensure that you have met all the link:concept-protect-vm-data.html#Requirements[requirements] before restoring virtual machines from the cloud.
+
+.Steps
+
+. In Cloud Manager, click *Backup & Restore* > *Virtual Machines* > *SnapCenter Plug-in for VMware vSphere* and select the SnapCenter Plug-in for VMware vSphere whose virtual machine you want to restore.
+
+NOTE: If the source virtual machine is moved to another location (vMotion), and if the user triggers a restore of that virtual machine from Cloud Manager, then the virtual machine will get restored to the original source location from where the backup was taken.
+
+[start=2]
+. To restore from Datastore:
+.. Click image:icon-action.png[action] corresponding to the datastore that you want to restore and click *View Details*.
+.. Click *Restore* corresponding to the backup you want to restore.
+.. Select the virtual machine that you want to restore from the backup and click *Next*.
+.. Review the details and click *Restore*.
+. To restore from Virtual Machines:
+.. Click image:icon-action.png[action] corresponding to the virtual machine that you want to restore and click *Restore*.
+.. Select the backup through which you want to restore the virtual machine and click *Next*.
+.. Review the details and click *Restore*.
+
+The VM is restored to the same location from where the backup was taken.
