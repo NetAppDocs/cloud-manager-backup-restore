@@ -131,9 +131,9 @@ And you need to have a Google subscription for the storage space where your back
 GCP Service Account::
 You need to have a service account in your Google Cloud Project that has the predefined Storage Admin role. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-creating-gcp-service-account.html[Learn how to create a service account^].
 
-== Enabling Cloud Backup on an existing system
+== Enabling Cloud Backup
 
-Enable Cloud Backup at any time directly from the working environment.
+Enable Cloud Backup at any time directly from the Kubernetes working environment.
 
 .Steps
 
@@ -154,7 +154,9 @@ image:screenshot_backup_policy_k8s_azure.png[A screenshot that shows the Cloud B
 * To back up all volumes, check the box in the title row (image:button_backup_all_volumes.png[]).
 * To back up individual volumes, check the box for each volume (image:button_backup_1_volume.png[]).
 +
-image:screenshot_backup_select_volumes_k8s.png[A screenshot of selecting the volumes that will be backed up.]
+image:screenshot_backup_select_volumes_k8s.png[A screenshot of selecting the persistent volumes that will be backed up.]
+
+. If you want all volumes added in the future to have backup enabled, just leave the checkbox for "Automatically back up future volumes…​" checked. If you disable this setting, you’ll need to manually enable backups for future volumes.
 
 . Click *Activate Backup* and Cloud Backup starts taking the initial backups of each selected volume.
 

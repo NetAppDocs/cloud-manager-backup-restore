@@ -17,8 +17,6 @@ Complete a few steps to get started backing up data from your on-premises ONTAP 
 
 Note that "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
 
-TIP: In most cases you'll use Cloud Manager for all backup and restore operations. However, starting with ONTAP 9.9.1 you can initiate volume backup operations of your on-premises ONTAP clusters using ONTAP System Manager. https://docs.netapp.com/us-en/ontap/task_cloud_backup_data_using_cbs.html[See how to use System Manager to back up your volumes to the cloud using Cloud Backup.^]
-
 == Quick start
 
 Get started quickly by following these steps, or scroll down to the remaining sections for full details.
@@ -77,9 +75,18 @@ Identify which volumes you want to back up using the default backup policy in th
 
 Read the following requirements to make sure you have a supported configuration before you start backing up on-premises volumes to Azure Blob storage.
 
-The following image shows each component and the connections that you need to prepare between them:
+There are two connection methods you can use when configuring backups from on-premises ONTAP systems to Azure Blob.
+
+* Public connection - Directly connect the ONTAP system to Azure Blob storage using a public Azure endpoint.
+* Private connection - Use a VPN or ExpressRoute and route traffic through a VNet Private Endpoint that uses a private IP address.
+
+The following image shows the public connection method and the connections that you need to prepare between the components:
 
 image:diagram_cloud_backup_onprem_azure.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located.]
+
+The following image shows the private connection method and the connections that you need to prepare between the components:
+
+image:diagram_cloud_backup_onprem_azure_vnet.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located.]
 
 Note that when the Cloud Restore instance is deployed in the cloud, it is located in the same subnet as the Connector.
 
@@ -141,16 +148,16 @@ Ensure that the Connector has the required networking connections.
 
 You can create backups from on-premises systems to Azure Blob in all regions https://cloud.netapp.com/cloud-volumes-global-regions[where Cloud Volumes ONTAP is supported^]; including Azure Government regions. You specify the region where the backups will be stored when you set up the service.
 
-=== License requirements
+=== Verify license requirements
 
-Before your 30-day free trial of Cloud Backup expires, you need to subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from Azure, or purchase and activate a Cloud Backup BYOL license from NetApp. These licenses are for the account and can be used across multiple systems.
+* Before you can activate Cloud Backup for your cluster, you'll need to either subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from Azure, or purchase and activate a Cloud Backup BYOL license from NetApp. These licenses are for your account and can be used across multiple systems.
 
-* For Cloud Backup PAYGO licensing, you'll need a subscription to the https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview[Azure^] Cloud Manager Marketplace offering to continue using Cloud Backup. Billing for Cloud Backup is done through this subscription.
- * For Cloud Backup BYOL licensing, you don't need a subscription. You need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[Learn how to manage your BYOL licenses].
+** For Cloud Backup PAYGO licensing, you'll need a subscription to the https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview[Azure^] Cloud Manager Marketplace offering to use Cloud Backup. Billing for Cloud Backup is done through this subscription.
+** For Cloud Backup BYOL licensing, you'll need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[Learn how to manage your BYOL licenses].
 
-You need to have an Azure subscription for the object storage space where your backups will be located.
-
-A SnapMirror license is required on the cluster. Note that the "Hybrid Cloud Bundle" is not required when using Cloud Backup.
+* You need to have an Azure subscription for the object storage space where your backups will be located.
++
+You can create backups from on-premises systems to Azure Blob in all regions https://cloud.netapp.com/cloud-volumes-global-regions[where Cloud Volumes ONTAP is supported^]; including Azure Government regions. You specify the region where backups will be stored when you set up the service.
 
 === Preparing Azure Blob storage for backups
 
@@ -166,6 +173,11 @@ A SnapMirror license is required on the cluster. Note that the "Hybrid Cloud Bun
 \https://olcentgbl.trafficmanager.net
 
 | Provides CentOS packages for the Cloud Restore virtual machine.
+
+|
+\https://download.docker.com/linux/centos/docker-ce.repo
+
+| Provides the Docker Engine packages.
 
 |
 \http://cloudmanagerinfraprod.azurecr.io
@@ -198,6 +210,8 @@ image:screenshot_backup_onprem_enable.png[A screenshot that shows the Backup & R
 .. Whether you will use the default Microsoft-managed encryption key or choose your own customer-managed keys to manage encryption of your data. (https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview[See how to use your own keys^]).
 +
 image:screenshot_backup_onprem_to_azure.png[A screenshot that shows the cloud provider details when backing up volumes from an on-premises cluster to Azure Blob storage.]
+
+. If you don't have an existing Cloud Backup license for your account, you'll be prompted at this point to select the type of charging method that you want to use. You can subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from Azure (or if you have multiple subscriptions you'll need to select one), or purchase and activate a Cloud Backup BYOL license from NetApp. link:task-licensing-cloud-backup.html[Learn how to set up Cloud Backup licensing.]
 
 . Enter the networking details and click *Next*.
 

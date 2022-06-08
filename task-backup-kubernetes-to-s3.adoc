@@ -199,13 +199,15 @@ Here are the specific S3 permissions from the policy:
 //
 // |===
 
-== Enabling Cloud Backup on an existing system
+== Enabling Cloud Backup
 
-Enable Cloud Backup at any time directly from the working environment.
+Enable Cloud Backup at any time directly from the Kubernetes working environment.
 
 .Steps
 
 . Select the working environment and click *Enable* next to the Backup & Restore service in the right-panel.
++
+If the Amazon S3 destination for your backups exists as a working environment on the Canvas, you can drag the Kubernetes cluster onto the Amazon S3 working environment to initiate the setup wizard.
 +
 image:screenshot_backup_cvo_enable.png[A screenshot that shows the Cloud Backup Settings button which is available after you select a working environment.]
 //
@@ -232,7 +234,9 @@ image:screenshot_backup_policy_k8s_aws.png[A screenshot that shows the Cloud Bac
 * To back up all volumes, check the box in the title row (image:button_backup_all_volumes.png[]).
 * To back up individual volumes, check the box for each volume (image:button_backup_1_volume.png[]).
 +
-image:screenshot_backup_select_volumes_k8s.png[A screenshot of selecting the volumes that will be backed up.]
+image:screenshot_backup_select_volumes_k8s.png[A screenshot of selecting the persistent volumes that will be backed up.]
+
+. If you want all volumes added in the future to have backup enabled, just leave the checkbox for "Automatically back up future volumes…​" checked. If you disable this setting, you’ll need to manually enable backups for future volumes.
 
 . Click *Activate Backup* and Cloud Backup starts taking the initial backups of each selected volume.
 

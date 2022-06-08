@@ -17,8 +17,6 @@ Complete a few steps to get started backing up data from your on-premises ONTAP 
 
 Note that "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
 
-TIP: In most cases you'll use Cloud Manager for all backup and restore operations. However, starting with ONTAP 9.9.1 you can initiate volume backup operations of your on-premises ONTAP clusters using ONTAP System Manager. https://docs.netapp.com/us-en/ontap/task_cloud_backup_data_using_cbs.html[See how to use System Manager to back up your volumes to the cloud using Cloud Backup.^]
-
 == Quick start
 
 Get started quickly by following these steps, or scroll down to the remaining sections for full details.
@@ -64,11 +62,18 @@ Identify which volumes you want to back up using the default backup policy in th
 
 Read the following requirements to make sure you have a supported configuration before you start backing up on-premises volumes to Google Cloud storage.
 
-The following image shows each component and the connections that you need to prepare between them:
+There are two connection methods you can use when configuring backups from on-premises ONTAP systems to Google Cloud Storage.
+
+* Public connection - Directly connect the ONTAP system to Google Cloud Storage using a public Google endpoint.
+* Private connection - Use a VPN or Private Service Connect and route traffic through a Private Google Access interface that uses a private IP address.
+
+The following image shows the public connection method and the connections that you need to prepare between the components:
 
 image:diagram_cloud_backup_onprem_google.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located.]
 
-Note that the Cloud Restore instance is not shown in this diagram because single-file restore is not currently supported in GCP.
+The following image shows the private connection method and the connections that you need to prepare between the components:
+
+image:diagram_cloud_backup_onprem_google_vpc.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located.]
 
 === Preparing your ONTAP clusters
 
@@ -126,20 +131,46 @@ Ensure that the Connector has the required networking connections.
 +
 Note that Private Google Access works with VM instances that have only internal (private) IP addresses (no external IP addresses).
 
-=== Supported regions
+=== Verify or add permissions to the Connector
 
-You can create backups from on-premises systems to Google Cloud storage in all regions https://cloud.netapp.com/cloud-volumes-global-regions[where Cloud Volumes ONTAP is supported^]. You specify the region where the backups will be stored when you set up the service.
+To use the Cloud Backup Search & Restore functionality, you need to have specific permissions in the role for the Connector so that it can access the Google Cloud BigQuery service. See the permissions below, and follow the steps if you need to modify the policy.
 
-=== License requirements
+.Steps
 
-Before your 30-day free trial of Cloud Backup expires, you need to subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from Google, or purchase and activate a Cloud Backup BYOL license from NetApp. These licenses are for the account and can be used across multiple systems.
+. In link:https://console.cloud.google.com[Cloud Console^], go to the *Roles* page.
 
-* For Cloud Backup PAYGO licensing, you'll need a subscription to the https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved[Google^] Cloud Manager Marketplace offering to continue using Cloud Backup. Billing for Cloud Backup is done through this subscription.
-* For Cloud Backup BYOL licensing, you don't need a subscription. You need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[Learn how to manage your BYOL licenses].
+. Using the drop-down list at the top of the page, select the project or organization that contains the role that you want to edit.
 
-You need to have a Google subscription for the object storage space where your backups will be located.
+. Click a custom role.
 
-A SnapMirror license is required on the cluster. Note that the "Hybrid Cloud Bundle" is not required when using Cloud Backup.
+. Click *Edit Role* to update the role's permissions.
+
+. Click *Add Permissions* to add the following new permissions to the role.
++
+[source,json]
+bigquery.jobs.get
+bigquery.jobs.list
+bigquery.jobs.listAll
+bigquery.datasets.create
+bigquery.datasets.get
+bigquery.jobs.create
+bigquery.tables.get
+bigquery.tables.getData
+bigquery.tables.list
+bigquery.tables.create
+
+. Click *Update* to save the edited role.
+
+=== Verify license requirements
+
+* Before you can activate Cloud Backup for your cluster, you'll need to either subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from Google, or purchase and activate a Cloud Backup BYOL license from NetApp. These licenses are for your account and can be used across multiple systems.
+
+** For Cloud Backup PAYGO licensing, you'll need a subscription to the https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project[Google^] Cloud Manager Marketplace offering to use Cloud Backup. Billing for Cloud Backup is done through this subscription.
+** For Cloud Backup BYOL licensing, you'll need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[Learn how to manage your BYOL licenses].
+
+* You need to have a Google subscription for the object storage space where your backups will be located.
++
+You can create backups from on-premises systems to Google Cloud Storage in all regions https://cloud.netapp.com/cloud-volumes-global-regions[where Cloud Volumes ONTAP is supported^]. You specify the region where backups will be stored when you set up the service.
 
 === Preparing Google Cloud Storage for backups
 
@@ -178,6 +209,8 @@ image:screenshot_backup_onprem_enable.png[A screenshot that shows the Backup & R
 +
 image:screenshot_backup_onprem_to_google.png[A screenshot that shows the cloud provider details when backing up volumes from an on-premises cluster to Google Cloud Storage.]
 
+. If you don't have an existing Cloud Backup license for your account, you'll be prompted at this point to select the type of charging method that you want to use. You can subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from Google (or if you have multiple subscriptions you'll need to select one), or purchase and activate a Cloud Backup BYOL license from NetApp. link:task-licensing-cloud-backup.html[Learn how to set up Cloud Backup licensing.]
+
 . In the _Define Policy_ page, select an existing backup schedule and retention value, or define a new default backup policy, and click *Next*.
 +
 image:screenshot_backup_policy_gcp.png[A screenshot that shows the Cloud Backup settings where you can choose your backup schedule and retention period.]
@@ -204,4 +237,4 @@ Cloud Backup starts taking the initial backups of each selected volume and the V
 .What's next?
 
 You can link:task-manage-backups-ontap.html[start and stop backups for volumes or change the backup schedule^].
-You can also link:task-restore-backups-ontap.html[restore entire volumes from a backup file^] to a Cloud Volumes ONTAP system in Google, or to an on-premises ONTAP system.
+You can also link:task-restore-backups-ontap.html[restore volumes or files from a backup file^] to a Cloud Volumes ONTAP system in Google, or to an on-premises ONTAP system.

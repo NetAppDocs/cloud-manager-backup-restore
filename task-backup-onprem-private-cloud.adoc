@@ -161,13 +161,11 @@ Ensure that the Connector has the required networking connections.
 
 === License requirements
 
-Before your 30-day free trial of Cloud Backup expires, you need to purchase and activate a Cloud Backup BYOL license from NetApp. This license is for the account and can be used across multiple systems.
+Before you can activate Cloud Backup for your cluster, you'll need to purchase and activate a Cloud Backup BYOL license from NetApp. This license is for the account and can be used across multiple systems.
 
 You'll need the serial number from NetApp that enables you to use the service for the duration and capacity of the license. link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[Learn how to manage your BYOL licenses].
 
 TIP: PAYGO licensing is not supported when backing up files to StorageGRID.
-
-A SnapMirror license is required on the cluster. Note that the "Hybrid Cloud Bundle" is not required when using Cloud Backup.
 
 == Enabling Cloud Backup to StorageGRID
 
