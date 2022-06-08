@@ -1,0 +1,75 @@
+---
+sidebar: sidebar
+permalink: concept-protect-vm-data.html
+keywords: protect virtual machines, vm, policy, policies, backup back up, restore, SnapCenter Plug-in
+summary: Know more about protecting data on your virtual machines and understand about the different policies.
+---
+
+= Protect your virtual machines data
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+You can protect data on your virtual machines by integrating the SnapCenter Plug-in for VMware vSphere with Cloud Manager. You can back up datastores to the cloud and restore virtual machines back to the on-premises SnapCenter Plug-in for VMware vSphere with ease.
+
+You can back up datastores to Amazon Web Services S3 or Microsoft Azure Blob.
+
+== Requirements
+Read the following requirements to make sure that you have a supported configuration before you start backing up datastores and virtual machines to cloud services.
+
+* SnapCenter Plug-in for VMware vSphere 4.6P1 or later
+* ONTAP 9.8 or later
+* Cloud Manager 3.9 or later
+* At least one backup should have been taken in SnapCenter Plug-in for VMware vSphere 4.6P1.
+* At least one daily, weekly, or monthly policy in SnapCenter Plug-in for VMware vSphere with no label or same label as that of the Cloud Backup for Virtual Machines policy in Cloud Manager.
+* For a pre-canned policy, the schedule tier should be the same for the datastore in SnapCenter Plug-in for VMware vSphere and in the cloud.
+* Ensure that there are no FlexGroup volumes in the datastore because backing up and restoring FlexGroup volumes are not supported.
+* Ensure that none of the volumes are encrypted because restoring encrypted volumes are not supported.
+* Disable "*_recent*" on the required resource groups. If you have "*_recent*" enabled for the resource group, then the backups of those resource groups cannot be used for data protection to cloud and subsequently cannot be used for the restore operation.
+* Ensure that the destination datastore where the virtual machine will be restored has enough space to accommodate a copy of all virtual machine files such as VMDK, VMX, VMSD, and so on.
+* Ensure that the destination datastore does not have stale virtual machine files in the format of restore_xxx_xxxxxx_filename from the previous restore operation failures. You should delete the stale files before triggering a restore operation.
+
+The following image shows each component and the connections that you need to prepare between them:
+
+image:cloud_backup_vm.png[The architecture diagram of cloud backup for virtual machines.]
+
+== Protection Policies
+
+You should use the one of the policies defined in the Cloud Backup for virtual machines to back up  datastores to cloud.
+
+NOTE: Custom polices are not supported.
+
+You can view the default policies by clicking *Backup & Restore* > *Virtual Machines* > *Policies* in Cloud Manager.
+
+|===
+| Policy Name | Label | Retention Value
+
+a|
+1 Year Daily LTR
+a|
+Daily
+a|
+366
+a|
+5 Years Daily LTR
+a|
+Daily
+a|
+1830
+a|
+7 Year Weekly LTR
+a|
+Weekly
+a|
+370
+a|
+10 Year Monthly LTR
+a|
+Monthly
+a|
+120
+|===
