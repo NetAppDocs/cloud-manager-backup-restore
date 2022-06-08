@@ -16,39 +16,13 @@ summary: Learn what's new in Cloud Backup.
 Learn what's new in Cloud Backup.
 
 // tag::whats-new[]
-== 7 June 2022
+== 8 June 2022
 
-=== Cloud Restore instance is not needed for ONTAP Browse & Restore functionality
+=== Cloud Backup for Virtual Machines 1.1.0 is now GA
 
-A separate Cloud Restore instance/virtual machine used to be required for file-level Browse & Restore operations from S3 and Blob storage. This instance shut down when not in use -- but it still added some time and cost when restoring files. This functionality has been replaced with a no-cost container that gets deployed on the Connector when needed. It provides the following advantages:
+You can protect data on your virtual machines by integrating the SnapCenter Plug-in for VMware vSphere with Cloud Manager. You can back up datastores to the cloud and restore virtual machines back to the on-premises SnapCenter Plug-in for VMware vSphere with ease.
 
-* No added cost for file-level restore operations
-* Faster file-level restore operations
-* Support for Browse & Restore operations for files from the cloud when the Connector is installed on your premises
-
-Note that the Cloud Restore instance/VM will be removed automatically if you were previously using it.
-
-=== Browse & Restore support for files from Google Cloud and StorageGRID storage
-
-With the addition of the container for Browse & Restore operations (as described above), file restore operations now can be performed from backup files stored in Google Cloud and StorageGRID systems. Now Browse & Restore can be used to restore files across all public cloud providers and from StorageGRID. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html#restoring-ontap-data-using-browse-restore[See how to use Browse & Restore to restore volumes and files from your ONTAP backups].
-
-=== Drag and drop to enable Cloud Backup to S3 storage
-
-If the Amazon S3 destination for your backups exists as a working environment on the Canvas, you can drag your on-prem ONTAP cluster or Cloud Volumes ONTAP system (installed in AWS) onto the Amazon S3 working environment to initiate the setup wizard.
-
-=== Automatically apply a backup policy to newly created volumes in Kubernetes clusters
-
-If you added new persistent volumes to your Kubernetes clusters after Cloud Backup was activated, in the past you needed to remember to configure backups for those volumes. Now you can select a policy that will be applied automatically to newly created volumes https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-manage-backups-kubernetes.html#setting-a-backup-policy-to-be-assigned-to-new-volumes[from the _Backup Settings_ page] for clusters that have already activated Cloud Backup.
-
-=== Cloud Backup APIs are now available for managing backup and restore operations
-
-The APIs are available at https://docs.netapp.com/us-en/cloud-manager-automation/cbs/overview.html. See link:api-backup-restore.html[this page] for an overview of the APIs.
-//
-//=== Support has been added to back up on-premises ONTAP cluster data in sites without internet access
-//
-//If your on-prem ONTAP cluster resides in a site with no internet access, also known as a dark site or offline site, now you can use Cloud Backup to back up volume data to a NetApp StorageGRID systems that resides in the same site. This functionality requires that the Cloud Manager Connector (version 3.9.17 or greater) is also deployed in the offline site.
-//
-//https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-private-cloud.html[See how to back up data in an offline site].
+https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-protect-vm-data.html[Learn more about protecting virtual machines to cloud].
 
 == 2 May 2022
 
