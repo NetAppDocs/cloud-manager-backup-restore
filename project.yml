@@ -72,7 +72,7 @@ sidebar:
               url: /task-restore-oracle-data.html
             - title: Restore SQL Server database
               url: /task-restore-sql-data.html
-    - title: Backup and restore Virtual Machines data
+    - title: Back up and restore Virtual Machines data
       entries:
         - title: Protect your Virtual Machines data
           url: /concept-protect-vm-data.html
