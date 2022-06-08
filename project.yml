@@ -102,6 +102,8 @@ sidebar:
           url: /task-manage-vm-data-in-cloud.html
         - title: Restore Virtual Machines data
           url: /task-restore-vm-data.html
+    - title: Automate with the REST API
+      url: /api-backup-restore.html
     - title: Reference
       entries:
         - title: Supported AWS archive storage tiers
@@ -110,14 +112,6 @@ sidebar:
         - title: Supported Azure archive access tiers
           flavor: azure
           url: /reference-azure-backup-tiers.html
-        - title: Cross-account and cross-region configurations
-          url: /reference-cross-account.html
-          entries:
-            - title: Configure Backup for multi-account access in AWS
-              flavor: aws
-              url: /reference-backup-multi-account-aws.html
-            - title: Configure Backup for multi-account access in Azure
-              url: /reference-backup-multi-account-azure.html
     - title: Knowledge and support
       entries:
         - title: Register for support
@@ -180,13 +174,13 @@ homepage:
         - title: Restore Oracle database
           url: task-restore-oracle-data.html
         - title: Restore SQL Server database
-          url: /task-restore-sql-data.html
+          url: task-restore-sql-data.html
     - title: Back up and restore virtual machines data
       links:
         - title: Back up datastores to cloud
-          url: /task-backup-vm-data-to-cloud.html
+          url: task-backup-vm-data-to-cloud.html
         - title: Restore virtual machines from the cloud
-          url: /task-restore-vm-data.html
+          url: task-restore-vm-data.html
     - title: Restore data from backup files
       links:
         - title: Restore ONTAP volumes
