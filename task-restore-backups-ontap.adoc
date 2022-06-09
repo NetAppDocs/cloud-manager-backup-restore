@@ -44,12 +44,11 @@ This table provides a comparison of the 2 methods.
 | Search & Restore
 
 | Browse through a folder-style structure to find the volume or file within a single backup file | Search for a volume or file across *all backup files* by partial or full volume name, partial or full file name, size range, and additional search filters
-| Volume restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. File restore works with backup files stored in Amazon S3 and Azure Blob | Volume and file restore works with backup files stored in Amazon S3 and Google Cloud
+| Volume and file restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. | Volume and file restore works with backup files stored in Amazon S3 and Google Cloud
 | Does not handle files that have been renamed or deleted | Handles newly created/deleted/renamed directories and newly created/deleted/renamed files
 | Browse for results across public and private clouds | Browse for results across public clouds and local Snapshots copies
-| Separate Cloud Restore instance is required for file restore | No Cloud Restore instance required
 | No additional cloud provider resources required | Additional bucket and AWS or Google resources required per account
-| Cost associated with Cloud Restore instance when browsing backups for individual files | Cost associated with AWS or Google resources when scanning your backups and volumes for search results
+| No additional cloud provider costs required | Cost associated with AWS or Google resources when scanning your backups and volumes for search results
 
 |===
 
@@ -73,10 +72,14 @@ See the requirements and restore steps for the type of restore operation you wan
 
 Before you start restoring a volume or file, you should know the name of the volume or file you want to restore, the name of the working environment where the volume resides, and the approximate date of the backup file that you want to restore from.
 
-*Note:* If the backup file for the volume that you want to restore resides in archival storage (available for AWS and Azure starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur a cost. Additionally, the destination cluster must also be running ONTAP 9.10.1 or greater.
+*Note:* If the backup file for the volume that you want to restore resides in archival storage (starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur a cost. Additionally, the destination cluster must also be running ONTAP 9.10.1 or greater.
 
-link:reference-azure-backup-tiers.html[Learn more about restoring from Azure archival storage].
+ifdef::aws[]
 link:reference-aws-backup-tiers.html[Learn more about restoring from AWS archival storage].
+endif::aws[]
+ifdef::azure[]
+link:reference-azure-backup-tiers.html[Learn more about restoring from Azure archival storage].
+endif::azure[]
 
 === Browse & Restore supported working environments and object storage providers
 
@@ -89,16 +92,23 @@ You can restore a volume, or individual files, from an ONTAP backup file to the 
 2+^| Destination Working Environment
 
 | | *Volume Restore* | *File Restore*
+ifdef::aws[]
 | Amazon S3 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
+endif::aws[]
+ifdef::azure[]
 | Azure Blob | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system | Cloud Volumes ONTAP in Azure
 On-premises ONTAP system
+endif::azure[]
+ifdef::gcp[]
 | Google Cloud Storage | Cloud Volumes ONTAP in Google
-On-premises ONTAP system |
-| NetApp StorageGRID | On-premises ONTAP system |
+On-premises ONTAP system | Cloud Volumes ONTAP in Google
+On-premises ONTAP system
+endif::gcp[]
+| NetApp StorageGRID | On-premises ONTAP system | On-premises ONTAP system
 
 |===
 
@@ -140,10 +150,16 @@ image:screenshot_restore_select_work_env_volume.png[A screenshot of selecting th
 +
 . If you select an on-premises ONTAP system and you haven't already configured the cluster connection to the object storage, you are prompted for additional information:
 +
+ifdef::aws[]
 * When restoring from Amazon S3, select the IPspace in the ONTAP cluster where the destination volume will reside, enter the access key and secret key for the user you created to give the ONTAP cluster access to the S3 bucket, and optionally choose a private VPC endpoint for secure data transfer.
+endif::aws[]
+ifdef::azure[]
 * When restoring from Azure Blob, select the IPspace in the ONTAP cluster where the destination volume will reside, select the Azure Subscription to access the object storage, and optionally choose a private endpoint for secure data transfer by selecting the VNet and Subnet.
+endif::azure[]
+ifdef::gcp[]
 * When restoring from Google Cloud Storage, select the Google Cloud Project and the Access Key and Secret Key to access the object storage, the region where the backups are stored, and the IPspace in the ONTAP cluster where the destination volume will reside.
-* When restoring from StorageGRID, select the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume will reside.
+endif::gcp[]
+* When restoring from StorageGRID, enter the FQDN of the StorageGRID server and the port that ONTAP should use for HTTPS communication with StorageGRID, select the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume will reside.
 
 . Enter the name you want to use for the restored volume, and select the Storage VM where the volume will reside. By default, *<source_volume_name>_restore* is used as the volume name.
 +
@@ -153,8 +169,12 @@ You can select the Aggregate that the volume will use for its' capacity only whe
 +
 And if you are restoring the volume from a backup file that resides in an archival storage tier (available starting with ONTAP 9.10.1), then you can select the Restore Priority.
 +
-link:reference-azure-backup-tiers.html#restoring-data-from-archival-storage[Learn more about restoring from Azure archival storage].
+ifdef::aws[]
 link:reference-aws-backup-tiers.html#restoring-data-from-archival-storage[Learn more about restoring from AWS archival storage].
+endif::aws[]
+ifdef::azure[]
+link:reference-azure-backup-tiers.html#restoring-data-from-archival-storage[Learn more about restoring from Azure archival storage].
+endif::azure[]
 
 . Click *Restore* and you are returned to the Restore Dashboard so you can review the progress of the restore operation.
 
@@ -176,13 +196,9 @@ TIP: You can't restore individual files if the backup file resides in archival s
 
 * The ONTAP version must be 9.6 or greater in your Cloud Volumes ONTAP or on-premises ONTAP systems to perform file restore operations.
 
-* Restoring individual files from a backup file uses a separate Restore instance/virtual machine. See the link:concept-ontap-backup-to-cloud.html#cost[type of instance that will be deployed for File Restore operations] and make sure your environment is ready.
-
-* Restoring files from backups on Amazon S3 requires that specific AWS EC2 permissions have been added to the user role that provides Cloud Manager with permissions. You'll also need to allow outbound internet access to contact certain endpoints. link:task-backup-onprem-to-aws.html#preparing-amazon-s3-for-backups[Verify that your configuration is ready to restore files].
-
+ifdef::aws[]
 * AWS cross-account restore requires manual action in the AWS console. See the AWS topic https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html[granting cross-account bucket permissions^] for details.
-
-* Restoring files from backups on Azure Blob requires that outbound internet access is available to contact certain endpoints. link:task-backup-onprem-to-azure.html#preparing-azure-blob-storage-for-backups[Verify that your configuration is ready to restore files].
+endif::aws[]
 
 ==== File Restore process
 
@@ -190,15 +206,13 @@ The process goes like this:
 
 . When you want to restore one or more files from a volume backup, click the *Restore* tab, click *Restore Files* under _Browse & Restore_, and select the backup file in which the file (or files) reside.
 
-. The Restore instance starts up and displays the folders and files that exist within the selected backup file.
-+
-*Note:* The Restore instance is deployed in your cloud providers' environment the first time you restore a file.
+. Cloud Backup displays the folders and files that exist within the selected backup file.
 
 . Choose the file (or files) that you want to restore from that backup.
 
 . Select the location where you want the file(s) to be restored (the working environment, volume, and folder), and click *Restore*.
 
-. The file(s) are restored, and then the Restore instance is shut down after a period of inactivity to save costs.
+. The file(s) are restored.
 
 image:diagram_browse_restore_file.png["A diagram that shows the flow to perform a file restore operation using Browse & Restore."]
 
@@ -226,9 +240,7 @@ image:screenshot_restore_files_selection.png[A screenshot of selecting the Resto
 +
 image:screenshot_restore_select_source.png[A screenshot of selecting the volume and backup for the files you want to restore.]
 
-. Click *Continue* and the Restore instance is started. After a few minutes, the list of folders and files from the volume backup are displayed.
-+
-*Note:* The Restore instance is deployed in your cloud providers' environment the first time you restore a file, so this step could take a few minutes longer the first time.
+. Click *Continue* and the list of folders and files from the volume backup are displayed.
 +
 image:screenshot_restore_select_files.png[A screenshot of the Select Files page so you can navigate to the files you want to restore.]
 
@@ -245,9 +257,16 @@ image:screenshot_restore_select_work_env.png[A screenshot of selecting the desti
 +
 If you select an on-premises cluster and you haven't already configured the cluster connection to the object storage, you are prompted for additional information:
 +
+ifdef::aws[]
 * When restoring from Amazon S3, enter the IPspace in the ONTAP cluster where the destination volume resides, and the AWS Access Key and Secret Key needed to access the object storage.
+endif::aws[]
+ifdef::azure[]
 * When restoring from Azure Blob, enter the IPspace in the ONTAP cluster where the destination volume resides.
-// * When restoring from Google Cloud Storage, enter the IPspace in the ONTAP cluster where the destination volumes reside, and the Access Key and Secret Key needed to access the object storage.
+endif::azure[]
+ifdef::gcp[]
+* When restoring from Google Cloud Storage, enter the IPspace in the ONTAP cluster where the destination volumes reside, and the Access Key and Secret Key needed to access the object storage.
+endif::gcp[]
+* When restoring from StorageGRID, enter the FQDN of the StorageGRID server and the port that ONTAP should use for HTTPS communication with StorageGRID, enter the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume resides.
 
 . Then select the *Volume* and the *Folder* where you want to restore the files.
 +
@@ -266,8 +285,6 @@ You have a few options for the location when restoring files.
 
 . Click *Restore* and you are returned to the Restore Dashboard so you can review the progress of the restore operation. You can also click the *Job Monitor* tab to see the restore progress.
 
-The Restore instance is shut down after a certain period of inactivity to save you money so that you incur costs only when it is active.
-
 == Restoring ONTAP data using Search & Restore
 
 You can restore a volume or individual files from an ONTAP backup file using Search & Restore. Search & Restore enables you to search for a specific volume or file from all backups stored on cloud storage for a particular provider, and then perform a restore. You don't need to know the exact working environment name or volume name - the search looks through all volume backup files.
@@ -278,10 +295,14 @@ When you restore a volume from a backup file, Cloud Backup creates a _new_ volum
 
 You can restore files to the original volume location, to a different volume in the same working environment, or to a different working environment that's using the same cloud account. You can also restore files to a volume on an on-premises ONTAP system.
 
-If the backup file for the volume that you want to restore resides in archival storage (available for AWS starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur additional cost. Note that the destination cluster must also be running ONTAP 9.10.1 or greater, and that file restore from archival storage is not currently supported.
+If the backup file for the volume that you want to restore resides in archival storage (available starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur additional cost. Note that the destination cluster must also be running ONTAP 9.10.1 or greater, and that file restore from archival storage is not currently supported.
 
-// link:reference-azure-backup-tiers.html[Learn more about restoring from Azure archival storage].
+ifdef::aws[]
 link:reference-aws-backup-tiers.html[Learn more about restoring from AWS archival storage].
+endif::aws[]
+//ifdef::azure[]
+// link:reference-azure-backup-tiers.html[Learn more about restoring from Azure archival storage].
+//endif::azure[]
 
 Before you start, you should have some idea of the name or location of the volume or file you want to restore.
 
@@ -300,14 +321,22 @@ You can restore a volume, or individual files, from an ONTAP backup file to the 
 2+^| Destination Working Environment
 
 | | *Volume Restore* | *File Restore*
+ifdef::aws[]
 | Amazon S3 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
 | Cloud Volumes ONTAP in AWS
 On-premises ONTAP system
+endif::aws[]
+ifdef::azure[]
+| Azure Blob | Not currently supported |
+endif::azure[]
+ifdef::gcp[]
 | Google Cloud Storage | Cloud Volumes ONTAP in Google
 On-premises ONTAP system
 | Cloud Volumes ONTAP in Google
 On-premises ONTAP system
+endif::gcp[]
+| NetApp StorageGRID | Not currently supported |
 
 |===
 
@@ -322,17 +351,21 @@ Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP
 ** NFS must be enabled on the volume.
 ** The SnapDiff RPC Server must be activated on the SVM. Cloud Manager does this automatically when you enable Indexing on the working environment.
 
+ifdef::aws[]
 * AWS requirements:
 
 ** Specific Amazon Athena, AWS Glue, and AWS S3 permissions must be added to the user role that provides Cloud Manager with permissions. link:task-backup-onprem-to-aws.html#set-up-s3-permissions[Make sure all the permissions are configured correctly].
 +
 Note that if you were already using Cloud Backup with a Connector you configured in the past, you'll need to add the Athena and Glue permissions to the Cloud Manager user role now. These are new, and they are required for Search & Restore.
+endif::aws[]
 
+ifdef::gcp[]
 * Google Cloud requirements:
 
 ** Specific Google BigQuery permissions must be added to the user role that provides Cloud Manager with permissions. link:task-backup-onprem-to-gcp.html#verify-or-add-permissions-to-the-connector[Make sure all the permissions are configured correctly].
 +
 Note that if you were already using Cloud Backup with a Connector you configured in the past, you'll need to add the BigQuery permissions to the Cloud Manager user role now. These are new, and they are required for Search & Restore.
+endif::gcp[]
 
 === Search & Restore process
 
@@ -362,8 +395,13 @@ Before you can use Search & Restore, you need to enable "Indexing" on each sourc
 
 When you enable this functionality, Cloud Backup enables SnapDiff v3 on the SVM for your volumes, and it performs the following actions:
 
+ifdef::aws[]
 * For backups stored in AWS, it provisions a new S3 bucket and the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service^] and https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service^].
+endif::aws[]
+ifdef::gcp[]
 * For backups stored in Google Cloud, it provisions a new bucket, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
+endif::gcp[]
+
 If Indexing has already been enabled for your working environment, go to the next section to restore your data.
 
 To enable Indexing for a working environment:

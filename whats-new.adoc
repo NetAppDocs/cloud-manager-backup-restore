@@ -24,6 +24,38 @@ You can protect data on your virtual machines by integrating the SnapCenter Plug
 
 https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-protect-vm-data.html[Learn more about protecting virtual machines to cloud].
 
+=== Cloud Restore instance is not needed for ONTAP Browse & Restore functionality
+
+A separate Cloud Restore instance/virtual machine used to be required for file-level Browse & Restore operations from S3 and Blob storage. This instance shut down when not in use -- but it still added some time and cost when restoring files. This functionality has been replaced with a no-cost container that gets deployed on the Connector when needed. It provides the following advantages:
+
+* No added cost for file-level restore operations
+* Faster file-level restore operations
+* Support for Browse & Restore operations for files from the cloud when the Connector is installed on your premises
+
+Note that the Cloud Restore instance/VM will be removed automatically if you were previously using it.
+
+=== Browse & Restore support for files from Google Cloud and StorageGRID storage
+
+With the addition of the container for Browse & Restore operations (as described above), file restore operations now can be performed from backup files stored in Google Cloud and StorageGRID systems. Now Browse & Restore can be used to restore files across all public cloud providers and from StorageGRID. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html#restoring-ontap-data-using-browse-restore[See how to use Browse & Restore to restore volumes and files from your ONTAP backups].
+
+=== Drag and drop to enable Cloud Backup to S3 storage
+
+If the Amazon S3 destination for your backups exists as a working environment on the Canvas, you can drag your on-prem ONTAP cluster or Cloud Volumes ONTAP system (installed in AWS) onto the Amazon S3 working environment to initiate the setup wizard.
+
+=== Automatically apply a backup policy to newly created volumes in Kubernetes clusters
+
+If you added new persistent volumes to your Kubernetes clusters after Cloud Backup was activated, in the past you needed to remember to configure backups for those volumes. Now you can select a policy that will be applied automatically to newly created volumes https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-manage-backups-kubernetes.html#setting-a-backup-policy-to-be-assigned-to-new-volumes[from the _Backup Settings_ page] for clusters that have already activated Cloud Backup.
+
+=== Cloud Backup APIs are now available for managing backup and restore operations
+
+The APIs are available at https://docs.netapp.com/us-en/cloud-manager-automation/cbs/overview.html. See link:api-backup-restore.html[this page] for an overview of the APIs.
+//
+//=== Support has been added to back up on-premises ONTAP cluster data in sites without internet access
+//
+//If your on-prem ONTAP cluster resides in a site with no internet access, also known as a dark site or offline site, now you can use Cloud Backup to back up volume data to a NetApp StorageGRID systems that resides in the same site. This functionality requires that the Cloud Manager Connector (version 3.9.17 or greater) is also deployed in the offline site.
+//
+//https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-private-cloud.html[See how to back up data in an offline site].
+
 == 2 May 2022
 
 === Search & Restore is now supported with backup files in Google Cloud Storage
@@ -33,7 +65,6 @@ The Search & Restore method of restoring volumes and files was introduced in Apr
 === Configure a backup policy to be applied automatically to newly created volumes in Kubernetes clusters
 
 If you added new persistent volumes to your Kubernetes clusters after Cloud Backup was activated, in the past you needed to remember to configure backups for those volumes. Now you can select a policy that will be applied automatically to newly created volumes. This option is available in the setup wizard when activating Cloud Backup for a new Kubernetes cluster.
-//, or https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-manage-backups-kubernetes.html#setting-a-backup-policy-to-be-assigned-to-new-volumes[from the _Backup Settings_ page] for clusters that have already activated Cloud Backup.
 
 === Cloud Backup now requires a license before being activated on a working environment
 
@@ -44,35 +75,29 @@ There are a few changes to how licensing is implemented with Cloud Backup:
 * The Free Trial starts the day the Marketplace subscription starts. For example, if you activate the Free Trial after you have been using a Marketplace subscription for 30 days for a Cloud Volumes ONTAP system, the Cloud Backup Trial will not be available.
 
 https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-licensing-cloud-backup.html[Learn more about the available licensing models].
-//
-//=== Support has been added to back up on-premises ONTAP cluster data in sites without internet access
-//
-//If your on-prem ONTAP cluster resides in a site with no internet access, also known as a dark site or offline site, now you can use Cloud Backup to back up volume data to a NetApp StorageGRID systems that resides in the same site. This functionality requires that the Cloud Manager Connector (version 3.9.17 or greater) is also deployed in the offline site.
-//
-//https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-private-cloud.html[See how to back up data in an offline site].
 
 == 4 April 2022
 
 === Cloud Backup for Applications 1.1.0 (powered by SnapCenter) is now GA
 
-The new Cloud Backup for Applications capability enables you to offload existing application consistent Snapshots (backups) for Oracle and Microsoft SQL from on-premises primary storage to cloud object storage in AWS S3 or Azure Blob.
+The new Cloud Backup for Applications capability enables you to offload existing application consistent Snapshots (backups) for Oracle and Microsoft SQL from on-premises primary storage to cloud object storage in Amazon S3 or Azure Blob.
 
 When required, you can restore this data from cloud to on-premises.
 
-https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-protect-app-data-to-cloud.html[Learn more about protecting on-premises applications data to cloud].
+https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-protect-app-data-to-cloud.html[Learn more about protecting on-premises applications data to the cloud].
 
 === New Search & Restore feature to search for volumes or files across all ONTAP backup files
 
 Now you can search for a volume or file across *all ONTAP backup files* by partial or full volume name, partial or full file name, size range, and additional search filters. This is a great new way to find the data you want to restore if you are not sure which cluster or volume was the source for the data. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html#restoring-ontap-data-using-search-restore[Learn how to use Search & Restore].
+// end::whats-new[]
 
 == 3 March 2022
 
 === Ability to back up persistent volumes from your GKE Kubernetes clusters to Google Cloud storage
 
-If your GKE cluster has NetApp Astra Trident installed, and it's using Cloud Volumes ONTAP for GCP as backend storage for the cluster, then you can back up and restore your persistent volumes to and from Google Cloud storage. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-kubernetes-to-gcp.html[Go here for details].
+If your GKE cluster has NetApp Astra Trident installed, and it's using Cloud Volumes ONTAP for GCP as backend storage for the cluster, then you can back up and restore your persistent volumes to and from Google Cloud storage. link:task-backup-kubernetes-to-gcp.html[Go here for details].
 
 === The Beta capability to use Cloud Data Sense to scan your Cloud Backup files has been discontinued in this release
-// end::whats-new[]
 
 == 14 February 2022
 

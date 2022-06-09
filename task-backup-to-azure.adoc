@@ -67,10 +67,8 @@ The following image shows each component and the connections that you need to pr
 
 image:diagram_cloud_backup_cvo_azure.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located.]
 
-When the Cloud Restore virtual machine is deployed in the cloud, it is located in the same subnet as the Connector.
-
 Supported ONTAP versions::
-Cloud Volumes ONTAP 9.7P5 and later.
+Minimum of ONTAP 9.7P5; ONTAP 9.8P11 and later is recommended.
 
 License requirements::
 For Cloud Backup PAYGO licensing, a subscription through the Azure Marketplace is required before you enable Cloud Backup. Billing for Cloud Backup is done through this subscription. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-azure.html[You can subscribe from the Details & Credentials page of the working environment wizard^].
@@ -81,39 +79,12 @@ And you need to have a Microsoft Azure subscription for the storage space where 
 
 Supported Azure regions::
 Cloud Backup is supported in all Azure regions https://cloud.netapp.com/cloud-volumes-global-regions[where Cloud Volumes ONTAP is supported^]; including Azure Government regions.
-
-Required setup for creating backups in a different Azure subscription::
-By default, backups are created using the same subscription as the one used for your Cloud Volumes ONTAP system. If you want to use a different Azure subscription for your backups, you must link:reference-backup-multi-account-azure.html[log in to the Azure portal and link the two subscriptions].
+//
+//Required setup for creating backups in a different Azure subscription::
+//By default, backups are created using the same subscription as the one used for your Cloud Volumes ONTAP system. If you want to use a different Azure subscription for your backups, you must link:reference-backup-multi-account-azure.html[log in to the Azure portal and link the two subscriptions].
 
 Required information for using customer-managed keys for data encryption::
 You can use your own customer-managed keys for data encryption in the activation wizard instead of using the default Microsoft-managed encryption keys. In this case you will need to have the Azure Subscription, Key Vault name, and the Key. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview[See how to use your own keys].
-
-Required outbound internet access for Azure deployments::
-The Cloud Restore virtual machine requires outbound internet access. If your virtual or physical network uses a proxy server for internet access, ensure that the instance has outbound internet access to contact the following endpoints.
-
-[cols="43,57",options="header"]
-|===
-| Endpoints
-| Purpose
-
-|
-\http://olcentgbl.trafficmanager.net
-\https://olcentgbl.trafficmanager.net
-
-| Provides CentOS packages for the Cloud Restore virtual machine.
-
-|
-\https://download.docker.com/linux/centos/docker-ce.repo
-
-| Provides the Docker Engine packages.
-
-|
-\http://cloudmanagerinfraprod.azurecr.io
-\https://cloudmanagerinfraprod.azurecr.io
-
-| Cloud Restore virtual machine image repository.
-
-|===
 
 == Enabling Cloud Backup on a new system
 
@@ -121,7 +92,7 @@ Cloud Backup is enabled by default in the working environment wizard. Be sure to
 
 See https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-azure.html[Launching Cloud Volumes ONTAP in Azure^] for requirements and details for creating your Cloud Volumes ONTAP system.
 
-NOTE: If you want to pick the name of the resource group, *disable* Cloud Backup when deploying Cloud Volumes ONTAP. Follow the steps for <<enabling-cloud-backup-on-an-existing-system, enabling Cloud Backup on an existing system>> to enable Cloud Backup and choose the resource group.
+NOTE: If you want to pick the name of the resource group, *disable* Cloud Backup when deploying Cloud Volumes ONTAP. Follow the steps for <<enabling-cloud-backup-on-an-existing-system,enabling Cloud Backup on an existing system>> to enable Cloud Backup and choose the resource group.
 
 .Steps
 
@@ -161,8 +132,8 @@ image:screenshot_backup_cvo_enable.png[A screenshot that shows the Cloud Backup 
 . Select the provider details and click *Next*.
 
 .. The Azure subscription used to store the backups. This can be a different subscription than where the Cloud Volumes ONTAP system resides.
-+
-If you want to use a different Azure subscription for your backups, you must link:reference-backup-multi-account-azure.html[log in to the Azure portal and link the two subscriptions].
+//+
+//If you want to use a different Azure subscription for your backups, you must link:reference-backup-multi-account-azure.html[log in to the Azure portal and link the two subscriptions].
 .. The region where the backups will be stored. This can be a different region than where the Cloud Volumes ONTAP system resides.
 .. The resource group that manages the Blob container - you can create a new resource group or select an existing resource group.
 .. Whether you'll use the default Microsoft-managed encryption key or choose your own customer-managed keys to manage encryption of your data. (https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview[See how to use your own keys]).

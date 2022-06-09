@@ -48,7 +48,7 @@ Discover your ONTAP cluster in Cloud Manager, verify that the cluster meets mini
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png[Four] Prepare Amazon S3 as your backup target
 
 [role="quick-margin-para"]
-Set up permissions for the Connector to create and manage the S3 bucket, and to restore data using the Restore instance. And set up permissions for the on-premises ONTAP cluster so it can read and write data to the S3 bucket.
+Set up permissions for the Connector to create and manage the S3 bucket. You'll also need to set up permissions for the on-premises ONTAP cluster so it can read and write data to the S3 bucket.
 
 [role="quick-margin-para"]
 Optionally, you can set up your own custom-managed keys for data encryption instead of using the default Amazon S3 encryption keys. <<Prepare your AWS environment,See how to get your AWS S3 environment ready to receive ONTAP backups.>>
@@ -70,13 +70,11 @@ There are two connection methods you can use when configuring backups from on-pr
 
 The following diagram shows the *public connection* method and the connections that you need to prepare between the components:
 
-image:diagram_cloud_backup_onprem_aws.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located.]
+image:diagram_cloud_backup_onprem_aws.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the source systems and the destination storage where the backup files are located.]
 
 The following diagram shows the *private connection* method and the connections that you need to prepare between the components:
 
-image:diagram_cloud_backup_onprem_aws_vpc.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located.]
-
-Note that when the Cloud Restore instance is deployed in the cloud, it is located in the same subnet as the Connector.
+image:diagram_cloud_backup_onprem_aws_vpc.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the source systems and the destination storage where the backup files are located.]
 
 == Prepare your Connector
 
@@ -157,7 +155,7 @@ You can create backups from on-premises systems to Amazon S3 in all regions http
 
 You'll need to configure two sets of permissions:
 
-* Permissions for the Connector to create and manage the S3 bucket, and to restore data using the Restore instance.
+* Permissions for the Connector to create and manage the S3 bucket.
 * Permissions for the on-premises ONTAP cluster so it can read and write data to the S3 bucket.
 
 .Steps
@@ -205,16 +203,6 @@ You'll need to configure two sets of permissions:
 +
 If you deployed the Connector using version 3.9.15 or greater, these permissions should be part of the IAM role already. Otherwise you'll need to add the missing permissions. Specifically the "athena" and "glue" permissions, as they're required for Search & Restore. See the https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html[AWS Documentation: Editing IAM policies].
 
-. Add the following EC2 permissions to the IAM role that provides the Connector with permissions so that it can start, stop, and terminate the Cloud Restore instance for Browse & Restore operations:
-+
-[source,json]
-          "Action": [
-              "ec2:DescribeInstanceTypeOfferings",
-              "ec2:StartInstances",
-              "ec2:StopInstances",
-              "ec2:TerminateInstances"
-          ],
-
 . When activating the service, the Backup wizard will prompt you to enter an access key and secret key. These credentials are passed to the ONTAP cluster so that ONTAP can back up and restore data to the S3 bucket. For that, you'll need to create an IAM user with the following permissions:
 +
 [source,json]
@@ -240,30 +228,6 @@ If you deployed the Connector using version 3.9.15 or greater, these permissions
 +
 See the https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[AWS Documentation: Creating a Role to Delegate Permissions to an IAM User^] for details.
 
-=== Verify Cloud Restore internet access
-
-If your virtual or physical network uses a proxy server for internet access, ensure that the Cloud Restore instance has outbound internet access to contact the following endpoints.
-
-[cols="50,50",options="header"]
-|===
-| Endpoints
-| Purpose
-
-| \http://amazonlinux.us-east-1.amazonaws.com/2/extras/docker/stable/ x86_64/4bf88ee77c395ffe1e0c3ca68530dfb3a683ec65a4a1ce9c0ff394be50e922b2/ | CentOS package for the Cloud Restore Instance AMI.
-
-|
-\https://download.docker.com/linux/centos/docker-ce.repo
-
-| Provides the Docker Engine packages.
-
-|
-\http://cloudmanagerinfraprod.azurecr.io
-\https://cloudmanagerinfraprod.azurecr.io
-
-| Cloud Restore Instance image repository.
-
-|===
-
 === Set up customer-managed AWS keys for data encryption
 
 If you want to use the default Amazon S3 encryption keys to encrypt the data passed between your on-prem cluster and the S3 bucket, then you are all set because the default installation uses that type of encryption.
@@ -284,7 +248,7 @@ image:screenshot_backup_aws_sec_group.png[A screenshot of the AWS security group
 +
 If you're using port 80 (HTTP) for communication to the private endpoint, you are all set. You can enable Cloud Backup on the cluster now.
 +
-If you're using port 443 (HTTPS) for communication to the private endpoint, you must copy the certificate from the VPC S3 endpoint and add the certificate to your ONTAP cluster, as shown in the next 4 steps.
+If you're using port 443 (HTTPS) for communication to the private endpoint, you must copy the certificate from the VPC S3 endpoint and add it to your ONTAP cluster, as shown in the next 4 steps.
 +
 . Obtain the DNS name of the endpoint from the AWS Console.
 +
@@ -321,6 +285,8 @@ Enable Cloud Backup at any time directly from the on-premises working environmen
 .Steps
 
 . From the Canvas, select the working environment and click *Enable > Backup Volumes* next to the Backup & Restore service in the right-panel.
++
+If the Amazon S3 destination for your backups exists as a working environment on the Canvas, you can drag the cluster onto the Amazon S3 working environment to initiate the setup wizard.
 +
 image:screenshot_backup_onprem_enable.png[A screenshot that shows the Backup & Restore Enable button which is available after you select a working environment.]
 
