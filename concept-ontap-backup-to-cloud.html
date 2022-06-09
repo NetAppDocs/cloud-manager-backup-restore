@@ -169,7 +169,39 @@
   
   <!-- Start Page Toolbar -->
   
-  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/issues/new?body=Page%3A%20[Protect your ONTAP cluster data using Cloud Backup](https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-ontap-backup-to-cloud.html)" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/discuss-sm.svg" class="github-icon" />Request doc changes</a><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/blob/main/concept-ontap-backup-to-cloud.adoc" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/edit-sm.svg" class="github-icon" />Edit this page</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/us-en/cloud-manager-backup-restore/images/article-sm.svg" class="github-icon" />Learn how to contribute</a></div>
+  <div class="page-nav-toolbar">
+<div id="flavor-dropdown" class="custom-dropdown" data-url="/us-en/cloud-manager-backup-restore/concept-ontap-backup-to-cloud.html">
+  
+  <div class="custom-dropdown-select unselected" title="All cloud providers">
+    <label>Cloud provider</label>
+    <span>All cloud providers</span>
+    <img src="/us-en/cloud-manager-backup-restore/images/filter.svg" class="custom-icon" alt="" />
+  </div>
+  
+
+  <ul class="custom-dropdown-menu">
+    
+    
+    <li data-value="aws" data-url="/us-en/cloud-manager-backup-restore/aws/concept-ontap-backup-to-cloud.html">
+      <img alt="" src="/us-en/cloud-manager-backup-restore/images/aws-ico.svg" onerror="this.src='/us-en/cloud-manager-backup-restore/images/blank-ico.png'" class="custom-icon" />Amazon Web Services
+    </li>
+    
+    
+    
+    <li data-value="gcp" data-url="/us-en/cloud-manager-backup-restore/gcp/concept-ontap-backup-to-cloud.html">
+      <img alt="" src="/us-en/cloud-manager-backup-restore/images/gcp-ico.svg" onerror="this.src='/us-en/cloud-manager-backup-restore/images/blank-ico.png'" class="custom-icon" />Google Cloud
+    </li>
+    
+    
+    
+    <li data-value="azure" data-url="/us-en/cloud-manager-backup-restore/azure/concept-ontap-backup-to-cloud.html">
+      <img alt="" src="/us-en/cloud-manager-backup-restore/images/azure-ico.svg" onerror="this.src='/us-en/cloud-manager-backup-restore/images/blank-ico.png'" class="custom-icon" />Microsoft Azure
+    </li>
+    
+    
+  </ul>
+</div>
+<div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/issues/new?body=Page%3A%20[Protect your ONTAP cluster data using Cloud Backup](https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-ontap-backup-to-cloud.html)" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/discuss-sm.svg" class="github-icon" />Request doc changes</a><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/blob/main/concept-ontap-backup-to-cloud.adoc" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/edit-sm.svg" class="github-icon" />Edit this page</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/us-en/cloud-manager-backup-restore/images/article-sm.svg" class="github-icon" />Learn how to contribute</a></div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
         <div class="page-nav-title">ON THIS PAGE</div>
@@ -352,8 +384,6 @@
         
         <a target="_blank" href="/us-en/cloud-manager-backup-restore/pdfs/fullsite-sidebar/Cloud_Backup_documentation.pdf" >
           <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>PDF of this doc site</a>
-
-
 
 
 
@@ -574,6 +604,8 @@
 
 
 
+
+
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
@@ -591,35 +623,6 @@
           
 
 
-
-
-
-    
-      <ul class="subfolders" style="display:none;">
-        <li class="pdf-ux-container">
-          
-          
-          
-          <a target="_blank" 
-            
-              href="/us-en/cloud-manager-backup-restore/pdfs/sidebar/Cross_account_and_cross_region_configurations.pdf" 
-            
-          >
-            <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
-            Cross-account and cross-region configurations
-          </a>
-          
-
-
-
-
-
-          
-        </li>
-      </ul>
-    
-
-  
 
 
 
@@ -698,10 +701,10 @@
     $("#toggleContainerPdf").toggle('display');
     $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
   });
-</script><div class="sidebar-nav-container" id="mysidebardiv">
-  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="https://docs.netapp.com/us-en/cloud-manager-family">
-        All Cloud Manager documentation
-      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/index.html">
+</script><div class="prod-nav" id="product-nav">
+  <a target="_self" class="prod-fam-nav" href="https://docs.netapp.com/us-en/cloud-manager-family/"><img src="/us-en/cloud-manager-backup-restore/images/left_arrow.png" alt=""><pre>All Cloud Manager documentation</pre></a>
+</div><div class="sidebar-nav-container" id="mysidebardiv">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/index.html">
         Cloud Backup docs
       </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/whats-new.html">
         Release notes
@@ -779,21 +782,16 @@
         Manage protection of Virtual Machines
       </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-restore-vm-data.html">
         Restore Virtual Machines data
-      </a></li></ul></li><li class="subfolders "><a href="#">
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/api-backup-restore.html">
+        Automate with the REST API
+      </a></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> Reference</div>
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/reference-aws-backup-tiers.html">
         Supported AWS archive storage tiers
       </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/reference-azure-backup-tiers.html">
         Supported Azure archive access tiers
-      </a></li><li class="subfolders "><a href="/us-en/cloud-manager-backup-restore/reference-cross-account.html">
-        <div class="na-navbar-padding"> Cross-account and cross-region configurations</div>
-      </a>
-      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/reference-backup-multi-account-aws.html">
-        Configure Backup for multi-account access in AWS
-      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/reference-backup-multi-account-azure.html">
-        Configure Backup for multi-account access in Azure
-      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+      </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> Knowledge and support</div>
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-support-registration.html">
@@ -857,7 +855,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-05 18:48:43 +0000">05/05/2022</time>
+    <time datetime="2022-06-01 19:16:14 +0000">06/01/2022</time>
     
   
 
@@ -900,7 +898,7 @@
 <p>Apply a single backup policy to all volumes in a cluster, or assign different backup policies to volumes that have unique recovery point objectives.</p>
 </li>
 <li>
-<p>Tier older backup files to archival storage to save costs (supported with AWS and Azure when using ONTAP 9.10.1+)</p>
+<p>Tier older backup files to archival storage to save costs (supported when using ONTAP 9.10.1+)</p>
 </li>
 <li>
 <p>Back up from cloud to cloud, and from on-premises systems to public or private cloud.</p>
@@ -937,7 +935,7 @@
 <p>Restores data on a block level, placing the data directly in the location you specify, all while preserving the original ACLs.</p>
 </li>
 <li>
-<p>Browsable and searchable file catalog for selecting individual files for single file restore.</p>
+<p>Browsable and searchable file catalogs for selecting individual files for single file restore.</p>
 </li>
 </ul>
 </div>
@@ -1027,7 +1025,7 @@ On-premises ONTAP system</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NetApp StorageGRID</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">On-premises ONTAP system</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">On-premises ONTAP system</p></td>
 </tr>
 </tbody>
 </table>
@@ -1057,31 +1055,6 @@ On-premises ONTAP system</p></td>
 </div>
 </li>
 <li>
-<p>For File Restore using Browse &amp; Restore, you pay your cloud provider for compute costs only when the Restore instance is running.</p>
-<div class="paragraph">
-<p>The instance runs only when browsing a backup file to locate the individual files you want to restore. The instance is turned off when not in use to save costs.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>In AWS, the Restore instance runs on an <a href="https://aws.amazon.com/ec2/instance-types/m5/" target="_blank" rel="noopener">m5n.xlarge instance</a> with 4 CPUs, 16 GB memory, and EBS Only instance storage. The operating system image is Amazon Linux 2.</p>
-<div class="paragraph">
-<p>In regions where m5n.xlarge instance isn’t available, Restore runs on an m5.xlarge instance instead.</p>
-</div>
-</li>
-<li>
-<p>In Azure, the Restore virtual machine runs on a <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/dv3-dsv3-series#dsv3-series" target="_blank" rel="noopener">Standard_D4s_v3 VM</a> with 4 CPUs, 16 GB memory, and a 32 GiB disk. The operating system image is CentOS 7.5).</p>
-<div class="paragraph">
-<p>The instance is named <em>Cloud-Restore-Instance</em> with your Account ID concatenated to it. For example: <em>Cloud-Restore-Instance-MyAccount</em>.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>For Volume Restore using Browse &amp; Restore, there is no cost because no separate instance or virtual machine is required.</p>
-</li>
-<li>
 <p>For Volume or File Restore using Search &amp; Restore, certain resources are provisioned by your cloud provider and there is per-TiB cost associated with the amount of data that is scanned by your search requests.</p>
 <div class="ulist">
 <ul>
@@ -1095,7 +1068,7 @@ On-premises ONTAP system</p></td>
 </div>
 </li>
 <li>
-<p>If you need to restore volume data from a backup file that has been moved to archival storage (supported with AWS when using ONTAP 9.10.1+), then there&#8217;s an additional per-GiB retrieval fee and per-request fee from the cloud provider.</p>
+<p>If you need to restore volume data from a backup file that has been moved to archival storage, then there&#8217;s an additional per-GiB retrieval fee and per-request fee from the cloud provider.</p>
 </li>
 </ul>
 </div>
@@ -1106,7 +1079,7 @@ On-premises ONTAP system</p></td>
 <p>Service charges are paid to NetApp and cover both the cost to <em>create</em> backups and to <em>restore</em> volumes, or files, from those backups. You pay only for the data that you protect, calculated by the source logical used capacity (<em>before</em> ONTAP efficiencies) of ONTAP volumes which are backed up to object storage. This capacity is also known as Front-End Terabytes (FETB).</p>
 </div>
 <div class="paragraph">
-<p>There are three ways to pay for the Backup service. The first option is to subscribe from your cloud provider, which enables you to pay per month. The second option is to get an annual contract - this is only available through AWS. The third option is to purchase licenses directly from NetApp. Read the <a href="#licensing">Licensing</a> section for details.</p>
+<p>There are three ways to pay for the Backup service. The first option is to subscribe from your cloud provider, which enables you to pay per month. The second option is to get an annual contract. The third option is to purchase licenses directly from NetApp. Read the <a href="#licensing">Licensing</a> section for details.</p>
 </div>
 </div>
 </div>
@@ -1114,7 +1087,23 @@ On-premises ONTAP system</p></td>
 <h2 id="licensing">Licensing</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Cloud Backup is available in three licensing options: Pay As You Go (PAYGO) subscription, an annual contract from the AWS Marketplace, and Bring Your Own License (BYOL). A 30-day free trial is available when you get a PAYGO subscription.</p>
+<p>Cloud Backup is available in a few licensing options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pay As You Go (PAYGO) subscription</p>
+</li>
+<li>
+<p>an annual contract from the AWS Marketplace</p>
+</li>
+<li>
+<p>Bring Your Own License (BYOL)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A 30-day free trial is available when you initially sign up with a PAYGO subscription.</p>
 </div>
 <div class="sect2">
 <h3 id="pay-as-you-go-subscription">Pay-as-you-go subscription</h3>
@@ -1364,7 +1353,7 @@ The retention period for backups of data protection volumes is the same as defin
 <div class="ulist">
 <ul>
 <li>
-<p>The ability to tier older backup files to archival storage requires that the cluster is running ONTAP 9.10.1 or greater (supported currently with AWS and Azure). Restoring volumes from backup files that reside in archival storage also requires that the destination cluster is running ONTAP 9.10.1+.</p>
+<p>The ability to tier older backup files to archival storage requires that the cluster is running ONTAP 9.10.1 or greater. Restoring volumes from backup files that reside in archival storage also requires that the destination cluster is running ONTAP 9.10.1+.</p>
 </li>
 <li>
 <p>When creating or editing a backup policy when no volumes are assigned to the policy, the number of retained backups can be a maximum of 1018. As a workaround you can reduce the number of backups to create the policy. Then you can edit the policy to create up to 4000 backups after you assign volumes to the policy.</p>

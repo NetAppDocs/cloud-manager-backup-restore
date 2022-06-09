@@ -169,7 +169,39 @@
   
   <!-- Start Page Toolbar -->
   
-  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/issues/new?body=Page%3A%20[Backing up on-premises ONTAP data to Amazon S3](https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-to-aws.html)" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/discuss-sm.svg" class="github-icon" />Request doc changes</a><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/blob/main/task-backup-onprem-to-aws.adoc" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/edit-sm.svg" class="github-icon" />Edit this page</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/us-en/cloud-manager-backup-restore/images/article-sm.svg" class="github-icon" />Learn how to contribute</a></div>
+  <div class="page-nav-toolbar">
+<div id="flavor-dropdown" class="custom-dropdown" data-url="/us-en/cloud-manager-backup-restore/task-backup-onprem-to-aws.html">
+  
+  <div class="custom-dropdown-select unselected" title="All cloud providers">
+    <label>Cloud provider</label>
+    <span>All cloud providers</span>
+    <img src="/us-en/cloud-manager-backup-restore/images/filter.svg" class="custom-icon" alt="" />
+  </div>
+  
+
+  <ul class="custom-dropdown-menu">
+    
+    
+    <li data-value="aws" data-url="/us-en/cloud-manager-backup-restore/aws/task-backup-onprem-to-aws.html">
+      <img alt="" src="/us-en/cloud-manager-backup-restore/images/aws-ico.svg" onerror="this.src='/us-en/cloud-manager-backup-restore/images/blank-ico.png'" class="custom-icon" />Amazon Web Services
+    </li>
+    
+    
+    
+    <li data-value="gcp" data-url="/us-en/cloud-manager-backup-restore/gcp">
+      <img alt="" src="/us-en/cloud-manager-backup-restore/images/gcp-ico.svg" onerror="this.src='/us-en/cloud-manager-backup-restore/images/blank-ico.png'" class="custom-icon" />Google Cloud
+    </li>
+    
+    
+    
+    <li data-value="azure" data-url="/us-en/cloud-manager-backup-restore/azure">
+      <img alt="" src="/us-en/cloud-manager-backup-restore/images/azure-ico.svg" onerror="this.src='/us-en/cloud-manager-backup-restore/images/blank-ico.png'" class="custom-icon" />Microsoft Azure
+    </li>
+    
+    
+  </ul>
+</div>
+<div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/issues/new?body=Page%3A%20[Backing up on-premises ONTAP data to Amazon S3](https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-to-aws.html)" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/discuss-sm.svg" class="github-icon" />Request doc changes</a><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/blob/main/task-backup-onprem-to-aws.adoc" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/edit-sm.svg" class="github-icon" />Edit this page</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/us-en/cloud-manager-backup-restore/images/article-sm.svg" class="github-icon" />Learn how to contribute</a></div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
         <div class="page-nav-title">ON THIS PAGE</div>
@@ -352,8 +384,6 @@
         
         <a target="_blank" href="/us-en/cloud-manager-backup-restore/pdfs/fullsite-sidebar/Cloud_Backup_documentation.pdf" >
           <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>PDF of this doc site</a>
-
-
 
 
 
@@ -574,6 +604,8 @@
 
 
 
+
+
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
@@ -591,35 +623,6 @@
           
 
 
-
-
-
-    
-      <ul class="subfolders" style="display:none;">
-        <li class="pdf-ux-container">
-          
-          
-          
-          <a target="_blank" 
-            
-              href="/us-en/cloud-manager-backup-restore/pdfs/sidebar/Cross_account_and_cross_region_configurations.pdf" 
-            
-          >
-            <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
-            Cross-account and cross-region configurations
-          </a>
-          
-
-
-
-
-
-          
-        </li>
-      </ul>
-    
-
-  
 
 
 
@@ -698,10 +701,10 @@
     $("#toggleContainerPdf").toggle('display');
     $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
   });
-</script><div class="sidebar-nav-container" id="mysidebardiv">
-  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="https://docs.netapp.com/us-en/cloud-manager-family">
-        All Cloud Manager documentation
-      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/index.html">
+</script><div class="prod-nav" id="product-nav">
+  <a target="_self" class="prod-fam-nav" href="https://docs.netapp.com/us-en/cloud-manager-family/"><img src="/us-en/cloud-manager-backup-restore/images/left_arrow.png" alt=""><pre>All Cloud Manager documentation</pre></a>
+</div><div class="sidebar-nav-container" id="mysidebardiv">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/index.html">
         Cloud Backup docs
       </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/whats-new.html">
         Release notes
@@ -779,21 +782,16 @@
         Manage protection of Virtual Machines
       </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-restore-vm-data.html">
         Restore Virtual Machines data
-      </a></li></ul></li><li class="subfolders "><a href="#">
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/api-backup-restore.html">
+        Automate with the REST API
+      </a></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> Reference</div>
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/reference-aws-backup-tiers.html">
         Supported AWS archive storage tiers
       </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/reference-azure-backup-tiers.html">
         Supported Azure archive access tiers
-      </a></li><li class="subfolders "><a href="/us-en/cloud-manager-backup-restore/reference-cross-account.html">
-        <div class="na-navbar-padding"> Cross-account and cross-region configurations</div>
-      </a>
-      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/reference-backup-multi-account-aws.html">
-        Configure Backup for multi-account access in AWS
-      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/reference-backup-multi-account-azure.html">
-        Configure Backup for multi-account access in Azure
-      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+      </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> Knowledge and support</div>
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-support-registration.html">
@@ -857,7 +855,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-13 17:17:03 +0000">05/13/2022</time>
+    <time datetime="2022-05-26 17:42:18 +0000">05/26/2022</time>
     
   
 
@@ -914,7 +912,7 @@
 </div>
 <div class="paragraph quick-margin-para">
 <div class="title"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png" alt="Four"></span> Prepare Amazon S3 as your backup target</div>
-<p>Set up permissions for the Connector to create and manage the S3 bucket, and to restore data using the Restore instance. And set up permissions for the on-premises ONTAP cluster so it can read and write data to the S3 bucket.</p>
+<p>Set up permissions for the Connector to create and manage the S3 bucket. You&#8217;ll also need to set up permissions for the on-premises ONTAP cluster so it can read and write data to the S3 bucket.</p>
 </div>
 <div class="paragraph quick-margin-para">
 <p>Optionally, you can set up your own custom-managed keys for data encryption instead of using the default Amazon S3 encryption keys. <a href="#prepare-your-aws-environment">See how to get your AWS S3 environment ready to receive ONTAP backups.</a></p>
@@ -948,16 +946,13 @@
 <p>The following diagram shows the <strong>public connection</strong> method and the connections that you need to prepare between the components:</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="./media/diagram_cloud_backup_onprem_aws.png" alt="A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located."></span></p>
+<p><span class="image"><img src="./media/diagram_cloud_backup_onprem_aws.png" alt="A diagram showing how Cloud Backup communicates over a public connection with the volumes on the source systems and the destination storage where the backup files are located."></span></p>
 </div>
 <div class="paragraph">
 <p>The following diagram shows the <strong>private connection</strong> method and the connections that you need to prepare between the components:</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="./media/diagram_cloud_backup_onprem_aws_vpc.png" alt="A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located."></span></p>
-</div>
-<div class="paragraph">
-<p>Note that when the Cloud Restore instance is deployed in the cloud, it is located in the same subnet as the Connector.</p>
+<p><span class="image"><img src="./media/diagram_cloud_backup_onprem_aws_vpc.png" alt="A diagram showing how Cloud Backup communicates over a private connection with the volumes on the source systems and the destination storage where the backup files are located."></span></p>
 </div>
 </div>
 </div>
@@ -1132,7 +1127,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Permissions for the Connector to create and manage the S3 bucket, and to restore data using the Restore instance.</p>
+<p>Permissions for the Connector to create and manage the S3 bucket.</p>
 </li>
 <li>
 <p>Permissions for the on-premises ONTAP cluster so it can read and write data to the S3 bucket.</p>
@@ -1190,19 +1185,6 @@
 </div>
 </li>
 <li>
-<p>Add the following EC2 permissions to the IAM role that provides the Connector with permissions so that it can start, stop, and terminate the Cloud Restore instance for Browse &amp; Restore operations:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">          "Action": [
-              "ec2:DescribeInstanceTypeOfferings",
-              "ec2:StartInstances",
-              "ec2:StopInstances",
-              "ec2:TerminateInstances"
-          ],</code></pre>
-</div>
-</div>
-</li>
-<li>
 <p>When activating the service, the Backup wizard will prompt you to enter an access key and secret key. These credentials are passed to the ONTAP cluster so that ONTAP can back up and restore data to the S3 bucket. For that, you&#8217;ll need to create an IAM user with the following permissions:</p>
 <div class="listingblock">
 <div class="content">
@@ -1235,39 +1217,6 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="verify-cloud-restore-internet-access">Verify Cloud Restore internet access</h3>
-<div class="paragraph">
-<p>If your virtual or physical network uses a proxy server for internet access, ensure that the Cloud Restore instance has outbound internet access to contact the following endpoints.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Endpoints</th>
-<th class="tableblock halign-left valign-top">Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">http://amazonlinux.us-east-1.amazonaws.com/2/extras/docker/stable/ x86_64/4bf88ee77c395ffe1e0c3ca68530dfb3a683ec65a4a1ce9c0ff394be50e922b2/</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CentOS package for the Cloud Restore Instance AMI.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">https://download.docker.com/linux/centos/docker-ce.repo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Provides the Docker Engine packages.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">http://cloudmanagerinfraprod.azurecr.io<br>
-https://cloudmanagerinfraprod.azurecr.io</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Restore Instance image repository.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
 <h3 id="set-up-customer-managed-aws-keys-for-data-encryption">Set up customer-managed AWS keys for data encryption</h3>
 <div class="paragraph">
 <p>If you want to use the default Amazon S3 encryption keys to encrypt the data passed between your on-prem cluster and the S3 bucket, then you are all set because the default installation uses that type of encryption.</p>
@@ -1298,7 +1247,7 @@ https://cloudmanagerinfraprod.azurecr.io</p></td>
 <p>If you&#8217;re using port 80 (HTTP) for communication to the private endpoint, you are all set. You can enable Cloud Backup on the cluster now.</p>
 </div>
 <div class="paragraph">
-<p>If you&#8217;re using port 443 (HTTPS) for communication to the private endpoint, you must copy the certificate from the VPC S3 endpoint and add the certificate to your ONTAP cluster, as shown in the next 4 steps.</p>
+<p>If you&#8217;re using port 443 (HTTPS) for communication to the private endpoint, you must copy the certificate from the VPC S3 endpoint and add it to your ONTAP cluster, as shown in the next 4 steps.</p>
 </div>
 </li>
 <li>
@@ -1356,6 +1305,9 @@ Please enter Certificate: Press &lt;Enter&gt; when done</code></pre>
 <ol class="arabic">
 <li>
 <p>From the Canvas, select the working environment and click <strong>Enable &gt; Backup Volumes</strong> next to the Backup &amp; Restore service in the right-panel.</p>
+<div class="paragraph">
+<p>If the Amazon S3 destination for your backups exists as a working environment on the Canvas, you can drag the cluster onto the Amazon S3 working environment to initiate the setup wizard.</p>
+</div>
 <div class="paragraph">
 <p><span class="image"><img src="./media/screenshot_backup_onprem_enable.png" alt="A screenshot that shows the Backup &amp; Restore Enable button which is available after you select a working environment."></span></p>
 </div>

@@ -169,7 +169,39 @@
   
   <!-- Start Page Toolbar -->
   
-  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/issues/new?body=Page%3A%20[Restoring ONTAP data from backup files](https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html)" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/discuss-sm.svg" class="github-icon" />Request doc changes</a><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/blob/main/task-restore-backups-ontap.adoc" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/edit-sm.svg" class="github-icon" />Edit this page</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/us-en/cloud-manager-backup-restore/images/article-sm.svg" class="github-icon" />Learn how to contribute</a></div>
+  <div class="page-nav-toolbar">
+<div id="flavor-dropdown" class="custom-dropdown" data-url="/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html">
+  
+  <div class="custom-dropdown-select unselected" title="All cloud providers">
+    <label>Cloud provider</label>
+    <span>All cloud providers</span>
+    <img src="/us-en/cloud-manager-backup-restore/images/filter.svg" class="custom-icon" alt="" />
+  </div>
+  
+
+  <ul class="custom-dropdown-menu">
+    
+    
+    <li data-value="aws" data-url="/us-en/cloud-manager-backup-restore/aws/task-restore-backups-ontap.html">
+      <img alt="" src="/us-en/cloud-manager-backup-restore/images/aws-ico.svg" onerror="this.src='/us-en/cloud-manager-backup-restore/images/blank-ico.png'" class="custom-icon" />Amazon Web Services
+    </li>
+    
+    
+    
+    <li data-value="gcp" data-url="/us-en/cloud-manager-backup-restore/gcp/task-restore-backups-ontap.html">
+      <img alt="" src="/us-en/cloud-manager-backup-restore/images/gcp-ico.svg" onerror="this.src='/us-en/cloud-manager-backup-restore/images/blank-ico.png'" class="custom-icon" />Google Cloud
+    </li>
+    
+    
+    
+    <li data-value="azure" data-url="/us-en/cloud-manager-backup-restore/azure/task-restore-backups-ontap.html">
+      <img alt="" src="/us-en/cloud-manager-backup-restore/images/azure-ico.svg" onerror="this.src='/us-en/cloud-manager-backup-restore/images/blank-ico.png'" class="custom-icon" />Microsoft Azure
+    </li>
+    
+    
+  </ul>
+</div>
+<div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/issues/new?body=Page%3A%20[Restoring ONTAP data from backup files](https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html)" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/discuss-sm.svg" class="github-icon" />Request doc changes</a><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/blob/main/task-restore-backups-ontap.adoc" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/edit-sm.svg" class="github-icon" />Edit this page</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/us-en/cloud-manager-backup-restore/images/article-sm.svg" class="github-icon" />Learn how to contribute</a></div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
         <div class="page-nav-title">ON THIS PAGE</div>
@@ -352,8 +384,6 @@
         
         <a target="_blank" href="/us-en/cloud-manager-backup-restore/pdfs/fullsite-sidebar/Cloud_Backup_documentation.pdf" >
           <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>PDF of this doc site</a>
-
-
 
 
 
@@ -574,6 +604,8 @@
 
 
 
+
+
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
@@ -591,35 +623,6 @@
           
 
 
-
-
-
-    
-      <ul class="subfolders" style="display:none;">
-        <li class="pdf-ux-container">
-          
-          
-          
-          <a target="_blank" 
-            
-              href="/us-en/cloud-manager-backup-restore/pdfs/sidebar/Cross_account_and_cross_region_configurations.pdf" 
-            
-          >
-            <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
-            Cross-account and cross-region configurations
-          </a>
-          
-
-
-
-
-
-          
-        </li>
-      </ul>
-    
-
-  
 
 
 
@@ -698,10 +701,10 @@
     $("#toggleContainerPdf").toggle('display');
     $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
   });
-</script><div class="sidebar-nav-container" id="mysidebardiv">
-  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="https://docs.netapp.com/us-en/cloud-manager-family">
-        All Cloud Manager documentation
-      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/index.html">
+</script><div class="prod-nav" id="product-nav">
+  <a target="_self" class="prod-fam-nav" href="https://docs.netapp.com/us-en/cloud-manager-family/"><img src="/us-en/cloud-manager-backup-restore/images/left_arrow.png" alt=""><pre>All Cloud Manager documentation</pre></a>
+</div><div class="sidebar-nav-container" id="mysidebardiv">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/index.html">
         Cloud Backup docs
       </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/whats-new.html">
         Release notes
@@ -779,21 +782,16 @@
         Manage protection of Virtual Machines
       </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-restore-vm-data.html">
         Restore Virtual Machines data
-      </a></li></ul></li><li class="subfolders "><a href="#">
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/api-backup-restore.html">
+        Automate with the REST API
+      </a></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> Reference</div>
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/reference-aws-backup-tiers.html">
         Supported AWS archive storage tiers
       </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/reference-azure-backup-tiers.html">
         Supported Azure archive access tiers
-      </a></li><li class="subfolders "><a href="/us-en/cloud-manager-backup-restore/reference-cross-account.html">
-        <div class="na-navbar-padding"> Cross-account and cross-region configurations</div>
-      </a>
-      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/reference-backup-multi-account-aws.html">
-        Configure Backup for multi-account access in AWS
-      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/reference-backup-multi-account-azure.html">
-        Configure Backup for multi-account access in Azure
-      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+      </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> Knowledge and support</div>
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/task-support-registration.html">
@@ -857,7 +855,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-27 17:39:17 +0000">04/27/2022</time>
+    <time datetime="2022-06-02 19:34:51 +0000">06/02/2022</time>
     
   
 
@@ -943,7 +941,7 @@ Cloud Backup must already be activated for at least one working environment and 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Search for a volume or file across <strong>all backup files</strong> by partial or full volume name, partial or full file name, size range, and additional search filters</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Volume restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. File restore works with backup files stored in Amazon S3 and Azure Blob</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volume and file restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Volume and file restore works with backup files stored in Amazon S3 and Google Cloud</p></td>
 </tr>
 <tr>
@@ -955,15 +953,11 @@ Cloud Backup must already be activated for at least one working environment and 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Browse for results across public clouds and local Snapshots copies</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Separate Cloud Restore instance is required for file restore</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Cloud Restore instance required</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No additional cloud provider resources required</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Additional bucket and AWS or Google resources required per account</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cost associated with Cloud Restore instance when browsing backups for individual files</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No additional cloud provider costs required</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cost associated with AWS or Google resources when scanning your backups and volumes for search results</p></td>
 </tr>
 </tbody>
@@ -996,11 +990,11 @@ Cloud Backup must already be activated for at least one working environment and 
 <p>Before you start restoring a volume or file, you should know the name of the volume or file you want to restore, the name of the working environment where the volume resides, and the approximate date of the backup file that you want to restore from.</p>
 </div>
 <div class="paragraph">
-<p><strong>Note:</strong> If the backup file for the volume that you want to restore resides in archival storage (available for AWS and Azure starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur a cost. Additionally, the destination cluster must also be running ONTAP 9.10.1 or greater.</p>
+<p><strong>Note:</strong> If the backup file for the volume that you want to restore resides in archival storage (starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur a cost. Additionally, the destination cluster must also be running ONTAP 9.10.1 or greater.</p>
 </div>
 <div class="paragraph">
-<p><a href="reference-azure-backup-tiers.html">Learn more about restoring from Azure archival storage</a>.<br>
-<a href="reference-aws-backup-tiers.html">Learn more about restoring from AWS archival storage</a>.</p>
+<p><a href="reference-aws-backup-tiers.html">Learn more about restoring from AWS archival storage</a>.<br>
+<a href="reference-azure-backup-tiers.html">Learn more about restoring from Azure archival storage</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="browse-restore-supported-working-environments-and-object-storage-providers">Browse &amp; Restore supported working environments and object storage providers</h3>
@@ -1043,12 +1037,13 @@ On-premises ONTAP system</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Google Cloud Storage</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Volumes ONTAP in Google<br>
 On-premises ONTAP system</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Volumes ONTAP in Google<br>
+On-premises ONTAP system</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NetApp StorageGRID</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">On-premises ONTAP system</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">On-premises ONTAP system</p></td>
 </tr>
 </tbody>
 </table>
@@ -1131,7 +1126,7 @@ If the backup file resides in archival storage, only volume restore is supported
 <p>When restoring from Google Cloud Storage, select the Google Cloud Project and the Access Key and Secret Key to access the object storage, the region where the backups are stored, and the IPspace in the ONTAP cluster where the destination volume will reside.</p>
 </li>
 <li>
-<p>When restoring from StorageGRID, select the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume will reside.</p>
+<p>When restoring from StorageGRID, enter the FQDN of the StorageGRID server and the port that ONTAP should use for HTTPS communication with StorageGRID, select the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume will reside.</p>
 </li>
 </ul>
 </div>
@@ -1148,8 +1143,8 @@ If the backup file resides in archival storage, only volume restore is supported
 <p>And if you are restoring the volume from a backup file that resides in an archival storage tier (available starting with ONTAP 9.10.1), then you can select the Restore Priority.</p>
 </div>
 <div class="paragraph">
-<p><a href="reference-azure-backup-tiers.html#restoring-data-from-archival-storage">Learn more about restoring from Azure archival storage</a>.<br>
-<a href="reference-aws-backup-tiers.html#restoring-data-from-archival-storage">Learn more about restoring from AWS archival storage</a>.</p>
+<p><a href="reference-aws-backup-tiers.html#restoring-data-from-archival-storage">Learn more about restoring from AWS archival storage</a>.<br>
+<a href="reference-azure-backup-tiers.html#restoring-data-from-archival-storage">Learn more about restoring from Azure archival storage</a>.</p>
 </div>
 </li>
 <li>
@@ -1193,16 +1188,7 @@ You can&#8217;t restore individual files if the backup file resides in archival 
 <p>The ONTAP version must be 9.6 or greater in your Cloud Volumes ONTAP or on-premises ONTAP systems to perform file restore operations.</p>
 </li>
 <li>
-<p>Restoring individual files from a backup file uses a separate Restore instance/virtual machine. See the <a href="concept-ontap-backup-to-cloud.html#cost">type of instance that will be deployed for File Restore operations</a> and make sure your environment is ready.</p>
-</li>
-<li>
-<p>Restoring files from backups on Amazon S3 requires that specific AWS EC2 permissions have been added to the user role that provides Cloud Manager with permissions. You&#8217;ll also need to allow outbound internet access to contact certain endpoints. <a href="task-backup-onprem-to-aws.html#preparing-amazon-s3-for-backups">Verify that your configuration is ready to restore files</a>.</p>
-</li>
-<li>
 <p>AWS cross-account restore requires manual action in the AWS console. See the AWS topic <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html" target="_blank" rel="noopener">granting cross-account bucket permissions</a> for details.</p>
-</li>
-<li>
-<p>Restoring files from backups on Azure Blob requires that outbound internet access is available to contact certain endpoints. <a href="task-backup-onprem-to-azure.html#preparing-azure-blob-storage-for-backups">Verify that your configuration is ready to restore files</a>.</p>
 </li>
 </ul>
 </div>
@@ -1218,10 +1204,7 @@ You can&#8217;t restore individual files if the backup file resides in archival 
 <p>When you want to restore one or more files from a volume backup, click the <strong>Restore</strong> tab, click <strong>Restore Files</strong> under <em>Browse &amp; Restore</em>, and select the backup file in which the file (or files) reside.</p>
 </li>
 <li>
-<p>The Restore instance starts up and displays the folders and files that exist within the selected backup file.</p>
-<div class="paragraph">
-<p><strong>Note:</strong> The Restore instance is deployed in your cloud providers' environment the first time you restore a file.</p>
-</div>
+<p>Cloud Backup displays the folders and files that exist within the selected backup file.</p>
 </li>
 <li>
 <p>Choose the file (or files) that you want to restore from that backup.</p>
@@ -1230,7 +1213,7 @@ You can&#8217;t restore individual files if the backup file resides in archival 
 <p>Select the location where you want the file(s) to be restored (the working environment, volume, and folder), and click <strong>Restore</strong>.</p>
 </li>
 <li>
-<p>The file(s) are restored, and then the Restore instance is shut down after a period of inactivity to save costs.</p>
+<p>The file(s) are restored.</p>
 </li>
 </ol>
 </div>
@@ -1276,10 +1259,7 @@ You can&#8217;t restore individual files if the backup file resides in archival 
 </div>
 </li>
 <li>
-<p>Click <strong>Continue</strong> and the Restore instance is started. After a few minutes, the list of folders and files from the volume backup are displayed.</p>
-<div class="paragraph">
-<p><strong>Note:</strong> The Restore instance is deployed in your cloud providers' environment the first time you restore a file, so this step could take a few minutes longer the first time.</p>
-</div>
+<p>Click <strong>Continue</strong> and the list of folders and files from the volume backup are displayed.</p>
 <div class="paragraph">
 <p><span class="image"><img src="./media/screenshot_restore_select_files.png" alt="A screenshot of the Select Files page so you can navigate to the files you want to restore."></span></p>
 </div>
@@ -1319,6 +1299,12 @@ You can&#8217;t restore individual files if the backup file resides in archival 
 <li>
 <p>When restoring from Azure Blob, enter the IPspace in the ONTAP cluster where the destination volume resides.</p>
 </li>
+<li>
+<p>When restoring from Google Cloud Storage, enter the IPspace in the ONTAP cluster where the destination volumes reside, and the Access Key and Secret Key needed to access the object storage.</p>
+</li>
+<li>
+<p>When restoring from StorageGRID, enter the FQDN of the StorageGRID server and the port that ONTAP should use for HTTPS communication with StorageGRID, enter the Access Key and Secret Key needed to access the object storage, and the IPspace in the ONTAP cluster where the destination volume resides.</p>
+</li>
 </ul>
 </div>
 </li>
@@ -1356,9 +1342,6 @@ You can&#8217;t restore individual files if the backup file resides in archival 
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>The Restore instance is shut down after a certain period of inactivity to save you money so that you incur costs only when it is active.</p>
-</div>
 </div>
 </div>
 </div>
@@ -1379,7 +1362,7 @@ You can&#8217;t restore individual files if the backup file resides in archival 
 <p>You can restore files to the original volume location, to a different volume in the same working environment, or to a different working environment that&#8217;s using the same cloud account. You can also restore files to a volume on an on-premises ONTAP system.</p>
 </div>
 <div class="paragraph">
-<p>If the backup file for the volume that you want to restore resides in archival storage (available for AWS starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur additional cost. Note that the destination cluster must also be running ONTAP 9.10.1 or greater, and that file restore from archival storage is not currently supported.</p>
+<p>If the backup file for the volume that you want to restore resides in archival storage (available starting with ONTAP 9.10.1), the restore operation will take a longer amount of time and will incur additional cost. Note that the destination cluster must also be running ONTAP 9.10.1 or greater, and that file restore from archival storage is not currently supported.</p>
 </div>
 <div class="paragraph">
 <p><a href="reference-aws-backup-tiers.html">Learn more about restoring from AWS archival storage</a>.</p>
@@ -1426,11 +1409,21 @@ On-premises ONTAP system</p></td>
 On-premises ONTAP system</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Azure Blob</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not currently supported</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Google Cloud Storage</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Volumes ONTAP in Google<br>
 On-premises ONTAP system</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Volumes ONTAP in Google<br>
 On-premises ONTAP system</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp StorageGRID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not currently supported</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -1541,10 +1534,12 @@ On-premises ONTAP system</p></td>
 <p>For backups stored in AWS, it provisions a new S3 bucket and the <a href="https://aws.amazon.com/athena/faqs/" target="_blank" rel="noopener">Amazon Athena interactive query service</a> and <a href="https://aws.amazon.com/glue/faqs/" target="_blank" rel="noopener">AWS Glue serverless data integration service</a>.</p>
 </li>
 <li>
-<p>For backups stored in Google Cloud, it provisions a new bucket, and the <a href="https://cloud.google.com/bigquery" target="_blank" rel="noopener">Google Cloud BigQuery services</a> are provisioned on an account/project level.<br>
-If Indexing has already been enabled for your working environment, go to the next section to restore your data.</p>
+<p>For backups stored in Google Cloud, it provisions a new bucket, and the <a href="https://cloud.google.com/bigquery" target="_blank" rel="noopener">Google Cloud BigQuery services</a> are provisioned on an account/project level.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>If Indexing has already been enabled for your working environment, go to the next section to restore your data.</p>
 </div>
 <div class="paragraph">
 <p>To enable Indexing for a working environment:</p>

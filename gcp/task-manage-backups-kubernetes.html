@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head class="at-element-marker">
+  <title>Managing backups for your Kubernetes systems | NetApp Documentation</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Managing backups for your Kubernetes systems | NetApp Documentation" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-manage-backups-kubernetes.html" />
+	<meta property="og:description" content="You can manage backups for your Kubernetes systems by changing the backup schedule, enabling/disabling volume backups, deleting backups, and more." />
+  <meta property="og:image" content="https://docs.netapp.com/us-en/cloud-manager-backup-restore/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="You can manage backups for your Kubernetes systems by changing the backup schedule, enabling/disabling volume backups, deleting backups, and more.">
+  <meta name="keywords" content=" cloud backup, cloud backup service, backup schedule, change schedule, change backup schedule, modify schedule, modify backup schedule, retention, backup retention, delete, delete backups, deleting, deleting backups, disable, disable backups, turn off backups, disable cloud backup, turn off cloud backup"><!-- Icons -->
+  <link rel="icon" href="/us-en/cloud-manager-backup-restore/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><link rel="alternate" type="application/rss+xml" title="NetApp Documentation" href="/us-en/cloud-manager-backup-restore/feed.xml"><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloud-manager-backup-restore/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/us-en/cloud-manager-backup-restore/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloud-manager-backup-restore/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloud-manager-backup-restore/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/us-en/cloud-manager-backup-restore/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/us-en/cloud-manager-backup-restore/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/us-en/cloud-manager-backup-restore/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/us-en/cloud-manager-backup-restore/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/us-en/cloud-manager-backup-restore/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/us-en/cloud-manager-backup-restore/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/cloud-manager-backup-restore/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/cloud-manager-backup-restore/css/custom-dropdown.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/cloud-manager-backup-restore/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/us-en/cloud-manager-backup-restore/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/us-en/cloud-manager-backup-restore/css/tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  
+    
+    <link rel="canonical" href="https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-manage-backups-kubernetes.html" />
+  <link rel='stylesheet' href='/us-en/cloud-manager-backup-restore/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
+    if (document.location.hostname === "docs.netapp.com") {
+      var head = document.getElementsByTagName('head')[0];
+      var onetrustConsent = document.createElement("script");
+      onetrustConsent.type = "text/javascript";
+      onetrustConsent.src = "https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js";
+      head.appendChild(onetrustConsent);
+
+      var onetrustScript = document.createElement("script");
+      onetrustScript.type = "text/javascript";
+      onetrustScript.src = "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js";
+      onetrustScript.charset = "UTF-8";
+      onetrustScript.dataset.documentLanguage = "true";
+      onetrustScript.dataset.domainScript = "72570c5c-fe30-465f-b0e0-b77f7fb4ae34";
+      head.appendChild(onetrustScript);
+    }
+
+    function OptanonWrapper() { }
+
+    if (document.location.hostname === "docs.netapp.com") {
+      var adobe = document.createElement("script");
+      adobe.type = "text/plain";
+      adobe.className = "optanon-category-C0002";
+      adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+      head.appendChild(adobe);
+
+      var google = document.createElement("script");
+      google.type = "text/plain";
+      google.className = "optanon-category-C0002";
+      google.src = "https://www.googletagmanager.com/gtag/js?id=UA-81697994-3";
+      head.appendChild(google);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-81697994-3');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/us-en/cloud-manager-backup-restore/js/na-search.js'></script><script src='/us-en/cloud-manager-backup-restore/js/na-pagenav.js'></script><link rel='stylesheet' href='/us-en/cloud-manager-backup-restore/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/cloud-manager-backup-restore/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/us-en/cloud-manager-backup-restore/js/na-utility.js'></script>
+  <script src='/us-en/cloud-manager-backup-restore/js/clouddocs.js'></script>
+  <script src='/us-en/cloud-manager-backup-restore/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/us-en/cloud-manager-backup-restore/js/toc.js'></script>
+  <script src='/us-en/cloud-manager-backup-restore/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+  <script src='/us-en/cloud-manager-backup-restore/js/custom-dropdown.js'></script>
+  <script src='/us-en/cloud-manager-backup-restore/js/FileSaver.min.js'></script>
+  <script src='/us-en/cloud-manager-backup-restore/js/jszip-utils.min.js'></script>
+  <script src='/us-en/cloud-manager-backup-restore/js/jszip.min.js'></script>
+  <script src='/us-en/cloud-manager-backup-restore/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document" data-flavor="gcp">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  
+  <div class="page-nav-toolbar">
+<div id="flavor-dropdown" class="custom-dropdown" data-url="/us-en/cloud-manager-backup-restore/task-manage-backups-kubernetes.html">
+  
+  
+  <div class="custom-dropdown-select selected" title="Google Cloud">
+    <label>Cloud provider</label>
+    <div>Google Cloud</div>  
+    <img src="/us-en/cloud-manager-backup-restore/images/filter.svg" class="custom-icon selected" alt="" />
+    <img src="/us-en/cloud-manager-backup-restore/images/dismiss.svg" class="custom-icon selected" id="remove-flavor" alt="" />
+  </div>
+  
+
+  <ul class="custom-dropdown-menu">
+    
+    
+    <li data-value="aws" data-url="/us-en/cloud-manager-backup-restore/aws/task-manage-backups-kubernetes.html">
+      <img alt="" src="/us-en/cloud-manager-backup-restore/images/aws-ico.svg" onerror="this.src='/us-en/cloud-manager-backup-restore/images/blank-ico.png'" class="custom-icon" />Amazon Web Services
+    </li>
+    
+    
+    
+    <li data-value="gcp" data-url="/us-en/cloud-manager-backup-restore/gcp/task-manage-backups-kubernetes.html">
+      <img alt="" src="/us-en/cloud-manager-backup-restore/images/gcp-ico.svg" onerror="this.src='/us-en/cloud-manager-backup-restore/images/blank-ico.png'" class="custom-icon" />Google Cloud
+    </li>
+    
+    
+    
+    <li data-value="azure" data-url="/us-en/cloud-manager-backup-restore/azure/task-manage-backups-kubernetes.html">
+      <img alt="" src="/us-en/cloud-manager-backup-restore/images/azure-ico.svg" onerror="this.src='/us-en/cloud-manager-backup-restore/images/blank-ico.png'" class="custom-icon" />Microsoft Azure
+    </li>
+    
+    
+  </ul>
+</div>
+<div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/issues/new?body=Page%3A%20[Managing backups for your Kubernetes systems](https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-manage-backups-kubernetes.html)" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/discuss-sm.svg" class="github-icon" />Request doc changes</a><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-backup-restore/blob/main/task-manage-backups-kubernetes.adoc" class="page-nav-contribute-link" role="button"><img src="/us-en/cloud-manager-backup-restore/images/edit-sm.svg" class="github-icon" />Edit this page</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/us-en/cloud-manager-backup-restore/images/article-sm.svg" class="github-icon" />Learn how to contribute</a></div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">ON THIS PAGE</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">Product and Solutions</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">Support and Training</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">Community</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">Blog</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">Customer Stories</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/us-en/cloud-manager-backup-restore/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/us-en/cloud-manager-backup-restore/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/us-en/cloud-manager-backup-restore/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/us-en/cloud-manager-backup-restore/search.html"
+          data-type="widget" 
+          data-placeholder="Search Documentation" 
+          data-no-results-found="No results were found for {query}" 
+          data-did-you-mean="Search for {suggestion}." 
+          data-no-results-found-did-you-mean="No results found for {query}. Did you mean {suggestion}?" 
+          data-results-found="{hitCount} results found"  
+          data-sk-es-pf-indexes=""
+          data-flavor="gcp"></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud-manager-backup-restore/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+      <div class="custom-dropdown-select custom-dropdown-select-lang">
+      <span class="lang-name">English</span>
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud-manager-backup-restore/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="custom-dropdown-menu"><li>
+          <a href="https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-manage-backups-kubernetes.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ja-jp/cloud-manager-backup-restore/task-manage-backups-kubernetes.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-cn/cloud-manager-backup-restore/task-manage-backups-kubernetes.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-tw/cloud-manager-backup-restore/task-manage-backups-kubernetes.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ko-kr/cloud-manager-backup-restore/task-manage-backups-kubernetes.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+        </li></ul>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>Available PDFs<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        
+        
+        
+        <a target="_blank" href="/us-en/cloud-manager-backup-restore/pdfs/gcp/fullsite-sidebar/Cloud_Backup_documentation.pdf" >
+          <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>PDF of this doc site</a>
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/cloud-manager-backup-restore/pdfs/gcp/sidebar/Get_started.pdf" 
+            
+          >
+            <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
+            Get started
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/cloud-manager-backup-restore/pdfs/gcp/sidebar/Back_up_and_restore_ONTAP_data.pdf" 
+            
+          >
+            <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
+            Back up and restore ONTAP data
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/cloud-manager-backup-restore/pdfs/gcp/sidebar/Back_up_and_restore_Kubernetes_data.pdf" 
+            
+          >
+            <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
+            Back up and restore Kubernetes data
+          </a>
+          
+
+
+
+
+
+
+
+
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/us-en/cloud-manager-backup-restore/pdfs/pages/task-manage-backups-kubernetes.pdf" >
+    <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/cloud-manager-backup-restore/pdfs/gcp/sidebar/Back_up_and_restore_on_premises_applications_data.pdf" 
+            
+          >
+            <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
+            Back up and restore on-premises applications data
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/cloud-manager-backup-restore/pdfs/gcp/sidebar/Restore_applications_data.pdf" 
+            
+          >
+            <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
+            Restore applications data
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/cloud-manager-backup-restore/pdfs/gcp/sidebar/Back_up_and_restore_Virtual_Machines_data.pdf" 
+            
+          >
+            <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
+            Back up and restore Virtual Machines data
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/cloud-manager-backup-restore/pdfs/gcp/sidebar/Reference.pdf" 
+            
+          >
+            <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
+            Reference
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/us-en/cloud-manager-backup-restore/pdfs/gcp/sidebar/Knowledge_and_support.pdf" 
+            
+          >
+            <img src="/us-en/cloud-manager-backup-restore/images/pdf.png" width="16" height="16"/>
+            Knowledge and support
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/us-en/cloud-manager-backup-restore/images/pdf-zip.png" width="16" height="16"/>
+      <pre>Collection of separate PDF docs<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="prod-nav" id="product-nav">
+  <a target="_self" class="prod-fam-nav" href="https://docs.netapp.com/us-en/cloud-manager-family/"><img src="/us-en/cloud-manager-backup-restore/images/left_arrow.png" alt=""><pre>All Cloud Manager documentation</pre></a>
+</div><div class="sidebar-nav-container" id="mysidebardiv">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/index.html">
+        Cloud Backup docs
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/whats-new.html">
+        Release notes
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Get started</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/concept-backup-to-cloud.html">
+        Learn about Cloud Backup
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-licensing-cloud-backup.html">
+        Set up licensing
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-monitor-backup-jobs.html">
+        Monitor the status of backup and restore jobs
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Back up and restore ONTAP data</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/concept-ontap-backup-to-cloud.html">
+        Protect your ONTAP data
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-backup-to-gcp.html">
+        Back up Cloud Volumes ONTAP to Google Cloud
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-backup-onprem-to-gcp.html">
+        Back up on-premises ONTAP to Google Cloud
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-backup-onprem-private-cloud.html">
+        Back up on-premises ONTAP to StorageGRID
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-manage-backups-ontap.html">
+        Manage ONTAP backups
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-restore-backups-ontap.html">
+        Restore from ONTAP backups
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Back up and restore Kubernetes data</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/concept-kubernetes-backup-to-cloud.html">
+        Protect your Kubernetes data
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-backup-kubernetes-to-gcp.html">
+        Back up to Google Cloud
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-manage-backups-kubernetes.html">
+        Manage Kubernetes backups
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-restore-backups-kubernetes.html">
+        Restore from Kubernetes backups
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Back up and restore on-premises applications data</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/concept-protect-app-data-to-cloud.html">
+        Protect your on-premises applications data
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-backup-app-data-to-cloud.html">
+        Back up on-premises applications data to cloud
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-manage-app-backups.html">
+        Manage protection of applications
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Restore applications data</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-restore-oracle-data.html">
+        Restore Oracle database
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-restore-sql-data.html">
+        Restore SQL Server database
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Back up and restore Virtual Machines data</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/concept-protect-vm-data.html">
+        Protect your Virtual Machines data
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-backup-vm-data-to-cloud.html">
+        Back up datastores to the cloud
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-manage-vm-data-in-cloud.html">
+        Manage protection of Virtual Machines
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-restore-vm-data.html">
+        Restore Virtual Machines data
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/api-backup-restore.html">
+        Automate with the REST API
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Reference</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/reference-aws-backup-tiers.html">
+        Supported AWS archive storage tiers
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/reference-azure-backup-tiers.html">
+        Supported Azure archive access tiers
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Knowledge and support</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-support-registration.html">
+        Register for support
+      </a></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/task-get-help.html">
+        Get help
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/us-en/cloud-manager-backup-restore/gcp/legal-notices.html">
+        Legal notices
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/us-en/cloud/">Cloud Docs</a>
+        </li>
+        
+
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/us-en/cloud-manager-family/">Cloud Manager</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/us-en/cloud-manager-backup-restore/">Cloud&nbsp;Backup</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Managing backups for your Kubernetes systems</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-05-24 20:48:54 +0000">05/24/2022</time>
+    
+  
+
+<span>Contributors
+  <a target="_blank" class="ext-link-indicator" href="https://github.com/netapp-tonacki">
+    <img  class="avatar avatar-small"
+          alt="netapp-tonacki"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/38222299?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+</span>
+
+
+</p>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>You can manage backups for your Kubernetes systems by changing the backup schedule, enabling/disabling volume backups, deleting backups, and more.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-backup-restore/images/caution.svg" alt="Caution">
+</td>
+<td class="content">
+Do not manage or change backup files directly from your cloud provider environment. This may corrupt the files and will result in an unsupported configuration.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="viewing-the-volumes-that-are-being-backed-up">Viewing the volumes that are being backed up</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can view a list of all the volumes that are currently being backed up by Cloud Backup.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Click the <strong>Backup &amp; Restore</strong> service.</p>
+</li>
+<li>
+<p>Click the <strong>Kubernetes</strong> tab to view the list of persistent volumes for Kubernetes systems.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_dashboard.png" alt="A screenshot showing all the working environments and volumes that have backup files."></span></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If you are looking for specific volumes in certain working environments, you can refine the list by working environment and volume, or you can use the search filter.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="enabling-and-disabling-backups-of-volumes">Enabling and disabling backups of volumes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can stop backing up a volume if you do not need backup copies of that volume and you do not want to pay for the cost to store the backups. You can also add a new volume to the backup list if it is not currently being backed up.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the <strong>Kubernetes</strong> tab, select <strong>Backup Settings</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_settings_button_k8s.png" alt="A screenshot that shows the Backup Settings button which is available after you select a working environment."></span></p>
+</div>
+</li>
+<li>
+<p>From the <em>Backup Settings page</em>, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the Kubernetes cluster and select <strong>Manage Persistent Volumes</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_manage_volumes_k8s.png" alt="A screenshot that shows the Manage Persistent Volumes button from the Backup Settings page."></span></p>
+</div>
+</li>
+<li>
+<p>Select the checkbox for a volume, or volumes, that you want to change, and then click <strong>Activate</strong> or <strong>Deactivate</strong> depending on whether you want to start or stop backups for the volume.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_manage_volumes_page_k8s.png" alt="The Manage Volumes page where you can select or deselect volumes."></span></p>
+</div>
+</li>
+<li>
+<p>Click <strong>Save</strong> to commit your changes.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> When stopping a volume from being backed up you’ll continue to be charged by your cloud provider for object storage costs for the capacity that the backups use unless you <a href="#deleting-backups">delete the backups</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="editing-an-existing-backup-policy">Editing an existing backup policy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can change the attributes for a backup policy that is currently applied to volumes in a working environment. Changing the backup policy affects all existing volumes that are using the policy.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the <strong>Kubernetes</strong> tab, select <strong>Backup Settings</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_settings_button_k8s.png" alt="A screenshot that shows the Backup Settings button from the Volumes tab."></span></p>
+</div>
+</li>
+<li>
+<p>From the <em>Backup Settings</em> page, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the working environment where you want to change the settings, and select <strong>Manage Policies</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_modify_policy_k8s.png" alt="A screenshot that shows the Manage Policies option from the Backup Settings page."></span></p>
+</div>
+</li>
+<li>
+<p>From the <em>Manage Policies</em> page, click <strong>Edit Policy</strong> for the backup policy you want to change in that working environment.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_manage_policy_page_edit.png" alt="A screenshot that shows the Edit Policy button from the Manage Policies page."></span></p>
+</div>
+</li>
+<li>
+<p>From the <em>Edit Policy</em> page, change the schedule and backup retention and click <strong>Save</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_edit_policy.png" alt="A screenshot that shows the backup policy settings where you can modify the backup schedule and backup retention setting."></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setting-a-backup-policy-to-be-assigned-to-new-volumes">Setting a backup policy to be assigned to new volumes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you did not select the option to automatically assign a backup policy to newly created volumes when you first activated Cloud Backup on your Kubernetes cluster, you can choose this option in the <em>Backup Settings</em> page later. Having a backup policy assigned to newly created volumes ensures that all your data is protected.</p>
+</div>
+<div class="paragraph">
+<p>Note that the policy that you want to apply to the volumes must already exist. <a href="#Adding a new backup policy">See how to add a new backup policy for a working environment</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can also disable this setting so that newly created volumes do not get backed up automatically. In that case you&#8217;ll need to manually enable backups for any specific volumes that you do want to back up in the future.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the <strong>Kubernetes</strong> tab, select <strong>Backup Settings</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_settings_button_k8s.png" alt="A screenshot that shows the Backup Settings button which is available after you select a Kubernetes cluster."></span></p>
+</div>
+</li>
+<li>
+<p>From the <em>Backup Settings page</em>, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the Kubernetes cluster where the volumes exist, and select <strong>Auto Backup New Volumes</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_auto_backup_new_volumes_k8s.png" alt="A screenshot of selecting the Auto Backup New Volumes option from the Backup Settings page."></span></p>
+</div>
+</li>
+<li>
+<p>Select the checkbox "Automatically back up future persistent volumes&#8230;&#8203;", choose the backup policy that you want to apply to new volumes, and click <strong>Save</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_auto_backup_k8s.png" alt="A screenshot showing how to select a backup policy to be assigned to all future volumes on the Kubernetes cluster."></span></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Result</div>
+<p>Now this backup policy will be applied to any new volumes created in this Kubernetes cluster.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="viewing-the-list-of-backups-for-each-volume">Viewing the list of backups for each volume</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can view the list of all backup files that exist for each volume. This page displays details about the source volume, destination location, and backup details such as last backup taken, the current backup policy, backup file size, and more.</p>
+</div>
+<div class="paragraph">
+<p>This page also enables you perform the following tasks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Delete all backup files for the volume</p>
+</li>
+<li>
+<p>Delete individual backup files for the volume</p>
+</li>
+<li>
+<p>Download a backup report for the volume</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the <strong>Kubernetes</strong> tab, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the source volume and select <strong>Details &amp; Backup List</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_view_backups_button.png" alt="A screenshot that shows the Details &amp; Backup List button which is available for a single volume."></span></p>
+</div>
+<div class="paragraph">
+<p>The list of all backup files is displayed along with details about the source volume, destination location, and backup details.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_view_backups.png" alt="A screenshot that shows the List of all backup files for a single volume."></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deleting-backups">Deleting backups</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Backup enables you to delete a single backup file, delete all backups for a volume, or delete all backups of all volumes in a Kubernetes cluster. You might want to delete all backups if you no longer need the backups or if you deleted the source volume and want to remove all backups.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-backup-restore/images/caution.svg" alt="Caution">
+</td>
+<td class="content">
+If you plan to delete a working environment or cluster that has backups, you must delete the backups <strong>before</strong> deleting the system. Cloud Backup doesn’t automatically delete backups when you delete a system, and there is no current support in the UI to delete the backups after the system has been deleted. You&#8217;ll continue to be charged for object storage costs for any remaining backups.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="deleting-all-backup-files-for-a-working-environment">Deleting all backup files for a working environment</h3>
+<div class="paragraph">
+<p>Deleting all backups for a working environment does not disable future backups of volumes in this working environment. If you want to stop creating backups of all volumes in a working environment, you can deactivate backups <a href="#disabling-cloud-backup-for-a-working-environment">as described here</a>.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the <strong>Kubernetes</strong> tab, select <strong>Backup Settings</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_settings_button_k8s.png" alt="A screenshot that shows the Backup Settings button which is available after you select a working environment."></span></p>
+</div>
+</li>
+<li>
+<p>Click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the Kubernetes cluster where you want to delete all backups and select <strong>Delete All Backups</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_delete_all_backups_k8s.png" alt="A screenshot of selecting the Delete All Backups button to delete all backups for a working environment."></span></p>
+</div>
+</li>
+<li>
+<p>In the confirmation dialog box, enter the name of the working environment and click <strong>Delete</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-all-backup-files-for-a-volume">Deleting all backup files for a volume</h3>
+<div class="paragraph">
+<p>Deleting all backups for a volume also disables future backups for that volume.</p>
+</div>
+<div class="paragraph">
+<p>You can <a href="#enabling-and-disabling-backups-of-volumes">restart making backups for the volume</a> at any time from the Manage Backups page.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the <strong>Kubernetes</strong> tab, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the source volume and select <strong>Details &amp; Backup List</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_view_backups_button.png" alt="A screenshot that shows the Details &amp; Backup List button which is available for a single volume."></span></p>
+</div>
+<div class="paragraph">
+<p>The list of all backup files is displayed.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_view_backups.png" alt="A screenshot that shows the List of all backup files for a single volume."></span></p>
+</div>
+</li>
+<li>
+<p>Click <strong>Actions</strong> &gt; <strong>Delete all Backups</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_delete_we_backups.png" alt="A screenshot showing how to delete all backup files for a volume."></span></p>
+</div>
+</li>
+<li>
+<p>In the confirmation dialog box, enter the volume name and click <strong>Delete</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-single-backup-file-for-a-volume">Deleting a single backup file for a volume</h3>
+<div class="paragraph">
+<p>You can delete a single backup file. This feature is available only if the volume backup was created from a system with ONTAP 9.8 or greater.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the <strong>Kubernetes</strong> tab, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the source volume and select <strong>Details &amp; Backup List</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_view_backups_button.png" alt="A screenshot that shows the Details &amp; Backup List button which is available for a single volume."></span></p>
+</div>
+<div class="paragraph">
+<p>The list of all backup files is displayed.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_view_backups.png" alt="A screenshot that shows the List of all backup files for a single volume."></span></p>
+</div>
+</li>
+<li>
+<p>Click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the volume backup file you want to delete and click <strong>Delete</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_delete_one_backup.png" alt="A screenshot showing how to delete a single backup file."></span></p>
+</div>
+</li>
+<li>
+<p>In the confirmation dialog box, click <strong>Delete</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="disabling-cloud-backup-for-a-working-environment">Disabling Cloud Backup for a working environment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Disabling Cloud Backup for a working environment disables backups of each volume on the system, and it also disables the ability to restore a volume. Any existing backups will not be deleted. This does not unregister the backup service from this working environment - it basically allows you to pause all backup and restore activity for a period of time.</p>
+</div>
+<div class="paragraph">
+<p>Note that you&#8217;ll continue to be charged by your cloud provider for object storage costs for the capacity that your backups use unless you <a href="#deleting-all-backup-files-for-a-working-environment">delete the backups</a>.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the <strong>Kubernetes</strong> tab, select <strong>Backup Settings</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_settings_button_k8s.png" alt="A screenshot that shows the Backup Settings button which is available after you select a working environment."></span></p>
+</div>
+</li>
+<li>
+<p>From the <em>Backup Settings page</em>, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the working environment, or the Kubernetes cluster, where you want to disable backups and select <strong>Deactivate Backup</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_disable_backups_k8s.png" alt="A screenshot of the Deactivate Backup button for a working environment."></span></p>
+</div>
+</li>
+<li>
+<p>In the confirmation dialog box, click <strong>Deactivate</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-backup-restore/images/note.svg" alt="Note">
+</td>
+<td class="content">
+An <strong>Activate Backup</strong> button appears for that working environment while backup is disabled. You can click this button when you want to re-enable backup functionality for that working environment.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="unregistering-cloud-backup-for-a-working-environment">Unregistering Cloud Backup for a working environment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can unregister Cloud Backup for a working environment if you no longer want to use backup functionality and you want to stop being charged for backups in that working environment. Typically this feature is used when you&#8217;re planning to delete a Kubernetes cluster, and you want to cancel the backup service.</p>
+</div>
+<div class="paragraph">
+<p>You can also use this feature if you want to change the destination object store where your cluster backups are being stored. After you unregister Cloud Backup for the working environment, then you can enable Cloud Backup for that cluster using the new cloud provider information.</p>
+</div>
+<div class="paragraph">
+<p>Before you can unregister Cloud Backup, you must perform the following steps, in this order:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deactivate Cloud Backup for the working environment</p>
+</li>
+<li>
+<p>Delete all backups for that working environment</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The unregister option is not available until these two actions are complete.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the <strong>Kubernetes</strong> tab, select <strong>Backup Settings</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_settings_button_k8s.png" alt="A screenshot that shows the Backup Settings button which is available after you select a working environment."></span></p>
+</div>
+</li>
+<li>
+<p>From the <em>Backup Settings page</em>, click <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="More icon"></span> for the Kubernetes cluster where you want to unregister the backup service and select <strong>Unregister</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_backup_unregister.png" alt="A screenshot of the Unregister backup button for a working environment."></span></p>
+</div>
+</li>
+<li>
+<p>In the confirmation dialog box, click <strong>Unregister</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">Terms of Use</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">Privacy Policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Cookie Policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Cookie Settings</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="n-footer__bottom-right">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <span class="n-footer__fine-print">Have feedback for our website?</span>
+              <a target="_self" href="javascript:netapp_mailto()">Let us know</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://docs.netapp.com/us-en/announcements/">Announcements</a>
+            </li>
+          </ul>
+        </div>
+        <div class="n-footer__social-links">
+          <ul class="n-footer__social-link-list">
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com"
+                target="_blank" title="blog" alt="blog">
+                <span class="n-footer__social-link-text">blog</span>
+                <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                  <title>blog@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/cloud-manager-backup-restore/common/svg/sprite.svg#blog"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/"
+                target="_blank" title="community" alt="community">
+                <span class="n-footer__social-link-text">community</span>
+                <svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+                  <title>community@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/cloud-manager-backup-restore/common/svg/sprite.svg#comments"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp"
+                target="_blank" title="twitter" alt="twitter">
+                <span class="n-footer__social-link-text">twitter</span>
+                <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                  <title>twitter@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/cloud-manager-backup-restore/common/svg/sprite.svg#twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp"
+                target="_blank" title="facebook" alt="facebook">
+                <span class="n-footer__social-link-text">facebook</span>
+                <svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+                  <title>facebook@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/cloud-manager-backup-restore/common/svg/sprite.svg#facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-linkedin"
+                href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+                <span class="n-footer__social-link-text">linkedin</span>
+                <svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+                  <title>linkedin@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/cloud-manager-backup-restore/common/svg/sprite.svg#linkedin"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-youtube"
+                href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+                <span class="n-footer__social-link-text">youtube</span>
+                <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                  <title>youtube@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/cloud-manager-backup-restore/common/svg/sprite.svg#youtube"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-slideshare"
+                href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+                <span class="n-footer__social-link-text">slideshare</span>
+                <svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+                  <title>slideshare@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/us-en/cloud-manager-backup-restore/common/svg/sprite.svg#slideshare"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/us-en/cloud-manager-backup-restore/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/us-en/cloud-manager-backup-restore/js/prism.js'></script>
+      <script type="text/javascript" src='/us-en/cloud-manager-backup-restore/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/us-en/cloud-manager-backup-restore/js/www-ntap.js'></script>
+    <script src='/us-en/cloud-manager-backup-restore/js/tabbed-blocks.js'></script>
+    <script src='/us-en/cloud-manager-backup-restore/js/sidebar.js'></script>
+  </body></html>
