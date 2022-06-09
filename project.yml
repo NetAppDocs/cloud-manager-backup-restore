@@ -107,10 +107,8 @@ sidebar:
     - title: Reference
       entries:
         - title: Supported AWS archive storage tiers
-          flavor: aws
           url: /reference-aws-backup-tiers.html
         - title: Supported Azure archive access tiers
-          flavor: azure
           url: /reference-azure-backup-tiers.html
     - title: Knowledge and support
       entries:
