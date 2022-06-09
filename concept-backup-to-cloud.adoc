@@ -39,11 +39,17 @@ image:diagram_cloud_backup_general.png[A diagram showing how Cloud Backup commun
 
 Backup copies are stored in an object store that Cloud Manager creates in your cloud account. There’s one object store per cluster/working environment, and Cloud Manager names the object store as follows: "netapp-backup-clusteruuid". Be sure not to delete this object store.
 
+ifdef::aws[]
 * In AWS, Cloud Manager enables the https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html[Amazon S3 Block Public Access feature^] on the S3 bucket.
+endif::aws[]
 
+ifdef::azure[]
 * In Azure, Cloud Manager uses a new or existing resource group with a storage account for the Blob container. Cloud Manager https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent[blocks public access to your blob data] by default.
+endif::azure[]
 
+ifdef::gcp[]
 * In GCP, Cloud Manager uses a new or existing project with a storage account for the Google Cloud Storage bucket.
+endif::gcp[]
 
 * In StorageGRID, Cloud Manager uses an existing storage account for the object store bucket.
 

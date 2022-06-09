@@ -1,0 +1,179 @@
+---
+sidebar: sidebar
+permalink: api-backup-restore.html
+keywords: api, apis, rest, restful, authorization, getting started, body, header, token, reference, expired token, expires, expired, token expired, list apis
+summary: The Cloud Backup capabilities that are available through the web UI are also available through RESTful APIs.
+---
+
+= Cloud Backup APIs
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+The Cloud Backup capabilities that are available through the web UI are also available through the RESTful API.
+
+There are eight categories of endpoints defined within the Cloud Backup service:
+
+*	backup
+*	catalog
+*	cloud
+*	job
+*	license
+*	restore
+*	single file-level restore (SFR)
+*	working environment
+
+== Getting started
+
+To get started with the Cloud Backup APIs, you'll need to obtain a user token, your Cloud Central account ID, and the Cloud Connector ID.
+
+When making API calls, you’ll add the user token in the Authorization header, and the Cloud Connector ID in the x-agent-id header. You should use the Cloud Central account ID in the APIs.
+
+.Steps
+
+. Obtain a user token from NetApp Cloud Central.
++
+[source,http]
+POST https://netapp-cloud-account.auth0.com/oauth/token
+Header: Content-Type: application/json
+Body:
+{
+              "username": "<user_email>",
+              "scope": "profile",
+              "audience": "https://api.cloud.netapp.com",
+              "client_id": "<Cloud_Connector_ID>",
+              "grant_type": "password",
+              "password": "<user_password>"
+}
+
+. Obtain your NetApp Cloud Central account ID.
++
+[source,http]
+GET 'https://cloudmanager.cloud.netapp.com/tenancy/account' -H 'authority: cloudmanager.cloud.netapp.com'
+Header:
+-H 'accept: application/json'
+-H 'accept-language: en-GB,en;q=0.9'
+-H 'authorization: Bearer eyJhbGciOiJSUzI1NiIsInR………
+
++
+This API will return a response like the following. You can retrieve account ID by parsing the output from *[0].[ accountPublicId]*.
++
+[source,text]
+[{"accountPublicId":"account-i6vJXvZW","accountName":"rashidn","isSaas":true,"isGov":false,"isPrivatePreviewEnabled":false,"is3rdPartyServicesEnabled":false,"accountSerial":"96064469711530003565","userRole":"Role-1"}………
+
+. Obtain the x-agent-id which contains the Cloud Manager Connector ID.
++
+[source,http]
+GET curl 'https://api.services.cloud.netapp.com/occm/list-occms/account-OOnAR4ZS?excludeStandalone=true&source=saas' \
+Header:
+  -H 'authority: api.services.cloud.netapp.com' \
+  -H 'accept: application/json' \
+  -H 'accept-language: en-GB,en;q=0.9' \
+  -H 'authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5…………
+
++
+This API will return a response like the following. You can retrieve the agent id by parsing the output from *occm.[0].[agent].[agentId]*.
++
+[source,text]
+{"occms":[{"account":"account-OOnAR4ZS","accountName":"cbs","occm":"imEdsEW4HyYTFbt8ZcNKTKDF05jMIe6Z","agentId":"imEdsEW4HyYTFbt8ZcNKTKDF05jMIe6Z","status":"ready","occmName":"cbsgcpdevcntsg-asia","primaryCallbackUri":"http://34.93.197.21","manualOverrideUris":[],"automaticCallbackUris":["http://34.93.197.21","http://34.93.197.21/occmui","https://34.93.197.21","https://34.93.197.21/occmui","http://10.138.0.16","http://10.138.0.16/occmui","https://10.138.0.16","https://10.138.0.16/occmui","http://localhost","http://localhost/occmui","http://localhost:1337","http://localhost:1337/occmui","https://localhost","https://localhost/occmui","https://localhost:1337","https://localhost:1337/occmui"],"createDate":"1652120369286","agent":{"useDockerInfra":true,"network":"default","name":"cbsgcpdevcntsg-asia","agentId":"imEdsEW4HyYTFbt8ZcNKTKDF05jMIe6Zclients","provider":"gcp","systemId":"a3aa3578-bfee-4d16-9e10-
+
+== Example using the APIs
+
+The following example shows an API call to activate backup on Working Environment with a new policy that has daily, hourly, and weekly labels set and archive after days set as 180 days, in East-US-2 region in Azure cloud. Please note this enables backup only on Working Environment but no volumes are backed up. If you choose “"auto-backup-enabled": true then any volumes already existing in the system would be backed up, plus future volumes added.
+
+.API Request
+
+You'll see that we use the Cloud Central account ID "account-DpTFcxN3", Cloud Manager Connector ID "iZwFFeVCZjWnzGlw8RgD0QQNANZvpP7Iclients", and user token "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5rSXlPVFUzUWpZek1E…y6nyhBjwkeMwHc4ValobjUmju2x0xUH48g" in this command.
+
+[source,http]
+curl --location --request POST 'https://cloudmanager.cloud.netapp.com/account/account-DpTFcxN3/providers/cloudmanager_cbs/api/v3/backup/working-environment/VsaWorkingEnvironment-99hPYEgk' \
+--header 'x-agent-id: iZwFFeVCZjWnzGlw8RgD0QQNANZvpP7Iclients' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5rSXlPVFUzUWpZek1E…y6nyhBjwkeMwHc4ValobjUmju2x0xUH48g' \
+--data-raw '{
+    "provider":"AZURE",
+    "backup-policy": {
+      "archive-after-days": 180,
+      "rule": [
+        {
+          "label": "hourly",
+          "retention": "2"
+        },
+        {
+          "label": "daily",
+          "retention": "30"
+        },
+        {
+          "label": "weekly",
+          "retention": "52"
+        }
+      ]
+    },
+    "ip-space": "Default",
+    "region": "eastus2",
+    "azure": {
+      "resource-group": "rn-test-backup-rg",
+      "subscription": "3beb4dd0-25d4-464f-9bb0-303d7cf5c0c2"
+    }
+  }'
+
+.Response is a job ID that you can then monitor.
+
+[source,text]
+{
+    "job-id": "1b34b6f6-8f43-40fb-9a52-485b0dfe893a"
+}
+
+.Monitor the response.
+
+[source,http]
+curl --location --request GET 'https://cloudmanager.cloud.netapp.com/account/account-DpTFcxN3/providers/cloudmanager_cbs/api/v1/job/1b34b6f6-8f43-40fb-9a52-485b0dfe893a' \
+--header 'x-agent-id: iZwFFeVCZjWnzGlw8RgD0QQNANZvpP7Iclients' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5rSXlPVFUzUWpZek1E…hE9ss2NubK6wZRHUdSaORI7JvcOorUhJ8srqdiUiW6MvuGIFAQIh668of2M3dLbhVDBe8BBMtsa939UGnJx7Qz6Eg'
+
+.Response.
+
+[source,text]
+{
+    "job": [
+        {
+            "id": "1b34b6f6-8f43-40fb-9a52-485b0dfe893a",
+            "type": "backup-working-environment",
+            "status": "PENDING",
+            "error": "",
+            "time": 1651852160000
+        }
+    ]
+}
+
+.Monitor until "status" is "COMPLETED".
+
+[source,text]
+{
+    "job": [
+        {
+            "id": "1b34b6f6-8f43-40fb-9a52-485b0dfe893a",
+            "type": "backup-working-environment",
+            "status": "COMPLETED",
+            "error": "",
+            "time": 1651852160000
+        }
+    ]
+}
+
+.What should I do when the token expires?
+****
+The user token from NetApp Cloud Central has an expiration date. To refresh the token, you need to call the API from step 1 again.
+
+The API response includes an "expires_in" field that states when the token expires.
+****
+
+== API reference
+
+Documentation for each Cloud Backup API is available from https://docs.netapp.com/us-en/cloud-manager-automation/cbs/overview.html.

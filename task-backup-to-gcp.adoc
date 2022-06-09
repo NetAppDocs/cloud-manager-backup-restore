@@ -66,7 +66,7 @@ The following image shows each component and the connections that you need to pr
 image:diagram_cloud_backup_cvo_google.png[A diagram showing how Cloud Backup communicates with the volumes on the source system and the destination storage where the backup files are located.]
 
 Supported ONTAP versions::
-Cloud Volumes ONTAP 9.7P5 and later.
+Minimum of ONTAP 9.7P5; ONTAP 9.8P11 and later is recommended.
 
 Supported GCP regions::
 Cloud Backup is supported in all GCP regions https://cloud.netapp.com/cloud-volumes-global-regions[where Cloud Volumes ONTAP is supported^].

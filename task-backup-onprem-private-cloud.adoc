@@ -75,8 +75,8 @@ The following image shows each component when backing up an on-prem ONTAP system
 image:diagram_cloud_backup_onprem_storagegrid.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located.]
 //
 // When the Connector and on-premises ONTAP system are installed in an on-prem location without internet access, the StorageGRID system must be located in the same on-prem data center.
-
-Note that the Cloud Restore instance is not shown in this diagram because single-file restore is not currently supported when using StorageGRID.
+//
+// Note that the Cloud Restore instance is not shown in this diagram because single-file restore is not currently supported when using StorageGRID.
 
 === Preparing your ONTAP clusters
 
@@ -85,7 +85,7 @@ You need to discover your on-premises ONTAP clusters in Cloud Manager before you
 https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html[Learn how to discover a cluster^].
 
 ONTAP requirements::
-* ONTAP 9.7P5 and later.
+* Minimum of ONTAP 9.7P5; ONTAP 9.8P11 and later is recommended.
 * A SnapMirror license (included as part of the Premium Bundle or Data Protection Bundle).
 +
 *Note:* The "Hybrid Cloud Bundle" is not required when using Cloud Backup.

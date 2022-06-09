@@ -80,15 +80,13 @@ There are two connection methods you can use when configuring backups from on-pr
 * Public connection - Directly connect the ONTAP system to Azure Blob storage using a public Azure endpoint.
 * Private connection - Use a VPN or ExpressRoute and route traffic through a VNet Private Endpoint that uses a private IP address.
 
-The following image shows the public connection method and the connections that you need to prepare between the components:
+The following image shows the *public connection* method and the connections that you need to prepare between the components:
 
-image:diagram_cloud_backup_onprem_azure.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located.]
+image:diagram_cloud_backup_onprem_azure.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the source systems and the destination storage where the backup files are located.]
 
-The following image shows the private connection method and the connections that you need to prepare between the components:
+The following image shows the *private connection* method and the connections that you need to prepare between the components:
 
-image:diagram_cloud_backup_onprem_azure_vnet.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located.]
-
-Note that when the Cloud Restore instance is deployed in the cloud, it is located in the same subnet as the Connector.
+image:diagram_cloud_backup_onprem_azure_vnet.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the source systems and the destination storage where the backup files are located.]
 
 === Preparing your ONTAP clusters
 
@@ -97,7 +95,7 @@ You need to discover your on-premises ONTAP clusters in Cloud Manager before you
 https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html[Learn how to discover a cluster^].
 
 ONTAP requirements::
-* ONTAP 9.7P5 and later.
+* Minimum of ONTAP 9.7P5; ONTAP 9.8P11 and later is recommended.
 * A SnapMirror license (included as part of the Premium Bundle or Data Protection Bundle).
 +
 *Note:* The "Hybrid Cloud Bundle" is not required when using Cloud Backup.
@@ -161,33 +159,7 @@ You can create backups from on-premises systems to Azure Blob in all regions htt
 
 === Preparing Azure Blob storage for backups
 
-. If your virtual or physical network uses a proxy server for internet access, ensure that the Cloud Restore virtual machine has outbound internet access to contact the following endpoints.
-+
-[cols="43,57",options="header"]
-|===
-| Endpoints
-| Purpose
-
-|
-\http://olcentgbl.trafficmanager.net
-\https://olcentgbl.trafficmanager.net
-
-| Provides CentOS packages for the Cloud Restore virtual machine.
-
-|
-\https://download.docker.com/linux/centos/docker-ce.repo
-
-| Provides the Docker Engine packages.
-
-|
-\http://cloudmanagerinfraprod.azurecr.io
-\https://cloudmanagerinfraprod.azurecr.io
-
-| Cloud Restore virtual machine image repository.
-
-|===
-
-. You use choose your own custom-managed keys for data encryption in the activation wizard instead of using the default Microsoft-managed encryption keys. In this case you will need to have the Azure Subscription, Key Vault name, and the Key. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview[See how to use your own keys^].
+. You can use your own custom-managed keys for data encryption in the activation wizard instead of using the default Microsoft-managed encryption keys. In this case you will need to have the Azure Subscription, Key Vault name, and the Key. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview[See how to use your own keys^].
 
 . If you want to have a more secure connection over the public internet from your on-prem data center to the VNet, there is an option to configure an Azure Private Endpoint in the activation wizard. In this case you will need to know the VNet and Subnet for this connection. https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview[See details about using a Private Endpoint^].
 

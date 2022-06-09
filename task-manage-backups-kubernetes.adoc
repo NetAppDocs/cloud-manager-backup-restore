@@ -125,31 +125,31 @@ image:screenshot_backup_edit_policy.png[A screenshot that shows the backup polic
 //
 //. Click *Save* to commit your changes.
 //
-//== Setting a backup policy to be assigned to new volumes
-//
-//If you did not select the option to automatically assign a backup policy to newly created volumes when you first activated Cloud Backup on your Kubernetes cluster, you can choose this option in the _Backup Settings_ page later. Having a backup policy assigned to newly created volumes ensures that all your data is protected.
-//
-//Note that the policy that you want to apply to the volumes must already exist. <<Adding a new backup policy,See how to add a new backup policy for a working environment>>.
-//
-//You can also disable this setting so that newly created volumes do not get backed up automatically. In that case you'll need to manually enable backups for any specific volumes that you do want to back up in the future.
-//
-//.Steps
-//
-//. From the *Kubernetes* tab, select *Backup Settings*.
-//+
-//image:screenshot_backup_settings_button_k8s.png[A screenshot that shows the Backup Settings button which is available after you select a Kubernetes cluster.]
-//
-//. From the _Backup Settings page_, click image:screenshot_horizontal_more_button.gif[More icon] for the Kubernetes cluster where the volumes exist, and select *Auto Backup New Volumes*.
-//+
-//image:screenshot_auto_backup_new_volumes_k8s.png[A screenshot of selecting the Auto Backup New Volumes option from the Backup Settings page.]
-//
-//. Select the checkbox "Automatically back up future persistent volumes...", choose the backup policy that you want to apply to new volumes, and click *Save*.
-//+
-//image:screenshot_auto_backup_k8s.png[A screenshot showing how to select a backup policy to be assigned to all future volumes on the Kubernetes cluster.]
-//
-//.Result
-//
-//Now this backup policy will be applied to any new volumes created in this Kubernetes cluster.
+== Setting a backup policy to be assigned to new volumes
+
+If you did not select the option to automatically assign a backup policy to newly created volumes when you first activated Cloud Backup on your Kubernetes cluster, you can choose this option in the _Backup Settings_ page later. Having a backup policy assigned to newly created volumes ensures that all your data is protected.
+
+Note that the policy that you want to apply to the volumes must already exist. <<Adding a new backup policy,See how to add a new backup policy for a working environment>>.
+
+You can also disable this setting so that newly created volumes do not get backed up automatically. In that case you'll need to manually enable backups for any specific volumes that you do want to back up in the future.
+
+.Steps
+
+. From the *Kubernetes* tab, select *Backup Settings*.
++
+image:screenshot_backup_settings_button_k8s.png[A screenshot that shows the Backup Settings button which is available after you select a Kubernetes cluster.]
+
+. From the _Backup Settings page_, click image:screenshot_horizontal_more_button.gif[More icon] for the Kubernetes cluster where the volumes exist, and select *Auto Backup New Volumes*.
++
+image:screenshot_auto_backup_new_volumes_k8s.png[A screenshot of selecting the Auto Backup New Volumes option from the Backup Settings page.]
+
+. Select the checkbox "Automatically back up future persistent volumes...", choose the backup policy that you want to apply to new volumes, and click *Save*.
++
+image:screenshot_auto_backup_k8s.png[A screenshot showing how to select a backup policy to be assigned to all future volumes on the Kubernetes cluster.]
+
+.Result
+
+Now this backup policy will be applied to any new volumes created in this Kubernetes cluster.
 
 == Viewing the list of backups for each volume
 

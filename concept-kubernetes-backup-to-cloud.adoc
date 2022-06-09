@@ -42,12 +42,18 @@ Cloud Backup enables you to back up Kubernetes volumes from the following workin
 | Source Working Environment
 | Backup File Destination
 
+ifdef::aws[]
 | Kubernetes cluster in AWS
 | Amazon S3
+endif::aws[]
+ifdef::azure[]
 | Kubernetes cluster in Azure
 | Azure Blob
+endif::azure[]
+ifdef::gcp[]
 | Kubernetes cluster in Google
 | Google Cloud Storage
+endif::gcp[]
 
 |===
 
@@ -58,9 +64,15 @@ You can restore a volume from a Kubernetes backup file to the following working 
 
 | Backup File Location
 | Destination Working Environment
+ifdef::aws[]
 | Amazon S3 | Kubernetes cluster in AWS
+endif::aws[]
+ifdef::azure[]
 | Azure Blob | Kubernetes cluster in Azure
+endif::azure[]
+ifdef::gcp[]
 | Google Cloud Storage | Kubernetes cluster in Google
+endif::gcp[]
 
 |===
 
@@ -126,11 +138,15 @@ image:diagram_cloud_backup_general_k8s.png[A diagram showing how Cloud Backup co
 
 === Supported storage classes or access tiers
 
+ifdef::aws[]
 * In AWS, backups start in the _Standard_ storage class and transition to the _Standard-Infrequent Access_ storage class after 30 days.
-
+endif::aws[]
+ifdef::azure[]
 * In Azure, backups are associated with the _Cool_ access tier.
-
+endif::azure[]
+ifdef::gcp[]
 * In GCP, backups are associated with the _Standard_ storage class by default.
+endif::gcp[]
 
 === Customizable backup schedule and retention settings per cluster
 
