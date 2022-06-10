@@ -27,9 +27,9 @@ You can view a list of all the volumes that are currently being backed up by Clo
 
 . Click the *Kubernetes* tab to view the list of persistent volumes for Kubernetes systems.
 +
-image:screenshot_backup_dashboard.png[A screenshot showing all the working environments and volumes that have backup files.]
+image:screenshot_backup_dashboard_k8s.png[A screenshot showing all the working environments and volumes that have backup files.]
 
-If you are looking for specific volumes in certain working environments, you can refine the list by working environment and volume, or you can use the search filter.
+If you are looking for specific volumes in certain clusters, you can refine the list by cluster and volume, or you can use the search filter.
 
 == Enabling and disabling backups of volumes
 
@@ -165,11 +165,11 @@ This page also enables you perform the following tasks:
 
 . From the *Kubernetes* tab, click image:screenshot_horizontal_more_button.gif[More icon] for the source volume and select *Details & Backup List*.
 +
-image:screenshot_backup_view_backups_button.png[A screenshot that shows the Details & Backup List button which is available for a single volume.]
+image:screenshot_backup_view_k8s_backups_button.png[A screenshot that shows the Details & Backup List button which is available for a single volume.]
 +
 The list of all backup files is displayed along with details about the source volume, destination location, and backup details.
 +
-image:screenshot_backup_view_backups.png[A screenshot that shows the List of all backup files for a single volume.]
+image:screenshot_backup_view_k8s_backups.png[A screenshot that shows the List of all backup files for a single volume.]
 
 == Deleting backups
 
@@ -203,7 +203,7 @@ You can <<Enabling and disabling backups of volumes,restart making backups for t
 
 . From the *Kubernetes* tab, click image:screenshot_horizontal_more_button.gif[More icon] for the source volume and select *Details & Backup List*.
 +
-image:screenshot_backup_view_backups_button.png[A screenshot that shows the Details & Backup List button which is available for a single volume.]
+image:screenshot_backup_view_k8s_backups_button.png[A screenshot that shows the Details & Backup List button which is available for a single volume.]
 +
 The list of all backup files is displayed.
 +
@@ -223,7 +223,7 @@ You can delete a single backup file. This feature is available only if the volum
 
 . From the *Kubernetes* tab, click image:screenshot_horizontal_more_button.gif[More icon] for the source volume and select *Details & Backup List*.
 +
-image:screenshot_backup_view_backups_button.png[A screenshot that shows the Details & Backup List button which is available for a single volume.]
+image:screenshot_backup_view_k8s_backups_button.png[A screenshot that shows the Details & Backup List button which is available for a single volume.]
 +
 The list of all backup files is displayed.
 +
