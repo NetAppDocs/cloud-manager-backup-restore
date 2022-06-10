@@ -24,6 +24,7 @@ Backup & Restore can be used to:
 * Back up and Restore ONTAP volumes from Cloud Volumes ONTAP and on-premises ONTAP systems. link:concept-ontap-backup-to-cloud.html[See detailed features here].
 * Back up and Restore Kubernetes persistent volumes. link:concept-kubernetes-backup-to-cloud.html[See detailed features here].
 * Back up the application consistent Snapshots from on-premises ONTAP to cloud using Cloud Backup for Applications. link:concept-protect-app-data-to-cloud.html[See detailed features here].
+* Back up datastores to the cloud and restore virtual machines back to the on-premises vCenter using Cloud Backup for VMware. link:concept-protect-vm-data.html[See detailed features here].
 
 == How Cloud Backup works
 
