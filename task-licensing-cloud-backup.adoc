@@ -90,7 +90,7 @@ You use the Digital Wallet page in Cloud Manager to manage BYOL licenses. You ca
 
 After you've purchased your Cloud Backup license, you activate the license in Cloud Manager either by entering the Cloud Backup serial number and NSS account, or by uploading the NLF license file. The steps below show how to get the NLF license file if you plan to use that method.
 //
-// If you're running Cloud Backup in an on-premises site that doesn’t have internet access, meaning that you’ve deployed the Cloud Manager Connector on a host in the offline on-premises site, you’ll need to obtain the license file from an internet-connected system. Activating the license using the serial number and NSS account is not available for offline (dark site) installations.
+//If you're running Cloud Backup in an on-premises site that doesn’t have internet access, meaning that you’ve deployed the Cloud Manager Connector on a host in the offline on-premises site, you’ll need to obtain the license file from an internet-connected system. Activating the license using the serial number and NSS account is not available for offline (dark site) installations.
 
 .Steps
 
@@ -123,7 +123,7 @@ After you purchase a Cloud Backup license for your NetApp account, you need to a
 * If you have the backup license serial number and know your NSS account, select the *Enter Serial Number* option and enter that information.
 +
 If your NetApp Support Site account isn't available from the drop-down list, https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-adding-nss-accounts.html[add the NSS account to Cloud Manager^].
-// * If you have the backup license file (required when installed in a dark site), select the *Upload License File* option and follow the prompts to attach the file.
+//* If you have the backup license file (required when installed in a dark site), select the *Upload License File* option and follow the prompts to attach the file.
 * If you have the backup license file, select the *Upload License File* option and follow the prompts to attach the file.
 +
 image:screenshot_services_license_add2.png[A screenshot that shows the page to add the Cloud Backup BYOL license.]

@@ -75,8 +75,6 @@ The following image shows each component when backing up an on-prem ONTAP system
 image:diagram_cloud_backup_onprem_storagegrid.png[A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located.]
 //
 // When the Connector and on-premises ONTAP system are installed in an on-prem location without internet access, the StorageGRID system must be located in the same on-prem data center.
-//
-// Note that the Cloud Restore instance is not shown in this diagram because single-file restore is not currently supported when using StorageGRID.
 
 === Preparing your ONTAP clusters
 

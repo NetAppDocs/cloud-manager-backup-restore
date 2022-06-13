@@ -32,7 +32,7 @@ A separate Cloud Restore instance/virtual machine used to be required for file-l
 * Faster file-level restore operations
 * Support for Browse & Restore operations for files from the cloud when the Connector is installed on your premises
 
-Note that the Cloud Restore instance/VM will be removed automatically if you were previously using it.
+Note that the Cloud Restore instance/VM will be removed automatically if you were previously using it. A Cloud Backup process will run once a day to delete all old Cloud Restore instances. This change is completely transparent -- there is no effect on your data, and you won't notice any changes to your backup or restore jobs.
 
 === Browse & Restore support for files from Google Cloud and StorageGRID storage
 
