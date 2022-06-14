@@ -105,10 +105,10 @@ endif::gcp[]
 |===
 
 Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
-//
-// === Support for sites with no internet connectivity
-//
-// Cloud Backup can be used in a site with no internet connectivity (also known as an "offline" or "dark" site) to back up volume data from local on-premises ONTAP systems to local NetApp StorageGRID systems. In this case, you'll need to deploy the Cloud Manager Connector (minimum version 3.9.19) in the dark site. See link:task-backup-onprem-private-cloud.html[Backing up on-premises ONTAP data to StorageGRID] for details.
+
+=== Support for sites with no internet connectivity
+
+Cloud Backup can be used in a site with no internet connectivity (also known as an "offline" or "dark" site) to back up volume data from local on-premises ONTAP systems to local NetApp StorageGRID systems. In this case, you'll need to deploy the Cloud Manager Connector (minimum version 3.9.19) in the dark site. See link:task-backup-onprem-private-cloud.html[Backing up on-premises ONTAP data to StorageGRID] for details.
 
 == Cost
 
@@ -321,5 +321,5 @@ These limitations apply to both the Search & Restore and the Browse & Restore me
 * File level restore is not supported when using the same account with different Cloud Managers in different subnets.
 
 * You can’t restore individual files if the backup file resides in archival storage.
-//
-// * File level restore is not supported when the Connector is installed on a site without internet access (dark site).
+
+* File level restore using Search & Restore is not supported when the Connector is installed on a site without internet access (dark site).
