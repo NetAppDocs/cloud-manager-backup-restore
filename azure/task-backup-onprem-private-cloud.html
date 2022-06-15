@@ -848,7 +848,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-26 17:42:18 +0000">05/26/2022</time>
+    <time datetime="2022-06-14 19:23:38 +0000">06/14/2022</time>
     
   
 
@@ -906,6 +906,9 @@
 <div class="ulist">
 <ul>
 <li>
+<p>The Connector can be installed in a site with or without internet access.</p>
+</li>
+<li>
 <p>Networking for the Connector enables an outbound HTTPS connection to the ONTAP cluster and to StorageGRID.</p>
 </li>
 </ul>
@@ -960,6 +963,9 @@
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="./media/diagram_cloud_backup_onprem_storagegrid.png" alt="A diagram showing how Cloud Backup communicates with the volumes on the source systems and the destination storage where the backup files are located."></span></p>
+</div>
+<div class="paragraph">
+<p>When the Connector and on-premises ONTAP system are installed in an on-prem location without internet access, the StorageGRID system must be located in the same on-prem data center.</p>
 </div>
 <div class="sect2">
 <h3 id="preparing-your-ontap-clusters">Preparing your ONTAP clusters</h3>
@@ -1016,7 +1022,7 @@
 </div>
 </li>
 <li>
-<p>The nodes' intercluster LIFs are able to access the object store.</p>
+<p>The nodes' intercluster LIFs are able to access the object store (not required when the Connector is installed in a "dark" site).</p>
 </li>
 <li>
 <p>DNS servers have been configured for the storage VM where the volumes are located. See how to <a href="https://docs.netapp.com/us-en/ontap/networking/configure_dns_services_auto.html" target="_blank" rel="noopener">configure DNS services for the SVM</a>.</p>
@@ -1071,7 +1077,7 @@
 <div class="sect2">
 <h3 id="creating-or-switching-connectors">Creating or switching Connectors</h3>
 <div class="paragraph">
-<p>When backing up data to StorageGRID, a Connector must be available on your premises. You&#8217;ll either need to install a new Connector or make sure that the currently selected Connector resides on-prem.</p>
+<p>When backing up data to StorageGRID, a Connector must be available on your premises. You&#8217;ll either need to install a new Connector or make sure that the currently selected Connector resides on-prem. The Connector can be installed in a site with or without internet access.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1082,9 +1088,24 @@
 <p><a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-installing-linux.html" target="_blank" rel="noopener">Installing the Connector on a Linux host with internet access</a></p>
 </li>
 <li>
+<p><a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-install-connector-onprem-no-internet.html" target="_blank" rel="noopener">Installing the Connector on a Linux host without internet access</a></p>
+</li>
+<li>
 <p><a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html" target="_blank" rel="noopener">Switching between Connectors</a></p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-backup-restore/images/note.svg" alt="Note">
+</td>
+<td class="content">
+Cloud Backup functionality is built into the Cloud Manager Connector. When installed in a site with no internet connectivity, you&#8217;ll need to update the Connector software periodically to get access to new features. Check the <a href="whats-new.html">Cloud Backup What&#8217;s New</a> to see the new features in each Cloud Backup release, and then you can follow the steps to <a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html#upgrading-the-connector-on-prem-without-internet-access" target="_blank" rel="noopener">upgrade the Connector software</a> when you want to use new features.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -1106,7 +1127,7 @@
 <p>An HTTPS connection over port 443 to your ONTAP cluster management LIF</p>
 </li>
 <li>
-<p>An outbound internet connection over port 443 to Cloud Backup</p>
+<p>An outbound internet connection over port 443 to Cloud Backup (not required when the Connector is installed in a "dark" site)</p>
 </li>
 </ul>
 </div>
@@ -1163,7 +1184,7 @@ PAYGO licensing is not supported when backing up files to StorageGRID.
 <p>The Access Key and the Secret Key used to access the bucket to store backups.</p>
 </li>
 <li>
-<p>The IPspace in the ONTAP cluster where the volumes you want to back up reside. The intercluster LIFs for this IPspace must have outbound internet access.</p>
+<p>The IPspace in the ONTAP cluster where the volumes you want to back up reside. The intercluster LIFs for this IPspace must have outbound internet access (not required when the Connector is installed in a "dark" site).</p>
 <div class="paragraph">
 <p>Selecting the correct IPspace ensures that Cloud Backup can set up a connection from ONTAP to your StorageGRID object storage.</p>
 </div>
@@ -1217,7 +1238,7 @@ PAYGO licensing is not supported when backing up files to StorageGRID.
 <div class="paragraph">
 <div class="title">What&#8217;s next?</div>
 <p>You can <a href="task-manage-backups-ontap.html" target="_blank" rel="noopener">start and stop backups for volumes or change the backup schedule</a>.<br>
-You can also <a href="task-restore-backups-ontap.html" target="_blank" rel="noopener">restore entire volumes from a backup file</a> to a new volume on an on-premises ONTAP system.</p>
+You can also <a href="task-restore-backups-ontap.html" target="_blank" rel="noopener">restore entire volumes or individual files from a backup file</a> to an on-premises ONTAP system.</p>
 </div>
 </div>
 </div>

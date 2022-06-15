@@ -848,7 +848,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-06-01 15:08:48 +0000">06/01/2022</time>
+    <time datetime="2022-06-14 19:23:38 +0000">06/14/2022</time>
     
   
 
@@ -970,6 +970,9 @@
 <div class="paragraph">
 <p>After you&#8217;ve purchased your Cloud Backup license, you activate the license in Cloud Manager either by entering the Cloud Backup serial number and NSS account, or by uploading the NLF license file. The steps below show how to get the NLF license file if you plan to use that method.</p>
 </div>
+<div class="paragraph">
+<p>If you&#8217;re running Cloud Backup in an on-premises site that doesn’t have internet access, meaning that you’ve deployed the Cloud Manager Connector on a host in the offline on-premises site, you’ll need to obtain the license file from an internet-connected system. Activating the license using the serial number and NSS account is not available for offline (dark site) installations.</p>
+</div>
 <div class="olist arabic">
 <div class="title">Steps</div>
 <ol class="arabic">
@@ -1022,7 +1025,7 @@
 </div>
 </li>
 <li>
-<p>If you have the backup license file, select the <strong>Upload License File</strong> option and follow the prompts to attach the file.</p>
+<p>If you have the backup license file (required when installed in a dark site), select the <strong>Upload License File</strong> option and follow the prompts to attach the file.</p>
 <div class="paragraph">
 <p><span class="image"><img src="./media/screenshot_services_license_add2.png" alt="A screenshot that shows the page to add the Cloud Backup BYOL license."></span></p>
 </div>
@@ -1058,7 +1061,7 @@
 </div>
 </li>
 <li>
-<p>If Cloud Manager can&#8217;t automatically update the license, then you’ll need to manually upload the license file.</p>
+<p>If Cloud Manager can&#8217;t automatically update the license (for example, when installed in a dark site), then you’ll need to manually upload the license file.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -1115,7 +1118,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>Once you renew your BYOL subscription, Cloud Manager automatically updates the license. If Cloud Manager can&#8217;t access the license file over the secure internet connection, you can obtain the file yourself and manually upload it to Cloud Manager. For instructions, see <a href="task-licensing-cloud-backup.html#update-a-cloud-backup-byol-license">how to update a Cloud Backup license</a>.</p>
+<p>Once you renew your BYOL subscription, Cloud Manager automatically updates the license. If Cloud Manager can&#8217;t access the license file over the secure internet connection (for example, when installed in a dark site), you can obtain the file yourself and manually upload it to Cloud Manager. For instructions, see <a href="task-licensing-cloud-backup.html#update-a-cloud-backup-byol-license">how to update a Cloud Backup license</a>.</p>
 </div>
 <div class="paragraph">
 <p>Systems that were shifted over to a PAYGO license are returned to the BYOL license automatically. And systems that were running without a license will stop seeing the warnings.</p>
