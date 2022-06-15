@@ -16,6 +16,15 @@ summary: Learn what's new in Cloud Backup.
 Learn what's new in Cloud Backup.
 
 // tag::whats-new[]
+== 14 June 2022
+
+=== Support has been added to back up on-premises ONTAP cluster data in sites without internet access
+
+If your on-prem ONTAP cluster resides in a site with no internet access, also known as a dark site or offline site, now you can use Cloud Backup to back up volume data to a NetApp StorageGRID system that resides in the same site. This functionality requires that the Cloud Manager Connector (version 3.9.19 or greater) is also deployed in the offline site.
+
+https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-install-connector-onprem-no-internet.html[See how to install the Connector in your offline site].
+https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-private-cloud.html[See how to back up ONTAP data to StorageGRID in your offline site].
+
 == 8 June 2022
 
 === Cloud Backup for Virtual Machines 1.1.0 is now GA
@@ -32,7 +41,7 @@ A separate Cloud Restore instance/virtual machine used to be required for file-l
 * Faster file-level restore operations
 * Support for Browse & Restore operations for files from the cloud when the Connector is installed on your premises
 
-Note that the Cloud Restore instance/VM will be removed automatically if you were previously using it.
+Note that the Cloud Restore instance/VM will be removed automatically if you were previously using it. A Cloud Backup process will run once a day to delete all old Cloud Restore instances. This change is completely transparent -- there is no effect on your data, and you won't notice any changes to your backup or restore jobs.
 
 === Browse & Restore support for files from Google Cloud and StorageGRID storage
 
@@ -49,12 +58,6 @@ If you added new persistent volumes to your Kubernetes clusters after Cloud Back
 === Cloud Backup APIs are now available for managing backup and restore operations
 
 The APIs are available at https://docs.netapp.com/us-en/cloud-manager-automation/cbs/overview.html. See link:api-backup-restore.html[this page] for an overview of the APIs.
-//
-//=== Support has been added to back up on-premises ONTAP cluster data in sites without internet access
-//
-//If your on-prem ONTAP cluster resides in a site with no internet access, also known as a dark site or offline site, now you can use Cloud Backup to back up volume data to a NetApp StorageGRID systems that resides in the same site. This functionality requires that the Cloud Manager Connector (version 3.9.17 or greater) is also deployed in the offline site.
-//
-//https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-private-cloud.html[See how to back up data in an offline site].
 
 == 2 May 2022
 
