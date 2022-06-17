@@ -44,12 +44,12 @@ This table provides a comparison of the 2 methods.
 | Search & Restore
 
 | Browse through a folder-style structure to find the volume or file within a single backup file | Search for a volume or file across *all backup files* by partial or full volume name, partial or full file name, size range, and additional search filters
-| Volume and file restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. | Volume and file restore works with backup files stored in Amazon S3 and Google Cloud
+| Volume and file restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. | Volume and file restore works with backup files stored in Amazon S3, Azure Blob, and Google Cloud
 | Restore volumes and files from StorageGRID in sites with no internet access | Not supported in dark sites
 | Does not handle files that have been renamed or deleted | Handles newly created/deleted/renamed directories and newly created/deleted/renamed files
 | Browse for results across public and private clouds | Browse for results across public clouds and local Snapshots copies
-| No additional cloud provider resources required | Additional bucket and AWS or Google resources required per account
-| No additional cloud provider costs required | Cost associated with AWS or Google resources when scanning your backups and volumes for search results
+| No additional cloud provider resources required | Additional bucket and public cloud provider resources required per account
+| No additional cloud provider costs required | Cost associated with public cloud provider resources when scanning your backups and volumes for search results
 
 |===
 
@@ -301,9 +301,9 @@ If the backup file for the volume that you want to restore resides in archival s
 ifdef::aws[]
 link:reference-aws-backup-tiers.html[Learn more about restoring from AWS archival storage].
 endif::aws[]
-//ifdef::azure[]
-// link:reference-azure-backup-tiers.html[Learn more about restoring from Azure archival storage].
-//endif::azure[]
+ifdef::azure[]
+link:reference-azure-backup-tiers.html[Learn more about restoring from Azure archival storage].
+endif::azure[]
 
 Before you start, you should have some idea of the name or location of the volume or file you want to restore.
 
@@ -329,7 +329,10 @@ On-premises ONTAP system
 On-premises ONTAP system
 endif::aws[]
 ifdef::azure[]
-| Azure Blob | Not currently supported |
+| Azure Blob | Cloud Volumes ONTAP in Azure
+On-premises ONTAP system
+| Cloud Volumes ONTAP in Azure
+On-premises ONTAP system
 endif::azure[]
 ifdef::gcp[]
 | Google Cloud Storage | Cloud Volumes ONTAP in Google
@@ -359,6 +362,14 @@ ifdef::aws[]
 +
 Note that if you were already using Cloud Backup with a Connector you configured in the past, you'll need to add the Athena and Glue permissions to the Cloud Manager user role now. These are new, and they are required for Search & Restore.
 endif::aws[]
+
+ifdef::azure[]
+* Azure requirements:
+
+** Specific [Make sure all the permissions are configured correctly].
++
+Note that if you were already using Cloud Backup with a Connector you configured in the past, you'll need to add ???????? permissions to the Cloud Manager user role now. These are new, and they are required for Search & Restore.
+endif::azure[]
 
 ifdef::gcp[]
 * Google Cloud requirements:
@@ -399,6 +410,9 @@ When you enable this functionality, Cloud Backup enables SnapDiff v3 on the SVM 
 ifdef::aws[]
 * For backups stored in AWS, it provisions a new S3 bucket and the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service^] and https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service^].
 endif::aws[]
+ifdef::azure[]
+* For backups stored in Azure, it provisions a new ???? and the ??.
+endif::azure[]
 ifdef::gcp[]
 * For backups stored in Google Cloud, it provisions a new bucket, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
 endif::gcp[]

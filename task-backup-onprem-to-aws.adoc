@@ -32,7 +32,7 @@ Choose whether you'll connect your on-premises ONTAP cluster directly to AWS S3 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Prepare your Cloud Manager Connector
 
 [role="quick-margin-para"]
-If you already have a Connector deployed in your AWS VPC, then you're all set. If not, then you'll need to create a Connector in AWS in order to back up ONTAP data to AWS S3 storage. You'll also need to customize network settings for the Connector so that it can connect to AWS S3.
+If you already have a Connector deployed in your AWS VPC or on your premises, then you're all set. If not, then you'll need to create a Connector to back up ONTAP data to AWS S3 storage. You'll also need to customize network settings for the Connector so that it can connect to AWS S3.
 
 [role="quick-margin-para"]
 <<Prepare your Connector,See how to create a Connector and how to define required network settings.>>
@@ -82,18 +82,19 @@ The Cloud Manager Connector is the main software for Cloud Manager functionality
 
 === Creating or switching Connectors
 
-If you already have a Connector deployed in your AWS VPC then you're all set. If not, then you'll need to create a new Connector in AWS in order to back up ONTAP data to AWS S3 storage. You can't use a Connector that's deployed on-premises, or that's deployed in another cloud provider.
+If you already have a Connector deployed in your AWS VPC or on your premises, then you're all set. If not, then you'll need to create a Connector to back up ONTAP data to AWS S3 storage. You can't use a Connector that's deployed in another cloud provider.
 
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html[Learn about Connectors^]
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html[Getting started with Connectors^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-aws.html[Create a Connector in AWS^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-aws.html[Installing a Connector in AWS^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-installing-linux.html[Installing a Connector in your premises^]
 // * https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html[Switch between Connectors^]
 
 === Connector networking requirements
 
 * Ensure that the network where the Connector is installed enables the following connections:
 +
-** An HTTPS connection over port 443 to the Cloud Backup service and to your S3 object storage (see the list of endpoints link:https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html[here^])
+** An HTTPS connection over port 443 to the Cloud Backup service and to your S3 object storage (see the list of endpoints https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html[here^])
 ** An HTTPS connection over port 443 to your ONTAP cluster management LIF
 
 * link:task-backup-onprem-to-aws.html#set-up-s3-permissions[Ensure that the Connector has permissions to manage the S3 bucket].

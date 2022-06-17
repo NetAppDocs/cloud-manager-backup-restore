@@ -277,9 +277,13 @@ This operation could cause a one-time increase in cost to read the data from you
 
 == Supported volumes
 
-Cloud Backup supports FlexVol read-write volumes and SnapMirror data protection (DP) destination volumes.
+Cloud Backup supports the following types of volumes:
 
-FlexGroup volumes and SnapLock volumes aren't currently supported.
+* FlexVol read-write volumes
+* SnapMirror data protection (DP) destination volumes
+* SnapLock Enterprise volumes (requires ONTAP 9.11.1 or later)
+
+FlexGroup volumes and SnapLock Compliance volumes aren't currently supported.
 
 == Limitations
 
