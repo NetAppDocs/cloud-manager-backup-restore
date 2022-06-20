@@ -848,7 +848,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-06-03 13:25:13 +0000">06/03/2022</time>
+    <time datetime="2022-06-20 18:18:37 +0000">06/20/2022</time>
     
   
 
@@ -918,19 +918,18 @@
 <ol class="arabic">
 <li>
 <p>Obtain a user token from NetApp Cloud Central.</p>
+<div class="paragraph">
+<p>Make sure to generate the refresh token from the following link: <a href="https://services.cloud.netapp.com/refresh-token/" class="bare">https://services.cloud.netapp.com/refresh-token/</a>. The refresh token is an alpha-numeric string that you&#8217;ll use to generate a user token.</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-http" data-lang="http">POST https://netapp-cloud-account.auth0.com/oauth/token
-Header: Content-Type: application/json
-Body:
-{
-              "username": "&lt;user_email&gt;",
-              "scope": "profile",
-              "audience": "https://api.cloud.netapp.com",
-              "client_id": "&lt;Cloud_Connector_ID&gt;",
-              "grant_type": "password",
-              "password": "&lt;user_password&gt;"
-}</code></pre>
+<pre class="highlight"><code class="language-http" data-lang="http">curl --location --request POST 'https://netapp-cloud-account.auth0.com/oauth/token?=' \
+--header 'Content-Type: application/json' \
+-d '{
+    "grant_type": "refresh_token",
+    "refresh_token": "JxaVHn9cGkX92aPVCkhat3zxxxxxwsC9qMl_pLHkZtsVA",
+    "client_id": "Mu0V1ywgYteI6w1MbD15fKfVIUrNXGWC"
+}'</code></pre>
 </div>
 </div>
 </li>
