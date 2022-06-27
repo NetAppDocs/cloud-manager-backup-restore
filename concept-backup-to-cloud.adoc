@@ -66,6 +66,8 @@ endif::gcp[]
 
 * Monthly backups start just after midnight on the first day of each month.
 
+* Yearly backups start just after midnight on the first day of the year.
+
 The start time is based on the time zone set on each source ONTAP system. You can’t schedule backup operations at a user-specified time from the UI. For more information, contact your System Engineer.
 
 === Backup copies are associated with your NetApp account

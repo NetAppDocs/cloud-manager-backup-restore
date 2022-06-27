@@ -44,7 +44,7 @@ This table provides a comparison of the 2 methods.
 | Search & Restore
 
 | Browse through a folder-style structure to find the volume or file within a single backup file | Search for a volume or file across *all backup files* by partial or full volume name, partial or full file name, size range, and additional search filters
-| Volume and file restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. | Volume and file restore works with backup files stored in Amazon S3, Azure Blob, and Google Cloud
+| Volume and file restore works with backup files stored in Amazon S3, Azure Blob, Google Cloud, and NetApp StorageGRID. | Volume and file restore works with backup files stored in Amazon S3 and Google Cloud
 | Restore volumes and files from StorageGRID in sites with no internet access | Not supported in dark sites
 | Does not handle files that have been renamed or deleted | Handles newly created/deleted/renamed directories and newly created/deleted/renamed files
 | Browse for results across public and private clouds | Browse for results across public clouds and local Snapshots copies
@@ -53,6 +53,8 @@ This table provides a comparison of the 2 methods.
 
 |===
 
+//, Azure Blob,
+//
 Before you can use either restore method, make sure you have configured your environment for the unique resource requirements. Those requirements are described in the sections below.
 
 See the requirements and restore steps for the type of restore operation you want to use:
@@ -106,12 +108,14 @@ On-premises ONTAP system
 endif::azure[]
 ifdef::gcp[]
 | Google Cloud Storage | Cloud Volumes ONTAP in Google
-On-premises ONTAP system | Cloud Volumes ONTAP in Google
-On-premises ONTAP system
+On-premises ONTAP system | Cloud Volumes ONTAP in Google (*)
+On-premises ONTAP system (*)
 endif::gcp[]
 | NetApp StorageGRID | On-premises ONTAP system | On-premises ONTAP system
 
 |===
+
+(*) _The Connector must be deployed in your Google Cloud Platform VPC for this support._
 
 Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
 
@@ -196,10 +200,10 @@ TIP: You can't restore individual files if the backup file resides in archival s
 ==== Prerequisites
 
 * The ONTAP version must be 9.6 or greater in your Cloud Volumes ONTAP or on-premises ONTAP systems to perform file restore operations.
-
-ifdef::aws[]
-* AWS cross-account restore requires manual action in the AWS console. See the AWS topic https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html[granting cross-account bucket permissions^] for details.
-endif::aws[]
+//
+//ifdef::aws[]
+//* AWS cross-account restore requires manual action in the AWS console. See the AWS topic https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html[granting cross-account bucket permissions^] for details.
+//endif::aws[]
 
 ==== File Restore process
 
@@ -301,9 +305,9 @@ If the backup file for the volume that you want to restore resides in archival s
 ifdef::aws[]
 link:reference-aws-backup-tiers.html[Learn more about restoring from AWS archival storage].
 endif::aws[]
-ifdef::azure[]
-link:reference-azure-backup-tiers.html[Learn more about restoring from Azure archival storage].
-endif::azure[]
+//ifdef::azure[]
+//link:reference-azure-backup-tiers.html[Learn more about restoring from Azure archival storage].
+//endif::azure[]
 
 Before you start, you should have some idea of the name or location of the volume or file you want to restore.
 
@@ -329,11 +333,14 @@ On-premises ONTAP system
 On-premises ONTAP system
 endif::aws[]
 ifdef::azure[]
-| Azure Blob | Cloud Volumes ONTAP in Azure
-On-premises ONTAP system
-| Cloud Volumes ONTAP in Azure
-On-premises ONTAP system
+| Azure Blob | Not currently supported |
 endif::azure[]
+//ifdef::azure[]
+//| Azure Blob | Cloud Volumes ONTAP in Azure
+//On-premises ONTAP system
+//| Cloud Volumes ONTAP in Azure
+//On-premises ONTAP system
+//endif::azure[]
 ifdef::gcp[]
 | Google Cloud Storage | Cloud Volumes ONTAP in Google
 On-premises ONTAP system
@@ -343,6 +350,8 @@ endif::gcp[]
 | NetApp StorageGRID | Not currently supported |
 
 |===
+
+TIP: The Connector must be deployed in your cloud provider platform for this support. Search & Restore is not supported when the Connector is installed on your premises.
 
 Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
 
@@ -363,13 +372,13 @@ ifdef::aws[]
 Note that if you were already using Cloud Backup with a Connector you configured in the past, you'll need to add the Athena and Glue permissions to the Cloud Manager user role now. These are new, and they are required for Search & Restore.
 endif::aws[]
 
-ifdef::azure[]
-* Azure requirements:
-
-** Specific [Make sure all the permissions are configured correctly].
-+
-Note that if you were already using Cloud Backup with a Connector you configured in the past, you'll need to add ???????? permissions to the Cloud Manager user role now. These are new, and they are required for Search & Restore.
-endif::azure[]
+//ifdef::azure[]
+//* Azure requirements:
+//
+//** Specific [Make sure all the permissions are configured correctly].
+//+
+//Note that if you were already using Cloud Backup with a Connector you configured in the past, you'll need to add ???????? permissions to the Cloud Manager user role now. These are new, and they are required for Search & Restore.
+//endif::azure[]
 
 ifdef::gcp[]
 * Google Cloud requirements:
@@ -410,9 +419,9 @@ When you enable this functionality, Cloud Backup enables SnapDiff v3 on the SVM 
 ifdef::aws[]
 * For backups stored in AWS, it provisions a new S3 bucket and the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service^] and https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service^].
 endif::aws[]
-ifdef::azure[]
-* For backups stored in Azure, it provisions a new ???? and the ??.
-endif::azure[]
+//ifdef::azure[]
+//* For backups stored in Azure, it provisions a new ???? and the ??.
+//endif::azure[]
 ifdef::gcp[]
 * For backups stored in Google Cloud, it provisions a new bucket, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
 endif::gcp[]
