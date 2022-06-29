@@ -114,7 +114,7 @@ After you purchase a Cloud Backup license for your NetApp account, you need to a
 
 .Steps
 
-. Click *All Services > Digital Wallet > Data Services Licenses*.
+. From the Cloud Manager left navigation menu, click *Digital Wallet* and then select the *Data Services Licenses* tab.
 
 . Click *Add License*.
 
