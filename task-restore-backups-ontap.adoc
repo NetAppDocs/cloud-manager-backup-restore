@@ -23,7 +23,7 @@ A valid Cloud Backup license is required to restore data from backup files to a 
 
 == The Restore Dashboard
 
-You use the Restore Dashboard to perform volume and file restore operations. You access the Restore Dashboard by clicking *Backup & Restore* from the top of Cloud Manager, and then clicking the *Restore* tab. You can also click image:screenshot_gallery_options.gif[More button] > *View Restore Dashboard* from the Backup & Restore service from the Services panel.
+You use the Restore Dashboard to perform volume and file restore operations. You access the Restore Dashboard by clicking *Backup & Restore* from the Cloud Manager left navigation menu, and then clicking the *Restore* tab. You can also click image:screenshot_gallery_options.gif[More button] > *View Restore Dashboard* from the Backup & Restore service from the Services panel.
 
 NOTE: Cloud Backup must already be activated for at least one working environment and initial backup files must exist.
 

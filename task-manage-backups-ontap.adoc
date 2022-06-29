@@ -23,7 +23,7 @@ You can view a list of all the volumes that are currently being backed up in the
 
 .Steps
 
-. Click the *Backup & Restore* tab.
+. From the Cloud Manager left navigation menu, click *Backup & Restore*.
 
 . Click the *Volumes* tab to view the list of volumes for Cloud Volumes ONTAP and on-premises ONTAP systems.
 +

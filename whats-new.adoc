@@ -29,7 +29,7 @@ In the past you needed to deploy the Connector in the same cloud provider as whe
 === Additional features are available when creating backup policies for ONTAP systems
 
 * Backup on a yearly schedule is now available. The default retention value is 1 for yearly backups, but you can change this value if you want to have access to many previous years' backup files.
-* You can name your backup policies if you want to identify your policies with more descriptive text.
+* You can name your backup policies so you can identify your policies with more descriptive text.
 
 //=== Search & Restore is now supported with backup files in Azure Blob
 //
