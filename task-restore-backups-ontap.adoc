@@ -108,14 +108,14 @@ On-premises ONTAP system
 endif::azure[]
 ifdef::gcp[]
 | Google Cloud Storage | Cloud Volumes ONTAP in Google
-On-premises ONTAP system | Cloud Volumes ONTAP in Google (*)
-On-premises ONTAP system (*)
+On-premises ONTAP system | Cloud Volumes ONTAP in Google (^1^)
+On-premises ONTAP system (^1^)
 endif::gcp[]
 | NetApp StorageGRID | On-premises ONTAP system | On-premises ONTAP system
 
 |===
 
-(*) _The Connector must be deployed in your Google Cloud Platform VPC for this support._
+(^1^) _The Connector must be deployed in your Google Cloud Platform VPC for this support._
 
 Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
 

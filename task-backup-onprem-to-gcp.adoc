@@ -214,8 +214,8 @@ image:screenshot_backup_onprem_to_google.png[A screenshot that shows the cloud p
 
 . Enter the backup policy details that will be used for your default policy and click *Next*. You can select an existing policy, or you can create a new policy by entering your selections in each section:
 
-.. *Name*. Enter the name for the default policy.
-.. *Labels & Retention*. Define the backup schedule and choose the number of backups to retain. link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings-per-cluster[See the list of existing policies you can choose^].
+.. Enter the name for the default policy. You don't need to change the name.
+.. Define the backup schedule and choose the number of backups to retain. link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings-per-cluster[See the list of existing policies you can choose^].
 +
 image:screenshot_backup_policy_gcp.png[A screenshot that shows the Cloud Backup settings where you can choose your backup schedule and retention period.]
 +

@@ -16,19 +16,24 @@ summary: Learn what's new in Cloud Backup.
 Learn what's new in Cloud Backup.
 
 // tag::whats-new[]
-== 3 July 2022
+== 10 July 2022
 
 === Support has been added to back up SnapLock Enterprise volumes
 
-Now you can use Cloud Backup to back up SnapLock Enterprise volumes to the public and private cloud. This feature requires that your ONTAP system is running ONTAP 9.11.1 or later.
+Now you can use Cloud Backup to back up SnapLock Enterprise volumes to public and private clouds. This feature requires that your ONTAP system is running ONTAP 9.11.1 or later. SnapLock Compliance volumes, however, aren’t currently supported.
 
-=== On-premises Connector is now supported when creating backup files in the public cloud
+=== Now you can create backup files in the public cloud when using an on-premises Connector
 
-In the past you needed to deploy the Connector in the same cloud provider as where you were creating backup files. Now you can use a Connector deployed in your premises to create backup files in Amazon S3, Azure Blob, and Google Cloud storage.
+In the past you needed to deploy the Connector in the same cloud provider as where you were creating backup files. Now you can use a Connector deployed in your premises to create backup files from on-prem ONTAP systems to Amazon S3, Azure Blob, and Google Cloud Storage. (An on-prem Connector was always available, and required, when creating backup files on StorageGRID.)
 
-=== Search & Restore is now supported with backup files in Azure Blob
+=== Additional features are available when creating backup policies for ONTAP systems
 
-The Search & Restore method of restoring volumes and files is now available for users who store their backup files in Azure Blob storage. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html#prerequisites-2[See how to restore your volumes and files using Search & Restore].
+* Backup on a yearly schedule is now available. The default retention value is 1 for yearly backups, but you can change this value if you want to have access to many previous years' backup files.
+* You can name your backup policies if you want to identify your policies with more descriptive text.
+
+//=== Search & Restore is now supported with backup files in Azure Blob
+//
+//The Search & Restore method of restoring volumes and files is now available for users who store their backup files in Azure Blob storage. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html#prerequisites-2[See how to restore your volumes and files using Search & Restore].
 
 == 14 June 2022
 
