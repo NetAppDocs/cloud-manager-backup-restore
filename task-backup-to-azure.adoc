@@ -79,9 +79,9 @@ And you need to have a Microsoft Azure subscription for the storage space where 
 
 Supported Azure regions::
 Cloud Backup is supported in all Azure regions https://cloud.netapp.com/cloud-volumes-global-regions[where Cloud Volumes ONTAP is supported^]; including Azure Government regions.
-//
-//Required setup for creating backups in a different Azure subscription::
-//By default, backups are created using the same subscription as the one used for your Cloud Volumes ONTAP system. If you want to use a different Azure subscription for your backups, you must link:reference-backup-multi-account-azure.html[log in to the Azure portal and link the two subscriptions].
+
+Required setup for creating backups in a different Azure subscription::
+By default, backups are created using the same subscription as the one used for your Cloud Volumes ONTAP system. If you want to use a different Azure subscription for your backups, you must link:reference-backup-multi-account-azure.html[log in to the Azure portal and link the two subscriptions].
 
 Required information for using customer-managed keys for data encryption::
 You can use your own customer-managed keys for data encryption in the activation wizard instead of using the default Microsoft-managed encryption keys. In this case you will need to have the Azure Subscription, Key Vault name, and the Key. https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview[See how to use your own keys].
@@ -132,8 +132,8 @@ image:screenshot_backup_cvo_enable.png[A screenshot that shows the Cloud Backup 
 . Select the provider details and click *Next*.
 
 .. The Azure subscription used to store the backups. This can be a different subscription than where the Cloud Volumes ONTAP system resides.
-//+
-//If you want to use a different Azure subscription for your backups, you must link:reference-backup-multi-account-azure.html[log in to the Azure portal and link the two subscriptions].
++
+If you want to use a different Azure subscription for your backups, you must link:reference-backup-multi-account-azure.html[log in to the Azure portal and link the two subscriptions].
 .. The region where the backups will be stored. This can be a different region than where the Cloud Volumes ONTAP system resides.
 .. The resource group that manages the Blob container - you can create a new resource group or select an existing resource group.
 .. Whether you'll use the default Microsoft-managed encryption key or choose your own customer-managed keys to manage encryption of your data. (https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview[See how to use your own keys]).

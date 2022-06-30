@@ -84,9 +84,9 @@ And you need to have an AWS account for the storage space where your backups wil
 
 Supported AWS regions::
 Cloud Backup is supported in all AWS regions https://cloud.netapp.com/cloud-volumes-global-regions[where Cloud Volumes ONTAP is supported^]; including AWS GovCloud regions.
-//
-//Required setup for creating backups in a different AWS account::
-//By default, backups are created using the same account as the one used for your Cloud Volumes ONTAP system. If you want to use a different AWS account for your backups, you must link:reference-backup-multi-account-aws.html[log in to the AWS portal and link the two accounts].
+
+Required setup for creating backups in a different AWS account::
+By default, backups are created using the same account as the one used for your Cloud Volumes ONTAP system. If you want to use a different AWS account for your backups, you must link:reference-backup-multi-account-aws.html[log in to the AWS portal and link the two accounts].
 
 Required information for using customer-managed keys for data encryption::
 
@@ -182,8 +182,8 @@ image:screenshot_backup_cvo_enable.png[A screenshot that shows the Backup & Rest
 . Select the provider details and click *Next*.
 
 .. The AWS Account used to store the backups. This can be a different account than where the Cloud Volumes ONTAP system resides.
-//+
-//If you want to use a different AWS account for your backups, you must link:reference-backup-multi-account-aws.html[log in to the AWS portal and link the two accounts].
++
+If you want to use a different AWS account for your backups, you must link:reference-backup-multi-account-aws.html[log in to the AWS portal and link the two accounts].
 .. The region where the backups will be stored. This can be a different region than where the Cloud Volumes ONTAP system resides.
 .. Whether you'll use the default Amazon S3 encryption keys or choose your own customer-managed keys from your AWS account to manage encryption of your data. (https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-setting-up-kms.html[See how to use your own encryption keys]).
 +
