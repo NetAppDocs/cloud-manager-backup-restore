@@ -67,13 +67,15 @@ There are two connection methods you can use when configuring backups from on-pr
 * Public connection - Directly connect the ONTAP system to Google Cloud Storage using a public Google endpoint.
 * Private connection - Use a VPN or Private Service Connect and route traffic through a Private Google Access interface that uses a private IP address.
 
-The following image shows the *public connection* method and the connections that you need to prepare between the components:
+The following diagram shows the *public connection* method and the connections that you need to prepare between the components. You can use a Connector that you've installed on your premises, or a Connector that you've deployed in the Google Cloud Platform VPC.
 
-image:diagram_cloud_backup_onprem_google.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the source systems and the destination storage where the backup files are located.]
+image:diagram_cloud_backup_onprem_gcp_public.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the cluster and the Google Cloud storage where the backup files are located.]
+//image:diagram_cloud_backup_onprem_google.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the source systems and the destination storage where the backup files are located.]
 
-The following image shows the *private connection* method and the connections that you need to prepare between the components:
+The following diagram shows the *private connection* method and the connections that you need to prepare between the components. You can use a Connector that you've installed on your premises, or a Connector that you've deployed in the Google Cloud Platform VPC.
 
-image:diagram_cloud_backup_onprem_google_vpc.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the source systems and the destination storage where the backup files are located.]
+image:diagram_cloud_backup_onprem_gcp_private.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the cluster and the Google Cloud storage where the backup files are located.]
+//image:diagram_cloud_backup_onprem_google_vpc.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the source systems and the destination storage where the backup files are located.]
 
 === Preparing your ONTAP clusters
 
@@ -109,12 +111,13 @@ When you set up Cloud Backup, you are prompted for the IPspace to use. You shoul
 
 === Creating or switching Connectors
 
-If you already have a Connector deployed in your Google Cloud Platform VPC or on your premises, then you're all set. If not, then you'll need to create a Connector to back up ONTAP data to Google Cloud storage. You can't use a Connector that's deployed in another cloud provider.
+If you already have a Connector deployed in your Google Cloud Platform VPC or on your premises, then you're all set. If not, then you'll need to create a Connector in either of those locations to back up ONTAP data to Google Cloud storage. You can't use a Connector that's deployed in another cloud provider.
 
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html[Learn about Connectors^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html[Getting started with Connectors^]
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-gcp.html[Installing a Connector in GCP^]
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-installing-linux.html[Installing a Connector in your premises^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html[Switching between Connectors^]
+//* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html[Switching between Connectors^]
 
 === Preparing networking for the Connector
 
@@ -128,7 +131,7 @@ Ensure that the Connector has the required networking connections.
 * An HTTPS connection over port 443 to your Google Cloud storage
 * An HTTPS connection over port 443 to your ONTAP cluster management LIF
 
-. Enable Private Google Access on the subnet where you plan to deploy the Connector. https://cloud.google.com/vpc/docs/configure-private-google-access[Private Google Access^] is needed if you have a direct connection from your ONTAP cluster to the VPC and you want communication between the Connector and Google Cloud Storage to stay in your virtual private network.
+. Enable Private Google Access on the subnet where you plan to deploy the Connector. https://cloud.google.com/vpc/docs/configure-private-google-access[Private Google Access^] is needed if you have a direct connection from your ONTAP cluster to the VPC and you want communication between the Connector and Google Cloud Storage to stay in your virtual private network (a *private* connection).
 +
 Note that Private Google Access works with VM instances that have only internal (private) IP addresses (no external IP addresses).
 

@@ -256,7 +256,7 @@ You can choose a combination of hourly, daily, weekly, monthly, and yearly backu
 
 Backup protection policies that you have created on the cluster using ONTAP System Manager or the ONTAP CLI will also appear as selections.
 
-Once you have reached the maximum number of backups for a category, or interval, older backups are removed so you always have the most current backups.
+Once you have reached the maximum number of backups for a category, or interval, older backups are removed so you always have the most current backups (and so obsolete backups don't continue to take up space in the cloud).
 
 Note that you can link:task-manage-backups-ontap.html#creating-a-manual-volume-backup-at-any-time[create an on-demand backup of a volume] from the Backup Dashboard at any time, in addition to those backup files created from the scheduled backups.
 

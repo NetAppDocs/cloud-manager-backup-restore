@@ -46,6 +46,8 @@ ifdef::azure[]
 * A "CVO Edge Cache" package has the same capabilities as the "CVO Professional" package, but also includes support for Global File Cache. You are entitled to deploy one Global File Cache Edge system for each 3 TiB of provisioned capacity on the Cloud Volumes ONTAP system. This option is available only through the Azure Marketplace, and it doesn’t enable you to back up on-premises ONTAP data.
 endif::azure[]
 
+https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-licensing.html#capacity-based-licensing-packages[Learn more about these capacity-based license packages].
+
 Use these links to subscribe to Cloud Backup from your cloud provider marketplace:
 
 ifdef::aws[]

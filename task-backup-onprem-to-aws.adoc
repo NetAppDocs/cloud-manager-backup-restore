@@ -68,13 +68,15 @@ There are two connection methods you can use when configuring backups from on-pr
 * Public connection - Directly connect the ONTAP system to AWS S3 using a public S3 endpoint.
 * Private connection - Use a VPN or AWS Direct Connect and route traffic through a VPC Endpoint interface that uses a private IP address.
 
-The following diagram shows the *public connection* method and the connections that you need to prepare between the components:
+The following diagram shows the *public connection* method and the connections that you need to prepare between the components. You can use a Connector that you've installed on your premises, or a Connector that you've deployed in the AWS VPC.
 
-image:diagram_cloud_backup_onprem_aws.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the source systems and the destination storage where the backup files are located.]
+image:diagram_cloud_backup_onprem_aws_public.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the cluster and the AWS S3 storage where the backup files are located.]
+//image:diagram_cloud_backup_onprem_aws.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the source systems and the destination storage where the backup files are located.]
 
-The following diagram shows the *private connection* method and the connections that you need to prepare between the components:
+The following diagram shows the *private connection* method and the connections that you need to prepare between the components. You can use a Connector that you've installed on your premises, or a Connector that you've deployed in the AWS VPC.
 
-image:diagram_cloud_backup_onprem_aws_vpc.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the source systems and the destination storage where the backup files are located.]
+image:diagram_cloud_backup_onprem_aws_private.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the cluster and the AWS S3 storage where the backup files are located.]
+//image:diagram_cloud_backup_onprem_aws_vpc.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the source systems and the destination storage where the backup files are located.]
 
 == Prepare your Connector
 
@@ -82,7 +84,7 @@ The Cloud Manager Connector is the main software for Cloud Manager functionality
 
 === Creating or switching Connectors
 
-If you already have a Connector deployed in your AWS VPC or on your premises, then you're all set. If not, then you'll need to create a Connector to back up ONTAP data to AWS S3 storage. You can't use a Connector that's deployed in another cloud provider.
+If you already have a Connector deployed in your AWS VPC or on your premises, then you're all set. If not, then you'll need to create a Connector in either of those locations to back up ONTAP data to AWS S3 storage. You can't use a Connector that's deployed in another cloud provider.
 
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html[Learn about Connectors^]
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html[Getting started with Connectors^]
@@ -99,7 +101,7 @@ If you already have a Connector deployed in your AWS VPC or on your premises, th
 
 * link:task-backup-onprem-to-aws.html#set-up-s3-permissions[Ensure that the Connector has permissions to manage the S3 bucket].
 
-* If you have a Direct Connect or VPN connection from your ONTAP cluster to the VPC, and you want communication between the Connector and S3 to stay in your AWS internal network, you'll need to enable a VPC Endpoint interface to S3. <<Configure your system for a private connection using a VPC endpoint interface,See how to set up a VPC endpoint interface.>>
+* If you have a Direct Connect or VPN connection from your ONTAP cluster to the VPC, and you want communication between the Connector and S3 to stay in your AWS internal network (a *private* connection), you'll need to enable a VPC Endpoint interface to S3. <<Configure your system for a private connection using a VPC endpoint interface,See how to set up a VPC endpoint interface.>>
 
 == Prepare your ONTAP cluster
 
@@ -247,7 +249,7 @@ If you want to have a more secure connection over the internet from your on-prem
 +
 image:screenshot_backup_aws_sec_group.png[A screenshot of the AWS security group associated with the Connector.]
 +
-If you're using port 80 (HTTP) for communication to the private endpoint, you are all set. You can enable Cloud Backup on the cluster now.
+If you're using port 80 (HTTP) for communication to the private endpoint, you're all set. You can enable Cloud Backup on the cluster now.
 +
 If you're using port 443 (HTTPS) for communication to the private endpoint, you must copy the certificate from the VPC S3 endpoint and add it to your ONTAP cluster, as shown in the next 4 steps.
 +

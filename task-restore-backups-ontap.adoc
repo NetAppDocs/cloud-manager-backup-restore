@@ -200,10 +200,10 @@ TIP: You can't restore individual files if the backup file resides in archival s
 ==== Prerequisites
 
 * The ONTAP version must be 9.6 or greater in your Cloud Volumes ONTAP or on-premises ONTAP systems to perform file restore operations.
-//
-//ifdef::aws[]
-//* AWS cross-account restore requires manual action in the AWS console. See the AWS topic https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html[granting cross-account bucket permissions^] for details.
-//endif::aws[]
+
+ifdef::aws[]
+* AWS cross-account restore requires manual action in the AWS console. See the AWS topic https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html[granting cross-account bucket permissions^] for details.
+endif::aws[]
 
 ==== File Restore process
 
@@ -336,9 +336,9 @@ ifdef::azure[]
 | Azure Blob | Not currently supported |
 endif::azure[]
 //ifdef::azure[]
-//| Azure Blob | Cloud Volumes ONTAP in Azure
+// | Azure Blob | Cloud Volumes ONTAP in Azure
 //On-premises ONTAP system
-//| Cloud Volumes ONTAP in Azure
+// | Cloud Volumes ONTAP in Azure
 //On-premises ONTAP system
 //endif::azure[]
 ifdef::gcp[]

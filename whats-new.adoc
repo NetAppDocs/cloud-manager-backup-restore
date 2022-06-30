@@ -24,7 +24,7 @@ Now you can use Cloud Backup to back up SnapLock Enterprise volumes to public an
 
 === Now you can create backup files in the public cloud when using an on-premises Connector
 
-In the past you needed to deploy the Connector in the same cloud provider as where you were creating backup files. Now you can use a Connector deployed in your premises to create backup files from on-prem ONTAP systems to Amazon S3, Azure Blob, and Google Cloud Storage. (An on-prem Connector was always available, and required, when creating backup files on StorageGRID.)
+In the past you needed to deploy the Connector in the same cloud provider as where you were creating backup files. Now you can use a Connector deployed in your premises to create backup files from on-prem ONTAP systems to Amazon S3, Azure Blob, and Google Cloud Storage. (An on-prem Connector was always required when creating backup files on StorageGRID systems.)
 
 === Additional features are available when creating backup policies for ONTAP systems
 

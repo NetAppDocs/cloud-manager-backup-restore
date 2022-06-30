@@ -80,13 +80,15 @@ There are two connection methods you can use when configuring backups from on-pr
 * Public connection - Directly connect the ONTAP system to Azure Blob storage using a public Azure endpoint.
 * Private connection - Use a VPN or ExpressRoute and route traffic through a VNet Private Endpoint that uses a private IP address.
 
-The following image shows the *public connection* method and the connections that you need to prepare between the components:
+The following diagram shows the *public connection* method and the connections that you need to prepare between the components. You can use a Connector that you've installed on your premises, or a Connector that you've deployed in the Azure VNet.
 
-image:diagram_cloud_backup_onprem_azure.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the source systems and the destination storage where the backup files are located.]
+image:diagram_cloud_backup_onprem_azure_public.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the cluster and the Azure Blob storage where the backup files are located.]
+//image:diagram_cloud_backup_onprem_azure.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the source systems and the destination storage where the backup files are located.]
 
-The following image shows the *private connection* method and the connections that you need to prepare between the components:
+The following diagram shows the *private connection* method and the connections that you need to prepare between the components. You can use a Connector that you've installed on your premises, or a Connector that you've deployed in the Azure VNet.
 
-image:diagram_cloud_backup_onprem_azure_vnet.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the source systems and the destination storage where the backup files are located.]
+image:diagram_cloud_backup_onprem_azure_private.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the cluster and the Azure Blob storage where the backup files are located.]
+//image:diagram_cloud_backup_onprem_azure_vnet.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the source systems and the destination storage where the backup files are located.]
 
 === Preparing your ONTAP clusters
 
@@ -122,12 +124,13 @@ When you set up Cloud Backup, you are prompted for the IPspace to use. You shoul
 
 === Creating or switching Connectors
 
-If you already have a Connector deployed in your Azure VNet or on your premises, then you're all set. If not, then you'll need to create a Connector to back up ONTAP data to Azure Blob storage. You can't use a Connector that's deployed in another cloud provider.
+If you already have a Connector deployed in your Azure VNet or on your premises, then you're all set. If not, then you'll need to create a Connector in either of those locations to back up ONTAP data to Azure Blob storage. You can't use a Connector that's deployed in another cloud provider.
 
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html[Learn about Connectors^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html[Getting started with Connectors^]
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-azure.html[Installing a Connector in Azure^]
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-installing-linux.html[Installing a Connector in your premises^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html[Switching between Connectors^]
+//* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html[Switching between Connectors^]
 
 === Preparing networking for the Connector
 
@@ -141,7 +144,7 @@ Ensure that the Connector has the required networking connections.
 * An HTTPS connection over port 443 to your Blob object storage
 * An HTTPS connection over port 443 to your ONTAP cluster management LIF
 
-. Enable a VNet Private Endpoint to Azure storage. This is needed if you have an ExpressRoute or VPN connection from your ONTAP cluster to the VNet and you want communication between the Connector and Blob storage to stay in your virtual private network.
+. Enable a VNet Private Endpoint to Azure storage. This is needed if you have an ExpressRoute or VPN connection from your ONTAP cluster to the VNet and you want communication between the Connector and Blob storage to stay in your virtual private network (a *private* connection).
 
 === Supported regions
 
