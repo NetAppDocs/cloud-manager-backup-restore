@@ -142,33 +142,21 @@ There are three ways to pay for the Backup service. The first option is to subsc
 
 == Licensing
 
-Cloud Backup is available in a few licensing options:
+Cloud Backup is available with the following consumption models:
 
-* Pay As You Go (PAYGO) subscription
-ifdef::aws[]
-* an annual contract from the AWS Marketplace
-endif::aws[]
-* Bring Your Own License (BYOL)
+* *BYOL*: A license purchased from NetApp that can be used with any cloud provider.
+* *PAYGO*: An hourly subscription from your cloud provider’s marketplace.
+* *Annual*: An annual contract from your cloud provider’s marketplace.
 
-A 30-day free trial is available when you initially sign up with a PAYGO subscription.
+[NOTE]
+====
+If you purchase a BYOL license from NetApp, you also need to subscribe to the PAYGO offering from your cloud provider’s marketplace. Your license is always charged first, but you’ll be charged from the hourly rate in the marketplace in these cases:
 
-=== Pay-as-you-go subscription
+* If you exceed your licensed capacity
+* If the term of your license expires
 
-Cloud Backup offers consumption-based licensing in a pay-as-you-go model. After subscribing through your cloud provider’s marketplace, you pay per GiB for data that’s backed up—​there’s no up-front payment. You are billed by your cloud provider through your monthly bill.
-
-link:task-licensing-cloud-backup.html#use-a-cloud-backup-paygo-subscription[Learn how to set up a pay-as-you-go subscription].
-
-ifdef::aws[]
-=== Annual contract (AWS only)
-
-Two annual contracts are available for 12, 24, or 36 month terms from the AWS Marketplace:
-
-*	A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
-
-* A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and Cloud Backup. This includes unlimited backups for Cloud Volumes ONTAP volumes charged against this license (backup capacity is not counted against the license).
-
-link:task-licensing-cloud-backup.html#subscribe-to-yearly-contracts-through-aws[Learn how to set up yearly AWS contracts].
-endif::aws[]
+If you have an annual contract from a marketplace, all Cloud Backup consumption is charged against that contract. You can’t mix and match an annual marketplace contract with a BYOL.
+====
 
 === Bring your own license
 
@@ -177,6 +165,34 @@ BYOL is term-based (12, 24, or 36 months) _and_ capacity-based in 1 TiB incremen
 You'll receive a serial number that you enter in the Cloud Manager Digital Wallet page to enable the service. When either limit is reached, you'll need to renew the license. The Backup BYOL license applies to all source systems associated with your https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-netapp-accounts.html[Cloud Manager account^].
 
 link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[Learn how to manage your BYOL licenses].
+
+=== Pay-as-you-go subscription
+
+Cloud Backup offers consumption-based licensing in a pay-as-you-go model. After subscribing through your cloud provider’s marketplace, you pay per GiB for data that’s backed up—​there’s no up-front payment. You are billed by your cloud provider through your monthly bill.
+
+link:task-licensing-cloud-backup.html#use-a-cloud-backup-paygo-subscription[Learn how to set up a pay-as-you-go subscription].
+
+Note that a 30-day free trial is available when you initially sign up with a PAYGO subscription.
+
+=== Annual contract
+
+ifdef::aws[]
+When using AWS, two annual contracts are available for 12, 24, or 36 month terms:
+
+*	A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
+
+* A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and Cloud Backup. This includes unlimited backups for Cloud Volumes ONTAP volumes charged against this license (backup capacity is not counted against the license).
+endif::aws[]
+
+ifdef::azure[]
+* When using Azure, you can request a private offer from NetApp, and then select the plan when you subscribe from the Azure Marketplace during Cloud Backup activation.
+endif::azure[]
+
+ifdef::gcp[]
+* When using GCP, you can request a private offer from NetApp, and then select the plan when you subscribe from the Google Cloud Marketplace during Cloud Backup activation.
+endif::gcp[]
+
+link:task-licensing-cloud-backup.html#use-an-annual-contract[Learn how to set up annual contracts].
 
 == How Cloud Backup works
 
