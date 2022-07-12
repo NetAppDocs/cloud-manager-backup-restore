@@ -23,6 +23,7 @@ Backup features:
 
 * Back up independent copies of your data volumes to low-cost object storage.
 * Apply a single backup policy to all volumes in a cluster, or assign different backup policies to volumes that have unique recovery point objectives.
+* Name your backup policies so it is easy to see what each policy is used for.
 * Tier older backup files to archival storage to save costs (supported when using ONTAP 9.10.1+)
 * Back up from cloud to cloud, and from on-premises systems to public or private cloud.
 * For Cloud Volumes ONTAP systems, your backups can reside on a different subscription/account or different region.
@@ -108,7 +109,7 @@ Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP
 
 === Support for sites with no internet connectivity
 
-Cloud Backup can be used in a site with no internet connectivity (also known as an "offline" or "dark" site) to back up volume data from local on-premises ONTAP systems to local NetApp StorageGRID systems. In this case, you'll need to deploy the Cloud Manager Connector (minimum version 3.9.19) in the dark site. See link:task-backup-onprem-private-cloud.html[Backing up on-premises ONTAP data to StorageGRID] for details.
+Cloud Backup can be used in a site with no internet connectivity (also known as an "offline" or "dark" site) to back up volume data from local on-premises ONTAP systems to local NetApp StorageGRID systems. Both volume and file restore are also supported in this configuration. In this case, you'll need to deploy the Cloud Manager Connector (minimum version 3.9.19) in the dark site. See link:task-backup-onprem-private-cloud.html[Backing up on-premises ONTAP data to StorageGRID] for details.
 
 == Cost
 
