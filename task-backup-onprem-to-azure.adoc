@@ -58,7 +58,7 @@ image:screenshot_backup_onprem_azure_networking.png[A screenshot that shows the 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png[Five] Define the default backup policy
 
 [role="quick-margin-para"]
-The default policy backs up volumes every day and retains the most recent 30 backup copies of each volume. Change to hourly, daily, weekly, or monthly backups, or select one of the system-defined policies that provide more options. You can also change the number of backup copies you want to retain.
+The default policy backs up volumes every day and retains the most recent 30 backup copies of each volume. Change to hourly, daily, weekly, monthly, or yearly backups, or select one of the system-defined policies that provide more options. You can also change the number of backup copies you want to retain.
 
 [role="quick-margin-para"]
 By default, backups are stored in the Cool access tier. If your cluster is using ONTAP 9.10.1 or greater, you can choose to tier backups to Azure Archive storage after a certain number of days for further cost optimization.
@@ -80,13 +80,15 @@ There are two connection methods you can use when configuring backups from on-pr
 * Public connection - Directly connect the ONTAP system to Azure Blob storage using a public Azure endpoint.
 * Private connection - Use a VPN or ExpressRoute and route traffic through a VNet Private Endpoint that uses a private IP address.
 
-The following image shows the *public connection* method and the connections that you need to prepare between the components:
+The following diagram shows the *public connection* method and the connections that you need to prepare between the components. You can use a Connector that you've installed on your premises, or a Connector that you've deployed in the Azure VNet.
 
-image:diagram_cloud_backup_onprem_azure.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the source systems and the destination storage where the backup files are located.]
+image:diagram_cloud_backup_onprem_azure_public.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the cluster and the Azure Blob storage where the backup files are located.]
+//image:diagram_cloud_backup_onprem_azure.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the source systems and the destination storage where the backup files are located.]
 
-The following image shows the *private connection* method and the connections that you need to prepare between the components:
+The following diagram shows the *private connection* method and the connections that you need to prepare between the components. You can use a Connector that you've installed on your premises, or a Connector that you've deployed in the Azure VNet.
 
-image:diagram_cloud_backup_onprem_azure_vnet.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the source systems and the destination storage where the backup files are located.]
+image:diagram_cloud_backup_onprem_azure_private.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the cluster and the Azure Blob storage where the backup files are located.]
+//image:diagram_cloud_backup_onprem_azure_vnet.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the source systems and the destination storage where the backup files are located.]
 
 === Preparing your ONTAP clusters
 
@@ -122,11 +124,13 @@ When you set up Cloud Backup, you are prompted for the IPspace to use. You shoul
 
 === Creating or switching Connectors
 
-A Connector is required to back up data to the cloud, and the Connector must be in an Azure VNet when backing up data to Azure Blob storage. You can't use a Connector that's deployed on-premises. You'll either need to create a new Connector or make sure that the currently selected Connector resides in the correct provider.
+If you already have a Connector deployed in your Azure VNet or on your premises, then you're all set. If not, then you'll need to create a Connector in either of those locations to back up ONTAP data to Azure Blob storage. You can't use a Connector that's deployed in another cloud provider.
 
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html[Learn about Connectors^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-azure.html[Creating a Connector in Azure^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html[Switching between Connectors^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html[Getting started with Connectors^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-azure.html[Installing a Connector in Azure^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-installing-linux.html[Installing a Connector in your premises^]
+//* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html[Switching between Connectors^]
 
 === Preparing networking for the Connector
 
@@ -140,7 +144,7 @@ Ensure that the Connector has the required networking connections.
 * An HTTPS connection over port 443 to your Blob object storage
 * An HTTPS connection over port 443 to your ONTAP cluster management LIF
 
-. Enable a VNet Private Endpoint to Azure storage. This is needed if you have an ExpressRoute or VPN connection from your ONTAP cluster to the VNet and you want communication between the Connector and Blob storage to stay in your virtual private network.
+. Enable a VNet Private Endpoint to Azure storage. This is needed if you have an ExpressRoute or VPN connection from your ONTAP cluster to the VNet and you want communication between the Connector and Blob storage to stay in your virtual private network (a *private* connection).
 
 === Supported regions
 
@@ -192,8 +196,9 @@ image:screenshot_backup_onprem_to_azure.png[A screenshot that shows the cloud pr
 +
 image:screenshot_backup_onprem_azure_networking.png[A screenshot that shows the networking details when backing up volumes from an ONTAP system to Azure Blob storage.]
 
-. Enter the default backup policy details and click *Next*.
+. Enter the backup policy details that will be used for your default policy and click *Next*. You can select an existing policy, or you can create a new policy by entering your selections in each section:
 
+.. Enter the name for the default policy. You don't need to change the name.
 .. Define the backup schedule and choose the number of backups to retain. link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings-per-cluster[See the list of existing policies you can choose^].
 .. When using ONTAP 9.10.1 and greater, you can choose to tier backups to Azure Archive storage after a certain number of days for further cost optimization. link:reference-azure-backup-tiers.html[Learn more about using archival tiers].
 +

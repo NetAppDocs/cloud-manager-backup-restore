@@ -23,7 +23,7 @@ You can view a list of all the volumes that are currently being backed up in the
 
 .Steps
 
-. Click the *Backup & Restore* tab.
+. From the Cloud Manager left navigation menu, click *Backup & Restore*.
 
 . Click the *Volumes* tab to view the list of volumes for Cloud Volumes ONTAP and on-premises ONTAP systems.
 +
@@ -83,8 +83,8 @@ endif::aws[]
 ifdef::azure[]
 link:reference-azure-backup-tiers.html[Learn more about using Azure archival storage].
 endif::azure[]
-+
-image:screenshot_backup_modify_policy_page2.png[A screenshot that shows the tiering to archival storage settings for Cloud Backup.]
+//+
+//image:screenshot_backup_modify_policy_page2.png[A screenshot that shows the tiering to archival storage settings for Cloud Backup.]
 +
 Note that any backup files that have been tiered to archival storage are left in that tier if you stop tiering backups to archive - they are not automatically moved back to the standard tier.
 

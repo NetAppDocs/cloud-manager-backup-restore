@@ -16,6 +16,25 @@ summary: Learn what's new in Cloud Backup.
 Learn what's new in Cloud Backup.
 
 // tag::whats-new[]
+== 13 July 2022
+
+=== Support has been added to back up SnapLock Enterprise volumes
+
+Now you can use Cloud Backup to back up SnapLock Enterprise volumes to public and private clouds. This feature requires that your ONTAP system is running ONTAP 9.11.1 or later. SnapLock Compliance volumes, however, aren’t currently supported.
+
+=== Now you can create backup files in the public cloud when using an on-premises Connector
+
+In the past you needed to deploy the Connector in the same cloud provider as where you were creating backup files. Now you can use a Connector deployed in your premises to create backup files from on-prem ONTAP systems to Amazon S3, Azure Blob, and Google Cloud Storage. (An on-prem Connector was always required when creating backup files on StorageGRID systems.)
+
+=== Additional features are available when creating backup policies for ONTAP systems
+
+* Backup on a yearly schedule is now available. The default retention value is 1 for yearly backups, but you can change this value if you want to have access to many previous years' backup files.
+* You can name your backup policies so you can identify your policies with more descriptive text.
+
+//=== Search & Restore is now supported with backup files in Azure Blob
+//
+//The Search & Restore method of restoring volumes and files is now available for users who store their backup files in Azure Blob storage. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html#prerequisites-2[See how to restore your volumes and files using Search & Restore].
+
 == 14 June 2022
 
 === Support has been added to back up on-premises ONTAP cluster data in sites without internet access
@@ -78,6 +97,7 @@ There are a few changes to how licensing is implemented with Cloud Backup:
 * The Free Trial starts the day the Marketplace subscription starts. For example, if you activate the Free Trial after you have been using a Marketplace subscription for 30 days for a Cloud Volumes ONTAP system, the Cloud Backup Trial will not be available.
 
 https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-licensing-cloud-backup.html[Learn more about the available licensing models].
+// end::whats-new[]
 
 == 4 April 2022
 
@@ -87,12 +107,11 @@ The new Cloud Backup for Applications capability enables you to offload existing
 
 When required, you can restore this data from cloud to on-premises.
 
-https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-protect-app-data-to-cloud.html[Learn more about protecting on-premises applications data to the cloud].
+link:concept-protect-app-data-to-cloud.html[Learn more about protecting on-premises applications data to the cloud].
 
 === New Search & Restore feature to search for volumes or files across all ONTAP backup files
 
-Now you can search for a volume or file across *all ONTAP backup files* by partial or full volume name, partial or full file name, size range, and additional search filters. This is a great new way to find the data you want to restore if you are not sure which cluster or volume was the source for the data. https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-restore-backups-ontap.html#restoring-ontap-data-using-search-restore[Learn how to use Search & Restore].
-// end::whats-new[]
+Now you can search for a volume or file across *all ONTAP backup files* by partial or full volume name, partial or full file name, size range, and additional search filters. This is a great new way to find the data you want to restore if you are not sure which cluster or volume was the source for the data. link:task-restore-backups-ontap.html#restoring-ontap-data-using-search-restore[Learn how to use Search & Restore].
 
 == 3 March 2022
 

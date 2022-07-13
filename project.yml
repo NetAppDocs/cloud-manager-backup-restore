@@ -110,6 +110,13 @@ sidebar:
           url: /reference-aws-backup-tiers.html
         - title: Supported Azure archive access tiers
           url: /reference-azure-backup-tiers.html
+        - title: Cross-account and cross-region configurations
+          url: /reference-cross-account.html
+          entries:
+            - title: Configure Backup for multi-account access in AWS
+              url: /reference-backup-multi-account-aws.html
+            - title: Configure Backup for multi-account access in Azure
+              url: /reference-backup-multi-account-azure.html
     - title: Knowledge and support
       entries:
         - title: Register for support
