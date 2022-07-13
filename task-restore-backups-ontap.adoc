@@ -23,7 +23,7 @@ A valid Cloud Backup license is required to restore data from backup files to a 
 
 == The Restore Dashboard
 
-You use the Restore Dashboard to perform volume and file restore operations. You access the Restore Dashboard by clicking *Backup & Restore* from the top of Cloud Manager, and then clicking the *Restore* tab. You can also click image:screenshot_gallery_options.gif[More button] > *View Restore Dashboard* from the Backup & Restore service from the Services panel.
+You use the Restore Dashboard to perform volume and file restore operations. You access the Restore Dashboard by clicking *Backup & Restore* from the Cloud Manager left navigation menu, and then clicking the *Restore* tab. You can also click image:screenshot_gallery_options.gif[More button] > *View Restore Dashboard* from the Backup & Restore service from the Services panel.
 
 NOTE: Cloud Backup must already be activated for at least one working environment and initial backup files must exist.
 
@@ -48,11 +48,13 @@ This table provides a comparison of the 2 methods.
 | Restore volumes and files from StorageGRID in sites with no internet access | Not supported in dark sites
 | Does not handle files that have been renamed or deleted | Handles newly created/deleted/renamed directories and newly created/deleted/renamed files
 | Browse for results across public and private clouds | Browse for results across public clouds and local Snapshots copies
-| No additional cloud provider resources required | Additional bucket and AWS or Google resources required per account
-| No additional cloud provider costs required | Cost associated with AWS or Google resources when scanning your backups and volumes for search results
+| No additional cloud provider resources required | Additional bucket and public cloud provider resources required per account
+| No additional cloud provider costs required | Cost associated with public cloud provider resources when scanning your backups and volumes for search results
 
 |===
 
+//, Azure Blob,
+//
 Before you can use either restore method, make sure you have configured your environment for the unique resource requirements. Those requirements are described in the sections below.
 
 See the requirements and restore steps for the type of restore operation you want to use:
@@ -106,12 +108,14 @@ On-premises ONTAP system
 endif::azure[]
 ifdef::gcp[]
 | Google Cloud Storage | Cloud Volumes ONTAP in Google
-On-premises ONTAP system | Cloud Volumes ONTAP in Google
-On-premises ONTAP system
+On-premises ONTAP system | Cloud Volumes ONTAP in Google (^1^)
+On-premises ONTAP system (^1^)
 endif::gcp[]
 | NetApp StorageGRID | On-premises ONTAP system | On-premises ONTAP system
 
 |===
+
+(^1^) _The Connector must be deployed in your Google Cloud Platform VPC for this support._
 
 Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
 
@@ -302,7 +306,7 @@ ifdef::aws[]
 link:reference-aws-backup-tiers.html[Learn more about restoring from AWS archival storage].
 endif::aws[]
 //ifdef::azure[]
-// link:reference-azure-backup-tiers.html[Learn more about restoring from Azure archival storage].
+//link:reference-azure-backup-tiers.html[Learn more about restoring from Azure archival storage].
 //endif::azure[]
 
 Before you start, you should have some idea of the name or location of the volume or file you want to restore.
@@ -331,6 +335,12 @@ endif::aws[]
 ifdef::azure[]
 | Azure Blob | Not currently supported |
 endif::azure[]
+//ifdef::azure[]
+// | Azure Blob | Cloud Volumes ONTAP in Azure
+//On-premises ONTAP system
+// | Cloud Volumes ONTAP in Azure
+//On-premises ONTAP system
+//endif::azure[]
 ifdef::gcp[]
 | Google Cloud Storage | Cloud Volumes ONTAP in Google
 On-premises ONTAP system
@@ -340,6 +350,8 @@ endif::gcp[]
 | NetApp StorageGRID | Not currently supported |
 
 |===
+
+TIP: The Connector must be deployed in your cloud provider platform for this support. Search & Restore is not supported when the Connector is installed on your premises.
 
 Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP Select systems.
 
@@ -359,6 +371,14 @@ ifdef::aws[]
 +
 Note that if you were already using Cloud Backup with a Connector you configured in the past, you'll need to add the Athena and Glue permissions to the Cloud Manager user role now. These are new, and they are required for Search & Restore.
 endif::aws[]
+
+//ifdef::azure[]
+//* Azure requirements:
+//
+//** Specific [Make sure all the permissions are configured correctly].
+//+
+//Note that if you were already using Cloud Backup with a Connector you configured in the past, you'll need to add ???????? permissions to the Cloud Manager user role now. These are new, and they are required for Search & Restore.
+//endif::azure[]
 
 ifdef::gcp[]
 * Google Cloud requirements:
@@ -399,6 +419,9 @@ When you enable this functionality, Cloud Backup enables SnapDiff v3 on the SVM 
 ifdef::aws[]
 * For backups stored in AWS, it provisions a new S3 bucket and the https://aws.amazon.com/athena/faqs/[Amazon Athena interactive query service^] and https://aws.amazon.com/glue/faqs/[AWS Glue serverless data integration service^].
 endif::aws[]
+//ifdef::azure[]
+//* For backups stored in Azure, it provisions a new ???? and the ??.
+//endif::azure[]
 ifdef::gcp[]
 * For backups stored in Google Cloud, it provisions a new bucket, and the https://cloud.google.com/bigquery[Google Cloud BigQuery services^] are provisioned on an account/project level.
 endif::gcp[]

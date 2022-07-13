@@ -48,7 +48,7 @@ Select Google Cloud as your provider and then enter the provider details. You al
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png[Four] Define the default backup policy
 
 [role="quick-margin-para"]
-The default policy backs up volumes every day and retains the most recent 30 backup copies of each volume. Change to hourly, daily, weekly, or monthly backups, or select one of the system-defined policies that provide more options. You can also change the number of backup copies you want to retain.
+The default policy backs up volumes every day and retains the most recent 30 backup copies of each volume. Change to hourly, daily, weekly, monthly, or yearly backups, or select one of the system-defined policies that provide more options. You can also change the number of backup copies you want to retain.
 
 [role="quick-margin-para"]
 image:screenshot_backup_policy_gcp.png[A screenshot that shows the Cloud Backup settings where you can choose the backup schedule and retention period.]
@@ -67,13 +67,15 @@ There are two connection methods you can use when configuring backups from on-pr
 * Public connection - Directly connect the ONTAP system to Google Cloud Storage using a public Google endpoint.
 * Private connection - Use a VPN or Private Service Connect and route traffic through a Private Google Access interface that uses a private IP address.
 
-The following image shows the *public connection* method and the connections that you need to prepare between the components:
+The following diagram shows the *public connection* method and the connections that you need to prepare between the components. You can use a Connector that you've installed on your premises, or a Connector that you've deployed in the Google Cloud Platform VPC.
 
-image:diagram_cloud_backup_onprem_google.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the source systems and the destination storage where the backup files are located.]
+image:diagram_cloud_backup_onprem_gcp_public.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the cluster and the Google Cloud storage where the backup files are located.]
+//image:diagram_cloud_backup_onprem_google.png[A diagram showing how Cloud Backup communicates over a public connection with the volumes on the source systems and the destination storage where the backup files are located.]
 
-The following image shows the *private connection* method and the connections that you need to prepare between the components:
+The following diagram shows the *private connection* method and the connections that you need to prepare between the components. You can use a Connector that you've installed on your premises, or a Connector that you've deployed in the Google Cloud Platform VPC.
 
-image:diagram_cloud_backup_onprem_google_vpc.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the source systems and the destination storage where the backup files are located.]
+image:diagram_cloud_backup_onprem_gcp_private.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the cluster and the Google Cloud storage where the backup files are located.]
+//image:diagram_cloud_backup_onprem_google_vpc.png[A diagram showing how Cloud Backup communicates over a private connection with the volumes on the source systems and the destination storage where the backup files are located.]
 
 === Preparing your ONTAP clusters
 
@@ -109,11 +111,13 @@ When you set up Cloud Backup, you are prompted for the IPspace to use. You shoul
 
 === Creating or switching Connectors
 
-A Connector is required to back up data to the cloud, and the Connector must be in a Google Cloud Platform VPC when backing up data to Google Cloud storage. You can't use a Connector that's deployed on-premises. You'll either need to create a new Connector or make sure that the currently selected Connector resides in the correct provider.
+If you already have a Connector deployed in your Google Cloud Platform VPC or on your premises, then you're all set. If not, then you'll need to create a Connector in either of those locations to back up ONTAP data to Google Cloud storage. You can't use a Connector that's deployed in another cloud provider.
 
 * https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html[Learn about Connectors^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-gcp.html[Creating a Connector in GCP^]
-* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html[Switching between Connectors^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html[Getting started with Connectors^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-gcp.html[Installing a Connector in GCP^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-installing-linux.html[Installing a Connector in your premises^]
+//* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html[Switching between Connectors^]
 
 === Preparing networking for the Connector
 
@@ -127,7 +131,7 @@ Ensure that the Connector has the required networking connections.
 * An HTTPS connection over port 443 to your Google Cloud storage
 * An HTTPS connection over port 443 to your ONTAP cluster management LIF
 
-. Enable Private Google Access on the subnet where you plan to deploy the Connector. https://cloud.google.com/vpc/docs/configure-private-google-access[Private Google Access^] is needed if you have a direct connection from your ONTAP cluster to the VPC and you want communication between the Connector and Google Cloud Storage to stay in your virtual private network.
+. Enable Private Google Access on the subnet where you plan to deploy the Connector. https://cloud.google.com/vpc/docs/configure-private-google-access[Private Google Access^] is needed if you have a direct connection from your ONTAP cluster to the VPC and you want communication between the Connector and Google Cloud Storage to stay in your virtual private network (a *private* connection).
 +
 Note that Private Google Access works with VM instances that have only internal (private) IP addresses (no external IP addresses).
 
@@ -211,11 +215,12 @@ image:screenshot_backup_onprem_to_google.png[A screenshot that shows the cloud p
 
 . If you don't have an existing Cloud Backup license for your account, you'll be prompted at this point to select the type of charging method that you want to use. You can subscribe to a pay-as-you-go (PAYGO) Cloud Manager Marketplace offering from Google (or if you have multiple subscriptions you'll need to select one), or purchase and activate a Cloud Backup BYOL license from NetApp. link:task-licensing-cloud-backup.html[Learn how to set up Cloud Backup licensing.]
 
-. In the _Define Policy_ page, select an existing backup schedule and retention value, or define a new default backup policy, and click *Next*.
+. Enter the backup policy details that will be used for your default policy and click *Next*. You can select an existing policy, or you can create a new policy by entering your selections in each section:
+
+.. Enter the name for the default policy. You don't need to change the name.
+.. Define the backup schedule and choose the number of backups to retain. link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings-per-cluster[See the list of existing policies you can choose^].
 +
 image:screenshot_backup_policy_gcp.png[A screenshot that shows the Cloud Backup settings where you can choose your backup schedule and retention period.]
-+
-See link:concept-ontap-backup-to-cloud.html#customizable-backup-schedule-and-retention-settings-per-cluster[the list of existing policies^].
 
 . Select the volumes that you want to back up using the default backup policy in the Select Volumes page. If you want to assign different backup policies to certain volumes, you can create additional policies and apply them to those volumes later.
 

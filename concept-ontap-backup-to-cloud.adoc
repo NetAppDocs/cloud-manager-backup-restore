@@ -23,6 +23,7 @@ Backup features:
 
 * Back up independent copies of your data volumes to low-cost object storage.
 * Apply a single backup policy to all volumes in a cluster, or assign different backup policies to volumes that have unique recovery point objectives.
+* Name your backup policies so it is easy to see what each policy is used for.
 * Tier older backup files to archival storage to save costs (supported when using ONTAP 9.10.1+)
 * Back up from cloud to cloud, and from on-premises systems to public or private cloud.
 * For Cloud Volumes ONTAP systems, your backups can reside on a different subscription/account or different region.
@@ -108,7 +109,7 @@ Note that references to "on-premises ONTAP systems" includes FAS, AFF, and ONTAP
 
 === Support for sites with no internet connectivity
 
-Cloud Backup can be used in a site with no internet connectivity (also known as an "offline" or "dark" site) to back up volume data from local on-premises ONTAP systems to local NetApp StorageGRID systems. In this case, you'll need to deploy the Cloud Manager Connector (minimum version 3.9.19) in the dark site. See link:task-backup-onprem-private-cloud.html[Backing up on-premises ONTAP data to StorageGRID] for details.
+Cloud Backup can be used in a site with no internet connectivity (also known as an "offline" or "dark" site) to back up volume data from local on-premises ONTAP systems to local NetApp StorageGRID systems. Both volume and file restore are also supported in this configuration. In this case, you'll need to deploy the Cloud Manager Connector (minimum version 3.9.19) in the dark site. See link:task-backup-onprem-private-cloud.html[Backing up on-premises ONTAP data to StorageGRID] for details.
 
 == Cost
 
@@ -142,33 +143,21 @@ There are three ways to pay for the Backup service. The first option is to subsc
 
 == Licensing
 
-Cloud Backup is available in a few licensing options:
+Cloud Backup is available with the following consumption models:
 
-* Pay As You Go (PAYGO) subscription
-ifdef::aws[]
-* an annual contract from the AWS Marketplace
-endif::aws[]
-* Bring Your Own License (BYOL)
+* *BYOL*: A license purchased from NetApp that can be used with any cloud provider.
+* *PAYGO*: An hourly subscription from your cloud provider’s marketplace.
+* *Annual*: An annual contract from your cloud provider’s marketplace.
 
-A 30-day free trial is available when you initially sign up with a PAYGO subscription.
+[NOTE]
+====
+If you purchase a BYOL license from NetApp, you also need to subscribe to the PAYGO offering from your cloud provider’s marketplace. Your license is always charged first, but you’ll be charged from the hourly rate in the marketplace in these cases:
 
-=== Pay-as-you-go subscription
+* If you exceed your licensed capacity
+* If the term of your license expires
 
-Cloud Backup offers consumption-based licensing in a pay-as-you-go model. After subscribing through your cloud provider’s marketplace, you pay per GiB for data that’s backed up—​there’s no up-front payment. You are billed by your cloud provider through your monthly bill.
-
-link:task-licensing-cloud-backup.html#use-a-cloud-backup-paygo-subscription[Learn how to set up a pay-as-you-go subscription].
-
-ifdef::aws[]
-=== Annual contract (AWS only)
-
-Two annual contracts are available for 12, 24, or 36 month terms from the AWS Marketplace:
-
-*	A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
-
-* A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and Cloud Backup. This includes unlimited backups for Cloud Volumes ONTAP volumes charged against this license (backup capacity is not counted against the license).
-
-link:task-licensing-cloud-backup.html#subscribe-to-yearly-contracts-through-aws[Learn how to set up yearly AWS contracts].
-endif::aws[]
+If you have an annual contract from a marketplace, all Cloud Backup consumption is charged against that contract. You can’t mix and match an annual marketplace contract with a BYOL.
+====
 
 === Bring your own license
 
@@ -177,6 +166,34 @@ BYOL is term-based (12, 24, or 36 months) _and_ capacity-based in 1 TiB incremen
 You'll receive a serial number that you enter in the Cloud Manager Digital Wallet page to enable the service. When either limit is reached, you'll need to renew the license. The Backup BYOL license applies to all source systems associated with your https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-netapp-accounts.html[Cloud Manager account^].
 
 link:task-licensing-cloud-backup.html#use-a-cloud-backup-byol-license[Learn how to manage your BYOL licenses].
+
+=== Pay-as-you-go subscription
+
+Cloud Backup offers consumption-based licensing in a pay-as-you-go model. After subscribing through your cloud provider’s marketplace, you pay per GiB for data that’s backed up—​there’s no up-front payment. You are billed by your cloud provider through your monthly bill.
+
+link:task-licensing-cloud-backup.html#use-a-cloud-backup-paygo-subscription[Learn how to set up a pay-as-you-go subscription].
+
+Note that a 30-day free trial is available when you initially sign up with a PAYGO subscription.
+
+=== Annual contract
+
+ifdef::aws[]
+When using AWS, two annual contracts are available for 12, 24, or 36 month terms:
+
+*	A "Cloud Backup" plan that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
+
+* A "CVO Professional" plan that enables you to bundle Cloud Volumes ONTAP and Cloud Backup. This includes unlimited backups for Cloud Volumes ONTAP volumes charged against this license (backup capacity is not counted against the license).
+endif::aws[]
+
+ifdef::azure[]
+* When using Azure, you can request a private offer from NetApp, and then select the plan when you subscribe from the Azure Marketplace during Cloud Backup activation.
+endif::azure[]
+
+ifdef::gcp[]
+* When using GCP, you can request a private offer from NetApp, and then select the plan when you subscribe from the Google Cloud Marketplace during Cloud Backup activation.
+endif::gcp[]
+
+link:task-licensing-cloud-backup.html#use-an-annual-contract[Learn how to set up annual contracts].
 
 == How Cloud Backup works
 
@@ -234,9 +251,9 @@ endif::gcp[]
 
 === Customizable backup schedule and retention settings per cluster
 
-When you enable Cloud Backup for a working environment, all the volumes you initially select are backed up using the default backup policy that you define. If you want to assign different backup policies to certain volumes that have different recovery point objectives (RPO), you can create additional policies for that cluster and assign those policies to other volumes.
+When you enable Cloud Backup for a working environment, all the volumes you initially select are backed up using the default backup policy that you define. If you want to assign different backup policies to certain volumes that have different recovery point objectives (RPO), you can create additional policies for that cluster and assign those policies to the other volumes after Backup is activated.
 
-You can choose a combination of hourly, daily, weekly, and monthly backups of all volumes. You can also select one of the system-defined policies that provide backups and retention for 3 months, 1 year, and 7 years. These policies are:
+You can choose a combination of hourly, daily, weekly, monthly, and yearly backups of all volumes. You can also select one of the system-defined policies that provide backups and retention for 3 months, 1 year, and 7 years. These policies are:
 
 [cols=5*,options="header",cols="35,16,16,16,26",width="80%"]
 |===
@@ -256,7 +273,7 @@ You can choose a combination of hourly, daily, weekly, and monthly backups of al
 
 Backup protection policies that you have created on the cluster using ONTAP System Manager or the ONTAP CLI will also appear as selections.
 
-Once you have reached the maximum number of backups for a category, or interval, older backups are removed so you always have the most current backups.
+Once you have reached the maximum number of backups for a category, or interval, older backups are removed so you always have the most current backups (and so obsolete backups don't continue to take up space in the cloud).
 
 Note that you can link:task-manage-backups-ontap.html#creating-a-manual-volume-backup-at-any-time[create an on-demand backup of a volume] from the Backup Dashboard at any time, in addition to those backup files created from the scheduled backups.
 
@@ -277,9 +294,13 @@ This operation could cause a one-time increase in cost to read the data from you
 
 == Supported volumes
 
-Cloud Backup supports FlexVol read-write volumes and SnapMirror data protection (DP) destination volumes.
+Cloud Backup supports the following types of volumes:
 
-FlexGroup volumes and SnapLock volumes aren't currently supported.
+* FlexVol read-write volumes
+* SnapMirror data protection (DP) destination volumes
+* SnapLock Enterprise volumes (requires ONTAP 9.11.1 or later)
+
+FlexGroup volumes and SnapLock Compliance volumes aren't currently supported.
 
 == Limitations
 
