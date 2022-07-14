@@ -860,7 +860,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-06-29 18:20:05 +0000">06/29/2022</time>
+    <time datetime="2022-07-14 13:07:13 +0000">07/14/2022</time>
     
   
 
@@ -1019,7 +1019,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>The ONTAP cluster initiates an HTTPS connection over a user-specified port from the intercluster LIF to StorageGRID for backup and restore operations. The port is configurable during backup setup.</p>
+<p>The ONTAP cluster initiates an HTTPS connection over a user-specified port from the intercluster LIF to the StorageGRID Gateway Node for backup and restore operations. The port is configurable during backup setup.</p>
 <div class="paragraph">
 <p>ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.</p>
 </div>
@@ -1133,7 +1133,7 @@ Cloud Backup functionality is built into the Cloud Manager Connector. When insta
 <div class="ulist">
 <ul>
 <li>
-<p>An HTTPS connection over port 443 to StorageGRID</p>
+<p>An HTTPS connection over port 443 to the StorageGRID Gateway Node</p>
 </li>
 <li>
 <p>An HTTPS connection over port 443 to your ONTAP cluster management LIF</p>
@@ -1190,7 +1190,7 @@ PAYGO licensing is not supported when backing up files to StorageGRID.
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>The FQDN of the StorageGRID server and the port that ONTAP should use for HTTPS communication with StorageGRID; for example: <code>s3.eng.company.com:8082</code></p>
+<p>The FQDN of the StorageGRID Gateway Node and the port that ONTAP should use for HTTPS communication with StorageGRID; for example: <code>s3.eng.company.com:8082</code></p>
 </li>
 <li>
 <p>The Access Key and the Secret Key used to access the bucket to store backups.</p>
