@@ -42,9 +42,9 @@ There are a few PAYGO plans for Cloud Backup:
 
 *	A "Cloud Backup" package that enables you to back up Cloud Volumes ONTAP data and on-premises ONTAP data.
 * A "CVO Professional" package that enables you to bundle Cloud Volumes ONTAP and Cloud Backup. This includes unlimited backups for Cloud Volumes ONTAP volumes charged against this license (backup capacity is not counted against the license). This option doesn’t enable you to back up on-premises ONTAP data.
-//ifdef::azure[]
-//* A "CVO Edge Cache" package has the same capabilities as the "CVO Professional" package, but it also includes support for https://docs.netapp.com/us-en/cloud-manager-file-cache/concept-gfc.html[Global File Cache]. You are entitled to deploy one Global File Cache Edge system for each 3 TiB of provisioned capacity on the Cloud Volumes ONTAP system. This option is available only through the Azure Marketplace, and it doesn’t enable you to back up on-premises ONTAP data.
-//endif::azure[]
+ifdef::azure[]
+* A "CVO Edge Cache" package has the same capabilities as the "CVO Professional" package, but it also includes support for https://docs.netapp.com/us-en/cloud-manager-file-cache/concept-gfc.html[Global File Cache]. You are entitled to deploy one Global File Cache Edge system for each 3 TiB of provisioned capacity on the Cloud Volumes ONTAP system. This option is available only through the Azure Marketplace, and it doesn’t enable you to back up on-premises ONTAP data.
+endif::azure[]
 
 https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-licensing.html#capacity-based-licensing[Learn more about these capacity-based license packages].
 
@@ -80,13 +80,11 @@ endif::aws[]
 
 ifdef::azure[]
 When using Azure, contact your NetApp sales representative to purchase an annual contract. The contract is available as a private offer in the Azure Marketplace.
-
 After NetApp shares the private offer with you, you can select the annual plan when you subscribe from the Azure Marketplace during Cloud Backup activation.
 endif::azure[]
 
 ifdef::gcp[]
 When using GCP, contact your NetApp sales representative to purchase an annual contract. The contract is available as a private offer in the Google Cloud Marketplace.
-
 After NetApp shares the private offer with you, you can select the annual plan when you subscribe from the Google Cloud Marketplace during Cloud Backup activation.
 endif::gcp[]
 
